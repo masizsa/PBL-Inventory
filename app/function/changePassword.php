@@ -5,12 +5,12 @@ include '../../config/connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get data from the form
-    $username = $_POST['username'];
-    $old_password = $_POST['old_password'];
-    $new_password = $_POST['new_password'];
+    $username = $_POST['nomor_identitas'];
+    $old_password = $_POST['password'];
+    $new_password = $_POST['newPassword'];
 
     // Check the match of the old password in the database
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$old_password'";
+    $sql = "SELECT * FROM users WHERE nomor_identitas='$username' AND password='$old_password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
