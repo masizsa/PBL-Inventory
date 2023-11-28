@@ -15,17 +15,17 @@
 
 <body>
     <section>
-        <form class="" action="#">
+        <form class="" action="checkLogin.php" method="post">
             <div class="logo ">
                 <img src="../../../public/assets/Logo SIVENTI.svg" alt="">
                 <label for="">SIVENTI</label>
             </div>
             <div class="wrapper">
                 <div class="username-wrapper">
-                    <input id="username" type="text" placeholder="Masukkan nomor identitas">
+                    <input id="username" type="text" name="nomor_identitas" placeholder="Masukkan nomor identitas">
                 </div>
                 <div class="password-wrapper">
-                    <input id="password" type="password" placeholder="Masukkan password">
+                    <input id="password" type="password" name="password" placeholder="Masukkan password">
                     <img id="passIcon" class="" src="../../../public/assets/showPass.svg" alt="">
                 </div>
                 <label for="">Lupa Password?</label>
