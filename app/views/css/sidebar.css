@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,600&display=swap');
 
+:root {
+    ---sidebar-color: #38333A;
+    ---color-sidebar-icon: #605c61;
+    ---text-color: #ffffff;
+    ---selected-menu-color: #FCD106;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -17,7 +24,23 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #38333A;
+    background-color: var(---sidebar-color);
+    transition: all .2s ease-in-out;
+    animation: entranceSidebar .45s ease-out;
+}
+
+@keyframes entranceSidebar {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 37.5rem;
+    }
+}
+
+.minimize-sidebar {
+    width: 9rem;
 }
 
 .header-sidebar {
@@ -28,7 +51,7 @@ html {
     align-items: center;
     justify-content: space-between;
     font-weight: 600;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid var(---text-color);
 }
 
 .header-sidebar .logo {
@@ -37,17 +60,18 @@ html {
     align-items: center;
     gap: 2rem;
     font-size: 2.4rem;
-    color: #ffffff;
+    color: var(---text-color);
 }
 
-.header-sidebar .logo img:first-child {
+.header-sidebar .logo .main-icon svg {
     height: 5rem;
     width: 5rem;
     object-fit: contain;
 }
 
-.header-sidebar .logo img:last-child {
+.header-sidebar .close-icon svg {
     height: 2.4rem;
+    cursor: pointer;
 }
 
 .body-sidebar {
@@ -58,25 +82,93 @@ html {
     justify-content: space-between;
 }
 
-.body-sidebar ul {
+.body-sidebar ul li {
     list-style: none;
 }
 
-.body-sidebar li {
-    height: 4.5rem;
-    padding-left: 1.6rem;
-    display: flex;
-    align-items: center;
-    border-radius: 1rem;
+.body-sidebar ul li:not(:first-child) {
+    margin-top: 1.2rem;
 }
 
 .body-sidebar ul li a {
+    position: relative;
+    height: 4.5rem;
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    border-radius: 1rem;
+    list-style: none;
     font-size: 1.4rem;
-    color: #ffffff;
+    cursor: pointer;
+    color: #ffffff20;
     text-decoration: none;
 }
 
-.body-sidebar li:not(:first-child) {
-    margin-top: 1.2rem;
-    background-color: red;
+.body-sidebar ul li a .list-icon {
+    margin-right: 1rem;
+}
+
+.body-sidebar ul li a .list-icon svg path {
+    stroke: #ffffff20;
+}
+
+.body-sidebar ul li a.hide-menu,
+.body-sidebar ul li a.active-menu.hide-menu{
+    color: transparent;
+}
+.body-sidebar ul li .hover-menu {
+    position: relative;
+    transition: background-color .3s ease-out;
+    background-color: var(---color-sidebar-icon);
+    color: var(---text-color);
+}
+
+.body-sidebar ul li .hover-menu .list-icon svg {
+    fill: var(---text-color);
+}
+
+.body-sidebar ul li .hover-menu .list-icon svg path {
+    stroke: var(---color-sidebar-icon);
+}
+
+.body-sidebar ul li .active-menu {
+    transition: all .3s ease-in-out;
+    background-color: var(---color-sidebar-icon);
+    position: relative;
+}
+
+.body-sidebar ul li .active-menu::before {
+    position: absolute;
+    content: '';
+    height: 2rem;
+    width: .4rem;
+    background-color: var(---selected-menu-color);
+    animation: selectedIcon .3s ease-in;
+    border-radius: 1rem;
+    left: 0;
+}
+
+@keyframes selectedIcon {
+    0% {
+        top: 10%;
+        height: 0;
+    }
+
+    100% {
+        top: 25%;
+        height: 2rem;
+    }
+}
+
+
+
+.body-sidebar ul li .active-menu {
+    color: var(---text-color);
+}
+
+.body-sidebar ul li .active-menu .list-icon svg {
+    fill: var(---text-color);
+}
+
+.body-sidebar ul li .active-menu .list-icon svg path {
+    stroke: var(---color-sidebar-icon);
 }
