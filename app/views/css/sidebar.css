@@ -101,6 +101,7 @@ html {
     cursor: pointer;
     color: #ffffff20;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .body-sidebar ul li a .list-icon {
