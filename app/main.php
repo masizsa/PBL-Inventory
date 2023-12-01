@@ -17,7 +17,7 @@
         </div>
         <div class="right">
             <?php
-            include("./test.php");
+            include("./views/pages/ajukan-peminjaman/index.php");
             ?>
         </div>
     </div>

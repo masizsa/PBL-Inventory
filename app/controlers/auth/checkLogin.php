@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 include '../../config/connection.php';
 include '../../function/message.php';
 
+
 if (isset($_POST["nomor_identitas"])) {
     $nomor_identitas = $_POST["nomor_identitas"];
     $password = md5($_POST["password"]);
@@ -18,10 +19,10 @@ if (isset($_POST["nomor_identitas"])) {
         if ($row["password"] == $password) {
             if ($row["status"] == "admin") {
                 echo "ok";
-                header("Location: ../../views/admin/ho1e.php");
+                header("Location: ../../views/admin/home.php");
             } else {
                 echo "op";
-                header("Location: ../../main.php?page=ajukan-peminjaman");
+                header("Location: ../../views/pages/ajukan-peminjaman/index.php");
             }
             // $_SESSION['nomor_identitas'] = $row['nomor_identitas'];
             // $_SESSION['status'] = $row['status'];
