@@ -80,6 +80,11 @@ html {
     padding: 2.4rem 2rem;
     flex-direction: column;
     justify-content: space-between;
+    /* align-items: center; */
+}
+
+.body-sidebar ul {
+    padding: 0;
 }
 
 .body-sidebar ul li {
@@ -113,9 +118,10 @@ html {
 }
 
 .body-sidebar ul li a.hide-menu,
-.body-sidebar ul li a.active-menu.hide-menu{
+.body-sidebar ul li a.active-menu.hide-menu {
     color: transparent;
 }
+
 .body-sidebar ul li .hover-menu {
     position: relative;
     transition: background-color .3s ease-out;
