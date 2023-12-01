@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,600&display=swap');
 @import url("./views/css/sidebar.css");
+@import url("./views/css/riwayat.css");
 @import url("./views/pages/ajukan-peminjaman/style.css");
 
 * {
@@ -21,6 +22,5 @@ html {
 
 .custom--right {
     font-size: 1.6rem;
-    padding: 1.6rem 4rem;
     flex-grow: 1;
 }
