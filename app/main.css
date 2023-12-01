@@ -1,5 +1,6 @@
-@import url("./views/css/sidebar.css");
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,600&display=swap');
+@import url("./views/css/sidebar.css");
+@import url("./views/pages/ajukan-peminjaman/style.css");
 
 * {
     padding: 0;
@@ -13,11 +14,13 @@ html {
     font-size: 10px;
 }
 
-.container {
+.custom--container {
     display: flex;
     justify-content: space-between;
 }
 
-.right {
+.custom--right {
+    font-size: 1.6rem;
     padding: 1.6rem 4rem;
+    flex-grow: 1;
 }
