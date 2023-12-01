@@ -24,11 +24,10 @@
         </div>
         <div class="custom--right">
             <?php
-            include("./views/pages/ajukan-peminjaman/index.php");
+            include("./views/pages/riwayat/index.php");
             ?>
         </div>
     </div>
 </body>
-<script src="./views/layouts/sidebar.js"></script>
 
 </html>
