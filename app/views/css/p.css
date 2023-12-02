@@ -1,0 +1,227 @@
+body{
+    background-color: #F6F6F6;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-radius: 10px;
+    border: #8e8e8e;
+    border-spacing: 0;
+    /* overflow: hidden; */
+}
+
+.siventi{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background-color: #FFFFFF;
+    font-family: Poppins;
+}
+
+.lanjut{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--Black, #121212);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.lanjut_button{
+    width: 162px;
+    height: 50px;
+    border-radius: 100px;
+    background: var(--Main-Yellow, #FCD106);
+    color: var(--White, #FFF);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    border: 1px solid var(--Main-Yellow, #FCD106);
+}
+
+.card_cont {
+    justify-content: start;
+    display: flex;
+    padding: 24px;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    display: flex;
+    padding: 24px;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid rgba(18, 18, 18, 0.10);
+    background: var(--White, #FFF);
+}
+
+.card{
+    display: flex;
+    padding: 12px;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid rgba(18, 18, 18, 0.10);
+    background: var(--White, #F6F6F6);
+    
+}
+
+.text_left{
+    align-items: flex-start;
+    font-family: Poppins;
+    flex-direction: column;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    gap: 8px;
+}
+
+.text_right{
+    display: flex;
+    text-align: center;
+    font-family: Poppins;
+    flex-direction: column;
+}
+
+.vertical_line{
+    float: right;
+    border-left: 2px solid var(--Main-Yellow, #FCD106);
+    height: 80px;
+    padding: 10px;
+}
+
+.data_barang{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    color: var(--Black, #121212);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.search{
+    display: flex;
+    padding: 12px 80px;
+    padding-left: 10px;
+    justify-content: space-between;
+    border-radius: 1000px;
+    background: var(--White, #FFF);
+}
+
+.search_text{
+    color: rgba(18, 18, 18, 0.20);
+    text-align: left;
+    margin-left: 18px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    border-color: #FFFFFF;
+    border-top: #FFFFFF;
+    border-left: #FFFFFF;
+}
+
+.table tr {
+    background-color: white;
+    border-radius: 50px;
+    border-right: 1px solid black;
+}
+
+.table th:not(:last-child),
+.table td:not(:last-child),
+
+.table>tbody>tr:not(:last-child)>td{
+    border-bottom: 1px solid black;
+}
+.table>tfoot>tr:not(:last-child)>th{
+    border-bottom: 1px solid black;
+}
+.table>tfoot>tr:not(:last-child)>td{
+    border-bottom: 1px solid black;
+}
+.table>tr:not(:last-child)>td{
+    border-bottom: 1px solid black;
+}
+.table>tfoot:not(:last-child) {
+ border-bottom: 1px solid black;
+}
+
+.table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+  }
+.table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+.table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+.table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+    text-align: left;
+    background-color: #FCD106;
+    color: var(--Black, #121212);
+    font-family: Poppins;
+    font-size: 14px;
+}
+
+.table td{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+    color: var(--Black, #121212);
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.qty{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn_tambah{
+    display: flex;
+    width: 102px;
+    height: 40px;
+    padding: 0px 22px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 78px;
+    border: 1px solid var(--Main-Yellow, #FCD106);
+    background-color: #FFFFFF;
+    color: #FCD106;
+    font-family: poppins;
+    font-weight: 600;
+}
+
+.btn_min, .btn_plus{
+    border-radius: 100px;
+    color: #FCD106;
+    background-color: #FFFFFF;
+    border: 1px solid var(--Main-Yellow, #FCD106);
+    width: 24px;
+    height: 24px;
+    font-size: medium;
+    font-style: bold;
+}
+
+.qtyangka{
+    display: flex;
+    align-items: center;
+    font-family: Poppins;
+}
