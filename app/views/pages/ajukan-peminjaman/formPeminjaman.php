@@ -102,6 +102,15 @@
             </div>
         </div>
 
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <img src="../../../../public/assets/box.svg">
+                <h3>Peminjaman Berhasil</h3>
+                <p>Silakan menuju ke ruang inventaris!</p>
+                <button type="button" class="close">Baik</button><br>
+            </div>
+        </div>
+
         <script>
             // Get the modal
             var modal = document.getElementById("myModal");
