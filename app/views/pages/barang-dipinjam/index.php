@@ -9,62 +9,71 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Josefin+Sans&family=Manjari&family=Poppins:wght@400;500;600&family=Rubik&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Barang Dipinjam</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="custom--container">
         <?php include("../../layouts/sidebar.php"); ?>
 
         <div class="custom--content">
-            <div class="header-container">
-                <div class="text-header">
+            <div class="custom--header-container">
+                <div class="custom--text-header">
                     <h1>Data Barang Dipinjam</h1>
                     <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
                 </div>
             
-                <div class="countdown">
+                <div class="custom--countdown">
                     <p>Waktu pengembalian</p>
-                    <div class="countdown-container">
-                        <table class="countdown-table">
-                            <tr>
-                                <td class="return-date" id="days"></td>
-                                <td class="return-date" id="hours"></td>
-                                <td class="return-date" id="minutes"></td>
-                                <td class="return-date" id="month"></td>
-                            </tr>                            
-                            <tr>
-                                <td class="countdown-label">Hari</td>
-                                <td class="countdown-label">Jam</td>
-                                <td class="countdown-label">Menit</td>
-                                <td class="countdown-label" id="month-label">Month</td>
-                            </tr>
-                        </table>
-                    </div>
+                    <table>
+                        <tr>
+                            <td class="return-date" id="days"></td>
+                            <td class="return-date" id="hours"></td>
+                            <td class="return-date" id="minutes"></td>
+                            <td class="return-date" id="month"></td>
+                        </tr>                            
+                        <tr>
+                            <td class="countdown-label">Hari</td>
+                            <td class="countdown-label">Jam</td>
+                            <td class="countdown-label">Menit</td>
+                            <td class="countdown-label" id="month-label"></td>
+                        </tr>
+                    </table>
                 </div>
-
             </div>
     
             <div class="custom--borrowed">
-                <div class="borrowed-one">
-                    <p class="subheader-borrowed">Peminjaman - 1</p>
-                    <div class="container-borrowed">
-                        <div class="date-period">
-                            <div class="start-date">
-                                <p class="date-label">Mulai pinjam</p> 
-                                <input type="text" name="" class="borrow-date">
+                <div class="custom--borrowed-one">
+                    <p class="custom--subheader-borrowed">Peminjaman - 1</p>
+
+                    <div class="custom--container-borrowed-items">
+                        <div class="custom--borrowed-info">
+                            <div class="custom--start-date">
+                                <p class="info-label">Mulai pinjam</p> 
+                                <input type="date" name="start_date" class="borrow-date" id="start-date" disabled>
                             </div>
-                            <div class="end-date">
-                                <p class="date-label">Selesai pinjam</p>
-                                <input type="text" name="" class="borrow-date">
+                            <div class="custom--end-date">
+                                <p class="info-label">Selesai pinjam</p>
+                                <input type="date" name="end_date" class="borrow-date" id="end-date" disabled>
                             </div>
-                            <div class="status">
-                                <p class="date-label">Status</p>
-                                <p class="status-label">Dipinjam</p>
+                            
+                            <div class="custom--status">
+                                <p class="info-label">Status</p>
+                                <div class="custom--status-value" id="status-dipinjam">
+                                    <p>Dipinjam</p>
+                                </div>
+
+                                <!-- <div class="custom--status-value" id="status-validasi">
+                                    <p>Validasi</p>
+                                </div>
+
+                                <div class="custom--status-value" id="status-terlambat">
+                                    <p>Terlambat</p>
+                                </div>     -->
                             </div>
                         </div>
 
-                        <div class="item-info">
+                        <div class="custom--item-info">
                             <table>
                                 <thead>
                                     <tr>
@@ -104,15 +113,17 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
+
                 </div>
 
-                <div class="borrowed-two">
-                    <p class="subheader-borrowed">Peminjaman - 2</p>
-                    <div class="container-borrowed">
-                        <p class="no-items">Tidak ada peminjaman</p>
+                <div class="custom--borrowed-two">
+                    <p class="custom--subheader-borrowed">Peminjaman - 2</p>
+
+                    <div class="custom--container-borrowed-items-empty">
+                        <p>Tidak ada peminjaman</p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -151,9 +162,7 @@
             setInterval(() => {
                 updateCountdown(returnDateFromDatabase);
             }, 1000);
-
         </script>
-
 </body>
 
 </html>
