@@ -36,7 +36,7 @@
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">Jumlah Hari</label> <br>
-                                <select id="inputState" class="form-select">
+                                <select id="inputState" class="form-control">
                                     <option selected>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -45,6 +45,13 @@
                                     <option>6</option>
                                     <option>7</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputState" class="form-label">Keperluan</label> <br>
+                                <!-- <input type="text" class="form-textarea" name="Keperluan" placeholder="Tulis keperluan meminjam barang tersebut"> -->
+                                <textarea class="form-textarea" rows="4" cols="50" name="keperluan" form="usrform" placeholder="Tulis keperluan meminjam barang tersebut"></textarea>
                             </div>
                         </div>
                         <div class="row">
