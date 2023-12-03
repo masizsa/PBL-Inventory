@@ -33,7 +33,7 @@ if (isset($_POST["nomor_identitas"])) {
             if ($row["status"] == "admin") {
                 header("Location: ../../views/admin/home.php");
             } else {
-                header("Location: ../../views/pages/ajukan-peminjaman/formPeminjaman.php");
+                header("Location: ../../views/pages/pemilihan-barang/index.php");
             }
             // $_SESSION['nomor_identitas'] = $row['nomor_identitas'];
             // $_SESSION['status'] = $row['status'];

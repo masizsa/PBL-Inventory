@@ -55,10 +55,6 @@
                         </div>
                         <div class="row">
                             <div class="col">
-
-                            <label for="inputState" class="form-label">Mulai Pinjam</label>
-                            <input type="date" class="form-control" name="startDate" id="startDate" onchange="updateFinishDate()">
-
                                 <label for="inputState" class="form-label">Keperluan</label> <br>
                                 <!-- <input type="text" class="form-textarea" name="Keperluan" placeholder="Tulis keperluan meminjam barang tersebut"> -->
                                 <textarea class="form-textarea" rows="4" cols="50" name="keperluan" form="usrform" placeholder="Tulis keperluan meminjam barang tersebut"></textarea>
@@ -67,7 +63,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="inputState" class="form-label">Mulai Pinjam</label>
-                                <input type="date" class="form-control" name="startDate">
+                                <input type="date" class="form-control" name="startDate" id="startDate" onchange="updateFinishDate()">
                             </div>
                         <div class="col">
                             <label for="inputState" class="form-label">Selesai Pinjam</label>
