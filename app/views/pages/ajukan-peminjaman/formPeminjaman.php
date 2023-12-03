@@ -42,7 +42,7 @@
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">Jumlah Hari</label> <br>
-                                <select id="inputState" class="form-select">
+                                <select id="inputState" class="form-control">
                                     <option selected>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -55,8 +55,19 @@
                         </div>
                         <div class="row">
                             <div class="col">
+
                             <label for="inputState" class="form-label">Mulai Pinjam</label>
                             <input type="date" class="form-control" name="startDate" id="startDate" onchange="updateFinishDate()">
+
+                                <label for="inputState" class="form-label">Keperluan</label> <br>
+                                <!-- <input type="text" class="form-textarea" name="Keperluan" placeholder="Tulis keperluan meminjam barang tersebut"> -->
+                                <textarea class="form-textarea" rows="4" cols="50" name="keperluan" form="usrform" placeholder="Tulis keperluan meminjam barang tersebut"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputState" class="form-label">Mulai Pinjam</label>
+                                <input type="date" class="form-control" name="startDate">
                             </div>
                         <div class="col">
                             <label for="inputState" class="form-label">Selesai Pinjam</label>
@@ -106,6 +117,15 @@
             <div class="section3">
                 <button type="button" class="btn-lg">Kembali</button>
                 <button type="button" class="btn-lg" id="modal">Pinjam</button>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <img src="../../../../public/assets/box.svg">
+                <h3>Peminjaman Berhasil</h3>
+                <p>Silakan menuju ke ruang inventaris!</p>
+                <button type="button" class="close">Baik</button><br>
             </div>
         </div>
 
