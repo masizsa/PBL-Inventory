@@ -8,7 +8,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     
+<<<<<<< Updated upstream
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins'>
+=======
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="../../css/p.css">
 </head>
 
@@ -21,7 +24,7 @@
     ?>
   <header class="siventi">
     <h1>Selamat Datang di SIVENTI 👋</h1>
-    <h4>Silakan cari barang yang ingin Anda pinjam, pilih yang Anda perlukan, dan tentukan jumlahnya!</h4>
+    <p>Silakan cari barang yang ingin Anda pinjam, pilih yang Anda perlukan, dan tentukan jumlahnya!</p>
   </header>
 
         <div class="lanjut">
@@ -83,6 +86,7 @@
             </tr>
         </thead>
         <tbody>
+<<<<<<< Updated upstream
 <?php 
                         echo "<tr>";
                         $number = 0 ;
@@ -100,20 +104,36 @@
                         echo "</tr>";
                         };
                         ?>
+=======
+            <tr>
+                <td>RMT01</td>
+                <td>Remote AC</td>
+                <td>Pak Wardi</td>
+                <td>9</td>
+                <td class="qty">
+                <button type="button" class="btn_tambah">Tambah</button>
+                    <button type="button" class="btn_min" style="display: none;">-</button>
+                    <h4 id="quantity">0</h4>
+                    <button type="button" class="btn_plus" style="display: none;">+</button>
+                </td>
+            </tr>
+>>>>>>> Stashed changes
             <tr>
                 <td>KB01</td>
                 <td>Kursi Biru</td>
                 <td>Pak Sulaiman</td>
                 <td>10</td>
                 <td class="qty">
-                    <button type="button" class="btn_min">-</button>
-                    <h4>3</h4>
-                    <button type="button" class="btn_plus">+</button>
+                    <button type="button" class="btn_tambah">Tambah</button>
+                    <button type="button" class="btn_min" style="display: none;">-</button>
+                    <h4 id="quantity" style="display: none;">0</h4>
+                    <button type="button" class="btn_plus" style="display: none;">+</button>
                 </td>
             </tr>
         </tbody>
       </table>
 
+<<<<<<< Updated upstream
       <script>
         function tambahBarang(button) {
          //  document.write("Ini pesan baru menggunakan document.write()!");
@@ -148,6 +168,72 @@
     }
 
 </script>
+=======
+  <script>
+  // Ambil elemen-elemen yang diperlukan
+  const allTambahButtons = document.querySelectorAll('.btn_tambah');
+  const allMinButtons = document.querySelectorAll('.btn_min');
+  const allPlusButtons = document.querySelectorAll('.btn_plus');
+  const allQuantityDisplays = document.querySelectorAll('.quantity');
+
+  // Fungsi untuk menampilkan tombol minus dan plus
+  function showMinusPlusButtons(btnMin, btnPlus) {
+      btnMin.style.display = 'inline-block';
+      btnPlus.style.display = 'inline-block';
+  }
+
+  // Tambah event listener untuk tombol tambah
+  allTambahButtons.forEach(btnTambah => {
+      btnTambah.addEventListener('click', function() {
+          btnTambah.style.display = 'none'; // Sembunyikan tombol tambah
+          // Dapatkan tombol minus dan plus terkait (menggunakan index yang sama)
+          const index = Array.from(allTambahButtons).indexOf(btnTambah);
+          const btnMin = allMinButtons[index];
+          const btnPlus = allPlusButtons[index];
+          showMinusPlusButtons(btnMin, btnPlus); // Tampilkan tombol minus dan plus
+          allQuantityDisplays[index].innerText = '1';
+          allQuantityDisplays[index].style.display = 'inline-block'; // Tampilkan nilai awal 1
+        });
+  });
+
+  // Tambah event listener untuk tombol plus
+  allPlusButtons.forEach((btnPlus, index) => {
+      btnPlus.addEventListener('click', function() {
+          let currentQuantity = parseInt(allQuantityDisplays[index].innerText);
+          currentQuantity++;
+          allQuantityDisplays[index].innerText = currentQuantity;
+
+          if (currentQuantity === 0) {
+            // Periksa elemen-elemen terkait pada indeks yang sama
+            allTambahButtons[index].style.display = 'inline-block';
+            allMinButtons[index].style.display = 'none';
+            allPlusButtons[index].style.display = 'none';
+          } else {
+            showMinusPlusButtons(allMinButtons[index], allPlusButtons[index]);
+            allQuantityDisplays[index].style.display = 'inline-block'; // Tampilkan tombol minus dan plus
+          }
+      });
+  });
+
+  // Tambah event listener untuk tombol minus
+  allMinButtons.forEach((btnMin, index) => {
+      btnMin.addEventListener('click', function() {
+          let currentQuantity = parseInt(allQuantityDisplays[index].innerText);
+          
+          // Periksa apakah nilai mencapai 0, jika iya, tampilkan kembali tombol tambah
+          if (currentQuantity === 0) {
+            // Periksa elemen-elemen terkait pada indeks yang sama
+            allTambahButtons[index].style.display = 'inline-block';
+            allMinButtons[index].style.display = 'none';
+            allPlusButtons[index].style.display = 'none';
+          } else {
+            showMinusPlusButtons(allMinButtons[index], allPlusButtons[index]); // Tampilkan tombol minus dan plus
+          }
+      });
+  });
+
+  </script>
+>>>>>>> Stashed changes
 
 </body>
 </html>
