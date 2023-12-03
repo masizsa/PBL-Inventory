@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/barang-dipinjam.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Josefin+Sans&family=Manjari&family=Poppins:wght@400;500;600&family=Rubik&display=swap" rel="stylesheet">
     <title>Barang Dipinjam</title>
 </head>
 
@@ -17,44 +14,58 @@
         <?php include("../../layouts/sidebar.php"); ?>
 
         <div class="custom--content">
-            <div class="custom--header-container">
-                <div class="custom--text-header">
+            <header>
+                <section class="custom--text-header">
                     <h1>Data Barang Dipinjam</h1>
                     <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
-                </div>
+                </section>
             
-                <div class="custom--countdown">
-                    <p>Waktu pengembalian</p>
-                    <table>
-                        <tr>
-                            <td class="return-date" id="days"></td>
-                            <td class="return-date" id="hours"></td>
-                            <td class="return-date" id="minutes"></td>
-                            <td class="return-date" id="month"></td>
-                        </tr>                            
-                        <tr>
-                            <td class="countdown-label">Hari</td>
-                            <td class="countdown-label">Jam</td>
-                            <td class="countdown-label">Menit</td>
-                            <td class="countdown-label" id="month-label"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-    
-            <div class="custom--borrowed">
-                <div class="custom--borrowed-one">
-                    <p class="custom--subheader-borrowed">Peminjaman - 1</p>
+                <section class="custom--countdown">
+                    <p class="countdown-text">Waktu pengembalian</p>
+                    <div class="custom--container-countdown">
+                        <div class="custom--time">
+                            <p class="return-date" id="days"></p>
+                            <p class="countdown-label">Hari</p>
+                        </div>
 
+                        <div class="colon">:</div>
+
+                        <div class="custom--time">
+                            <p class="return-date" id="hours"></p>
+                            <p class="countdown-label">Jam</p>
+                        </div>
+
+                        <div class="colon">:</div>
+
+                        <div class="custom--time">
+                            <p class="return-date" id="minutes"></p>
+                            <p class="countdown-label">Menit</p>
+                        </div>
+                        
+                        <div class="vertical-line">
+
+                        </div>
+                        <div class="custom--time">
+                            <p class="return-date" id="month"></p>
+                            <p class="countdown-label" id="month-label"></p>
+                        </div>
+                    </div>
+                </section>
+            </header>
+    
+            <main>
+                <section class="custom--borrowed-one">
+                    <p class="custom--subheader-borrowed">Peminjaman - 1</p>
+                    
                     <div class="custom--container-borrowed-items">
                         <div class="custom--borrowed-info">
                             <div class="custom--start-date">
-                                <p class="info-label">Mulai pinjam</p> 
-                                <input type="date" name="start_date" class="borrow-date" id="start-date" disabled>
+                                <p class="info-label">Mulai pinjam</p>
+                                <input type="text" name="start_date" class="borrow-date" id="start-date" value="<?php echo $formattedDate; ?>" size="35" disabled>
                             </div>
                             <div class="custom--end-date">
                                 <p class="info-label">Selesai pinjam</p>
-                                <input type="date" name="end_date" class="borrow-date" id="end-date" disabled>
+                                <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $formattedEndDate; ?>" size="35" disabled>
                             </div>
                             
                             <div class="custom--status">
@@ -96,36 +107,21 @@
                                         <td>Pak Wardi</td>
                                         <td>9</td>
                                     </tr>
-                                    <?php
-                                    // Loop through the fetched data and populate the table
-                                    // while ($row = $result->fetch_assoc()) {
-                                    //     echo "<tr>";
-                                    //     echo "<td>{$row['kode']}</td>";
-                                    //     echo "<td>{$row['nama_barang']}</td>";
-                                    //     echo "<td>{$row['nama_pengelola']}</td>";
-                                    //     echo "<td>{$row['jumlah']}</td>";
-                                    //     echo "</tr>";
-                                    // }
-
-                                    // Close the database connection
-                                    // $conn->close();
-                                    ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                </div>
+                </section>
 
-                <div class="custom--borrowed-two">
+                <section class="custom--borrowed-two">
                     <p class="custom--subheader-borrowed">Peminjaman - 2</p>
 
                     <div class="custom--container-borrowed-items-empty">
                         <p>Tidak ada peminjaman</p>
                     </div>
-
-                </div>
-            </div>
+                </section>
+            </main>
         </div>
     </div>
 
@@ -153,9 +149,9 @@
                     document.getElementById('month').innerHTML = endDateTime.getDate();
                 }
             }
-
+            // BACKEND BRO
             // Retrieve the date from the db 
-            const returnDateFromDatabase = "2023-12-31 23:59:59";
+            // const returnDateFromDatabase = "<?php echo $formattedReturnDate; ?>";
 
             // Call the updateCountdown w/ the retrieved return date
             updateCountdown(returnDateFromDatabase);

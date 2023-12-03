@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
 }
 
 body {
@@ -19,12 +25,14 @@ body {
     width: 100%;
 }
 
-.custom--header-container {
+.custom--content header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    height: 116px;
+    height: 11.6rem;
+    width: 100%;
+    padding: 1.6rem 4rem;
 }
 
 .custom--text-header {
@@ -33,108 +41,93 @@ body {
     justify-content: space-between;
     color: #121212;
     height: 100%;
-    padding: 16px 0 16px 40px;
 }
 
 .custom--text-header h1 {
     font-weight: 600;
-    font-size: 32px;
+    font-size: 3.2rem;
 }
 
 .custom--text-header p {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
+/* COUNTDOWN */
 .custom--countdown {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 16px 52px 16px 0;
-    height: 100%;
 }
 
-.custom--countdown p {
+.custom--countdown .countdown-text {
     color: #121212;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: 600;
-    padding-bottom: 4px;
+    padding-bottom: 0.4rem;
 }
 
-.custom--countdown table {
-    width: 209px;
-    border-collapse: separate;
-    border-spacing: 0;
-    overflow: hidden;
-}
-
-.custom--countdown table tr:first-child td:first-child {
-    border-top-left-radius: 10px;
-}
-
-.custom--countdown table tr:first-child td:last-child {
-    border-top-right-radius: 10px;
-}
-
-.custom--countdown table tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
-}
-
-.custom--countdown table tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
-}
-
-.custom--countdown table tr:first-child td {
-    border-bottom: none;
-    padding-top: 4px;
-}
-
-.custom--countdown table tr:last-child td {
-    border-top: none;
-    padding-bottom: 4px;
-}
-
-.custom--countdown table td:not(:first-child) {
-    border-left: none;
-}
-
-.custom--countdown table td:not(:last-child) {
-    border-right: none;
-}
-
-.custom--countdown table td {
-    text-align: center;
+.custom--container-countdown {
+    display: flex;
+    justify-content: space-around;
     border: 1px solid #FCD106;
+    border-radius: 1rem;
+    width: 20.9rem;
+    height: 6.7rem;
+    padding: 0.4rem 0.8rem;
+    text-align: center;
+    padding: 4px;
 }
 
-.countdown-label {
-    font-size: 10px;
-    font-weight: 500;
+.custom--time {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .return-date {
     color: #FCD106;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 600;
+    height: 36px;
+    width: 40px;
 }
 
-/* has items */
-.custom--borrowed {
+.countdown-label {
+    color: #121212;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.colon {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #FCD106;
+
+}
+.vertical-line {
+    border-left: 1px solid #FCD106;
+    height: 3.5rem;
+    margin: auto 0;
+}
+
+/* HAS ITEMS */
+main {
     display: flex;
     flex-direction: column;
-    padding: 40px 96px;
+    padding: 4rem 9.6rem;
 }
 
 .custom--subheader-borrowed {
     color: #000;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 500;
-    padding-bottom: 16px;
+    padding-bottom: 1.6rem;
 }
 
 .custom--borrowed-one {
-    padding-bottom: 40px;
+    padding-bottom: 4rem;
 }
 
 .custom--container-borrowed-items,
@@ -144,62 +137,67 @@ body {
     align-items: flex-start;
     background-color: white;
     width: 100%;
-    min-height: 220px;
-    border-radius: 10px;
-    border: 1px solid rgba(18, 18, 18, 0.10);
-    padding: 24px;
+    min-height: 22rem;
+    border-radius: 1rem;
+    border: 0.1rem solid rgba(18, 18, 18, 0.10);
+    padding: 2.4rem;
 }
 
 .custom--borrowed-info {
     display: flex;
     color: #121212;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 600;
+    width: 100%;
 }
 
 .custom--start-date, 
 .custom--end-date {
-    padding-right: 16px;
+    padding-right: 1.6rem;
 }
 
 .borrow-date {
     display: flex;
     align-items: center;
-    border-radius: 14px;
-    border: 1px solid #C6C6C6;
-    padding: 13px 136px 16px 18px;
+    border-radius: 1.4rem;
+    border: 0.1rem solid #C6C6C6;
+    padding: 1.3rem 1.8rem;
+    color: #121212;
+    min-width: none;
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 400;
 }
 
 .info-label{
-    padding-bottom: 8px;
+    padding-bottom: 0.8rem;
 }
 
 .custom--status-value {
     display: flex;
-    width: 124px;
-    height: 50px;
+    width: 12.4rem;
+    height: 5rem;
     justify-content: center;
     align-items: center;
-    border-radius: 14px;
-    font-size: 14px;
+    border-radius: 1.4rem;
+    font-size: 1.4rem;
     font-weight: 500;
-    letter-spacing: -0.28px;
 }
 
 #status-dipinjam {
-    border: 1px solid #FCD106;
+    border: 0.1rem solid #FCD106;
     background: rgba(252, 209, 6, 0.20);
     color: #FCD106;
 }
 
 #status-validasi {
-    border: 1px solid #00A9D8;
+    border: 0.1rem solid #00A9D8;
     background: rgba(0, 169, 216, 0.20);
     color: #00A9D8;
 }
 
 #status-terlambat {
-    border: 1px solid #EE0B0B;
+    border: 0.1rem solid #EE0B0B;
     background: rgba(238, 11, 11, 0.20);
     color: #EE0B0B;
 }
@@ -207,51 +205,49 @@ body {
 /* no items info */
 .custom--container-borrowed-items-empty p {
     color: #C6C6C6;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 400;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto; 
-    min-height: 220px;
+    min-height: 22rem;
 }
 
 /* Column Item Info */
 .custom--item-info {
     width: 100%;
-    margin-top: 24px;
+    margin-top: 2.4rem;
+
 }
 
 .custom--item-info table {
     width: 100%;
     border-collapse: separate;
-    overflow: hidden; 
     border-spacing: 0;
 }
 
 .custom--item-info tr:first-child th:first-child {
-    border-top-left-radius: 10px;
+    border-top-left-radius: 1rem;
 }
 
 .custom--item-info tr:first-child th:last-child {
-    border-top-right-radius: 10px;
+    border-top-right-radius: 1rem;
 }
 
 .custom--item-info tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 1rem;
 }
 
 .custom--item-info tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 1rem;
 }
 
 .custom--item-info th,
 .custom--item-info td {
-    border: 1px solid #1212121A;
+    border: 0.1rem solid #1212121A;
     text-align: left;
-    padding: 12px;
-    font-size: 16px; 
-    font-weight: 400; 
+    padding: 1.2rem;
 }
 
 .custom--item-info th:not(:first-child),
@@ -264,15 +260,32 @@ body {
     border-right: none;
 }
 
-.custom--item-info th:first-child,
-.custom--item-info td:first-child {
-    padding-left: 20px; 
+.custom--item-info table th:first-child,
+.custom--item-info table td:first-child {
+    padding-left: 2.4rem; /* Adjust the left padding for the first column */
+}
+
+.custom--item-info table th:last-child,
+.custom--item-info table td:last-child {
+    padding-right: 2.4rem; /* Adjust the right padding for the last column */
 }
 
 .custom--item-info th {
     background-color: #FCD106;
     border-color: #FCD106;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
+
+.custom--item-info td {
+    font-size: 1.6rem; 
+    font-weight: 400; 
+}
+
+.custom--item-info td {
+    border-top: none;
+}
+
 .custom--item-info tbody tr:hover {
     background-color: rgba(252, 211, 6, 0.1);
 }
