@@ -18,7 +18,7 @@
     <body>
         <div class="container">
             <div class="header">
-                <h2 class="title">Detail Peminjaman</h2>
+                <h2 class="title">Details Peminjaman</h2>
                 <p class="desc">Pastikan data dan barang yang Anda pinjam sudah benar!</p>
             </div>
             <h4 class="sub-title">Data Anda</h4>
