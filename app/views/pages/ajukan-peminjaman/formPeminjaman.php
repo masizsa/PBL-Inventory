@@ -22,17 +22,17 @@
                 <p class="desc">Pastikan data dan barang yang Anda pinjam sudah benar!</p>
             </div>
             <h4 class="sub-title">Data Anda</h4>
-            <div class="section1">
+            <section class="form-pinjam">
                 <div class="form-wrapper">
                     <form action="" method="post">
                         <div class="row">
                             <div class="col">
                                 <label for="inputState" class="form-label">Nama</label>
-                                <input type="text" class="form-control" placeholder="Masukkan Nama" name="name">
+                                <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" disabled>
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">NIM/NIP</label>
-                                <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber">
+                                <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber" disabled>
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">Jumlah Hari</label> <br>
@@ -61,59 +61,46 @@
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">Selesai Pinjam</label>
-                                <input type="date" class="form-control" value="" name="finishDate">
+                                <input type="date" class="form-control" value="" name="finishDate" disabled>
                             </div>
                         </div>
                     </form>    
                 </div>
-            </div>
+            </section>
             <h4 class="sub-title">Data Barang</h4>
-            <div class="section2">
-                <table class="table">
-                    <thead class="table-warning">
-                        <tr>
-                            <th scope="col">Kode</th>
-                            <th scope="col">Nama Barang</th>
-                            <th scope="col">Nama Pengelola</th>
-                            <th scope="col">Jumlah Tersedia</th>
-                            <th scope="col">Pilih</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>RMT01</td>
-                            <td>Remote AC</td>
-                            <td>Pak Wardi</td>
-                            <td>9</td>
-                            <td class="qty">
-                                <button type="button" class="btn-tambah">tambah</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>KB01</td>
-                            <td>Kursi Biru</td>
-                            <td>Pak Sulaiman</td>
-                            <td>10</td>
-                            <td class="qty">
-                                <button type="button" class="btn-outline-warning">-</button>
-                                <h4>3</h4>
-                                <button type="button" class="btn-outline-warning">+</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="section3">
-                <button type="button" class="btn-lg">Kembali</button>
-                <button type="button" class="btn-lg" id="modal">Pinjam</button>
-            </div>
+            <section class="item-info">
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Nama Barang</th>
+                                <th>Nama Pengelola</th>
+                                <th>Jumlah Dipinjam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RMT01</td>
+                                <td>Remote Ac</td>
+                                <td>Pak Wardi</td>
+                                <td>9</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="confirm-button">
+                <button type="button" class="btn-kembali">Kembali</button>
+                <button type="button" class="btn-pinjam" id="modal">Pinjam</button>
+            </section>
         </div>
 
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <img src="../../../../public/assets/box.svg">
-                <h3>Peminjaman Berhasil</h3>
-                <p>Silakan menuju ke ruang inventaris!</p>
+                <h3>Peminjaman Diproses</h3>
+                <p>Silakan cek status peminjaman</p>
                 <button type="button" class="close">Baik</button><br>
             </div>
         </div>
