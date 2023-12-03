@@ -1,0 +1,25 @@
+@import url(../../app/views/css/login.css);
+@import url(../../app/views/css/sidebar.css); 
+@import url(../../app/views/css/ubahSandi.css);
+@import url(../../app/views/css/form.css);
+@import url(../../app/views/css/riwayat.css);
+@import url(../../app/views/css/barang-dipinjam.css);
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+html{
+    font-size: 10px;
+}
+
+.custom--riwayat-container,
+.custom--ubah-sandi-container {
+    flex-grow: 1;
+}

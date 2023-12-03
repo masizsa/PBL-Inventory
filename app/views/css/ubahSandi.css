@@ -36,6 +36,7 @@ html {
 }
 
 .custom--ubah-sandi-container .custom--body {
+    width: 100%;
     padding: 4rem 0;
     flex: 1;
     display: flex;
@@ -47,6 +48,7 @@ html {
 
 .custom--input-sandi-baru {
     height: 15.5rem;
+    width: 100%;
     padding: 0 3.2rem;
     background-color: #ffffff;
     border-radius: 1rem;
@@ -90,6 +92,7 @@ html {
 
 .custom-confirm-button {
     height: 5rem;
+    width: 100%;
     display: flex;
     gap: 15px;
     justify-content: flex-end;

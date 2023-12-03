@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="custom--container">
         <?php include("../../layouts/sidebar.php"); ?>
 
         <div class="custom--content">

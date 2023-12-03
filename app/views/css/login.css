@@ -20,7 +20,7 @@ section {
     justify-content: center;
 }
 
-form {
+section form.custom--login-form {
     --height-input:5rem;
     --text-color-input:#00000070;
     height: 52rem;
@@ -44,7 +44,7 @@ form {
     align-items: center;
 }
 
-.logo>img {
+.logo>.custom--logo svg {
     height: 10rem;
     width: 10rem;
     margin-top: 1rem;
@@ -72,7 +72,9 @@ input {
 .password-wrapper{
     position: relative;
 }
-.password-wrapper > img {
+.password-wrapper > #passIcon {
+    height: 2.5rem;
+    width: 2.5rem;
     position: absolute;
     right: 1rem;
     top: calc(0.5 * 0.5 * var(--height-input)); /* kalo bingung kenapa begitu ya diambil separuh dari pergeseran top (50%) biar gk usah pake transform-translate lagi*/
@@ -81,8 +83,11 @@ input {
 .wrapper > label{
     text-align: end;
 }
-.hidden{
-    background: url(../../../public/assets/hiddenPass.svg);
+#passIcon{
+    background: url(../../../public/assets/hiddenPass.svg) no-repeat;
+}
+#passIcon.show{
+    background: url(../../../public/assets/showPass.svg) no-repeat;
 }
 button {
     height: 5rem;
