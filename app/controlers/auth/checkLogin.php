@@ -1,7 +1,7 @@
 <?php
- if (session_status() == PHP_SESSION_NONE) {
-      session_start();
- }
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $servername = "localhost";
 $username = "root";
@@ -26,10 +26,10 @@ if (isset($_POST["nomor_identitas"])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-            $nomor_identitass = $row["nomor_identitas"];
+        $nomor_identitass = $row["nomor_identitas"];
 
         if ($row["password"] == $password) {
-             $_SESSION['nomor_identitas'] = $nomor_identitas; // Menyimpan nomor_identitas ke dalam sessi
+            $_SESSION['nomor_identitas'] = $nomor_identitas; // Menyimpan nomor_identitas ke dalam sessi
             if ($row["status"] == "admin") {
                 header("Location: ../../views/admin/home.php");
             } else {
@@ -47,8 +47,4 @@ if (isset($_POST["nomor_identitas"])) {
         message('warning', "Username tidak ditemukan.");
         header("Location: ../../views/pages/login/login.php");
     }
-
 }
-
-
-?>

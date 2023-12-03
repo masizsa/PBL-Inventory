@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dataBarang = array(
         "id_barang" => $kodeBarang
         // ,"nama_barang" => $namaBarang
-        // Tambahkan informasi barang lainnya yang diperlukan
     );
 
     // Kembalikan data barang yang ditambahkan sebagai respon
