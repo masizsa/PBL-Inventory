@@ -16,23 +16,29 @@
         <link rel="stylesheet" href="../../css/form.css">
     </head>
     <body>
+
+    <?php
+    include ('../../../controlers/auth/checkFormPeminjaman.php');
+    // include('../../../controlers/auth/checkLogin.php');
+    
+    ?>
         <div class="container">
-            <div class="header">
+
                 <h2 class="title">Detail Peminjaman</h2>
                 <p class="desc">Pastikan data dan barang yang Anda pinjam sudah benar!</p>
             </div>
             <h4 class="sub-title">Data Anda</h4>
             <div class="section1">
                 <div class="form-wrapper">
-                    <form action="" method="post">
+                    <form action="../../../controlers/auth/checkFormPeminjaman.php" method="post">
                         <div class="row">
                             <div class="col">
                                 <label for="inputState" class="form-label">Nama</label>
-                                <input type="text" class="form-control" placeholder="Masukkan Nama" name="name">
+                                <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" value="<?php echo $nama ?>">
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">NIM/NIP</label>
-                                <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber">
+                                <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber" value="<?php echo $nomor_identitas ?>">
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">Jumlah Hari</label> <br>
@@ -49,6 +55,10 @@
                         </div>
                         <div class="row">
                             <div class="col">
+
+                            <label for="inputState" class="form-label">Mulai Pinjam</label>
+                            <input type="date" class="form-control" name="startDate" id="startDate" onchange="updateFinishDate()">
+
                                 <label for="inputState" class="form-label">Keperluan</label> <br>
                                 <!-- <input type="text" class="form-textarea" name="Keperluan" placeholder="Tulis keperluan meminjam barang tersebut"> -->
                                 <textarea class="form-textarea" rows="4" cols="50" name="keperluan" form="usrform" placeholder="Tulis keperluan meminjam barang tersebut"></textarea>
@@ -59,9 +69,9 @@
                                 <label for="inputState" class="form-label">Mulai Pinjam</label>
                                 <input type="date" class="form-control" name="startDate">
                             </div>
-                            <div class="col">
-                                <label for="inputState" class="form-label">Selesai Pinjam</label>
-                                <input type="date" class="form-control" value="" name="finishDate">
+                        <div class="col">
+                            <label for="inputState" class="form-label">Selesai Pinjam</label>
+                            <input type="date" class="form-control" value="" name="finishDate" id="finishDate">
                             </div>
                         </div>
                     </form>    
@@ -80,26 +90,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>RMT01</td>
-                            <td>Remote AC</td>
-                            <td>Pak Wardi</td>
-                            <td>9</td>
-                            <td class="qty">
+                        <?php 
+  
+                        echo "<tr>";
+                        $number = 0 ;
+
+                        while($row = $result->fetch_assoc()) {
+                        $number ++;
+                        echo"   <td>".$row['id_barang']."</td>
+                                <td>".$row['nama_barang']."</td>
+                                <td>".$row['nama_admin']."</td>
+                                <td>".$row['jumlah_tersedia']."</td>";
+                        ?>
+                                <td class="qty">
                                 <button type="button" class="btn-tambah">tambah</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>KB01</td>
-                            <td>Kursi Biru</td>
-                            <td>Pak Sulaiman</td>
-                            <td>10</td>
-                            <td class="qty">
-                                <button type="button" class="btn-outline-warning">-</button>
-                                <h4>3</h4>
-                                <button type="button" class="btn-outline-warning">+</button>
-                            </td>
-                        </tr>
+                                </td>
+                        <?php 
+                        echo "</tr>";
+                        };
+                        ?>
+
+
                     </tbody>
                 </table>
             </div>
@@ -138,6 +149,21 @@
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
+            }
+
+                function updateFinishDate() {
+                    var startDate = new Date(document.getElementById('startDate').value);
+                    var inputState = document.getElementById('inputState');
+                    var selectedDays = parseInt(inputState.options[inputState.selectedIndex].value);
+
+                    if (!isNaN(startDate.getTime())) {
+                        var finishDate = new Date(startDate);
+                        finishDate.setDate(finishDate.getDate() + selectedDays);
+                        var yyyy = finishDate.getFullYear();
+                        var mm = ('0' + (finishDate.getMonth() + 1)).slice(-2);
+                        var dd = ('0' + finishDate.getDate()).slice(-2);
+                        document.getElementById('finishDate').value = yyyy + '-' + mm + '-' + dd;
+                    }
             }
         </script>
     </body>
