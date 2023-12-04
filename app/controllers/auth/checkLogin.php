@@ -3,19 +3,9 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "inventory";
+include '../../config/connection.php';
+include '../../function/message.php';
 
-//Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-//Check connection
-if ($conn->connect_error) {
-    die("Connection failed : " . $conn->connect_error);
-}
-
-// include('../../function/message.php');
 
 if (isset($_POST["nomor_identitas"])) {
     $nomor_identitas = $_POST["nomor_identitas"];
@@ -26,14 +16,13 @@ if (isset($_POST["nomor_identitas"])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $nomor_identitass = $row["nomor_identitas"];
-
         if ($row["password"] == $password) {
-            $_SESSION['nomor_identitas'] = $nomor_identitas; // Menyimpan nomor_identitas ke dalam sessi
             if ($row["status"] == "admin") {
+                echo "ok";
                 header("Location: ../../views/admin/home.php");
             } else {
-                header("Location: ../../views/pages/pemilihan-barang/index.php");
+                echo "op";
+                header("Location: ../../views/pages/ajukan-peminjaman/index.php");
             }
             // $_SESSION['nomor_identitas'] = $row['nomor_identitas'];
             // $_SESSION['status'] = $row['status'];
@@ -48,3 +37,4 @@ if (isset($_POST["nomor_identitas"])) {
         header("Location: ../../views/pages/login/login.php");
     }
 }
+?>
