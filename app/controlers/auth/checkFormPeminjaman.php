@@ -16,7 +16,7 @@ if(isset($_SESSION['nomor_identitas'])) {
     }
 
 } else {
-    echo "Nomor Identitas tidak tersedia";
+    // echo "Nomor Identitas tidak tersedia";
 }
 
 
