@@ -5,118 +5,112 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title>Detail Peminjaman</title>
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/form.css">
-</head>
-
-<body>
-
-    <?php
+  
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/form.css">
+    </head>
+    <body>
+            <?php
     include('../../../controlers/auth/checkFormPeminjaman.php');
     // include('../../../controlers/auth/checkLogin.php');
 
     ?>
-    <div class="container">
-
-        <h2 class="title">Detail Peminjaman</h2>
-        <p class="desc">Pastikan data dan barang yang Anda pinjam sudah benar!</p>
-    </div>
-    <h4 class="sub-title">Data Anda</h4>
-    <div class="section1">
-        <div class="form-wrapper">
-            <form action="../../../controlers/auth/checkFormPeminjaman.php" method="post">
-                <div class="row">
-                    <div class="col">
-                        <label for="inputState" class="form-label">Nama</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" value="<?php echo $nama ?>">
-                    </div>
-                    <div class="col">
-                        <label for="inputState" class="form-label">NIM/NIP</label>
-                        <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber" value="<?php echo $nomor_identitas ?>">
-                    </div>
-                    <div class="col">
-                        <label for="inputState" class="form-label">Jumlah Hari</label> <br>
-                        <select id="inputState" class="form-control">
-                            <option selected>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                        </select>
-                    </div>
+        <div class="container">
+            <div class="header">
+                <h2 class="title">Detail Peminjaman</h2>
+                <p class="desc">Pastikan data dan barang yang Anda pinjam sudah benar!</p>
+            </div>
+            <h4 class="sub-title">Data Anda</h4>
+            <section class="form-pinjam">
+                <div class="form-wrapper">
+                    <form action="" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputState" class="form-label">Nama</label>
+                                <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" value="<?php echo $nama ?>"disabled>
+                            </div>
+                            <div class="col">
+                                <label for="inputState" class="form-label">NIM/NIP</label>
+                                <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber" value="<?php echo $nomor_identitas ?>"disabled>
+                            </div>
+                            <div class="col">
+                                <label for="inputState" class="form-label">Jumlah Hari</label> <br>
+                                <select id="inputState" class="form-control">
+                                    <option selected>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputState" class="form-label">Keperluan</label> <br>
+                                <!-- <input type="text" class="form-textarea" name="Keperluan" placeholder="Tulis keperluan meminjam barang tersebut"> -->
+                                <textarea class="form-textarea" rows="4" cols="50" name="keperluan" form="usrform" placeholder="Tulis keperluan meminjam barang tersebut"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputState" class="form-label">Mulai Pinjam</label>
+                                <input type="date" class="form-control" name="startDate" id="startDate" onchange="updateFinishDate()">
+                            </div>
+                            <div class="col">
+                                <label for="inputState" class="form-label">Selesai Pinjam</label>
+                                <input type="date" class="form-control" value="" name="finishDate" id="finishDate" disabled>
+                            </div>
+                        </div>
+                    </form>    
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="inputState" class="form-label">Keperluan</label> <br>
-                        <!-- <input type="text" class="form-textarea" name="Keperluan" placeholder="Tulis keperluan meminjam barang tersebut"> -->
-                        <textarea class="form-textarea" rows="4" cols="50" name="keperluan" form="usrform" placeholder="Tulis keperluan meminjam barang tersebut"></textarea>
-                    </div>
+            </section>
+            <h4 class="sub-title">Data Barang</h4>
+            <section class="item-info">
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Nama Barang</th>
+                                <th>Nama Pengelola</th>
+                                <th>Jumlah Dipinjam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php for ($i = 0; $i < sizeof($_POST['barang']); $i++) : ?>
+                                <tr>
+                                    <td><?php echo $_POST['barang'][$i] ?></td>
+                                    <td><?php echo isset($_POST['namaBarang'][$i]) ? $_POST['namaBarang'][$i] : ''; ?></td>
+                                    <td><?php echo isset($_POST['pengelola'][$i]) ? $_POST['pengelola'][$i] : ''; ?></td>>
+                                    <td><?php echo $_POST['jumlah'][$i] ?></td>
+                                </tr>
+                            <?php endfor; ?>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="inputState" class="form-label">Mulai Pinjam</label>
-                        <input type="date" class="form-control" name="startDate" id="startDate" onchange="updateFinishDate()">
-                    </div>
-                    <div class="col">
-                        <label for="inputState" class="form-label">Selesai Pinjam</label>
-                        <input type="date" class="form-control" value="" name="finishDate" id="finishDate">
-                    </div>
-                </div>
-            </form>
+            </section>
+            <section class="confirm-button">
+                <button type="button" class="btn-kembali">Kembali</button>
+                <button type="button" class="btn-pinjam" id="modal">Pinjam</button>
+            </section>
         </div>
     </div>
-    <h4 class="sub-title">Data Barang</h4>
-    <div class="section2">
-        <table class="table">
-            <thead class="table-warning">
-                <tr>
-                    <th scope="col">Kode</th>
-                    <th scope="col">Nama Barang</th>
-                    <th scope="col">Nama Pengelola</th>
-                    <th scope="col">Jumlah Tersedia</th>
-                    <th scope="col">Pilih</th>
-                </tr>
-            </thead>
-            <tbody>
 
-                <?php for ($i = 0; $i < sizeof($_POST['barang']); $i++) : ?>
-                    <tr>
-                        <td><?php echo $_POST['barang'][$i] ?></td>
-                        <td><?php echo isset($_POST['namaBarang'][$i]) ? $_POST['namaBarang'][$i] : ''; ?></td>
-                        <td><?php echo isset($_POST['pengelola'][$i]) ? $_POST['pengelola'][$i] : ''; ?></td>>
-                        <td><?php echo $_POST['jumlah'][$i] ?></td>
-                        <td class="qty">
-                            <button type="button" class="btn-tambah">tambah</button>
-                        </td>
-                    </tr>
-                <?php endfor; ?>
-
-
-            </tbody>
-        </table>
-    </div>
-    <div class="section3">
-        <button type="button" class="btn-lg">Kembali</button>
-        <button type="button" class="btn-lg" id="modal">Pinjam</button>
-    </div>
-    </div>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <img src="../../../../public/assets/box.svg">
-            <h3>Peminjaman Berhasil</h3>
-            <p>Silakan menuju ke ruang inventaris!</p>
-            <button type="button" class="close">Baik</button><br>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <img src="../../../../public/assets/box.svg">
+                <h3>Peminjaman Diproses</h3>
+                <p>Silakan cek status peminjaman</p>
+                <button type="button" class="close">Baik</button><br>
+            </div>
         </div>
     </div>
 
