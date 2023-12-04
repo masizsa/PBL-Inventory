@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIVENTI</title>
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins'>
-    <link rel="stylesheet" href="../../css/p.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIVENTI</title>
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins'>
+  <link rel="stylesheet" href="../../css/p.css">
 </head>
 
 <body>
@@ -18,6 +19,7 @@
   <?php
   include('../../../controlers/auth/checkFormPeminjaman.php');
   ?>
+
 
   <header class="siventi">
     <h1>Selamat Datang di SIVENTI 👋</h1>
@@ -139,12 +141,14 @@
     function tambahBarang(button) {
       //document.write('TEST NYAMBUNG BELUM');
       const form = $(".card_cont");
+
       const row = $(button).closest('tr');
       const idBarang = row.find('td:eq(0)').text(); // Mengambil teks dari kolom pertama (indeks 0)
       const namaBarang = row.find('td:eq(1)').text(); // Mengambil teks dari kolom kedua (indeks 1)
       const pengelola = row.find('td:eq(2)').text(); // Mengambil teks dari kolom ketiga (indeks 2)
 
       // cek apakah barang sudah ditambahkan sebelumnya, jka sudah tambahkan jumlahnya
+
       const isBarangTerpilih = $(`.card_cont .card .text_left p:contains(${idBarang})`).length > 0;
       
       if (isBarangTerpilih) {
@@ -241,4 +245,5 @@
   </script>
 
 </body>
+
 </html>
