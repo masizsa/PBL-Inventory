@@ -1,7 +1,10 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 class App
 {
-    protected $isLogin = true;
+    public $isLogin = true;
     protected $controller = "login";
     protected $method = "index";
     protected $params = [];
@@ -62,7 +65,8 @@ class App
     {
         return $this->isLogin;
     }
-    public function serIsLogin($value){
+    public function serIsLogin($value)
+    {
         $this->isLogin = $value;
     }
 }
