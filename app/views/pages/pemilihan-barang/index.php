@@ -28,12 +28,12 @@
 
   <div class="lanjut">
     <h4>Barang yang dipilih</h4>
-    <form action="http://localhost/dasarWeb/PBL-Inventory/app/views/pages/ajukan-peminjaman/formPeminjaman.php" method="post" id="barangTerpilih">
+    <form action="http://localhost/dasarWeb/PBL-Inventory/app/views/pages/ajukan-peminjaman/formPeminjaman.php" method="post" id="cardContainer">
       <button type="submit" class="lanjut_button">Lanjut</button>
     </form>
   </div>
         
-        <div class="card_cont">
+        <div class="card_cont" id="card_container" >
             <h5 class="noBooking">Tidak Ada Barang yang Dipilih</h5>
         </div>
 
@@ -115,6 +115,7 @@
     const h1Elem = button.nextElementSibling;
     let jumlah = parseInt(h1Elem.innerText);
 
+
     if (jumlah === 1) {
         h1Elem.style.display = 'none'; // Menyembunyikan angka
         button.style.display = 'none'; // Menyembunyikan tombol Min
@@ -128,21 +129,24 @@
         h1Elem.innerText = jumlah;
         jumlahTable = jumlah;
         }
+    kurangBarang(button);
     }
 
     function tambahJumlah(button) {
+      
     const h1Elem = button.previousElementSibling;
     let jumlah = parseInt(h1Elem.innerText);
     jumlah++;
     h1Elem.innerText = jumlah;
     jumlahTable = jumlah;
+    tambahBarang(button);
     }
 
 
         const barang = []; // idBarang,JumlahBarang
         function tambahBarang(button) {
         //document.write('TEST NYAMBUNG BELUM');
-        const form = $(".card_cont");
+        const form = $("#cardContainer");
 
         const row = $(button).closest('tr');
         const idBarang = row.find('td:eq(0)').text(); // Mengambil teks dari kolom pertama (indeks 0)
@@ -151,24 +155,33 @@
 
         // cek apakah barang sudah ditambahkan sebelumnya, jka sudah tambahkan jumlahnya
 
-        const isBarangTerpilih = $(`.card_cont .card .text_left p:contains(${idBarang})`).length > 0;
+        const isBarangTerpilih = $(`#card_container .card .text_left p:contains(${idBarang})`).length > 0;
         
         if (isBarangTerpilih) {
-            const jumlah = $(`.card_cont .card .text_left p:contains(${idBarang})`).closest('.card').find('.text_right h1').text();
+            const jumlah = $(`#card_container .card .text_left p:contains(${idBarang})`).closest('.card').find('.text_right h1').text();
             const jumlahBaru = parseInt(jumlah) + 1;
-            $(`.card_cont .card .text_left p:contains(${idBarang})`).closest('.card').find('.text_right h1').text(jumlahBaru);
+            $(`#card_container .card .text_left p:contains(${idBarang})`).closest('.card').find('.text_right h1').text(jumlahBaru);
 
             // tambahkan jumlah barang ke dalam array barang
             barang.forEach((item, index) => {
             if (item.idBarang === idBarang) {
                 // update jumlah barang di form
-                $(`.card_cont input[name="jumlah[]"]`).eq(index).val(jumlahBaru);
-                tambahJumlah(button);
-                barang[index].jumlahBarang = jumlahTable;
+                $(`#cardContainer input[name="jumlah[]"]`).eq(index).val(jumlahBaru);
+                barang[index].jumlahBarang = jumlahBaru;
             }
             });
             return;
         }
+                // tambahkan idbarang dan jumlah barang ke dalam array barang
+        barang.push({
+            idBarang, namaBarang, pengelola,
+            jumlahBarang: 1
+        });
+        // tambahkan barang ke dalam form
+        form.append(`<input type="hidden" name="barang[]" value="${idBarang}">`);
+        form.append(`<input type="hidden" name="jumlah[]" value="1">`);
+        form.append(`<input type="hidden" name="namaBarang[]" value="${namaBarang}">`);
+        form.append(`<input type="hidden" name="pengelola[]" value="${pengelola}">`);
 
         const cardContent = `
         <div class="card">
@@ -187,7 +200,7 @@
         </div>
         `;
 
-        $(".card_cont").append(cardContent);
+        $("#card_container").append(cardContent);
 
         const adaElement = document.querySelector('card_cont');
         const nb = 'Tidak ada peminjaman'
@@ -199,14 +212,7 @@
             $(".card_cont").append(nb);
         }
 
-        // tambahkan idbarang dan jumlah barang ke dalam array barang
-        barang.push({
-            idBarang, namaBarang, pengelola,
-            jumlahBarang: 1
-        });
-        // tambahkan barang ke dalam form
-        form.append(`<input type="hidden" name="barang[]" value="${idBarang}">`);
-        form.append(`<input type="hidden" name="jumlah[]" value="1">`);
+
         }
 
 
@@ -242,6 +248,37 @@
         btnGroup.find('.btn_tambah').toggleClass('hidden');
         btnGroup.find('.counter').toggleClass('hidden');
     }
+
+    function kurangBarang(button) {
+    const row = $(button).closest('tr');
+    const idBarang = row.find('td:eq(0)').text(); // Mengambil teks dari kolom pertama (indeks 0)
+    const jumlahElement = $(`#card_container .card .text_left p:contains(${idBarang})`).closest('.card').find('.text_right h1');
+    let jumlahBarang = parseInt(jumlahElement.text());
+
+    if (jumlahBarang > 1) {
+        jumlahBarang--;
+        jumlahElement.text(jumlahBarang);
+
+        barang.forEach((item, index) => {
+            if (item.idBarang === idBarang) {
+                $(`#cardContainer input[name="jumlah[]"]`).eq(index).val(jumlahBarang);
+                barang[index].jumlahBarang = jumlahBarang;
+            }
+        });
+    } else  {
+        // Menghapus barang dari array jika jumlahnya menjadi 0
+        barang = barang.pop(item => item.barang !== idBarang);
+        // Menghapus elemen kartu dari tampilan
+        $(`#card_container .card .text_left p:contains(${idBarang})`).closest('.card').remove();
+
+        // Jika tidak ada barang yang dipilih, tampilkan pesan
+        if ($('#card_container .card').length === 0) {
+            $("#card_container").append('<h5 class="noBooking">Tidak Ada Barang yang Dipilih</h5>');
+        }
+    }
+}
+
+
 
 
     </script>

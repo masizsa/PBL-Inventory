@@ -85,11 +85,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                        print_r($_POST); // Cetak isi dari $_POST untuk memeriksa data yang dikirim
+                        for ($i = 0; isset($_POST['barang']) && $i < sizeof($_POST['barang']); $i++) {
+                            // Tampilkan data di sini
+                        }
+                            ?>
                             <?php for ($i = 0; $i < sizeof($_POST['barang']); $i++) : ?>
                                 <tr>
                                     <td><?php echo $_POST['barang'][$i] ?></td>
                                     <td><?php echo isset($_POST['namaBarang'][$i]) ? $_POST['namaBarang'][$i] : ''; ?></td>
-                                    <td><?php echo isset($_POST['pengelola'][$i]) ? $_POST['pengelola'][$i] : ''; ?></td>>
+                                    <td><?php echo isset($_POST['pengelola'][$i]) ? $_POST['pengelola'][$i] : ''; ?> </td>
                                     <td><?php echo $_POST['jumlah'][$i] ?></td>
                                 </tr>
                             <?php endfor; ?>
