@@ -1,0 +1,385 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 10px;
+}
+
+:root {
+    ---background-color-body: #F6F6F6;
+    ---header-table-color: #FCD106;
+    ---card--color1: #FBF4CF;
+    ---card--color2: #CCF1E5;
+    ---card--color3: #FCCECE;
+    ---card--color4: #EEEEEE;
+}
+
+.custom--container-data-barang {
+    position: absolute;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(---background-color-body);
+}
+
+.custom--header-data-barang {
+    height: 11.6rem;
+    width: 100%;
+    padding: 1.6rem 4rem;
+    background-color: #fff;
+}
+
+.custom--header-data-barang>h1 {
+    margin-bottom: 1.2rem;
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+
+.custom--header-data-barang>p {
+    font-size: 1.6rem;
+}
+
+.custom--body-data-barang {
+    position: relative;
+    padding: 4rem 5.6rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+}
+
+.custom--body-data-barang .custom--overview {
+    display: flex;
+    gap: 2.8rem;
+}
+
+.custom--body-data-barang .custom--overview .custom--wrapper {
+    height: 12rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
+    border-radius: 1rem;
+}
+
+.custom--body-data-barang .custom--overview .custom--wrapper a {
+    color: #000;
+    text-decoration: none;
+}
+
+.custom--wrapper:nth-child(1) {
+    background-color: var(---card--color1);
+}
+
+.custom--wrapper:nth-child(2) {
+    background-color: var(---card--color2);
+}
+
+.custom--wrapper:nth-child(3) {
+    background-color: var(---card--color3);
+}
+
+.custom--wrapper:nth-child(4) {
+    background-color: var(---card--color4);
+}
+
+.custom--wrapper a {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.custom--overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.custom--overview-header .custom-icon-right {
+    display: flex;
+    gap: 1rem;
+}
+
+.custom--overview-body span {
+    font-size: 4rem;
+}
+
+.custom--overview-body label {
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #D9D9D9;
+    margin: 1em 0;
+    padding: 0;
+    margin-top: 4rem;
+    margin-bottom: 1.6rem;
+}
+
+.custom--data-barang-table-wrapper {
+    height: 42.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.custom--data-barang-table-wrapper .custom--data-barang-table-wrapper--header {
+    height: 5rem;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.custom--data-barang-table-wrapper--header button{
+    height: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100rem;
+    border: none;
+    font-weight: 600;
+    letter-spacing: .5px;
+    cursor: pointer;
+    background-color: var(---header-table-color);
+
+}
+.custom--table-data-barang {
+    margin-bottom: 4rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    border-spacing: 0;
+    border: separate;
+    overflow: hidden;
+}
+
+
+.custom--table-data-barang th {
+    text-align: start;
+    background-color: var(---header-table-color);
+    padding: 1.7rem 2.4rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.custom--table-data-barang td {
+    padding: 2rem 2.4rem;
+    background-color: #fff;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.custom--icon-aksi{
+    display: flex;
+    gap: 2.4rem;
+    cursor: pointer;
+}
+
+/* POP UP */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Buat Pop pup */
+.custom--container-add-item{
+    display: none;
+}
+.custom--container-add-item.show{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #12121290;
+}
+.custom--add-item,
+.custom--edit-item,
+.custom--details-item,
+.custom--delete-item {
+    position: relative;
+    display: none;
+    align-items: center;
+    width: 70.8rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.6rem 2.4rem 2.4rem 2.4rem;
+}
+
+.custom--delete-item {
+    padding: 2.4rem !important;
+}
+
+.custom--add-item .custom--content,
+.custom--delete-item .custom--content-delete {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.custom--delete-item .custom--content-delete {
+    gap: 4rem !important;
+}
+
+.custom--add-item .custom--content header {
+    font-size: 24px;
+}
+
+.custom--add-item .custom--content form {
+    flex: 1;
+}
+
+.custom--content form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.custom--row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 11.6rem;
+    width: 100%;
+    padding: 1.6rem 4rem;
+}
+
+.custom--input-add-item {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.custom--input-add-item-wrapper {
+    flex: 0 0 calc(50% - 8px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.custom--input-add-item-wrapper {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.custom--input-add-item-wrapper input[type="text"] {
+    height: 5rem;
+    border-radius: 1.4rem;
+    border: 1px solid #c8c8c8;
+    outline: none;
+    padding: 1.4rem;
+}
+
+.custom--input-add-item-area {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.custom--input-add-item-area textarea {
+    border-radius: 1.4rem;
+    outline: none;
+    border: 1px solid #c8c8c8;
+    font-size: 14px;
+    padding: 1.4rem;
+
+}
+
+.custom--button-add-items {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+}
+
+.custom--button-add-items button {
+    width: 24rem;
+    border-radius: 100rem;
+    /* border: none; */
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #FCD106;
+    background-color: #FFFFFF;
+    font-family: 'poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.custom--button-add-items a {
+   width: 24rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   color: #000;
+    border-radius: 100rem;
+    /* border: none; */
+    outline: none;
+    cursor: pointer;
+    background-color: var(---header-table-color);
+    font-family: 'poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.custom--add-items-close {
+    position: absolute;
+    height: 2.5rem;
+    width: 2.5rem;
+    top: calc(-1 * 2.5rem * 0.4);
+    right: calc(-1 * 2.5rem * 0.4);
+    background-color: #FCD106;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.custom--add-items-close svg {
+    height: 100%;
+    width: 100%;
+}
+
+
+.custom--delete-item .custom--content-delete {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+}
+
+.custom--delete-item .custom--content-delete header {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.show {
+    display: flex;
+}
+
