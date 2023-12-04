@@ -108,14 +108,16 @@
       const isBarangTerpilih = $(`#barang_terpilih .card .text_left p:contains(${idBarang})`).length > 0;
 
       if (isBarangTerpilih) {
+        //Mencari jumlah barang yg dipilih saat ini
         const jumlah = $(`#barang_terpilih .card .text_left p:contains(${idBarang})`).closest('.card').find('.text_right h1').text();
         const jumlahBaru = parseInt(jumlah) + 1;
+        //Mengubah teks jumlah dengan jumlah saat ini
         $(`#barang_terpilih .card .text_left p:contains(${idBarang})`).closest('.card').find('.text_right h1').text(jumlahBaru);
 
-        // tambahkan jumlah barang ke dalam array barang
+        // Tambahkan jumlah barang ke dalam array barang
         barang.forEach((item, index) => {
           if (item.idBarang === idBarang) {
-            // update jumlah barang di form
+            // Update jumlah barang di form
             $(`#barangTerpilih input[name="jumlah[]"]`).eq(index).val(jumlahBaru);
             barang[index].jumlahBarang = jumlahBaru;
           }
@@ -140,14 +142,17 @@
       `;
 
       $("#barang_terpilih").append(cardContent);
-      // tambahkan idbarang dan jumlah barang ke dalam array barang
+      // Tambahkan idbarang dan jumlah barang ke dalam array barang
       barang.push({
-        idBarang, namaBarang, pengelola,
-        jumlahBarang: 1
+        idBarang,
+        jumlahBarang: 1, pengelola , namaBarang
       });
-      // tambahkan barang ke dalam form
+      // Tambahkan barang ke dalam form
       form.append(`<input type="hidden" name="barang[]" value="${idBarang}">`);
       form.append(`<input type="hidden" name="jumlah[]" value="1">`);
+      form.append(`<input type="hidden" name="pengelola[]" value="${pengelola}">`);
+      form.append(`<input type="hidden" name="namaBarang[]" value="${namaBarang}">`);
+
     }
   </script>
 

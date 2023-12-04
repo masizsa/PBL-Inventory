@@ -88,12 +88,12 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 <?php for ($i = 0; $i < sizeof($_POST['barang']); $i++) : ?>
                     <tr>
                         <td><?php echo $_POST['barang'][$i] ?></td>
-                        <td>testing</td>
-                        <td>nama</td>
+                        <td><?php echo isset($_POST['namaBarang'][$i]) ? $_POST['namaBarang'][$i] : ''; ?></td>
+                        <td><?php echo isset($_POST['pengelola'][$i]) ? $_POST['pengelola'][$i] : ''; ?></td>>
                         <td><?php echo $_POST['jumlah'][$i] ?></td>
                         <td class="qty">
                             <button type="button" class="btn-tambah">tambah</button>
