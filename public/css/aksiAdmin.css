@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom--container-add-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F6F6F6;
+}
+.custom--add-item,
+.custom--delete-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 70.8rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.6rem 2.4rem 2.4rem 2.4rem;
+}
+.custom--delete-item {
+    padding: 2.4rem !important;
+}
+
+.custom--add-item .custom--content,
+.custom--delete-item .custom--content-delete {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+.custom--delete-item .custom--content-delete {
+    gap: 4rem !important;
+}
+
+.custom--add-item .custom--content header{
+    font-size:  24px;
+}
+.custom--add-item .custom--content form{
+    flex: 1;
+}
+.custom--content form{
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+.custom--row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 11.6rem;
+    width: 100%;
+    padding: 1.6rem 4rem;
+}
+
+.custom--input-add-item{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.custom--input-add-item-wrapper{
+    flex: 0 0 calc(50% - 8px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.custom--input-add-item-wrapper{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.custom--input-add-item-wrapper input[type="text"]{
+    height: 5rem;
+    border-radius: 1.4rem;
+    border: 1px solid #c8c8c8;
+    outline: none;
+    padding: 1.4rem;
+}
+.custom--input-add-item-area{
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+}
+.custom--input-add-item-area textarea{
+    border-radius: 1.4rem;
+    outline: none;
+    border: 1px solid #c8c8c8;
+    font-size: 14px;
+    padding: 1.4rem;
+
+}
+.custom--button-add-items {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+}
+.custom--button-add-items button{
+    width: 24rem;
+    border-radius: 100rem;
+    /* border: none; */
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #FCD106;
+    background-color: #FFFFFF;
+    font-family: 'poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.custom--button-add-items button:last-child{
+    background-color: #FCD106;
+}
+.custom--add-items-close {
+    position: absolute;
+    height: 2.5rem;
+    width: 2.5rem;
+    top: calc(-1 * 2.5rem * 0.4);
+    right: calc(-1 * 2.5rem * 0.4);
+    background-color: #FCD106;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.custom--delete-item .custom--content-delete {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+}
+.custom--delete-item .custom--content-delete header {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+.custom--delete-item .custom--content-delete header img {
+    align-self: center;
+}

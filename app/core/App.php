@@ -4,7 +4,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 class App
 {
-    public $isLogin = true;
+    // public $isLogin = $_SESSION["isLogin"];
+    public $isLogin = false;
     protected $controller = "login";
     protected $method = "index";
     protected $params = [];

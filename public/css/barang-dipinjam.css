@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background-color: #F6F6F6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom--container {
+    display: flex;
+}
+
+.custom--content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.custom--content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 11.6rem;
+    width: 100%;
+    padding: 1.6rem 4rem;
+}
+
+.custom--text-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #121212;
+    height: 100%;
+}
+
+.custom--text-header h1 {
+    font-weight: 600;
+    font-size: 3.2rem;
+}
+
+.custom--text-header p {
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+/* COUNTDOWN */
+.custom--countdown {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.custom--countdown .countdown-text {
+    color: #121212;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+}
+
+.custom--container-countdown {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #FCD106;
+    border-radius: 1rem;
+    width: 20.9rem;
+    height: 6.7rem;
+    padding: 0.4rem 0.8rem;
+    text-align: center;
+    padding: 4px;
+}
+
+.custom--time {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.return-date {
+    color: #FCD106;
+    font-size: 2.4rem;
+    font-weight: 600;
+    height: 36px;
+    width: 40px;
+}
+
+.countdown-label {
+    color: #121212;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.colon {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #FCD106;
+
+}
+.vertical-line {
+    border-left: 1px solid #FCD106;
+    height: 3.5rem;
+    margin: auto 0;
+}
+
+/* HAS ITEMS */
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 9.6rem;
+}
+
+.custom--subheader-borrowed {
+    color: #000;
+    font-size: 2rem;
+    font-weight: 500;
+    padding-bottom: 1.6rem;
+}
+
+.custom--borrowed-one {
+    padding-bottom: 4rem;
+}
+
+.custom--container-borrowed-items,
+.custom--container-borrowed-items-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    width: 100%;
+    min-height: 22rem;
+    border-radius: 1rem;
+    border: 0.1rem solid rgba(18, 18, 18, 0.10);
+    padding: 2.4rem;
+}
+
+.custom--borrowed-info {
+    display: flex;
+    color: #121212;
+    font-size: 1.4rem;
+    font-weight: 600;
+    width: 100%;
+}
+
+.custom--start-date, 
+.custom--end-date {
+    padding-right: 1.6rem;
+}
+
+.borrow-date {
+    display: flex;
+    align-items: center;
+    border-radius: 1.4rem;
+    border: 0.1rem solid #C6C6C6;
+    padding: 1.3rem 1.8rem;
+    color: #121212;
+    min-width: none;
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.info-label{
+    padding-bottom: 0.8rem;
+}
+
+.custom--status-value {
+    display: flex;
+    width: 12.4rem;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+#status-dipinjam {
+    border: 0.1rem solid #FCD106;
+    background: rgba(252, 209, 6, 0.20);
+    color: #FCD106;
+}
+
+#status-validasi {
+    border: 0.1rem solid #00A9D8;
+    background: rgba(0, 169, 216, 0.20);
+    color: #00A9D8;
+}
+
+#status-terlambat {
+    border: 0.1rem solid #EE0B0B;
+    background: rgba(238, 11, 11, 0.20);
+    color: #EE0B0B;
+}
+
+/* no items info */
+.custom--container-borrowed-items-empty p {
+    color: #C6C6C6;
+    font-size: 2rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; 
+    min-height: 22rem;
+}
+
+/* Column Item Info */
+.custom--item-info {
+    width: 100%;
+    margin-top: 2.4rem;
+
+}
+
+.custom--item-info table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.custom--item-info tr:first-child th:first-child {
+    border-top-left-radius: 1rem;
+}
+
+.custom--item-info tr:first-child th:last-child {
+    border-top-right-radius: 1rem;
+}
+
+.custom--item-info tr:last-child td:first-child {
+    border-bottom-left-radius: 1rem;
+}
+
+.custom--item-info tr:last-child td:last-child {
+    border-bottom-right-radius: 1rem;
+}
+
+.custom--item-info th,
+.custom--item-info td {
+    border: 0.1rem solid #1212121A;
+    text-align: left;
+    padding: 1.2rem;
+}
+
+.custom--item-info th:not(:first-child),
+.custom--item-info td:not(:first-child) {
+    border-left: none;
+}
+
+.custom--item-info th:not(:last-child),
+.custom--item-info td:not(:last-child) {
+    border-right: none;
+}
+
+.custom--item-info table th:first-child,
+.custom--item-info table td:first-child {
+    padding-left: 2.4rem; /* Adjust the left padding for the first column */
+}
+
+.custom--item-info table th:last-child,
+.custom--item-info table td:last-child {
+    padding-right: 2.4rem; /* Adjust the right padding for the last column */
+}
+
+.custom--item-info th {
+    background-color: #FCD106;
+    border-color: #FCD106;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.custom--item-info td {
+    font-size: 1.6rem; 
+    font-weight: 400; 
+}
+
+.custom--item-info td {
+    border-top: none;
+}
+
+.custom--item-info tbody tr:hover {
+    background-color: rgba(252, 211, 6, 0.1);
+}
