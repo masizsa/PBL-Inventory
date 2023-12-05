@@ -20,9 +20,9 @@ section {
     justify-content: center;
 }
 
-form {
-    --height-input:5rem;
-    --text-color-input:#00000070;
+section form.custom--login-form {
+    --height-input: 5rem;
+    --text-color-input: #00000070;
     height: 52rem;
     width: 37rem;
     padding: 4.8rem 2.4rem;
@@ -44,7 +44,7 @@ form {
     align-items: center;
 }
 
-.logo>img {
+.logo>.custom--logo svg {
     height: 10rem;
     width: 10rem;
     margin-top: 1rem;
@@ -69,21 +69,33 @@ input {
     color: var(--text-color-input);
     letter-spacing: .2px;
 }
-.password-wrapper{
+
+.password-wrapper {
     position: relative;
 }
-.password-wrapper > img {
+
+.password-wrapper>#passIcon {
+    height: 2.5rem;
+    width: 2.5rem;
     position: absolute;
     right: 1rem;
-    top: calc(0.5 * 0.5 * var(--height-input)); /* kalo bingung kenapa begitu ya diambil separuh dari pergeseran top (50%) biar gk usah pake transform-translate lagi*/
+    top: calc(0.5 * 0.5 * var(--height-input));
+    /* kalo bingung kenapa begitu ya diambil separuh dari pergeseran top (50%) biar gk usah pake transform-translate lagi*/
     cursor: pointer;
 }
-.wrapper > label{
+
+.wrapper>label {
     text-align: end;
 }
-.hidden{
-    background: url(../../../public/assets/hiddenPass.svg);
+
+#passIcon {
+    background: url(../assets/hiddenPass.svg) no-repeat;
 }
+
+#passIcon.show {
+    background: url(../assets/showPass.svg) no-repeat;
+}
+
 button {
     height: 5rem;
     width: 16rem;
