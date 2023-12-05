@@ -1,8 +1,50 @@
 <?php
 session_start();
-class Login extends Controller {
+class Login extends Controller
+{
     public $isLogin = false;
-    public function index() {
+    private $db;
+    public function __construct()
+    {
+        $this->db = Database::getInstance();
+    }
+    public function index()
+    {
         $this->view("user/login/index");
+    }
+    public function processLogin()
+    {
+        $conn = $this->db->getConnection();
+        if (isset($_POST["nomor_identitas"])) {
+            $nomor_identitas = $_POST["nomor_identitas"];
+            $password = md5($_POST["password"]);
+
+            $sql = "SELECT * FROM users WHERE nomor_identitas = \"$nomor_identitas\"";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $nomor_identitas = $row["nomor_identitas"];
+
+                if ($row["password"] == $password) {
+                    $_SESSION["isLogin"] = true;
+                    $_SESSION['nomor_identitas'] = $nomor_identitas;
+                    if ($row["status"] == "Admin") {
+                        echo "admin";
+                    } else {
+                        // echo "user";
+                        var_dump($_SESSION["isLogin"]);
+                    }
+                } else {
+
+                    message('danger', "Login gagal. Password Anda Salah.");
+                    header("Location: ../../views/pages/login/login.php");
+                }
+            } else {
+                // Display error message and prevent immediate redirection
+                message('warning', "Username tidak ditemukan.");
+                header("Location: ../../views/pages/login/login.php");
+            }
+        }
     }
 }
