@@ -4,16 +4,15 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 class App
 {
-    // public $isLogin = $_SESSION["isLogin"];
-    public $isLogin = false;
-    protected $controller = "login";
+    protected $controller;
     protected $method = "index";
     protected $params = [];
     public function __construct()
     {
         $url = $this->parseUrl();
 
-        if ($this->isLogin) {
+        if ($_SESSION["isLogin"]) {
+            $this->controller = "home";
             if (file_exists('../app/controllers/' . $url[0] . '.php')) {
                 $this->controller = $url[0];
                 unset($url[0]);
@@ -37,7 +36,7 @@ class App
             // menjalankan method pada controller serta mengirimkan parameter jika ada
             call_user_func_array([$this->controller, $this->method], $this->params);
         } else {
-
+            $this->controller = "login";
             require_once '../app/controllers/' . $this->controller . '.php';
             $this->controller = new $this->controller;
             if (isset($url[1])) {
@@ -61,13 +60,5 @@ class App
             $url = explode('/', $url);
             return $url;
         }
-    }
-    public function isUserLoggedIn()
-    {
-        return $this->isLogin;
-    }
-    public function serIsLogin($value)
-    {
-        $this->isLogin = $value;
     }
 }
