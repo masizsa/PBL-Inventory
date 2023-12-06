@@ -330,7 +330,7 @@ html {
     font-weight: 600;
 }
 
-.custom--button-add-items a {
+.custom--button-add-items input[type="submit"] {
    width: 24rem;
    display: flex;
    align-items: center;
