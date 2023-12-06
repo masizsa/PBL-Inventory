@@ -132,15 +132,13 @@
                         <th>Pemeliharaan</th>
                         <th>Aksi</th>
                     </tr>
-                    <?php
-                    var_dump($data); 
-                    foreach ($data as $item) : ?>
+                    <?php foreach ($data as $item) : ?>
                         <tr>
                             <td><?= $item['id_barang']; ?></td>
                             <td><?= $item['nama_barang']; ?></td>
                             <td>asuu</td>
                             <td><?= $item['jumlah_tersedia']; ?></td>
-                            
+
                             <td><?= $item['jumlah_pemeliharaan']; ?></td>
                             <td>
                                 <div class="custom--icon-aksi">
