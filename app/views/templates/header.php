@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- local css -->
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/style.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/login.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/sidebar.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/aksiAdmin.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/tambah-barang.css">
