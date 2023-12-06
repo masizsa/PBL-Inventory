@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../../css/ubahSandi.css">
 <div class="custom--ubah-sandi-container">
     <div class="custom--header">
         <h1>Ubah Sandi</h1>
@@ -10,7 +9,7 @@
                 <label for="">Sandi Sekarang</label>
                 <input type="password" name="" id="currentPass">
                 <div class="custom--close-icon">
-                    <img src="../../../../public/assets/hiddenPass.svg" alt="">
+                    <img src="./public/assets/hiddenPass.svg" alt="">
                 </div>
             </div>
             <div class="custom--wrapper">
@@ -18,14 +17,14 @@
                 <input type="password" name="" id="newPass">
                 <label for="">Sandi harus 8-12 karakter</label>
                 <div class="custom--close-icon">
-                    <img src="../../../../public/assets/hiddenPass.svg" alt="">
+                    <img src="./public/assets/hiddenPass.svg" alt="">
                 </div>
             </div>
             <div class="custom--wrapper">
                 <label for="">Konfirmasi sandi</label>
                 <input type="password" name="" id="confirmPass">
                 <div class="custom--close-icon">
-                    <img src="../../../../public/assets/hiddenPass.svg" alt="">
+                    <img src="./public/assets/hiddenPass.svg" alt="">
                 </div>
             </div>
         </div>
