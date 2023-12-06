@@ -12,8 +12,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/form.css">
+    <!-- local css -->
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/style.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/login.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/sidebar.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/aksiAdmin.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/tambah-barang.css">
+
 </head>
 
 <body>
+    <section class="custom--app-parent" >

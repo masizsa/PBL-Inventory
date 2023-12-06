@@ -19,7 +19,6 @@ html {
 }
 
 .custom--container-data-barang {
-    position: absolute;
     min-height: 100vh;
     width: 100%;
     display: flex;

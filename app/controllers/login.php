@@ -10,7 +10,9 @@ class Login extends Controller
     }
     public function index()
     {
+        $this->view("templates/header");
         $this->view("user/login/index");
+        $this->view("templates/footer");
     }
     public function processLogin()
     {
@@ -27,21 +29,18 @@ class Login extends Controller
                 $nomor_identitas = $row["nomor_identitas"];
 
                 if ($row["password"] == $password) {
-                    $_SESSION["isLogin"] = true;
+                    $this->isLogin = true;
                     $_SESSION['nomor_identitas'] = $nomor_identitas;
                     if ($row["status"] == "Admin") {
-                        echo "admin";
+                        header("Location: ../tambahBarang");
                     } else {
-                        // echo "user";
-                        var_dump($_SESSION["isLogin"]);
+                        header("Location: ../tambahBarang");
                     }
                 } else {
-
                     message('danger', "Login gagal. Password Anda Salah.");
                     header("Location: ../../views/pages/login/login.php");
                 }
             } else {
-                // Display error message and prevent immediate redirection
                 message('warning', "Username tidak ditemukan.");
                 header("Location: ../../views/pages/login/login.php");
             }
