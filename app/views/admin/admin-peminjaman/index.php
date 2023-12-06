@@ -272,6 +272,9 @@
     const detailsButtons = document.querySelectorAll(".button-info");
     const popupContainer = document.querySelector(".popup-container");
     const closePopupButton = document.getElementById("custom--close-popup");
+    const headerTitle = document.querySelector("header h1");
+    const subheader = document.querySelector("header p");
+
 
     buttons.forEach((button, index) => {
         button.addEventListener('click', () => {
@@ -285,6 +288,11 @@
 
             button.classList.add('active');
             tables[index].style.display = 'flex';
+
+            headerTitle.textContent =
+            index === 0 ? "Data Peminjaman" : "Data Pengembalian";
+
+            subheader.textContent = index === 0 ? "Silahkan konfirmasi peminjaman jika sudah siap!" : "Silahkan konfirmasi pengembalian jika sudah benar!";
         });
     });
 
@@ -310,25 +318,4 @@
         const lastCustomConfirm = customConfirms[customConfirms.length - 1];
         lastCustomConfirm.style.borderBottomRightRadius = '1rem';
     });
-
-    const headerTitle = document.querySelector("header h1");
-
-    buttons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-            buttons.forEach((btn) => {
-                btn.classList.remove("active");
-            });
-
-            tables.forEach((table) => {
-                table.style.display = "none";
-            });
-
-            button.classList.add("active");
-            tables[index].style.display = "flex";
-
-            headerTitle.textContent =
-                index === 0 ? "Data Peminjaman" : "Data Pengembalian";
-        });
-    });
-
 </script>

@@ -131,6 +131,7 @@ header p {
     font-weight: 400; 
     border-top: none;
     height: 6.2rem;
+    vertical-align: middle !important;
 }
 #table-peminjaman .custom--table-wrapper td:not(:last-child) {
     border-right: none;
