@@ -34,9 +34,7 @@ class Login extends Controller
                     if ($row["status"] == "Admin") {
                         header("Location: ../tambahBarang");
                     } else {
-                        // echo "user";
                         header("Location: ../tambahBarang");
-                        var_dump($_SESSION["isLogin"]);
                     }
                 } else {
                     message('danger', "Login gagal. Password Anda Salah.");
