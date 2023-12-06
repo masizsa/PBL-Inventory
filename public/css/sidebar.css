@@ -18,7 +18,7 @@ html {
     font-size: 10px;
 }
 
-.sidebar {
+.custom--sidebar {
     min-height: 100vh;
     width: 37.5rem;
     display: flex;
@@ -26,7 +26,7 @@ html {
     justify-content: space-between;
     background-color: var(---sidebar-color);
     transition: all .2s ease-in-out;
-    animation: entranceSidebar .45s ease-out;
+    /* animation: entranceSidebar .45s ease-out; */
 }
 
 @keyframes entranceSidebar {
