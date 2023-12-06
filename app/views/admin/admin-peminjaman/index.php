@@ -311,4 +311,24 @@
         lastCustomConfirm.style.borderBottomRightRadius = '1rem';
     });
 
+    const headerTitle = document.querySelector("header h1");
+
+    buttons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            buttons.forEach((btn) => {
+                btn.classList.remove("active");
+            });
+
+            tables.forEach((table) => {
+                table.style.display = "none";
+            });
+
+            button.classList.add("active");
+            tables[index].style.display = "flex";
+
+            headerTitle.textContent =
+                index === 0 ? "Data Peminjaman" : "Data Pengembalian";
+        });
+    });
+
 </script>
