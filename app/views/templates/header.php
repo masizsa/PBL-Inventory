@@ -18,8 +18,12 @@
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/sidebar.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/aksiAdmin.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/tambah-barang.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/ubahSandi.css">
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
 
 <body>
-    <section class="custom--app-parent" >
+    <section class="custom--app-parent">
