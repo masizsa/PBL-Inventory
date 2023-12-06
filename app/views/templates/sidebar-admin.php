@@ -73,7 +73,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="http://localhost/dasarWeb/PBL-Inventory/public/gantiSandi">
+                    <a class="" href="http://localhost/dasarWeb/PBL-Inventory/public/ubahSandi">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="1">
@@ -146,7 +146,7 @@
                     case 'riwayat':
                         sidebarMenu[2].classList.add('active-menu');
                         break;
-                    case 'gantiSandi':
+                    case 'ubahSandi':
                         sidebarMenu[3].classList.add('active-menu');
                         break;
                     case 'keluar':

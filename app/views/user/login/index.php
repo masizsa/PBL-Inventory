@@ -1,4 +1,4 @@
-<section>
+<section class="custom--container-login">
     <form class="custom--login-form" action="login/processLogin" method="post">
         <div class="logo ">
             <div class="custom--logo">
