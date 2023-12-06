@@ -10,7 +10,9 @@ class Login extends Controller
     }
     public function index()
     {
+        $this->view("templates/header");
         $this->view("user/login/index");
+        $this->view("templates/footer");
     }
     public function processLogin()
     {
