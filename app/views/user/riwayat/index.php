@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../../css/riwayat.css">
 <div class="custom--riwayat-container">
     <div class="custom--header">
         <h1>Riwayat Peminjaman</h1>
