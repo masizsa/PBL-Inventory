@@ -27,21 +27,20 @@ class Login extends Controller
                 $nomor_identitas = $row["nomor_identitas"];
 
                 if ($row["password"] == $password) {
-                    $_SESSION["isLogin"] = true;
+                    $this->isLogin = true;
                     $_SESSION['nomor_identitas'] = $nomor_identitas;
                     if ($row["status"] == "Admin") {
-                        echo "admin";
+                        header("Location: ../tambahBarang");
                     } else {
                         // echo "user";
+                        header("Location: ../tambahBarang");
                         var_dump($_SESSION["isLogin"]);
                     }
                 } else {
-
                     message('danger', "Login gagal. Password Anda Salah.");
                     header("Location: ../../views/pages/login/login.php");
                 }
             } else {
-                // Display error message and prevent immediate redirection
                 message('warning', "Username tidak ditemukan.");
                 header("Location: ../../views/pages/login/login.php");
             }
