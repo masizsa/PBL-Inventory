@@ -51,8 +51,8 @@
                                     <td>200123</td>
                                     <td>kk1212</td>
                                     <td>asu</td>
-                                    <td>aku</td>
-                                    <td>
+                                    <td class="custom--first-child">aku</td>
+                                    <td rowspan="3" class="custom--confirm">
                                         <div class="custom--aksi">
                                             <button class="button-confirm">Konfirmasi</button>
                                             <button class="button-info">
@@ -68,17 +68,22 @@
                                 <tr>
                                     <td>200123</td>
                                     <td>kk1212</td>
-                                    <td>asu</td>
-                                    <td>aku</td>
-                                    <td></td>
+                                    <td>laptop</td>
+                                    <td>binatang</td>
+                                </tr>
+                                <tr>
+                                    <td>200123</td>
+                                    <td>kk1212</td>
+                                    <td>speaker</td>
+                                    <td>binatang</td>
                                 </tr>
 
                                 <tr>
                                     <td>200123</td>
                                     <td>kk1212</td>
                                     <td>asu</td>
-                                    <td>aku</td>
-                                    <td>
+                                    <td class="custom--first-child">tes-123</td>
+                                    <td rowspan="3" class="custom--confirm">
                                         <div class="custom--aksi">
                                             <button class="button-confirm">Konfirmasi</button>
                                             <button class="button-info">
@@ -92,11 +97,16 @@
                                     </td>
                                 </tr>                           
                                 <tr>
-                                    <td>2000</td>
+                                    <td>200123</td>
                                     <td>kk1212</td>
-                                    <td>asu</td>
-                                    <td>aku</td>
-                                    <td></td>
+                                    <td>laptop</td>
+                                    <td>binatang</td>
+                                </tr>
+                                <tr>
+                                    <td>200123</td>
+                                    <td>kk1212</td>
+                                    <td>speaker</td>
+                                    <td>binatang</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -123,8 +133,8 @@
                                     <td>200123</td>
                                     <td>kk1212</td>
                                     <td>asu</td>
-                                    <td>aku</td>
-                                    <td>
+                                    <td class="custom--first-child">aku</td>
+                                    <td rowspan ="3">
                                         <div class="custom--status">
                                             <div class="custom--status-value" id="status-dipinjam">
                                                 <p>Dipinjam</p>
@@ -139,7 +149,7 @@
                                             </div>     -->
                                         </div>
                                     </td>
-                                    <td>
+                                    <td rowspan="3" class="custom--confirm">
                                         <div class="custom--aksi">
                                             <button class="button-confirm">Konfirmasi</button>
                                             <button class="button-info">
@@ -155,18 +165,22 @@
                                 <tr>
                                     <td>200123</td>
                                     <td>kk1212</td>
-                                    <td>asu</td>
-                                    <td>aku</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>laptop</td>
+                                    <td>binatang</td>
+                                </tr>
+                                <tr>
+                                    <td>200123</td>
+                                    <td>kk1212</td>
+                                    <td>speaker</td>
+                                    <td>binatang</td>
                                 </tr>
 
                                 <tr>
                                     <td>200123</td>
                                     <td>kk1212</td>
                                     <td>asu</td>
-                                    <td>aku</td>
-                                    <td>
+                                    <td class="custom--first-child">aku</td>
+                                    <td rowspan ="3">
                                         <div class="custom--status">
                                             <div class="custom--status-value" id="status-dipinjam">
                                                 <p>Dipinjam</p>
@@ -181,7 +195,7 @@
                                             </div>     -->
                                         </div>
                                     </td>
-                                    <td>
+                                    <td rowspan="3" class="custom--confirm">
                                         <div class="custom--aksi">
                                             <button class="button-confirm">Konfirmasi</button>
                                             <button class="button-info">
@@ -195,12 +209,16 @@
                                     </td>
                                 </tr>                           
                                 <tr>
-                                    <td>2000</td>
+                                    <td>200123</td>
                                     <td>kk1212</td>
-                                    <td>asu</td>
-                                    <td>aku</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>laptop</td>
+                                    <td>binatang</td>
+                                </tr>
+                                <tr>
+                                    <td>200123</td>
+                                    <td>kk1212</td>
+                                    <td>speaker</td>
+                                    <td>binatang</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -285,4 +303,12 @@
             popupContainer.style.display = 'none';
         }
     });
+
+    const tbodies = document.querySelectorAll('tbody');
+    tbodies.forEach(tbody => {
+        const customConfirms = tbody.querySelectorAll('.custom--confirm');
+        const lastCustomConfirm = customConfirms[customConfirms.length - 1];
+        lastCustomConfirm.style.borderBottomRightRadius = '1rem';
+    });
+
 </script>
