@@ -16,6 +16,11 @@
         <link rel="stylesheet" href="../../css/form.css">
     </head>
     <body>
+            <?php
+    include('../../../controlers/auth/checkFormPeminjaman.php');
+    // include('../../../controlers/auth/checkLogin.php');
+
+    ?>
         <div class="container">
             <div class="header">
                 <h2 class="title">Detail Peminjaman</h2>
@@ -28,11 +33,11 @@
                         <div class="row">
                             <div class="col">
                                 <label for="inputState" class="form-label">Nama</label>
-                                <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" disabled>
+                                <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" value="<?php echo $nama ?>"disabled>
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">NIM/NIP</label>
-                                <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber" disabled>
+                                <input type="text" class="form-control" placeholder="Masukkan NIM/NIP" name="idNumber" value="<?php echo $nomor_identitas ?>"disabled>
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">Jumlah Hari</label> <br>
@@ -57,11 +62,11 @@
                         <div class="row">
                             <div class="col">
                                 <label for="inputState" class="form-label">Mulai Pinjam</label>
-                                <input type="date" class="form-control" name="startDate">
+                                <input type="date" class="form-control" name="startDate" id="startDate" onchange="updateFinishDate()">
                             </div>
                             <div class="col">
                                 <label for="inputState" class="form-label">Selesai Pinjam</label>
-                                <input type="date" class="form-control" value="" name="finishDate" disabled>
+                                <input type="date" class="form-control" value="" name="finishDate" id="finishDate" disabled>
                             </div>
                         </div>
                     </form>    
@@ -80,12 +85,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>RMT01</td>
-                                <td>Remote Ac</td>
-                                <td>Pak Wardi</td>
-                                <td>9</td>
-                            </tr>
+                            <?php
+                        print_r($_POST); // Cetak isi dari $_POST untuk memeriksa data yang dikirim
+                        for ($i = 0; isset($_POST['barang']) && $i < sizeof($_POST['barang']); $i++) {
+                            // Tampilkan data di sini
+                        }
+                            ?>
+                            <?php for ($i = 0; $i < sizeof($_POST['barang']); $i++) : ?>
+                                <tr>
+                                    <td><?php echo $_POST['barang'][$i] ?></td>
+                                    <td><?php echo isset($_POST['namaBarang'][$i]) ? $_POST['namaBarang'][$i] : ''; ?></td>
+                                    <td><?php echo isset($_POST['pengelola'][$i]) ? $_POST['pengelola'][$i] : ''; ?> </td>
+                                    <td><?php echo $_POST['jumlah'][$i] ?></td>
+                                </tr>
+                            <?php endfor; ?>
                         </tbody>
                     </table>
                 </div>
@@ -96,31 +109,6 @@
             </section>
         </div>
     </div>
-    <h4 class="sub-title">Data Barang</h4>
-    <div class="section2">
-        <table class="table">
-            <thead class="table-warning">
-                <tr>
-                    <th scope="col">Kode</th>
-                    <th scope="col">Nama Barang</th>
-                    <th scope="col">Nama Pengelola</th>
-                    <th scope="col">Jumlah Tersedia</th>
-                    <th scope="col">Pilih</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <?php for ($i = 0; $i < sizeof($_POST['barang']); $i++) : ?>
-                    <tr>
-                        <td><?php echo $_POST['barang'][$i] ?></td>
-                        <td>testing</td>
-                        <td>nama</td>
-                        <td><?php echo $_POST['jumlah'][$i] ?></td>
-                        <td class="qty">
-                            <button type="button" class="btn-tambah">tambah</button>
-                        </td>
-                    </tr>
-                <?php endfor; ?>
 
         <div id="myModal" class="modal">
             <div class="modal-content">
