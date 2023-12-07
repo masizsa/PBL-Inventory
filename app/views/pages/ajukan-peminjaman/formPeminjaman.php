@@ -7,7 +7,7 @@ $crud = new Crud();
 if (isset($_POST['btn-pinjam'])) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $tanggal = $_POST['startDate'];
-        $crud->addPeminjaman($nomor_identitas, $tanggal);
+        $crud->addPeminjaman($tanggal);
     }
 }
 
