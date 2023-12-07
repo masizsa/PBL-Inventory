@@ -1,5 +1,5 @@
 <section>
-    <form class="custom--login-form" action="login/processLogin" method="post">
+    <form class="custom--login-form" action="../../../controlers//auth/checkLogin.php" method="post">
         <div class="logo ">
             <div class="custom--logo">
                 <svg width="451" height="451" viewBox="0 0 451 451" fill="none" xmlns="http://www.w3.org/2000/svg">

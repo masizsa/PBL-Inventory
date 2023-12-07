@@ -31,9 +31,9 @@ if (isset($_POST["nomor_identitas"])) {
         if ($row["password"] == $password) {
             $_SESSION['nomor_identitas'] = $nomor_identitas; // Menyimpan nomor_identitas ke dalam sessi
             if ($row["status"] == "admin") {
-                header("Location: ../../views/admin/home.php");
+                header("Location: http://localhost/dasarWeb/PBL-Inventory/app/views/admin/tambah-barang/");
             } else {
-                header("Location: ../../views/pages/pemilihan-barang/index.php");
+                header("Location: http://localhost/dasarWeb/PBL-Inventory/app/views/user/pemilihan-barang/");
             }
             // $_SESSION['nomor_identitas'] = $row['nomor_identitas'];
             // $_SESSION['status'] = $row['status'];
