@@ -141,9 +141,10 @@ hr {
     justify-content: space-between;
     align-items: center;
 }
-.custom--data-barang-table-wrapper--header button{
+.custom--close-button + a,
+.custom--data-barang-table-wrapper--header button {
     height: 100%;
-    padding: 0 1.5rem;
+    padding: 1.6rem 1.5rem;
     display: flex;
     gap: 8px;
     align-items: center;
@@ -156,6 +157,7 @@ hr {
     background-color: var(---header-table-color);
 
 }
+
 .custom--table-data-barang {
     margin-bottom: 4rem;
     background-color: #fff;
@@ -180,7 +182,7 @@ hr {
     border-bottom: 1px solid #E7E7E7;
 }
 
-.custom--icon-aksi{
+.custom--icon-aksi {
     display: flex;
     gap: 2.4rem;
     cursor: pointer;
@@ -199,19 +201,22 @@ html {
 }
 
 /* Buat Pop pup */
-.custom--container-add-item{
+.custom--container-add-item {
     display: none;
 }
-.custom--container-add-item.show{
+
+.custom--container-add-item.show {
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    width: 100%;
+    width: calc(100%);
+    padding-right: 37.5rem;
     background-color: #12121290;
 }
+
 .custom--add-item,
 .custom--edit-item,
 .custom--details-item,
@@ -321,6 +326,7 @@ html {
     border-radius: 100rem;
     /* border: none; */
     outline: none;
+    color: #000;
     cursor: pointer;
     border: 1px solid #FCD106;
     background-color: #FFFFFF;
@@ -330,14 +336,14 @@ html {
 }
 
 .custom--button-add-items input[type="submit"] {
-   width: 24rem;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   text-decoration: none;
-   color: #000;
+    width: 24rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
     border-radius: 100rem;
-    /* border: none; */
+    border: none;
     outline: none;
     cursor: pointer;
     background-color: var(---header-table-color);
@@ -377,8 +383,12 @@ html {
     flex-direction: column;
     gap: 2.4rem;
 }
-
+.custom--close-button + a {
+    width: 24rem;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+}
 .show {
     display: flex;
 }
-

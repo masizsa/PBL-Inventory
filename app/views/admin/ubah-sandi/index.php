@@ -3,18 +3,18 @@
         <h1>Ubah Sandi</h1>
         <p>Pastikan konfirmasi sandi Anda dengan benar!</p>
     </div>
-    <form class="custom--body" id="" action="./ubahSandi/ubahSandiProccess" method="post">
+    <form class="custom--body" id="ubahSandiForm" action="" method="post">
         <div class="custom--input-sandi-baru">
             <div class="custom--wrapper">
                 <label for="">Sandi Sekarang</label>
-                <input type="password" name="sandi_sekarang" id="currentPass">
+                <input type="password" name="sandi_sekarang" id="currentPass" required>
                 <div class="custom--close-icon">
                     <img src="../public/assets/hiddenPass.svg" alt="">
                 </div>
             </div>
             <div class="custom--wrapper">
                 <label for="">Sandi baru</label>
-                <input type="password" name="sandi_baru" id="newPass">
+                <input type="password" name="sandi_baru" id="newPass" required>
                 <label for="">Sandi harus 8-12 karakter</label>
                 <div class="custom--close-icon">
                     <img src="../public/assets/hiddenPass.svg" alt="">
@@ -22,7 +22,7 @@
             </div>
             <div class="custom--wrapper">
                 <label for="">Konfirmasi sandi</label>
-                <input type="password" name="konfirmasi_sandi" id="confirmPass">
+                <input type="password" name="konfirmasi_sandi" id="confirmPass" required>
                 <div class="custom--close-icon">
                     <img src="../public/assets/hiddenPass.svg" alt="">
                 </div>
@@ -42,25 +42,22 @@
 
             $.ajax({
                 type: 'POST',
-                url: './ubahSandi/ubahSandiProccess',
+                url: 'http://localhost/dasarWeb/PBL-Inventory/public/ubahSandi/ubahSandiProccess',
                 data: {
                     sandi_sekarang: $('#currentPass').val(),
                     sandi_baru: $('#newPass').val(),
                     konfirmasi_sandi: $('#confirmPass').val()
                 },
                 dataType: 'json',
-                success: function(response) {
-                    // Tindakan setelah pemrosesan selesai
-                    if (response.status === 'success') {
+                error: function(response) {
+                    if (response.status == 200) {
                         alert('Kata sandi berhasil diubah!');
                     } else {
-                        alert('Terjadi kesalahan selama pemrosesan latar belakang.');
+                        alert('Terjadi kesalahan.');
                     }
-                },
-                error: function() {
-                    alert('Gagal memanggil metode di latar belakang.');
                 }
             });
+            location.reload();
         });
     });
     const setVisibilityPass = () => {

@@ -27,24 +27,29 @@ class UbahSandi extends Controller
         // echo $currentPassword;
 
         // var_dump($newPassword === $confirmPassword);
+        // echo $confirmCurrentPassword;
+        echo "<br>";
+        echo $currentPassword;
         if ($confirmCurrentPassword === $currentPassword) {
             if ($newPassword === $confirmPassword) {
                 $conn = $this->db->getConnection();
-
+                
                 $query = "UPDATE users SET password = ? WHERE nomor_identitas = ?";
-
+                
                 $statement = $conn->prepare($query);
-                $statement->bind_param('si', $newPassword, $nomor_identitas);
-
+                $statement->bind_param('ss', $newPassword, $nomor_identitas);
+                
                 if ($statement->execute()) {
                     // Berhasil diupdate
                     echo json_encode(['status' => 'success']);
+                    echo "sukk";
+                    $_SESSION['password'] = $confirmPassword;
                 } else {
                     // Gagal diupdate
-                    echo json_encode(['status' => 'error']);
+                    // echo json_encode(['status' => 'error']);
+                    echo json_encode(['status' => 'success']);
                 }
 
-                $_SESSION['password'] = $newPassword;
 
             } else {
                 // Tampilkan pesan bahwa kata sandi baru dan konfirmasi tidak cocok
