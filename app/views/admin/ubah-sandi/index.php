@@ -1,30 +1,30 @@
-<div class="custom--ubah-sandi-container">
+<section class="custom--ubah-sandi-container">
     <div class="custom--header">
         <h1>Ubah Sandi</h1>
         <p>Pastikan konfirmasi sandi Anda dengan benar!</p>
     </div>
-    <form class="custom--body" action="">
+    <form class="custom--body" id="" action="./ubahSandi/ubahSandiProccess" method="post">
         <div class="custom--input-sandi-baru">
             <div class="custom--wrapper">
                 <label for="">Sandi Sekarang</label>
-                <input type="password" name="" id="currentPass">
+                <input type="password" name="sandi_sekarang" id="currentPass">
                 <div class="custom--close-icon">
-                    <img src="./public/assets/hiddenPass.svg" alt="">
+                    <img src="../public/assets/hiddenPass.svg" alt="">
                 </div>
             </div>
             <div class="custom--wrapper">
                 <label for="">Sandi baru</label>
-                <input type="password" name="" id="newPass">
+                <input type="password" name="sandi_baru" id="newPass">
                 <label for="">Sandi harus 8-12 karakter</label>
                 <div class="custom--close-icon">
-                    <img src="./public/assets/hiddenPass.svg" alt="">
+                    <img src="../public/assets/hiddenPass.svg" alt="">
                 </div>
             </div>
             <div class="custom--wrapper">
                 <label for="">Konfirmasi sandi</label>
-                <input type="password" name="" id="confirmPass">
+                <input type="password" name="konfirmasi_sandi" id="confirmPass">
                 <div class="custom--close-icon">
-                    <img src="./public/assets/hiddenPass.svg" alt="">
+                    <img src="../public/assets/hiddenPass.svg" alt="">
                 </div>
             </div>
         </div>
@@ -33,8 +33,36 @@
             <input class="active" type="submit" value="Simpan">
         </div>
     </form>
-</div>
+</section>
 <script>
+    $(document).ready(function() {
+        $('#ubahSandiForm').submit(function(e) {
+            e.preventDefault();
+            // Menggunakan AJAX untuk memanggil method di latar belakang
+
+            $.ajax({
+                type: 'POST',
+                url: './ubahSandi/ubahSandiProccess',
+                data: {
+                    sandi_sekarang: $('#currentPass').val(),
+                    sandi_baru: $('#newPass').val(),
+                    konfirmasi_sandi: $('#confirmPass').val()
+                },
+                dataType: 'json',
+                success: function(response) {
+                    // Tindakan setelah pemrosesan selesai
+                    if (response.status === 'success') {
+                        alert('Kata sandi berhasil diubah!');
+                    } else {
+                        alert('Terjadi kesalahan selama pemrosesan latar belakang.');
+                    }
+                },
+                error: function() {
+                    alert('Gagal memanggil metode di latar belakang.');
+                }
+            });
+        });
+    });
     const setVisibilityPass = () => {
         const currentPass = document.querySelector('#currentPass');
         const newPass = document.querySelector('#newPass');
@@ -56,7 +84,5 @@
         setVisibility(icons.newPass, newPass);
         setVisibility(icons.confirmPass, confirmPass);
     }
-
-
     setVisibilityPass();
 </script>
