@@ -90,7 +90,7 @@
             </ul>
             <ul class="list-menu">
                 <li>
-                    <a class="" href="http://localhost/dasarWeb/PBL-Inventory/public/keluar">
+                    <a class="" href="http://localhost/dasarWeb/PBL-Inventory/public/logout/processLogout">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="1">

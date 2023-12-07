@@ -16,10 +16,10 @@ class App
             $this->controller = $url[0];
             unset($url[0]);
         }
-
+        
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
-
+        
         // pengecekan method
         if (isset($url[1])) {
             if (method_exists($this->controller, $url[1])) {

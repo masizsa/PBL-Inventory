@@ -22,10 +22,10 @@
         </div>
         <div class="wrapper">
             <div class="username-wrapper">
-                <input id="username" type="text" name="nomor_identitas" placeholder="Masukkan nomor identitas">
+                <input id="username" type="text" name="nomor_identitas" placeholder="Masukkan nomor identitas" required>
             </div>
             <div class="password-wrapper">
-                <input id="password" type="password" name="password" placeholder="Masukkan password">
+                <input id="password" type="password" name="password" placeholder="Masukkan password" required>
                 <div id="passIcon">
                 </div>
             </div>

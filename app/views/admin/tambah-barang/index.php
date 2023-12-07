@@ -1,6 +1,6 @@
     <section class="custom--container-data-barang">
         <div class="custom--header-data-barang">
-            <h1>Selamat Datang, Nama Admin</h1>
+            <h1>Selamat Datang, <?= $data['nama']; ?></h1>
             <p>Berikut adalah barang inventaris JTI yang Anda kelola!</p>
         </div>
         <div class="custom--body-data-barang">
@@ -132,7 +132,7 @@
                         <th>Pemeliharaan</th>
                         <th>Aksi</th>
                     </tr>
-                    <?php foreach ($data as $item) : ?>
+                    <?php foreach ($data['barang'] as $item) : ?>
                         <tr>
                             <td><?= $item['id_barang']; ?></td>
                             <td><?= $item['nama_barang']; ?></td>
@@ -175,8 +175,8 @@
             </div>
         </div>
     </section>
-
-    <div class="custom--container-add-item">
+    
+    <section class="custom--container-add-item">
         <div class="custom--add-item" id="add-item">
             <div class="custom--content">
                 <header>
@@ -320,7 +320,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
         const sectionPopUp = document.querySelector('.custom--container-add-item')
