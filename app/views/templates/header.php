@@ -13,10 +13,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- local css -->
-    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/style.css">
-    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/login.css">
-    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/sidebar.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/aksiAdmin.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/barang-dipinjam.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/form.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/login.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/pilih-barang.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/riwayat-admin.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/riwayat.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/sidebar.css">
+    <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/style.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/tambah-barang.css">
     <link rel="stylesheet" href="http://localhost/dasarWeb/PBL-Inventory/public/css/ubahSandi.css">
 

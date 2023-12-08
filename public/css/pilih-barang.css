@@ -23,6 +23,7 @@ html {
 }
 
 .custom--pilih-barang-main-container {
+    padding-left: 37.5rem;
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -83,7 +84,7 @@ html {
     cursor: pointer;
 }
 
-.custom--list-barang-dipilih-header button.active{
+.custom--list-barang-dipilih-header button.active {
     background-color: var(---header-table-color);
     color: #000;
 }
@@ -179,7 +180,6 @@ html {
     overflow: hidden;
 }
 
-
 .custom--table-pilih-barang th {
     text-align: start;
     background-color: var(---header-table-color);
@@ -192,6 +192,11 @@ html {
     padding: 2rem 2.4rem;
     background-color: #fff;
     border-bottom: 1px solid #E7E7E7;
+}
+
+.custom--table-pilih-barang td button {
+    color: #000;
+    cursor: pointer;
 }
 
 .custom--table-pilih-barang .custom--container-tambah-barang {
