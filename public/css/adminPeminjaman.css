@@ -5,20 +5,25 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     font-size: 10px;
-    font-family: 'poppins', sans-serif;    
+    font-family: 'poppins', sans-serif;
     background-color: #F6F6F6;
 }
+
 .custom--container {
+    padding-left: 37.5rem;
     display: flex;
     width: 100%;
 }
+
 .custom--content {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
+
 .custom--content header {
     display: flex;
     justify-content: space-between;
@@ -29,14 +34,17 @@ html {
     width: 100%;
     padding: 1.6rem 4rem;
 }
+
 header h1 {
     font-weight: 600;
     font-size: 3.2rem;
 }
+
 header p {
     font-weight: 400;
     font-size: 1.6rem;
 }
+
 .custom--body {
     flex: 1;
     display: flex;
@@ -44,12 +52,14 @@ header p {
     padding: 4rem;
     gap: 4rem;
 }
+
 .custom--body .custom--filter {
     height: 5.3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .custom--body .custom--filter .custom--day-wrapper {
     height: 100%;
     width: 29.3rem;
@@ -60,6 +70,7 @@ header p {
     border: 1px solid #1212121A;
     border-radius: 1rem;
 }
+
 .custom--body .custom--filter .custom--day-wrapper button {
     flex-grow: 1;
     font-size: 14px;
@@ -69,15 +80,18 @@ header p {
     outline: none;
     background-color: transparent;
 }
+
 .custom--body .custom--filter .custom--day-wrapper .active {
     border: 1px solid #FCD106;
     background-color: #FBF4CF;
 }
+
 .custom--search {
     position: relative;
     height: 100%;
     width: 35.5rem;
 }
+
 .custom--search input[type="text"] {
     height: 100%;
     width: 100%;
@@ -89,6 +103,7 @@ header p {
     color: #121212;
     border: 1px solid #1212121A;
 }
+
 .custom--search .custom--search-icon {
     position: absolute;
     right: 3rem;
@@ -99,43 +114,51 @@ header p {
 #table-pengembalian {
     display: none;
 }
+
 .custom--body .custom--table-info {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
 }
-.custom--body .custom--table-info h2{
+
+.custom--body .custom--table-info h2 {
     font-size: 2rem;
     font-weight: 500;
 }
+
 .custom--body .custom--table-info .custom--table-wrapper table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed;
 }
+
 .custom--table-info .custom--table-wrapper th,
 .custom--table-info .custom--table-wrapper td {
     border: 0.1rem solid #1212121A;
     text-align: left;
     padding: 1.2rem;
 }
+
 .custom--table-info .custom--table-wrapper th {
     background-color: #FCD106;
     border-color: #FCD106;
     font-size: 1.2rem;
     font-weight: 500;
 }
+
 .custom--table-info .custom--table-wrapper td {
-    font-size: 1.6rem; 
-    font-weight: 400; 
+    font-size: 1.6rem;
+    font-weight: 400;
     border-top: none;
     height: 6.2rem;
     vertical-align: middle !important;
 }
+
 #table-peminjaman .custom--table-wrapper td:not(:last-child) {
     border-right: none;
 }
+
 .custom--first-child {
     /* background-color: red; */
     border-right: 1px solid #1212121A !important;
@@ -144,21 +167,26 @@ header p {
 #table-pengembalian .custom--table-wrapper td:not(:last-child) {
     border-right: none;
 }
+
 #table-pengembalian tbody td:nth-child(5) {
     vertical-align: top;
 }
+
 .custom--table-info .custom--table-wrapper td:not(:first-child) {
     border-left: none;
 }
+
 .custom--table-info .custom--table-wrapper table th:first-child,
 .custom--table-info .custom--table-wrapper table td:first-child {
     padding-left: 2.4rem;
 }
+
 .custom--table-info .custom--table-wrapper table th:last-child,
 .custom--table-info .custom--table-wrapper table td:last-child {
     padding-right: 1.2rem;
     vertical-align: top;
 }
+
 .custom--table-info .custom--table-wrapper table td ul li {
     list-style-type: none;
 }
@@ -167,9 +195,11 @@ header p {
 .custom--table-info .custom--table-wrapper tr:first-child th:first-child {
     border-top-left-radius: 1rem;
 }
+
 .custom--table-info .custom--table-wrapper tr:first-child th:last-child {
     border-top-right-radius: 1rem;
 }
+
 .custom--table-info .custom--table-wrapper tr:last-child td:first-child {
     border-bottom-left-radius: 1rem;
 }
@@ -181,10 +211,12 @@ header p {
     cursor: pointer;
     background-color: transparent;
 }
+
 .custom--table-info .custom--table-wrapper .custom--aksi {
     display: flex;
     gap: 2rem;
 }
+
 .custom--table-info .custom--table-wrapper .custom--aksi .button-confirm {
     height: 4rem;
     border-radius: 100rem;
@@ -193,6 +225,7 @@ header p {
     font-weight: 500;
     padding: 0 1.8rem;
 }
+
 .custom--status-value {
     display: flex;
     width: 10.2rem;
@@ -203,16 +236,19 @@ header p {
     font-size: 1.4rem;
     font-weight: 600;
 }
+
 #status-dipinjam {
     border: 0.1rem solid #FCD106;
     background: rgba(252, 209, 6, 0.20);
     color: #FCD106;
 }
+
 #status-validasi {
     border: 0.1rem solid #00A9D8;
     background: rgba(0, 169, 216, 0.20);
     color: #00A9D8;
 }
+
 #status-terlambat {
     border: 0.1rem solid #EE0B0B;
     background: rgba(238, 11, 11, 0.20);
@@ -226,6 +262,7 @@ header p {
     align-items: center;
     height: 100vh;
 }
+
 .custom--content-popup {
     position: relative;
     display: flex;
@@ -238,30 +275,38 @@ header p {
     border: 1px solid #C6C6C6;
     background-color: #ffffff;
 }
+
 .custom--content-popup label {
     font-size: 14px;
     font-weight: 600;
 }
+
 .custom--content-popup .custom--row {
     display: flex;
     gap: 1.6rem;
 }
-.custom--content-popup .custom--row .custom--row-info, .custom--desc {
+
+.custom--content-popup .custom--row .custom--row-info,
+.custom--desc {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
     gap: 0.8rem;
 }
-.custom--content-popup .custom--row .custom--row-info input, .custom--desc textarea {
+
+.custom--content-popup .custom--row .custom--row-info input,
+.custom--desc textarea {
     border-radius: 1rem;
     padding: 1.3rem;
     background-color: #ffffff;
     border: 1px solid #C6C6C6;
 }
+
 .custom--desc textarea {
     resize: none;
     height: 10rem;
 }
+
 .popup-container {
     display: none;
     position: fixed;
@@ -271,6 +316,7 @@ header p {
     width: 100%;
     background-color: #12121290
 }
+
 .custom--popup-close {
     position: absolute;
     height: 2.5rem;

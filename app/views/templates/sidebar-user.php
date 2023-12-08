@@ -146,7 +146,7 @@
                     case 'barangDipinjam':
                         sidebarMenu[1].classList.add('active-menu');
                         break;
-                    case 'riwayat':
+                    case 'riwayatUser':
                         sidebarMenu[2].classList.add('active-menu');
                         break;
                     case 'ubahSandi':

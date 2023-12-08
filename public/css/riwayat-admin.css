@@ -16,7 +16,9 @@ html {
 
 .custom--riwayat-container {
     min-height: 100vh;
+    width: 100%;
     display: flex;
+    padding-left: 37.5rem;
     flex-direction: column;
 }
 
@@ -49,14 +51,16 @@ html {
     height: 5.5rem;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
 }
-.custom--body .custom--filter .custom--left{
+
+.custom--body .custom--filter .custom--left {
     height: 5.5rem;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
 }
+
 .custom--body .custom--filter .custom--left .custom--day-wrapper {
     height: 100%;
     width: 36.5rem;
@@ -66,32 +70,35 @@ html {
     background-color: white;
     border-radius: 1rem;
 }
+
 .custom--body .custom--filter .custom--left .custom--sort-wrapper {
     height: 100%;
     width: 11rem;
     padding: 4px 4px 4px 4px;
-    display:inline;
+    display: inline;
     background-color: #ffffff;
     border-radius: 1rem;
     margin-left: 1.2rem;
 }
-.custom--body .custom--filter .custom--left .custom--sort-wrapper .icon-sort{
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .icon-sort {
     width: 2rem;
     display: flexbox;
 }
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li button span{
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li button span {
     font-size: 14px;
     font-weight: 400;
     float: right;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li{
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li {
     list-style: none;
     background-color: #ffffff;
 }
 
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li button{
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li button {
     border: none;
     flex-direction: column;
     background-color: #fff;
@@ -102,51 +109,53 @@ html {
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper ul {
     list-style: none;
-  }
-  
-  .custom--body .custom--filter .custom--left .custom--sort-wrapper ul li {
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper ul li {
     font-size: 14px;
-  }
-  
-  .custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown li a {
-     display: block;
-     text-decoration: none;
-  }
-  
-  .custom--body .custom--filter .custom--left .custom--sort-wrapper ul li a, ul li button {
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown li a {
+    display: block;
+    text-decoration: none;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper ul li a,
+ul li button {
     padding: 0.7rem 1rem;
     text-align: left;
     color: inherit;
-  }
-  
-  .custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
-    height: 0; 
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
+    height: 0;
     overflow: hidden;
     transition: height ease 0.2s;
     /* width: 2rem; */
-  }
+}
 
-  .custom--body .custom--filter .custom--left .custom--sort-wrapper li:focus-within .dropdown {
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li:focus-within .dropdown {
     height: 7.5rem;
-    width: 18rem; 
+    width: 18rem;
     border-radius: 1rem;
-  }
-  
-  /* MEDIA QUERIES  */
-  @media (min-width: 640px) {
-    .dropdown { 
-        position:fixed;
-      /* position: absolute; */
-      /* width: 17.6rem; */
-      top: 21.8rem;
-      left: 42rem;
-      padding-top: 100000rem;
-      /* z-index: 10; */
-      /* min-width: 10rem; */
-      padding: 0;
-      border-radius: 0.5rem 0.5rem 0.5rem; 
+}
+
+/* MEDIA QUERIES  */
+@media (min-width: 640px) {
+    .dropdown {
+        position: fixed;
+        /* position: absolute; */
+        /* width: 17.6rem; */
+        top: 21.8rem;
+        left: 42rem;
+        padding-top: 100000rem;
+        /* z-index: 10; */
+        /* min-width: 10rem; */
+        padding: 0;
+        border-radius: 0.5rem 0.5rem 0.5rem;
     }
-  }
+}
+
 .custom--body .custom--filter .custom--day-wrapper button {
     flex-grow: 1;
     font-size: 14px;
