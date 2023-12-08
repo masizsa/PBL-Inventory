@@ -10,8 +10,13 @@ class UbahSandi extends Controller
     public function index()
     {
         $this->view("templates/header");
-        $this->view("templates/sidebar-admin");
-        $this->view("admin/ubah-sandi/index");
+        if (isset($_SESSION["isAdmin"])) {
+            $this->view("templates/sidebar-admin");
+            $this->view("admin/ubah-sandi/index");
+        } else {
+            $this->view("templates/sidebar-user");
+            $this->view("user/ubah-sandi/index");
+        }
         $this->view("templates/footer");
     }
 
@@ -33,12 +38,12 @@ class UbahSandi extends Controller
         if ($confirmCurrentPassword === $currentPassword) {
             if ($newPassword === $confirmPassword) {
                 $conn = $this->db->getConnection();
-                
+
                 $query = "UPDATE users SET password = ? WHERE nomor_identitas = ?";
-                
+
                 $statement = $conn->prepare($query);
                 $statement->bind_param('ss', $newPassword, $nomor_identitas);
-                
+
                 if ($statement->execute()) {
                     // Berhasil diupdate
                     echo json_encode(['status' => 'success']);
@@ -49,8 +54,6 @@ class UbahSandi extends Controller
                     // echo json_encode(['status' => 'error']);
                     echo json_encode(['status' => 'success']);
                 }
-
-
             } else {
                 // Tampilkan pesan bahwa kata sandi baru dan konfirmasi tidak cocok
                 echo json_encode(['status' => 'password_mismatch']);
@@ -58,6 +61,5 @@ class UbahSandi extends Controller
         } else {
             echo json_encode(['status' => 'error']);
         }
-
     }
 }

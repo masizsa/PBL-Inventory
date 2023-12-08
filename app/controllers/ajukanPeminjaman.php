@@ -1,10 +1,10 @@
 <?php
-class PilihBarang extends Controller
+class AjukanPeminjaman extends Controller
 {
     public function index()
     {
         $this->view("templates/header");
-        $this->view("templates/sidebar-admin");
+        $this->view("templates/sidebar-user");
         $this->view("user/pilih-barang/index");
         $this->view("templates/footer");
     }
