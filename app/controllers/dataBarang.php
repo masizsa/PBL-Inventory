@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-class TambahBarang extends Controller
+class DataBarang extends Controller
 {
     public $db;
     public function __construct()
@@ -10,12 +10,12 @@ class TambahBarang extends Controller
     }
     public function index()
     {
-        $data = array();
-        $data['nama'] = $this->getNamaAdmin();
-        $data['barang'] = $this->getDataBarang();
+        // $data = array();
+        // $data['nama'] = $this->getNamaAdmin();
+        // $data['barang'] = $this->getDataBarang();
         $this->view("templates/header");
         $this->view("templates/sidebar-admin");
-        $this->view("admin/tambah-barang/index", $data);
+        $this->view("admin/data-barang/index");
         $this->view("templates/footer");
     }
 

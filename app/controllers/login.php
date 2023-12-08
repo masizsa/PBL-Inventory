@@ -48,7 +48,7 @@ class Login extends Controller
                 if ($row["status"] == "Admin") {
                     // Redirect ke halaman admin jika berhasil login
                     $_SESSION["isAdmin"] = true;
-                    header("Location: ../tambahBarang");
+                    header("Location: ../dataBarang");
                     exit();
                 } else {
                     // Redirect ke halaman user jika berhasil login
