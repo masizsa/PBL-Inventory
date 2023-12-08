@@ -33,9 +33,9 @@ class App
         }
         // menjalankan method pada controller serta mengirimkan parameter jika ada
 
-        // call_user_func_array([$this->controller, $this->method], $this->params);
-        var_dump($this->controller);
-        var_dump($url);
+        call_user_func_array([$this->controller, $this->method], $this->params);
+        // var_dump($this->controller);
+        // var_dump($url);
  
     }
     public function parseUrl()
