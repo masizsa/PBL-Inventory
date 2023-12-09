@@ -1,6 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+    // session_start();
 }
 
 class App
@@ -14,7 +14,7 @@ class App
         $url = $this->parseUrl();
 
         // Cek apakah pengguna sudah login
-        if ($_SESSION['isLogin']) {
+        if (isset($_SESSION['isLogin'])) {
             // Pengguna sudah login, izinkan akses ke semua controller
             if (!empty($url)) {
                 if (file_exists('../app/controllers/' . $url[0] . '.php')) {
@@ -45,7 +45,7 @@ class App
                 unset($url[1]);
             }
 
-            $this->params = array_values($url);
+            $this->params = array_values($url);  
             call_user_func_array([$this->controller, $this->method], $this->params);
         }
     }
@@ -56,6 +56,9 @@ class App
             $url = rtrim($_GET["url"], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             return explode('/', $url);
+        } else {
+            return [];
         }
     }
+    
 }
