@@ -17,7 +17,7 @@ class Logout extends Controller
     {
         
         session_destroy();
-        header("Location: http://localhost/dasarWeb/PBL-Inventory/public/login");
+        header("Location: /PBL-Inventory/public/login");
     }
 }
 

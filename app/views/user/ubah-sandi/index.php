@@ -41,7 +41,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost/dasarWeb/PBL-Inventory/public/ubahSandi/ubahSandiProccess',
+                url: './ubahSandi/ubahSandiProccess',
                 data: {
                     sandi_sekarang: $('#currentPass').val(),
                     sandi_baru: $('#newPass').val(),

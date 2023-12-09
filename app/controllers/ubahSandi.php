@@ -29,10 +29,10 @@ class UbahSandi extends Controller
         $newPassword = md5($_POST['sandi_baru']);
         $confirmPassword = md5($_POST['konfirmasi_sandi']);
 
-        // echo $currentPassword;
+        echo $currentPassword;
 
-        // var_dump($newPassword === $confirmPassword);
-        // echo $confirmCurrentPassword;
+        var_dump($newPassword === $confirmPassword);
+        echo $confirmCurrentPassword;
         echo "<br>";
         echo $currentPassword;
         if ($confirmCurrentPassword === $currentPassword) {

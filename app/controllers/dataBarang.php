@@ -10,12 +10,12 @@ class DataBarang extends Controller
     }
     public function index()
     {
-        // $data = array();
-        // $data['nama'] = $this->getNamaAdmin();
-        // $data['barang'] = $this->getDataBarang();
+        $data = array();
+        $data['nama'] = $this->getNamaAdmin();
+        $data['barang'] = $this->getDataBarang();
         $this->view("templates/header");
         $this->view("templates/sidebar-admin");
-        $this->view("admin/data-barang/index");
+        $this->view("admin/data-barang/index", $data);
         $this->view("templates/footer");
     }
 
@@ -54,7 +54,7 @@ class DataBarang extends Controller
     public function getDataBarang()
     {
         $conn = $this->db->getConnection();
-        $query = "SELECT id_barang, nama_barang, jumlah_tersedia, kondisi_barang, asal FROM barang";
+        $query = "SELECT id_barang, nama_barang, id_admin, jumlah_tersedia, jumlah_dipinjam,jml_pemeliharaan,kondisi_barang, asal FROM barang";
         $result_set = $conn->query($query);
 
         $result = [];
