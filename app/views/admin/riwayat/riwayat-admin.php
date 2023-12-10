@@ -52,7 +52,7 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
-                    foreach ($data as $row) { ?>
+                    foreach ($data['datas'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>
                             <td><?= $row['tgl_pengembalian'] ?></td>

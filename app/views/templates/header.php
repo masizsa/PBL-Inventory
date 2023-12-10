@@ -13,18 +13,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- local css -->
-    <link rel="stylesheet" href="../public/css/aksiAdmin.css">
-    <link rel="stylesheet" href="../public/css/barang-dipinjam.css">
-    <link rel="stylesheet" href="../public/css/form.css">
-    <link rel="stylesheet" href="../public/css/login.css">
-    <link rel="stylesheet" href="../public/css/pilih-barang.css">
-    <link rel="stylesheet" href="../public/css/riwayat-admin.css">
-    <link rel="stylesheet" href="../public/css/riwayat.css">
+
+    <link rel="stylesheet" href="../public/css/<?= $data['css'] ?>.css">
     <link rel="stylesheet" href="../public/css/sidebar.css">
     <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/tambah-barang.css">
-    <link rel="stylesheet" href="../public/css/ubahSandi.css">
-    <link rel="stylesheet" href="../public/css/adminPeminjaman.css">
+
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
