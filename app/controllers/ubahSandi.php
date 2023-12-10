@@ -1,5 +1,4 @@
 <?php
-session_start();
 class UbahSandi extends Controller
 {
     private $db;

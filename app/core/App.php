@@ -10,9 +10,17 @@ class App
 
     public function __construct()
     {
-    session_start();
+        session_start();
 
         $url = $this->parseUrl();
+
+        if (empty($url[0])) {
+            // Default to the login controller
+            require_once '../app/controllers/login.php';
+            $this->controller = new login();
+            $this->controller->index();
+            return;
+        }
 
         // Cek apakah pengguna sudah login
         if (isset($_SESSION['isLogin'])) {
