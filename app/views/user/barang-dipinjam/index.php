@@ -11,7 +11,7 @@
 
 <body>
     <div class="custom--container">
-        <?php include("../../layouts/sidebar.php"); ?>
+        <!--  -->
 
         <div class="custom--content">
             <header>
@@ -19,7 +19,7 @@
                     <h1>Data Barang Dipinjam</h1>
                     <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
                 </section>
-            
+
                 <section class="custom--countdown">
                     <p class="countdown-text">Waktu pengembalian</p>
                     <div class="custom--container-countdown">
@@ -41,7 +41,7 @@
                             <p class="return-date" id="minutes"></p>
                             <p class="countdown-label">Menit</p>
                         </div>
-                        
+
                         <div class="vertical-line">
 
                         </div>
@@ -52,27 +52,29 @@
                     </div>
                 </section>
             </header>
-    
+
             <main>
+
                 <section class="custom--borrowed-one">
-                    <p class="custom--subheader-borrowed">Peminjaman - 1</p>
-                    
-                    <div class="custom--container-borrowed-items">
-                        <div class="custom--borrowed-info">
-                            <div class="custom--start-date">
-                                <p class="info-label">Mulai pinjam</p>
-                                <input type="text" name="start_date" class="borrow-date" id="start-date" value="<?php echo $formattedDate; ?>" size="35" disabled>
-                            </div>
-                            <div class="custom--end-date">
-                                <p class="info-label">Selesai pinjam</p>
-                                <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $formattedEndDate; ?>" size="35" disabled>
-                            </div>
-                            
-                            <div class="custom--status">
-                                <p class="info-label">Status</p>
-                                <div class="custom--status-value" id="status-dipinjam">
-                                    <p>Dipinjam</p>
+                    <?php foreach ($data['barang'] as $item) : ?>
+                        <p class="custom--subheader-borrowed">Peminjaman - 1</p>
+                        <div class="custom--container-borrowed-items">
+                            <div class="custom--borrowed-info">
+                                <div class="custom--start-date">
+                                    <p class="info-label">Mulai pinjam</p>
+                                    <input type="text" name="start_date" class="borrow-date" id="start-date" value="<?php $data['tgl_peminjaman'][0] ?>" size="35">
                                 </div>
+                                <div class="custom--end-date">
+                                    <p class="info-label">Selesai pinjam</p>
+                                    <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $formattedEndDate; ?>" size="35" disabled>
+                                </div>
+
+                                <div class="custom--status">
+                                    <p class="info-label">Status</p>
+                                    <div class="custom--status-value" id="status-dipinjam">
+                                        <p>Dipinjam</p>
+                                    </div>
+                                <?php endforeach; ?>
 
                                 <!-- <div class="custom--status-value" id="status-validasi">
                                     <p>Validasi</p>
@@ -81,36 +83,34 @@
                                 <div class="custom--status-value" id="status-terlambat">
                                     <p>Terlambat</p>
                                 </div>     -->
+                                </div>
+                            </div>
+
+                            <div class="custom--item-info">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Kode</th>
+                                            <th>Nama Barang</th>
+                                            <th>Nama Pengelola</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($data['barang'] as $item) : ?>
+                                            <tr>
+                                                <td><?= $item['id_barang']; ?></td>
+                                                <td><?= $item['nama_barang']; ?></td>
+                                                <td><?= $item['nama_admin']; ?></td>
+
+                                                <td><?= $item['jumlah']; ?></td>
+                                                <td>
+                                    </tbody>
+                                <?php endforeach; ?>
+
+                                </table>
                             </div>
                         </div>
-
-                        <div class="custom--item-info">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Kode</th>
-                                        <th>Nama Barang</th>
-                                        <th>Nama Pengelola</th>
-                                        <th>Jumlah</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>RMT01</td>
-                                        <td>Remote Ac</td>
-                                        <td>Pak Wardi</td>
-                                        <td>9</td>
-                                    </tr>
-                                    <tr>
-                                        <td>RMT01</td>
-                                        <td>Remote Ac</td>
-                                        <td>Pak Wardi</td>
-                                        <td>9</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
 
                 </section>
 
@@ -126,39 +126,41 @@
     </div>
 
     <script src="../../layouts/sidebar.js"></script>
-        <script>
-            function updateCountdown(endDate) {
-                const now = new Date();
-                const endDateTime = new Date(endDate);
-                const timeDifference = endDateTime - now;
+    <script>
+        function updateCountdown(endDate) {
+            const now = new Date();
+            const endDateTime = new Date(endDate);
+            const timeDifference = endDateTime - now;
 
-                if (timeDifference <= 0) {
-                    // If expired
-                    document.getElementById('return-date').innerHTML = 'Expired';
-                } else {
-                    // Calculate days, hours, minutes
-                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                    const monthLabel = endDateTime.toLocaleString('id-ID', { month: 'short' });
+            if (timeDifference <= 0) {
+                // If expired
+                document.getElementById('return-date').innerHTML = 'Expired';
+            } else {
+                // Calculate days, hours, minutes
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const monthLabel = endDateTime.toLocaleString('id-ID', {
+                    month: 'short'
+                });
 
-                    document.getElementById('days').innerHTML = days;
-                    document.getElementById('hours').innerHTML = hours;
-                    document.getElementById('minutes').innerHTML = minutes;
-                    document.getElementById('month-label').innerHTML = monthLabel;
-                    document.getElementById('month').innerHTML = endDateTime.getDate();
-                }
+                document.getElementById('days').innerHTML = days;
+                document.getElementById('hours').innerHTML = hours;
+                document.getElementById('minutes').innerHTML = minutes;
+                document.getElementById('month-label').innerHTML = monthLabel;
+                document.getElementById('month').innerHTML = endDateTime.getDate();
             }
-            // BACKEND BRO
-            // Retrieve the date from the db 
-            // const returnDateFromDatabase = "<?php echo $formattedReturnDate; ?>";
+        }
+        // BACKEND BRO
+        // Retrieve the date from the db 
+        // const returnDateFromDatabase = "<?php echo $formattedReturnDate; ?>";
 
-            // Call the updateCountdown w/ the retrieved return date
+        // Call the updateCountdown w/ the retrieved return date
+        updateCountdown(returnDateFromDatabase);
+        setInterval(() => {
             updateCountdown(returnDateFromDatabase);
-            setInterval(() => {
-                updateCountdown(returnDateFromDatabase);
-            }, 1000);
-        </script>
+        }, 1000);
+    </script>
 </body>
 
 </html>
