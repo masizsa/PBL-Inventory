@@ -253,11 +253,13 @@
     border-color: #FCD106;
     font-size: 1.2rem;
     font-weight: 500;
+    height: 5.2rem;
 }
 
 .custom--item-info-dipinjam td {
     font-size: 1.6rem; 
     font-weight: 400; 
+    height: 6.2rem;
 }
 
 .custom--item-info-dipinjam td {
