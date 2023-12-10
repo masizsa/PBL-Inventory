@@ -53,7 +53,7 @@
                             <p class="info-label">Selesai pinjam</p>
                             <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $formattedEndDate; ?>" size="35" disabled>
                         </div>
-                        
+
                         <div class="custom--status-dipinjam">
                             <p class="info-label">Status</p>
                             <!-- <div class="custom--status-value-dipinjam" id="status-dipinjam">
@@ -67,8 +67,8 @@
                             <!-- <div class="custom--status-value-dipinjam" id="status-terlambat">
                                 <p>Terlambat</p>
                             </div>    -->
+
                         </div>
-                    </div>
 
                     <div class="custom--item-info-dipinjam">
                         <table>
