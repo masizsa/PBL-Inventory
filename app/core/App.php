@@ -1,6 +1,5 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    // session_start();
 }
 
 class App
@@ -11,6 +10,8 @@ class App
 
     public function __construct()
     {
+    session_start();
+
         $url = $this->parseUrl();
 
         // Cek apakah pengguna sudah login

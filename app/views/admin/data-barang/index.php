@@ -1,4 +1,4 @@
-    <section class="custom--container-data-barang">
+<section class="custom--container-data-barang">
         <div class="custom--header-data-barang">
             <h1>Selamat Datang, <?= $data['nama']; ?></h1>
             <p>Berikut adalah barang inventaris JTI yang Anda kelola!</p>
@@ -139,7 +139,7 @@
                             <td>asuu</td>
                             <td><?= $item['jumlah_tersedia']; ?></td>
 
-                            <td><?= $item['jumlah_pemeliharaan']; ?></td>
+                            <td><?= $item['jml_pemeliharaan']; ?></td>
                             <td>
                                 <div class="custom--icon-aksi">
                                     <div id="editIcon">
