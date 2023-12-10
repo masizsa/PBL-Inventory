@@ -9,8 +9,7 @@ class RiwayatUser extends Controller
     }
     public function index()
     {
-        $data = array();
-        $data = $this->getData();
+        $data['datas'] = $this->getData();
         $data['css'] = 'riwayat';
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");

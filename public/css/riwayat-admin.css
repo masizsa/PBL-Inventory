@@ -1,241 +1,257 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 html {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 :root {
-    ---background-color-body: #F6F6F6;
-    ---header-table-color: #FCD106;
+  ---background-color-body: #f6f6f6;
+  ---header-table-color: #fcd106;
 }
 
 .custom--riwayat-container {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    padding-left: 37.5rem;
-    flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  /* padding-left: 37.5rem; */
+  flex-direction: column;
 }
 
 .custom--header {
-    height: 11.6rem;
-    padding: 1.6rem 4rem;
+  height: 11.6rem;
+  padding: 1.6rem 4rem;
 }
 
-.custom--header>h1 {
-    margin-bottom: 1.2rem;
-    font-size: 3.2rem;
-    font-weight: 600;
+.custom--header > h1 {
+  margin-bottom: 1.2rem;
+  font-size: 3.2rem;
+  font-weight: 600;
 }
 
-.custom--header>p {
-    font-size: 1.6rem;
+.custom--header > p {
+  font-size: 1.6rem;
 }
 
 .custom--body {
-    padding: 4rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 4rem;
-    gap: 4rem;
-    background-color: var(---background-color-body);
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  gap: 4rem;
+  background-color: var(---background-color-body);
 }
 
-.custom--body>.custom--filter {
-    height: 5.5rem;
-    display: flex;
-    align-items: center;
-    justify-content:end;
+.custom--body > .custom--filter {
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 .custom--body .custom--filter .custom--left {
-    height: 5.5rem;
-    display: flex;
-    align-items: center;
-    margin-right: 1.2rem;
-    /* justify-content: space-between; */
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+  margin-right: 1.2rem;
+  /* justify-content: space-between; */
 }
 
 .custom--body .custom--filter .custom--left .custom--day-wrapper {
-    height: 100%;
-    width: 36.5rem;
-    padding: 8px 12px;
-    display: flex;
-    gap: 12px;
-    background-color: white;
-    border-radius: 1rem;
+  height: 100%;
+  width: 36.5rem;
+  padding: 8px 12px;
+  display: flex;
+  gap: 12px;
+  background-color: white;
+  border-radius: 1rem;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper {
-    height: 100%;
-    width: 11rem;
-    padding: 4px 4px 4px 4px;
-    display: inline;
-    background-color: #ffffff;
-    border-radius: 1rem;
-    margin-left: 1.2rem;
+  height: 100%;
+  width: 11rem;
+  padding: 4px 4px 4px 4px;
+  display: inline;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  margin-left: 1.2rem;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper .icon-sort {
-    width: 2rem;
-    display: flexbox;
+  width: 2rem;
+  display: flexbox;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li button span {
-    font-size: 14px;
-    font-weight: 400;
-    float: right;
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  li
+  button
+  span {
+  font-size: 14px;
+  font-weight: 400;
+  float: right;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper li {
-    list-style: none;
-    background-color: #ffffff;
+  list-style: none;
+  background-color: #ffffff;
 }
 
-
 .custom--body .custom--filter .custom--left .custom--sort-wrapper li button {
-    border: none;
-    flex-direction: column;
-    background-color: #fff;
-    margin-top: 1.3rem;
-    margin-left: 1.3rem;
-    width: 8rem;
+  border: none;
+  flex-direction: column;
+  background-color: #fff;
+  margin-top: 1.3rem;
+  margin-left: 1.3rem;
+  width: 8rem;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper ul {
-    list-style: none;
+  list-style: none;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper ul li {
-    font-size: 14px;
+  font-size: 14px;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown li a {
-    display: block;
-    text-decoration: none;
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  .dropdown
+  li
+  a {
+  display: block;
+  text-decoration: none;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper ul li a,
 ul li button {
-    padding: 0.7rem 1rem;
-    text-align: left;
-    color: inherit;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  color: inherit;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
-    height: 0;
-    overflow: hidden;
-    transition: height ease 0.2s;
-    /* width: 2rem; */
+  height: 0;
+  overflow: hidden;
+  transition: height ease 0.2s;
+  /* width: 2rem; */
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li:focus-within .dropdown {
-    height: 7.5rem;
-    width: 18rem;
-    border-radius: 1rem;
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  li:focus-within
+  .dropdown {
+  height: 7.5rem;
+  width: 18rem;
+  border-radius: 1rem;
 }
 
 /* MEDIA QUERIES  */
 @media (min-width: 640px) {
-    .dropdown {
-        position: fixed;
-        justify-content: end;
-        /* position: absolute; */
-        /* width: 17.6rem; */
-        top: 21.8rem;
-        /* left: 120rem; */
-        /* padding-top: 100000rem; */
-        /* z-index: 10; */
-        /* min-width: 10rem; */
-        padding: 0;
-        border-radius: 0.5rem 0.5rem 0.5rem;
-    }
+  .dropdown {
+    position: fixed;
+    justify-content: end;
+    /* position: absolute; */
+    /* width: 17.6rem; */
+    top: 21.8rem;
+    /* left: 120rem; */
+    /* padding-top: 100000rem; */
+    /* z-index: 10; */
+    /* min-width: 10rem; */
+    padding: 0;
+    border-radius: 0.5rem 0.5rem 0.5rem;
+  }
 }
 
 .custom--body .custom--filter .custom--day-wrapper button {
-    flex-grow: 1;
-    font-size: 14px;
-    border-radius: 1rem;
-    cursor: pointer;
-    border: none;
-    outline: none;
+  flex-grow: 1;
+  font-size: 14px;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .custom--body .custom--filter .custom--day-wrapper .active {
-    border: 1px solid #FCD106;
-    background-color: #FBF4CF;
+  border: 1px solid #fcd106;
+  background-color: #fbf4cf;
 }
 
 .custom--search {
-    position: relative;
-    height: 100%;
-    width: 35.5rem;
+  position: relative;
+  height: 100%;
+  width: 35.5rem;
 }
 
 .custom--search input[type="text"] {
-    height: 100%;
-    width: 100%;
-    padding: 0 2.8rem;
-    font-size: 1.6rem;
-    border-radius: 100rem;
-    border: none;
-    outline: none;
-    color: #121212;
+  height: 100%;
+  width: 100%;
+  padding: 0 2.8rem;
+  font-size: 1.6rem;
+  border-radius: 100rem;
+  border: none;
+  outline: none;
+  color: #121212;
 }
 
 .custom--search .custom--search-icon {
-    position: absolute;
-    right: 3rem;
-    top: 25%;
+  position: absolute;
+  right: 3rem;
+  top: 25%;
 }
 
 .custom--body .custom--table-wrapper {
-    flex: 1;
-    padding: 0 6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-    /* background-color: red; */
+  flex: 1;
+  padding: 0 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  /* background-color: red; */
 }
 
 .custom--body .custom--table-wrapper .custom--card {
-    height: 97.5rem;
-    height: 27rem;
-    border-radius: 1rem;
-    padding: 2.4rem;
-    /* background-color: #ffffff; */
-    display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
-    /* background-color: blue; */
+  height: 97.5rem;
+  height: 27rem;
+  border-radius: 1rem;
+  padding: 2.4rem;
+  /* background-color: #ffffff; */
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  /* background-color: blue; */
 }
 
 .custom--body .custom--table-wrapper .custom--card h4 {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .custom--body .custom--table-wrapper .custom--card table {
-    border-radius: 1rem;
-    border-collapse: collapse;
-    overflow: hidden;
-    background-color: white;
+  border-radius: 1rem;
+  border-collapse: collapse;
+  overflow: hidden;
+  background-color: white;
 }
 
 .custom--body .custom--table-wrapper .custom--card table th {
-    text-align: start;
-    border: none;
-    background-color: var(---header-table-color);
+  text-align: start;
+  border: none;
+  background-color: var(---header-table-color);
 }
 
 .custom--body .custom--table-wrapper .custom--card table th,
 td {
-    height: 5rem;
-    padding: 0 1.2rem;
+  height: 5rem;
+  padding: 0 1.2rem;
 }

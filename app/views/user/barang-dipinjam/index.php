@@ -43,7 +43,7 @@
             <?php
             $number = 1;
             $groupedData = [];
-            foreach ($data as $item) {
+            foreach ($data['datas'] as $item) {
                 $idPeminjaman = $item['id_peminjaman'];
                 if (!array_key_exists($idPeminjaman, $groupedData)) {
                     $groupedData[$idPeminjaman] = [];
@@ -126,8 +126,8 @@
                             </table>
             </section>
         <?php } ?>
+        </main>
     </div>
-</div>
 
 
 
@@ -140,7 +140,7 @@
         </div>
     </section>
 
-</main>
+    </main>
 </div>
 </div>
 
