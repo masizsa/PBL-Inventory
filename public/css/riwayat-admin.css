@@ -51,14 +51,15 @@ html {
     height: 5.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content:end;
 }
 
 .custom--body .custom--filter .custom--left {
     height: 5.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin-right: 1.2rem;
+    /* justify-content: space-between; */
 }
 
 .custom--body .custom--filter .custom--left .custom--day-wrapper {
@@ -144,11 +145,12 @@ ul li button {
 @media (min-width: 640px) {
     .dropdown {
         position: fixed;
+        justify-content: end;
         /* position: absolute; */
         /* width: 17.6rem; */
         top: 21.8rem;
-        left: 42rem;
-        padding-top: 100000rem;
+        /* left: 120rem; */
+        /* padding-top: 100000rem; */
         /* z-index: 10; */
         /* min-width: 10rem; */
         padding: 0;

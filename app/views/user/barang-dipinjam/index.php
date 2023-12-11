@@ -5,7 +5,7 @@
                 <h1>Data Barang Dipinjam</h1>
                 <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
             </section>
-        
+
             <section class="custom--countdown">
                 <p class="countdown-text">Waktu pengembalian</p>
                 <div class="custom--container-countdown">
@@ -27,7 +27,7 @@
                         <p class="return-date" id="minutes"></p>
                         <p class="countdown-label">Menit</p>
                     </div>
-                    
+
                     <div class="vertical-line">
 
                     </div>
@@ -40,75 +40,108 @@
         </header>
 
         <main>
-            <section class="custom--borrowed-one">
-                <p class="custom--subheader-borrowed">Peminjaman - 1</p>
-                
-                <div class="custom--container-borrowed-items">
-                    <div class="custom--borrowed-info">
-                        <div class="custom--start-date">
-                            <p class="info-label">Mulai pinjam</p>
-                            <input type="text" name="start_date" class="borrow-date" id="start-date" value="<?php echo $formattedDate; ?>" size="35" disabled>
-                        </div>
-                        <div class="custom--end-date">
-                            <p class="info-label">Selesai pinjam</p>
-                            <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $formattedEndDate; ?>" size="35" disabled>
-                        </div>
-                        
-                        <div class="custom--status">
-                            <p class="info-label">Status</p>
-                            <!-- <div class="custom--status-value-dipinjam" id="status-dipinjam">
-                                <p>Dipinjam</p>
-                            </div> -->
+            <?php
+            $number = 1;
+            $groupedData = [];
+            foreach ($data as $item) {
+                $idPeminjaman = $item['id_peminjaman'];
+                if (!array_key_exists($idPeminjaman, $groupedData)) {
+                    $groupedData[$idPeminjaman] = [];
+                }
+                $groupedData[$idPeminjaman][] = $item;
+            } ?>
 
-                            <div class="custom--status-value-dipinjam" id="status-menunggu">
-                                <p>Menunggu</p>
+            <section class="custom--borrowed-one">
+                <?php
+
+                foreach ($groupedData as $idPeminjaman => $items) {
+                ?>
+                    <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
+                    <?php $number++ ?>
+                    <div class="custom--container-borrowed-items">
+                        <div class="custom--borrowed-info">
+                            <div class="custom--start-date">
+                                <p class="info-label">Mulai pinjam</p>
+                                <input type="text" name="start_date" class="borrow-date" id="start-date" value="<?php echo $item['tgl_peminjaman']; ?>" size="35" disabled>
+                            </div>
+                            <div class="custom--end-date">
+                                <p class="info-label">Selesai pinjam</p>
+                                <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $item['tgl_pengembalian']; ?>" size="35" disabled>
                             </div>
 
-                            <!-- <div class="custom--status-value-dipinjam" id="status-terlambat">
-                                <p>Terlambat</p>
-                            </div> -->
+                            <div class="custom--status">
+                                <p class="info-label">Status</p>
+
+                                <?php
+                                $status = $item['status']; // Ambil nilai status dari variabel $item['status']
+
+                                if ($status === 'Dipinjam') { ?>
+                                    <div class="custom--status-value-dipinjam" id="status-dipinjam">
+                                        <p><?php echo $status ?></p>
+                                    </div>
+                                <?php } elseif ($status === 'Menunggu') { ?>
+                                    <div class="custom--status-value-dipinjam" id="status-menunggu">
+                                        <p><?php echo $item['status'] ?></p>
+                                    </div>
+                                <?php } elseif ($status === 'Terlambat') { ?>
+                                    <div class="custom--status-value-terlambat" id="status-terlambat">
+                                        <p><?php echo $status ?></p>
+                                    </div>
+                                <?php } else { ?>
+                                    <!-- Tambahkan logika untuk status lain jika diperlukan -->
+                                    <div class="custom--status-value-default" id="status-default">
+                                        <p><?php echo $status ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+
                         </div>
-                    </div>
 
-                    <div class="custom--item-info-dipinjam">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Kode</th>
-                                    <th>Nama Barang</th>
-                                    <th>Nama Pengelola</th>
-                                    <th>Jumlah</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>RMT01</td>
-                                    <td>Remote Ac</td>
-                                    <td>Pak Wardi</td>
-                                    <td>9</td>
-                                </tr>
-                                <tr>
-                                    <td>RMT01</td>
-                                    <td>Remote Ac</td>
-                                    <td>Pak Wardi</td>
-                                    <td>9</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                        <div class="custom--item-info-dipinjam">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Kode</th>
+                                        <th>Nama Barang</th>
+                                        <th>Nama Pengelola</th>
+                                        <th>Jumlah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
+                                    <div class="custom--card">
+                                        <table>
+                                            <!-- <h4><?= $items[0]['tgl_peminjaman'] ?></h4> -->
+                                            <?php foreach ($items as $item) { ?>
+                                                <tr>
+                                                    <td><?= $item['id_barang'] ?></td>
+                                                    <td><?= $item['nama_barang'] ?></td>
+                                                    <td><?= $item['nama_admin'] ?></td>
+                                                    <td><?= $item['jumlah'] ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </table>
+                                    </div>
+                                </tbody>
+                            </table>
             </section>
-
-            <section class="custom--borrowed-two">
-                <p class="custom--subheader-borrowed">Peminjaman - 2</p>
-
-                <div class="custom--container-borrowed-items-empty">
-                    <p>Tidak ada peminjaman</p>
-                </div>
-            </section>
-        </main>
+        <?php } ?>
     </div>
+</div>
+
+
+
+
+
+    <section class="custom--borrowed-two">
+        <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
+        <div class="custom--container-borrowed-items-empty">
+            <p>Tidak ada peminjaman</p>
+        </div>
+    </section>
+
+</main>
+</div>
 </div>
 
 <script src="../../layouts/sidebar.js"></script>
@@ -126,7 +159,9 @@
             const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const monthLabel = endDateTime.toLocaleString('id-ID', { month: 'short' });
+            const monthLabel = endDateTime.toLocaleString('id-ID', {
+                month: 'short'
+            });
 
             document.getElementById('days').innerHTML = days;
             document.getElementById('hours').innerHTML = hours;

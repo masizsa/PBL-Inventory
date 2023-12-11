@@ -1,5 +1,5 @@
 <html>
-<link rel="stylesheet" href="riwayat-admin.css">
+<!-- <link rel="stylesheet" href="../../../../public/css/riwayat-admin.css"> -->
 <div class="custom--riwayat-container">
     <div class="custom--header">
         <h1>Riwayat Peminjaman</h1>
@@ -8,27 +8,29 @@
     <div class="custom--body">
         <div class="custom--filter">
             <div class="custom--left">
-                <div class="custom--day-wrapper">
+                <!-- <div class="custom--day-wrapper">
                     <button class="active">7 Hari</button>
                     <button>30 Hari</button>
                     <button>12 Bulan</button>
                     <button>Semua</button>
-                </div>
+                </div> -->
                 <div class="custom--sort-wrapper">
                     <li style="--delay: 2;" tabindex="0">
                         <button>
-                            <img class="icon-sort" src="sort.svg" alt="">
+                            <img class="icon-sort" src="../../../../public/assets/sort.svg" alt="">
                             <span class="text">Urutkan</span>
                         </button>
-                        <ul class="dropdown">
-                            <li class="p"><a href="#">Tanggal Terkini</a></li>
-                            <li class="P"><a href="#">Tanggal Terlama</a></li>
-                        </ul>
+                        <form action="../../../controllers/riwayatAdmin.php" method="post">
+                            <ul class="dropdown">
+                                <li class="p"><a href="#" name="latest">Tanggal Terkini</a></li>
+                                <li class="P"><a href="#" name="past">Tanggal Terlama</a></li>
+                            </ul>
+                        </form>
                     </li>
                 </div>
             </div>
             <div class="custom--search">
-                <input type="text" name="search" id="search" placeholder="Cari Nama Barang">
+                <input type="text" name="search" id="search" placeholder="Cari Nama Barang" autocomplete="off">
                 <div class="custom--search-icon">
                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.5 22.25C5.85 22.25 1.25 17.65 1.25 12C1.25 6.35 5.85 1.75 11.5 1.75C17.15 1.75 21.75 6.35 21.75 12C21.75 17.65 17.15 22.25 11.5 22.25ZM11.5 3.25C6.67 3.25 2.75 7.18 2.75 12C2.75 16.82 6.67 20.75 11.5 20.75C16.33 20.75 20.25 16.82 20.25 12C20.25 7.18 16.33 3.25 11.5 3.25Z" fill="#121212" />
@@ -49,22 +51,18 @@
                         <th>Nama Peminjam</th>
                         <th>Jumlah</th>
                     </tr>
-                    <tr>
-                        <td>Senin, 27 November 2023</td>
-                        <td>Rabu, 29 November 2023</td>
-                        <td>RMT01</td>
-                        <td>Remote Ac</td>
-                        <td>Ihza Nurkhafidz</td>
-                        <td>9</td>
-                    </tr>
-                    <tr>
-                        <td>Senin, 27 November 2023</td>
-                        <td>Rabu, 29 November 2023</td>
-                        <td>RMT01</td>
-                        <td>Remote Ac</td>
-                        <td>Ihza Nurkhafidz</td>
-                        <td>9</td>
-                    </tr>
+                    <?php
+                    foreach ($data as $row) { ?>
+                        <tr>
+                            <td><?= $row['tgl_peminjaman'] ?></td>
+                            <td><?= $row['tgl_pengembalian'] ?></td>
+                            <td><?= $row['id_barang'] ?></td>
+                            <td><?= $row['nama_barang'] ?></td>
+                            <td><?= $row['nama_peminjam'] ?></td>
+                            <td><?= $row['jumlah'] ?></td>
+                        </tr>
+                    <?php    }
+                    ?>
                 </table>
             </div>
         </div>
@@ -82,4 +80,5 @@
         })
     })
 </script>
+
 </html>
