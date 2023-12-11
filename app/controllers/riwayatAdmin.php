@@ -11,9 +11,11 @@ class RiwayatAdmin extends Controller
     public function index()
     {
         $data = array();
+        $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'desc';
+        $data['items'] = $sort_by == 'asc' 
+            ? $this->showOldest()
+            : $this->showRecent();
         $data['css'] = "riwayat-admin";
-        $data['items'] = $this->showRecent();
-        // $data['riwayat_past'] = this->showOldest();
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/riwayat/riwayat-admin", $data);
