@@ -52,7 +52,29 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
-                    foreach ($data['datas'] as $row) { ?>
+                    foreach ($data['items'] as $row) { ?>
+                        <tr>
+                            <td><?= $row['tgl_peminjaman'] ?></td>
+                            <td><?= $row['tgl_pengembalian'] ?></td>
+                            <td><?= $row['id_barang'] ?></td>
+                            <td><?= $row['nama_barang'] ?></td>
+                            <td><?= $row['nama_peminjam'] ?></td>
+                            <td><?= $row['jumlah'] ?></td>
+                        </tr>
+                    <?php    }
+                    ?>
+                </table>
+                <table id="table-ascending" style="display: none">
+                    <tr>
+                        <th>Tanggal Pinjam</th>
+                        <th>Tanggal Kembali</th>
+                        <th>Kode</th>
+                        <th>Nama Barang</th>
+                        <th>Nama Peminjam</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    <?php
+                    foreach ($data['asc'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>
                             <td><?= $row['tgl_pengembalian'] ?></td>
@@ -75,7 +97,6 @@
         const sortButtonOldest = document.getElementById("oldest"); // Corrected selector
         const descendingTable = document.getElementById("table-descending");
         const ascendingTable = document.getElementById("table-ascending");
-
         sortButtonLatest.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
             const pathname = window.location.pathname.replace(/&sort=(asc|desc)/g, '');

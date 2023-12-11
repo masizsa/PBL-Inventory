@@ -46,7 +46,8 @@ class RiwayatUser extends Controller
         return $data;
     }
 
-    public function showRecent(){
+    public function showRecent()
+    {
         $conn = $this->db->getConnection();
         $data = [];
         if (isset($_SESSION["nomor_identitas"])) {
@@ -59,12 +60,12 @@ class RiwayatUser extends Controller
                     $data[] = $row; // Tambahkan data ke array riwayatData
                     // var_dump($data);
                 }
-            } 
-        return $data;
+            return $data;
+        }
     }
-}
 
-    public function showOldest(){
+    public function showOldest()
+    {
         $conn = $this->db->getConnection();
         $data = [];
         if (isset($_SESSION["nomor_identitas"])) {
