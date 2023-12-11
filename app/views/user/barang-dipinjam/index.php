@@ -125,26 +125,21 @@
                                 </tbody>
                             </table>
             </section>
+
+            <section class="custom--borrowed-two">
+                <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
+                <div class="custom--container-borrowed-items-empty">
+                    <p>Tidak ada peminjaman</p>
+                </div>
+            </section>
         <?php } ?>
         </main>
     </div>
 
 
-
-
-
-    <section class="custom--borrowed-two">
-        <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
-        <div class="custom--container-borrowed-items-empty">
-            <p>Tidak ada peminjaman</p>
-        </div>
-    </section>
-
     </main>
 </div>
-</div>
 
-<script src="../../layouts/sidebar.js"></script>
 <script>
     function updateCountdown(endDate) {
         const now = new Date();
