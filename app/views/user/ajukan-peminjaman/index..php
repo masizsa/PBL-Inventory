@@ -1,14 +1,14 @@
 <?php
-require_once '../../../models/Peminjaman.php';
-include('../../../controlers/auth/checkFormPeminjaman.php');
+// require_once '../../../models/Peminjaman.php';
+// include('../../../controlers/auth/checkFormPeminjaman.php');
 
-$crud = new Crud();
-if (isset($_POST['btn-pinjam'])) {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $tanggal = $_POST['startDate'];
-        $crud->addPeminjaman( $tanggal);
-    }
-}
+// $crud = new Crud();
+// if (isset($_POST['btn-pinjam'])) {
+//     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//         $tanggal = $_POST['startDate'];
+//         $crud->addPeminjaman( $tanggal);
+//     }
+// }
 
 
 
@@ -34,7 +34,7 @@ if (isset($_POST['btn-pinjam'])) {
 
 <body>
     <?php
-    include('../../../controlers/auth/checkFormPeminjaman.php');
+    //include('../../../controlers/auth/checkFormPeminjaman.php');
     // include('../../../controlers/auth/checkLogin.php');
 
     ?>
