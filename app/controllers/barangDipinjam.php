@@ -9,9 +9,10 @@ class BarangDipinjam extends Controller
     }
     public function index()
     {
-        $data = array();
-        $data = $this->getData();
-        $this->view("templates/header");
+        // $data = array();
+        $data['datas'] = $this->getData();
+        $data['css'] = 'barang-dipinjam';
+        $this->view("templates/header",$data);
         $this->view("templates/sidebar-user");
         $this->view("user/barang-dipinjam/index",$data);
         $this->view("templates/footer");

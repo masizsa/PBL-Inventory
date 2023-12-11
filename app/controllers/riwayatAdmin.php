@@ -11,10 +11,10 @@ class RiwayatAdmin extends Controller
     public function index()
     {
         $data = array();
-        $dataAsc = array();
-        $data['desc'] = $this->showRecent();
-        $data['asc'] = $this->showOldest();
-        $this->view("templates/header");
+        $data['css'] = "riwayat-admin";
+        $data['items'] = $this->showRecent();
+        // $data['riwayat_past'] = this->showOldest();
+        $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/riwayat/riwayat-admin", $data);
         $this->view("templates/footer");

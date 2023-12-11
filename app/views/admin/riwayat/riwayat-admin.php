@@ -52,29 +52,7 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
-                    foreach ($data['desc'] as $row) { ?>
-                        <tr>
-                            <td><?= $row['tgl_peminjaman'] ?></td>
-                            <td><?= $row['tgl_pengembalian'] ?></td>
-                            <td><?= $row['id_barang'] ?></td>
-                            <td><?= $row['nama_barang'] ?></td>
-                            <td><?= $row['nama_peminjam'] ?></td>
-                            <td><?= $row['jumlah'] ?></td>
-                        </tr>
-                    <?php    }
-                    ?>
-                </table>
-                <table id="table-ascending" style="display: none">
-                    <tr>
-                        <th>Tanggal Pinjam</th>
-                        <th>Tanggal Kembali</th>
-                        <th>Kode</th>
-                        <th>Nama Barang</th>
-                        <th>Nama Peminjam</th>
-                        <th>Jumlah</th>
-                    </tr>
-                    <?php
-                    foreach ($data['asc'] as $row) { ?>
+                    foreach ($data['datas'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>
                             <td><?= $row['tgl_pengembalian'] ?></td>

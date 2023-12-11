@@ -14,7 +14,8 @@ class RiwayatUser extends Controller
         $data['items'] = $sort_by == 'asc' 
             ? $this->showOldest()
             : $this->showRecent();
-        $this->view("templates/header");
+        $data['css'] = 'riwayat';
+        $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
         $this->view("user/riwayat/index", $data);
         $this->view("templates/footer");

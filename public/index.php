@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="./css/style.css">
 <?php
 // session_start();
 // echo $_SESSION["isLogin"] . "<br>";
