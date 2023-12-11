@@ -52,6 +52,7 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
+
                     foreach ($data['desc'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>

@@ -8,7 +8,8 @@ class Logout extends Controller
     }
     public function index()
     {
-        $this->view("templates/header");
+        $data['css'] = 'login';
+        $this->view("templates/header", $data);
         $this->view("user/login/index");
         $this->view("templates/footer");
     }

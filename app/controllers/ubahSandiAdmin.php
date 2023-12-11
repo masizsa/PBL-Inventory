@@ -1,5 +1,5 @@
 <?php
-class UbahSandi extends Controller
+class UbahSandiAdmin extends Controller
 {
     private $db;
     public function __construct()
@@ -8,14 +8,10 @@ class UbahSandi extends Controller
     }
     public function index()
     {
-        $this->view("templates/header");
-        if (isset($_SESSION["isAdmin"])) {
-            $this->view("templates/sidebar-admin");
-            $this->view("admin/ubah-sandi/index");
-        } else {
-            $this->view("templates/sidebar-user");
-            $this->view("user/ubah-sandi/index");
-        }
+        $data['css'] = 'ubahSandi';
+        $this->view("templates/header", $data);
+        $this->view("templates/sidebar-admin");
+        $this->view("admin/ubah-sandi/index");
         $this->view("templates/footer");
     }
 
