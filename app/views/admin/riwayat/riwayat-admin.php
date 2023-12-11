@@ -52,10 +52,7 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
-<<<<<<<<< Temporary merge branch 1
-                    foreach ($data['datas'] as $row) { ?>
-=========
-                    foreach ($data['desc'] as $row) { ?>
+                    foreach ($data['items'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>
                             <td><?= $row['tgl_pengembalian'] ?></td>
@@ -100,42 +97,15 @@
         const sortButtonOldest = document.getElementById("oldest"); // Corrected selector
         const descendingTable = document.getElementById("table-descending");
         const ascendingTable = document.getElementById("table-ascending");
-
         sortButtonLatest.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-
-            const selectedOption = event.currentTarget.textContent.trim();
-
-            // console.log(sortButtonLatest);
-
-            // Check the selected option and sort accordingly
-            if (selectedOption === "Tanggal Terkini") {
-                // Sort in descending order
-                descendingTable.style.display = "table";
-                ascendingTable.style.display = "none";
-            } else{
-                // Sort in ascending order
-                ascendingTable.style.display = "table";
-                descendingTable.style.display = "none";
-            }
+            const pathname = window.location.pathname.replace(/&sort=(asc|desc)/g, '');
+            window.location = pathname + "&sort=desc";
         });
         sortButtonOldest.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-
-            const selectedOption = event.currentTarget.textContent.trim();
-
-            // console.log(sortButtonOldest);
-
-            // Check the selected option and sort accordingly
-            if (selectedOption === "Tanggal Terkini") {
-                // Sort in descending order
-                descendingTable.style.display = "table";
-                ascendingTable.style.display = "none";
-            } else{
-                // Sort in ascending order
-                ascendingTable.style.display = "table";
-                descendingTable.style.display = "none";
-            }
+            const pathname = window.location.pathname.replace(/&sort=(asc|desc)/g, '');
+            window.location = pathname + "&sort=asc";
         });
     });
 </script>

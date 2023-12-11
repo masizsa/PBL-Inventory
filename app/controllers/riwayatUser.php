@@ -10,9 +10,10 @@ class RiwayatUser extends Controller
     public function index()
     {
         $data = array();
-        // $data = $this->getData();
-        $data['desc'] = $this->showRecent();
-        $data['asc'] = $this->showOldest();
+        $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'desc';
+        $data['items'] = $sort_by == 'asc' 
+            ? $this->showOldest()
+            : $this->showRecent();
         $data['css'] = 'riwayat';
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
@@ -59,7 +60,6 @@ class RiwayatUser extends Controller
                     $data[] = $row; // Tambahkan data ke array riwayatData
                     // var_dump($data);
                 }
-            }
             return $data;
         }
     }
@@ -82,4 +82,5 @@ class RiwayatUser extends Controller
             return $data;
         }
     }
+
 }
