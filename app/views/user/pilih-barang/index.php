@@ -51,7 +51,7 @@
                     <th>Tersedia</th>
                     <th>Pilih</th>
                 </tr>
-                <?php foreach ($data as $index => $item) { ?>
+                <?php foreach ($data['items'] as $index => $item) { ?>
                     <tr>
                         <td id="kode<?= $index ?>"><?= $item['id_barang'] ?></td>
                         <td id="nama<?= $index ?>"><?= $item['nama_barang'] ?></td>

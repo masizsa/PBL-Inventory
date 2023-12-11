@@ -60,7 +60,8 @@ class RiwayatUser extends Controller
                     $data[] = $row; // Tambahkan data ke array riwayatData
                     // var_dump($data);
                 }
-            return $data;
+            }
+        return $data;
         }
     }
 

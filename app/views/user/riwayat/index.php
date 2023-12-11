@@ -42,10 +42,10 @@
             $groupedData = [];
             foreach ($data['items'] as $item) {
                 $idPeminjaman = $item['id_peminjaman'];
-                if (!array_key_exists($idPeminjaman, $groupedDataDesc)) {
-                    $groupedDataDesc[$idPeminjaman] = [];
+                if (!array_key_exists($idPeminjaman, $groupedData)) {
+                    $groupedData[$idPeminjaman] = [];
                 }
-                $groupedDataDesc[$idPeminjaman][] = $item;
+                $groupedData[$idPeminjaman][] = $item;
             }
             ?>
 
