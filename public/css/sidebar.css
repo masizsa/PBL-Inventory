@@ -26,7 +26,7 @@ html {
   justify-content: space-between;
   background-color: var(---sidebar-color);
   transition: all 0.2s ease-in-out;
-  position: fixed;
+  position: relative;
   z-index: 100;
   /* animation: entranceSidebar .45s ease-out; */
 }

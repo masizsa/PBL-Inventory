@@ -19,7 +19,7 @@ html {
 }
 
 .custom--container-data-barang {
-  position: absolute;
+  /* position: absolute; */
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -212,7 +212,8 @@ html {
   align-items: center;
   min-height: 100vh;
   width: calc(100%);
-  padding-right: 37.5rem;
+  z-index: 1000;
+  /* padding-right: 37.5rem; */
   background-color: #12121290;
 }
 
