@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/sidebar.css">
-    <link rel="stylesheet" href="../../css/adminPeminjaman.css">
-    <title>Peminjaman</title>
-</head>
-
-<body>
     <div class="custom--container">
         <div class="custom--content">
             <header>
@@ -52,7 +40,7 @@
                             <tbody>
                                 <?php
                                 $groupedData = [];
-                                foreach ($data as $item) {
+                                foreach ($data['items'] as $item) {
                                     $id_peminjaman = $item['id_peminjaman'];
                                     if (!array_key_exists($id_peminjaman, $groupedData)) {
                                         $groupedData[$id_peminjaman] = [];
@@ -91,9 +79,6 @@
                         </table>
                     </div>
                 </div>
-
-                <!-- ... (Bagian HTML lainnya) ... -->
-
 
                 <div class="custom--table-info" id="table-pengembalian">
                     <h2>Pengembalian</h2>
@@ -246,59 +231,56 @@
             <button class="custom--popup-close" id="custom--close-popup">x</button>
         </div>
     </div>
-</body>
-
-</html>
-<script>
-    const buttons = document.querySelectorAll(".custom--day-wrapper button");
-    const tables = document.querySelectorAll(".custom--table-info");
-    const detailsButtons = document.querySelectorAll(".button-info");
-    const popupContainer = document.querySelector(".popup-container");
-    const closePopupButton = document.getElementById("custom--close-popup");
-    const headerTitle = document.querySelector("header h1");
-    const subheader = document.querySelector("header p");
+    <script>
+        const buttons = document.querySelectorAll(".custom--day-wrapper button");
+        const tables = document.querySelectorAll(".custom--table-info");
+        const detailsButtons = document.querySelectorAll(".button-info");
+        const popupContainer = document.querySelector(".popup-container");
+        const closePopupButton = document.getElementById("custom--close-popup");
+        const headerTitle = document.querySelector("header h1");
+        const subheader = document.querySelector("header p");
 
 
-    buttons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            buttons.forEach((btn) => {
-                btn.classList.remove('active');
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                buttons.forEach((btn) => {
+                    btn.classList.remove('active');
+                });
+
+                tables.forEach((table) => {
+                    table.style.display = 'none';
+                });
+
+                button.classList.add('active');
+                tables[index].style.display = 'flex';
+
+                headerTitle.textContent =
+                    index === 0 ? "Data Peminjaman" : "Data Pengembalian";
+
+                subheader.textContent = index === 0 ? "Silahkan konfirmasi peminjaman jika sudah siap!" : "Silahkan konfirmasi pengembalian jika sudah benar!";
             });
+        });
 
-            tables.forEach((table) => {
-                table.style.display = 'none';
+        detailsButtons.forEach((detailsButton) => {
+            detailsButton.addEventListener('click', () => {
+                popupContainer.style.display = 'flex';
             });
-
-            button.classList.add('active');
-            tables[index].style.display = 'flex';
-
-            headerTitle.textContent =
-                index === 0 ? "Data Peminjaman" : "Data Pengembalian";
-
-            subheader.textContent = index === 0 ? "Silahkan konfirmasi peminjaman jika sudah siap!" : "Silahkan konfirmasi pengembalian jika sudah benar!";
         });
-    });
 
-    detailsButtons.forEach((detailsButton) => {
-        detailsButton.addEventListener('click', () => {
-            popupContainer.style.display = 'flex';
-        });
-    });
-
-    closePopupButton.addEventListener('click', () => {
-        popupContainer.style.display = 'none';
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
+        closePopupButton.addEventListener('click', () => {
             popupContainer.style.display = 'none';
-        }
-    });
+        });
 
-    const tbodies = document.querySelectorAll('tbody');
-    tbodies.forEach(tbody => {
-        const customConfirms = tbody.querySelectorAll('.custom--confirm');
-        const lastCustomConfirm = customConfirms[customConfirms.length - 1];
-        lastCustomConfirm.style.borderBottomRightRadius = '1rem';
-    });
-</script>
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                popupContainer.style.display = 'none';
+            }
+        });
+
+        const tbodies = document.querySelectorAll('tbody');
+        tbodies.forEach(tbody => {
+            const customConfirms = tbody.querySelectorAll('.custom--confirm');
+            const lastCustomConfirm = customConfirms[customConfirms.length - 1];
+            lastCustomConfirm.style.borderBottomRightRadius = '1rem';
+        });
+    </script>

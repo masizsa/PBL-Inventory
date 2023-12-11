@@ -13,10 +13,14 @@ class RiwayatUser extends Controller
         // $data = $this->getData();
         $data['desc'] = $this->showRecent();
         $data['asc'] = $this->showOldest();
-        $this->view("templates/header");
+        $data['datas'] = $this->getData();
+        $data['css'] = 'riwayat';
+        $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
         $this->view("user/riwayat/index", $data);
         $this->view("templates/footer");
+
+        
     }
 
     public function getData()
