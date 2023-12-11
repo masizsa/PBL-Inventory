@@ -11,7 +11,8 @@ class DataBarang extends Controller
         $data = array();
         $data['nama'] = $this->getNamaAdmin();
         $data['barang'] = $this->getDataBarang();
-        $this->view("templates/header");
+        $data['css'] = 'tambah-barang';
+        $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/data-barang/index", $data);
         $this->view("templates/footer");

@@ -11,7 +11,8 @@ class RiwayatUser extends Controller
     {
         $data = array();
         $data = $this->getData();
-        $this->view("templates/header");
+        $data['css'] = 'riwayat';
+        $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
         $this->view("user/riwayat/index", $data);
         $this->view("templates/footer");
