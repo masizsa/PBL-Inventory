@@ -10,9 +10,10 @@ class RiwayatUser extends Controller
     public function index()
     {
         $data = array();
-        // $data = $this->getData();
-        $data['desc'] = $this->showRecent();
-        $data['asc'] = $this->showOldest();
+        $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'desc';
+        $data['items'] = $sort_by == 'asc' 
+            ? $this->showOldest()
+            : $this->showRecent();
         $this->view("templates/header");
         $this->view("templates/sidebar-user");
         $this->view("user/riwayat/index", $data);
