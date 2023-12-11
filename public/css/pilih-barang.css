@@ -1,251 +1,285 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 html {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 :root {
-    ---background-color-body: #F6F6F6;
-    ---header-table-color: #FCD106;
-    ---card--color1: #FBF4CF;
-    ---card--color2: #CCF1E5;
-    ---card--color3: #FCCECE;
-    ---card--color4: #EEEEEE;
+  ---background-color-body: #f6f6f6;
+  ---header-table-color: #fcd106;
+  ---card--color1: #fbf4cf;
+  ---card--color2: #ccf1e5;
+  ---card--color3: #fccece;
+  ---card--color4: #eeeeee;
 }
 
 .custom--pilih-barang-main-container {
-    /* padding-left: 37.5rem; */
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: var(---background-color-body);
+  /* padding-left: 37.5rem; */
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(---background-color-body);
 }
 
 .custom--header-pilih-barang {
-    height: 11.6rem;
-    width: 100%;
-    padding: 1.6rem 4rem;
-    background-color: #fff;
+  height: 11.6rem;
+  width: 100%;
+  padding: 1.6rem 4rem;
+  background-color: #fff;
 }
 
-.custom--header-pilih-barang>h1 {
-    margin-bottom: 1.2rem;
-    font-size: 3.2rem;
-    font-weight: 600;
+.custom--header-pilih-barang > h1 {
+  margin-bottom: 1.2rem;
+  font-size: 3.2rem;
+  font-weight: 600;
 }
 
-.custom--header-pilih-barang>p {
-    font-size: 1.6rem;
+.custom--header-pilih-barang > p {
+  font-size: 1.6rem;
 }
 
 .custom--body-pilih-barang-container {
-    position: relative;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 4rem;
-    gap: 4rem;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  gap: 4rem;
 }
 
 .custom--list-items-pilih-barang {
-    display: flex;
-    flex-direction: column;
-    gap: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
 }
 
 .custom--list-barang-dipilih-header {
-    height: 5rem;
-    font-size: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  height: 5rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .custom--list-barang-dipilih-header button {
-    height: 100%;
-    width: 16.2rem;
-    font-size: 14px;
-    background-color: #c6c6c6;
-    outline: none;
-    border: none;
-    border-radius: 100rem;
-    color: #fff;
-    cursor: pointer;
+  height: 100%;
+  width: 16.2rem;
+  font-size: 14px;
+  background-color: #c6c6c6;
+  outline: none;
+  border: none;
+  border-radius: 100rem;
+  color: #fff;
+  cursor: pointer;
 }
 
 .custom--list-barang-dipilih-header button.active {
-    background-color: var(---header-table-color);
-    color: #000;
+  background-color: var(---header-table-color);
+  color: #000;
 }
 
 .custom--list-barang-dipilih-body {
-    height: 16rem;
-    border-radius: 1rem;
-    background-color: #fff;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 2rem;
-    padding: 2.4rem;
-    color: #c6c6c6;
+  position: relative;
+  height: 16rem;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2rem;
+  padding: 2.4rem;
+  color: #c6c6c6;
+  overflow-x: auto;
+  gap: 2.4rem;
 }
-
 
 .custom--card-checkout {
-    margin-right: 2.4rem;
-    position: relative;
-    height: 100%;
-    width: 20rem;
-    border-radius: 1rem;
-    border: 1px solid var(---header-table-color);
-    display: flex;
-    gap: 2.5rem;
-    color: #000;
-    padding: 12px;
+  flex: 0 0 auto;
+  position: relative;
+  height: 110px;
+  min-width: 200px;
+  border-radius: 1rem;
+  border: 1px solid var(---header-table-color);
+  display: flex;
+  gap: 2.5rem;
+  color: #000;
+  padding: 12px;
 }
-
 
 .custom--card-checkout .custom--card-checkout-left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
+.custom--card-checkout .custom--card-checkout-left::before {
+  content: " ";
+  height: 70%;
+  width: 1px;
+  position: absolute;
+  right: -1.5rem;
+  top: 20%;
+  background-color: var(---header-table-color);
+}
 .custom--card-checkout .custom--card-checkout-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .custom--button-uncheckout {
-    position: absolute;
-    height: 2.4rem;
-    width: 2.4rem;
-    top: -1rem;
-    right: -1rem;
-    border-radius: 100%;
-    outline: none;
-    border: none;
-    background-color: #fff;
+  position: absolute;
+  height: 2.4rem;
+  width: 2.4rem;
+  top: -1rem;
+  right: -1rem;
+  border-radius: 100%;
+  outline: none;
+  border: none;
+  background-color: #fff;
 }
 
 .custom--search-list-items-pilih-barang {
-    position: relative;
-    height: 5.2rem;
-    gap: 10rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 700;
+  position: relative;
+  height: 5.2rem;
+  gap: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.custom--search-list-items-pilih-barang .custom--input-search-pilih-barang input[type="text"] {
-    height: 100%;
-    width: 35rem;
-    padding: 0 2.8rem;
-    border-radius: 100rem;
-    outline: none;
-    border: none;
-    font-size: 16px;
+.custom--search-list-items-pilih-barang
+  .custom--input-search-pilih-barang
+  input[type="text"] {
+  height: 5rem;
+  width: 35rem;
+  padding: 0 2.8rem;
+  border-radius: 100rem;
+  outline: none;
+  border: none;
+  font-size: 16px;
 }
 
 .custom--search-list-items-pilih-barang .custom--input-search-pilih-barang svg {
-    position: absolute;
-    top: 25%;
-    right: 2rem;
+  position: absolute;
+  top: 25%;
+  right: 2rem;
 }
 
 .custom--table-pilih-barang {
-    margin-top: 1.6rem;
-    width: 100%;
-    margin-bottom: 4rem;
-    background-color: #fff;
-    border-radius: 1rem;
-    border-spacing: 0;
-    border: separate;
-    overflow: hidden;
+  margin-top: 1.6rem;
+  width: 100%;
+  margin-bottom: 4rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  border-spacing: 0;
+  border: separate;
+  overflow: hidden;
 }
 
 .custom--table-pilih-barang th {
-    text-align: start;
-    background-color: var(---header-table-color);
-    padding: 1.7rem 2.4rem;
-    font-size: 1.2rem;
-    font-weight: 600;
+  text-align: start;
+  background-color: var(---header-table-color);
+  padding: 1.7rem 2.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .custom--table-pilih-barang td {
-    padding: 2rem 2.4rem;
-    background-color: #fff;
-    border-bottom: 1px solid #E7E7E7;
+  font-size: 1.6rem;
+  padding: 2rem 2.4rem;
+  background-color: #fff;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .custom--table-pilih-barang td button {
-    color: #000;
-    cursor: pointer;
+  color: #000;
+  cursor: pointer;
 }
 
 .custom--table-pilih-barang .custom--container-tambah-barang {
-    /* background-color: red; */
-    height: 4rem;
-    width: 10rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    overflow: hidden;
+  /* background-color: red; */
+  height: 4rem;
+  width: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  overflow: hidden;
+}
+.custom--table-pilih-barang .custom--container-tambah-barang > button {
+  transition: transform 0.15s ease-in-out;
+}
+.custom--table-pilih-barang .custom--container-tambah-barang > button.show {
+  transition: transform 0.15s ease-in-out;
+  transform: translateY(-100%);
+}
+.custom--table-pilih-barang
+  .custom--container-tambah-barang
+  .custom--indecrement {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.15s ease-in-out;
+}
+.custom--table-pilih-barang
+  .custom--container-tambah-barang
+  .custom--indecrement.show {
+  transition: transform 0.15s ease-in-out;
+  transform: translateY(-150%);
+}
+.custom--table-pilih-barang
+  .custom--container-tambah-barang
+  .custom--indecrement
+  .items {
+  width: 3rem;
+  height: 3rem;
 }
 
-
-
-.custom--table-pilih-barang .custom--container-tambah-barang .custom--indecrement {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.custom--table-pilih-barang
+  .custom--container-tambah-barang
+  .custom--indecrement
+  > input.items {
+  outline: none;
+  border: none;
+  flex-grow: 1;
+  text-align: center;
 }
 
-.custom--table-pilih-barang .custom--container-tambah-barang .custom--indecrement .items {
-    width: 3rem;
-    height: 3rem;
+.custom--table-pilih-barang
+  .custom--container-tambah-barang
+  .custom--indecrement
+  button.items {
+  border-radius: 100%;
+  border: 1px solid var(---header-table-color);
+  color: var(---header-table-color);
+  background-color: #fff;
+  outline: none;
+  font-size: 18px;
 }
 
-.custom--table-pilih-barang .custom--container-tambah-barang .custom--indecrement>input.items {
-    outline: none;
-    border: none;
-    flex-grow: 1;
-    text-align: center;
-}
-
-.custom--table-pilih-barang .custom--container-tambah-barang .custom--indecrement button.items {
-    border-radius: 100%;
-    border: 1px solid var(---header-table-color);
-    color: var(---header-table-color);
-    background-color: #fff;
-    outline: none;
-    font-size: 18px;
-}
-
-.custom--container-tambah-barang>button {
-    width: 10rem;
-    height: 4rem;
-    border-radius: 100rem;
-    outline: none;
-    border: 1px solid var(---header-table-color);
-    background-color: #fff;
-    font-size: 14px;
-    font-weight: 500;
+.custom--container-tambah-barang > button {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 100rem;
+  outline: none;
+  border: 1px solid var(---header-table-color);
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 500;
 }
