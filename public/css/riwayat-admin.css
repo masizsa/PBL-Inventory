@@ -146,17 +146,25 @@ ul li button {
   /* width: 2rem; */
 }
 
-
-.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown button{
-    width: 16rem;
-    height: 0.2rem;
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  .dropdown
+  button {
+  width: 16rem;
+  height: 0.2rem;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li:focus-within .dropdown {
-    height: 10rem;
-    width: 16rem;
-    border-radius: 1rem;
-
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  li:focus-within
+  .dropdown {
+  height: 10rem;
+  width: 16rem;
+  border-radius: 1rem;
 }
 
 /* MEDIA QUERIES  */

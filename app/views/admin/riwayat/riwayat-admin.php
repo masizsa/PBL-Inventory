@@ -52,7 +52,9 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
-
+<<<<<<<<< Temporary merge branch 1
+                    foreach ($data['datas'] as $row) { ?>
+=========
                     foreach ($data['desc'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>
