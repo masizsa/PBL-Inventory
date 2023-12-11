@@ -20,12 +20,12 @@
                             <img class="icon-sort" src="../../../../public/assets/sort.svg" alt="">
                             <span class="text">Urutkan</span>
                         </button>
-                        <form action="../../../controllers/riwayatAdmin.php" method="post">
+                        <!-- <form action="../../../controllers/riwayatAdmin.php" method="post"> -->
                             <ul class="dropdown">
-                                <li class="p"><a href="#" name="latest">Tanggal Terkini</a></li>
-                                <li class="P"><a href="#" name="past">Tanggal Terlama</a></li>
+                                <li class="p"><button id="latest">Tanggal Terkini</button></li>
+                                <li class="P"><button id="oldest">Tanggal Terlama</button></li>
                             </ul>
-                        </form>
+                        <!-- </form> -->
                     </li>
                 </div>
             </div>
@@ -42,7 +42,7 @@
         <div class="custom--table-wrapper">
             <div class="custom--card">
                 <h4>Data Riwayat</h4>
-                <table>
+                <table id="table-descending">
                     <tr>
                         <th>Tanggal Pinjam</th>
                         <th>Tanggal Kembali</th>
@@ -52,7 +52,29 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
-                    foreach ($data as $row) { ?>
+                    foreach ($data['desc'] as $row) { ?>
+                        <tr>
+                            <td><?= $row['tgl_peminjaman'] ?></td>
+                            <td><?= $row['tgl_pengembalian'] ?></td>
+                            <td><?= $row['id_barang'] ?></td>
+                            <td><?= $row['nama_barang'] ?></td>
+                            <td><?= $row['nama_peminjam'] ?></td>
+                            <td><?= $row['jumlah'] ?></td>
+                        </tr>
+                    <?php    }
+                    ?>
+                </table>
+                <table id="table-ascending" style="display: none">
+                    <tr>
+                        <th>Tanggal Pinjam</th>
+                        <th>Tanggal Kembali</th>
+                        <th>Kode</th>
+                        <th>Nama Barang</th>
+                        <th>Nama Peminjam</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    <?php
+                    foreach ($data['asc'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>
                             <td><?= $row['tgl_pengembalian'] ?></td>
@@ -68,17 +90,51 @@
         </div>
     </div>
 </div>
-<script>
-    const buttons = document.querySelectorAll(".custom--day-wrapper button");
 
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            buttons.forEach((button) => {
-                button.classList.remove('active')
-            })
-            button.classList.add('active')
-        })
-    })
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sortButtonLatest = document.getElementById("latest"); // Corrected selector
+        const sortButtonOldest = document.getElementById("oldest"); // Corrected selector
+        const descendingTable = document.getElementById("table-descending");
+        const ascendingTable = document.getElementById("table-ascending");
+
+        sortButtonLatest.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const selectedOption = event.currentTarget.textContent.trim();
+
+            // console.log(sortButtonLatest);
+
+            // Check the selected option and sort accordingly
+            if (selectedOption === "Tanggal Terkini") {
+                // Sort in descending order
+                descendingTable.style.display = "table";
+                ascendingTable.style.display = "none";
+            } else{
+                // Sort in ascending order
+                ascendingTable.style.display = "table";
+                descendingTable.style.display = "none";
+            }
+        });
+        sortButtonOldest.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const selectedOption = event.currentTarget.textContent.trim();
+
+            // console.log(sortButtonOldest);
+
+            // Check the selected option and sort accordingly
+            if (selectedOption === "Tanggal Terkini") {
+                // Sort in descending order
+                descendingTable.style.display = "table";
+                ascendingTable.style.display = "none";
+            } else{
+                // Sort in ascending order
+                ascendingTable.style.display = "table";
+                descendingTable.style.display = "none";
+            }
+        });
+    });
 </script>
 
 </html>

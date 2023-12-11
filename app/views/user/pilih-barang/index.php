@@ -51,41 +51,29 @@
                     <th>Tersedia</th>
                     <th>Pilih</th>
                 </tr>
-                <tr>
-                    <td id="kode1">RMT01</td>
-                    <td id="nama1">Remote AC</td>
-                    <td id="pengelola1">Pak Wardi</td>
-                    <td id="tersedia1">9</td>
-                    <td>
-                        <div class="custom--container-tambah-barang" id="barang1">
-                            <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1');renderCard()">Tambah</button>
-                            <div class="custom--indecrement" id="indecrement1">
-                                <button onclick="decrement(this,'incButton1', 'totalPilihBarang1', 'tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); minToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1');renderCard()" class="items" id="decButton1">-</button>
-                                <input id="totalPilihBarang1" class="items" type="text" value="0">
-                                <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1'); renderCard()" class="items" id="incButton1">+</button>
+                <?php foreach ($data as $item) { ?>
+                    <tr>
+                        <td id="kode1"><?= $item['id_barang'] ?></td>
+                        <td id="nama1"><?= $item['nama_barang'] ?></td>
+                        <td id="pengelola1"><?= $item['nama_admin'] ?></td>
+                        <td id="tersedia1"><?= $item['jumlah_tersedia'] ?></td>
+                        <td>
+                            <div class="custom--container-tambah-barang" id="barang1">
+                                <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1');renderCard()">Tambah</button>
+                                <div class="custom--indecrement" id="indecrement1">
+                                    <button onclick="decrement(this,'incButton1', 'totalPilihBarang1', 'tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); minToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1');renderCard()" class="items" id="decButton1">-</button>
+                                    <input id="totalPilihBarang1" class="items" type="text" value="0">
+                                    <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1'); renderCard()" class="items" id="incButton1">+</button>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="kode2">RMT03</td>
-                    <td id="nama2">Remote AC</td>
-                    <td id="pengelola2">Pak Wardi</td>
-                    <td id="tersedia2">9</td>
-                    <td>
-                        <div class="custom--container-tambah-barang" id="barang2">
-                            <button onclick="increment(this,'decButton2','totalPilihBarang2', 'tersedia2'); scroollTo('totalPilihBarang2', 'barang2', 'indecrement2'); addToCheckout('kode2', 'nama2', 'pengelola2', 'tersedia2', 'totalPilihBarang2', 'tersedia2', 'totalPilihBarang2', 'barang2', 'indecrement2', 'decButton2', 'incButton2');renderCard()">Tambah</button>
-                            <div class="custom--indecrement" id="indecrement2">
-                                <button onclick="decrement(this,'incButton2', 'totalPilihBarang2','tersedia2'); scroollTo('totalPilihBarang2', 'barang2', 'indecrement2'); minToCheckout('kode2', 'nama2', 'pengelola2', 'tersedia2', 'totalPilihBarang2');renderCard()" class="items" id="decButton2">-</button>
-                                <input id="totalPilihBarang2" class="items" type="text" value="0">
-                                <button onclick="increment(this,'decButton2','totalPilihBarang2', 'tersedia2'); addToCheckout('kode2', 'nama2', 'pengelola2', 'tersedia2', 'totalPilihBarang2', 'tersedia2', 'totalPilihBarang2', 'barang2', 'indecrement2', 'decButton2', 'incButton2'); renderCard()" class="items" id="incButton2">+</button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+
+                    </tr>
+                <?php } ?>
             </table>
 
         </div>
+
     </div>
 </section>
 <script>
@@ -210,8 +198,8 @@
         let jumlahCheckout = document.querySelector(`#${jumlah}`);
         const targetBottom = document.querySelector(`#${target2}`);
         const targetTop = document.querySelector(`#${target1} > button`);
-        const minButton =document.querySelector(`#${buttonMin}`)
-        const plusButton =document.querySelector(`#${buttonPlus}`)
+        const minButton = document.querySelector(`#${buttonMin}`)
+        const plusButton = document.querySelector(`#${buttonPlus}`)
 
         const objectIndex = checkoutItems.findIndex(item => item.kodeBarang == kode);
 
