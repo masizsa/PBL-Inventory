@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="./index2.css">
 <section class="custom--pilih-barang-main-container">
     <header class="custom--header-pilih-barang">
         <h1>Selamat Datang di SIVENTI 👋</h1>
@@ -8,7 +7,7 @@
         <div class="custom--list-items-pilih-barang">
             <header class="custom--list-barang-dipilih-header">
                 <label for="">Barang yang dipilih</label>
-                <button>Lanjut</button>
+                <button id="sendDataPilihBarang">Lanjut</button>
             </header>
             <div class="custom--list-barang-dipilih-body">
                 <!-- Tidak ada barang yang dipilih -->
@@ -51,23 +50,25 @@
                     <th>Tersedia</th>
                     <th>Pilih</th>
                 </tr>
-                <tr>
-                    <td id="kode1">RMT01</td>
-                    <td id="nama1">Remote AC</td>
-                    <td id="pengelola1">Pak Wardi</td>
-                    <td id="tersedia1">9</td>
-                    <td>
-                        <div class="custom--container-tambah-barang" id="barang1">
-                            <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1');renderCard()">Tambah</button>
-                            <div class="custom--indecrement" id="indecrement1">
-                                <button onclick="decrement(this,'incButton1', 'totalPilihBarang1', 'tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); minToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1');renderCard()" class="items" id="decButton1">-</button>
-                                <input id="totalPilihBarang1" class="items" type="text" value="0">
-                                <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1'); renderCard()" class="items" id="incButton1">+</button>
+                <?php foreach ($data['datas'] as $barang) { ?>
+                    <tr>
+                        <td id="kode<?= $barang['id_barang'] ?>"><?php echo $barang['id_barang']; ?></td>
+                        <td id="nama<?= $barang['id_barang'] ?>"><?php echo $barang['nama_barang']; ?></td>
+                        <td id="pengelola<?= $barang['id_barang'] ?>"><?php echo $barang['id_admin']; ?></td>
+                        <td id="tersedia<?= $barang['id_barang'] ?>"><?php echo $barang['jumlah_tersedia']; ?></td>
+                        <td>
+                            <div class="custom--container-tambah-barang" id="barang<?= $barang['id_barang'] ?>">
+                                <button onclick="increment(this, 'decButton<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>'); scroollTo('totalPilihBarang<?= $barang['id_barang'] ?>', 'barang<?= $barang['id_barang'] ?>', 'indecrement<?= $barang['id_barang'] ?>'); addToCheckout('kode<?= $barang['id_barang'] ?>', 'nama<?= $barang['id_barang'] ?>', 'pengelola<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>', 'barang<?= $barang['id_barang'] ?>', 'indecrement<?= $barang['id_barang'] ?>', 'decButton<?= $barang['id_barang'] ?>', 'incButton<?= $barang['id_barang'] ?>'); renderCard()">Tambah</button>
+                                <div class="custom--indecrement" id="indecrement<?= $barang['id_barang'] ?>">
+                                    <button onclick="decrement(this, 'incButton<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>'); scroollTo('totalPilihBarang<?= $barang['id_barang'] ?>', 'barang<?= $barang['id_barang'] ?>', 'indecrement<?= $barang['id_barang'] ?>'); minToCheckout('kode<?= $barang['id_barang'] ?>', 'nama<?= $barang['id_barang'] ?>', 'pengelola<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>'); renderCard()" class="items" id="decButton<?= $barang['id_barang'] ?>">-</button>
+                                    <input id="totalPilihBarang<?= $barang['id_barang'] ?>" class="items" type="text" value="0">
+                                    <button onclick="increment(this, 'decButton<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>'); addToCheckout('kode<?= $barang['id_barang'] ?>', 'nama<?= $barang['id_barang'] ?>', 'pengelola<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>', 'tersedia<?= $barang['id_barang'] ?>', 'totalPilihBarang<?= $barang['id_barang'] ?>', 'barang<?= $barang['id_barang'] ?>', 'indecrement<?= $barang['id_barang'] ?>', 'decButton<?= $barang['id_barang'] ?>', 'incButton<?= $barang['id_barang'] ?>'); renderCard()" class="items" id="incButton<?= $barang['id_barang'] ?>">+</button>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
+                        </td>
+                    </tr>
+                <?php } ?>
+                <!-- <tr>
                     <td id="kode2">RMT03</td>
                     <td id="nama2">Remote AC</td>
                     <td id="pengelola2">Pak Wardi</td>
@@ -82,7 +83,7 @@
                             </div>
                         </div>
                     </td>
-                </tr>
+                </tr> -->
             </table>
 
         </div>
@@ -94,14 +95,37 @@
     const buttonLanjut = document.querySelector('.custom--list-barang-dipilih-header > button')
     buttonLanjut.disabled = true;
 
+    $(document).ready(function() {
+        $("#sendDataPilihBarang").on("click", function() {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/PBL-Inventory/public/ajukanPeminjaman/formPeminjaman',
+                data: {
+                    data: JSON.stringify(checkoutItems)
+                },
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // Add this line
+                success: function(response) {
+                    // window.location.href = response?.redirect;
+                    console.log(response);
+                    // window.location.href = response.redirect;
+                    // Handle the response from the server
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                    // Handle errors
+                }
+            });
+        });
+    });
+
+
     const increment = (button, buttonMin, idTarget, totalMax) => {
         let max = parseInt(document.querySelector(`#${totalMax}`).textContent)
         const minButton = document.querySelector(`#${buttonMin}`);
         const target = document.querySelector(`#${idTarget}`)
         let tmp = parseInt(target.value)
         tmp++
-        console.log(max);
-        console.log(tmp);
+
         if (max <= tmp) {
             button.disabled = true
             target.value = tmp;
@@ -128,15 +152,11 @@
         let dependencies = document.querySelector(`#${idDependencies}`).value;
 
         if (dependencies > 0) {
-            targetBottom.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+            targetBottom.classList.add('show');
+            targetTop.classList.add('show');
         } else {
-            targetTop.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+            targetBottom.classList.remove('show');
+            targetTop.classList.remove('show');;
         }
     }
 
@@ -210,28 +230,16 @@
         let jumlahCheckout = document.querySelector(`#${jumlah}`);
         const targetBottom = document.querySelector(`#${target2}`);
         const targetTop = document.querySelector(`#${target1} > button`);
-        const minButton =document.querySelector(`#${buttonMin}`)
-        const plusButton =document.querySelector(`#${buttonPlus}`)
+        const minButton = document.querySelector(`#${buttonMin}`)
+        const plusButton = document.querySelector(`#${buttonPlus}`)
 
         const objectIndex = checkoutItems.findIndex(item => item.kodeBarang == kode);
 
         if (objectIndex !== -1) {
             checkoutItems = checkoutItems.filter(objek => objek.kodeBarang !== kode);
-            // const tmp = parseInt(jumlahTersedia.textContent) + parseInt(jumlahCheckout.value)
-            // jumlahTersedia.textContent = tmp;
             jumlahCheckout.value = 0;
         }
-        if (jumlahCheckout.value > 0) {
-            targetBottom.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        } else {
-            targetTop.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
+        scroollTo(jumlah, target1, target2);
         renderCard()
         minButton.disabled = false;
         plusButton.disabled = false;
@@ -256,7 +264,7 @@
                     <div class="custom--card-checkout">
                             <div class="custom--card-checkout-left">
                                 <div style="font-size: 12px;">${itemCard.kodeBarang}</div>
-                                <div style="font-size: 20px; font-weight: 600;">${itemCard.namaBarang}</div>
+                                <div style="font-size: 20px; font-weight: 500;">${itemCard.namaBarang}</div>
                                 <div style="font-size: 14px;">${itemCard.namaPengelola}</div>
                             </div>
                             <div class="custom--card-checkout-right">
@@ -274,7 +282,6 @@
             }
         })
     }
-
 
     const lanjut = () => checkoutItems.length ? true : false;
 </script>
