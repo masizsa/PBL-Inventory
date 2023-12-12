@@ -26,7 +26,7 @@ class RiwayatAdmin extends Controller
         $conn = $this->db->getConnection();
         $data = [];
 
-        $query = "SELECT * FROM riwayat ORDER BY tgl_peminjaman DESC";
+        $query = "SELECT * FROM riwayat where status = 'Selesai' ORDER BY tgl_peminjaman DESC";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
@@ -43,7 +43,7 @@ class RiwayatAdmin extends Controller
         $conn = $this->db->getConnection();
         $dataAsc = [];
 
-        $query = "SELECT * FROM riwayat ORDER BY tgl_peminjaman ASC";
+        $query = "SELECT * FROM riwayat where status = 'Selesai' ORDER BY tgl_peminjaman ASC";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
