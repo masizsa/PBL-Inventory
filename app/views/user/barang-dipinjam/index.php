@@ -124,6 +124,13 @@
                                 </tbody>
                             </table>
             </section>
+
+            <section class="custom--borrowed-two">
+                <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
+                <div class="custom--container-borrowed-items-empty">
+                    <p>Tidak ada peminjaman</p>
+                </div>
+            </section>
         <?php } ?>
         <?php
         // Jika tidak ada data peminjaman, tampilkan bagian custom--borrowed-two
@@ -139,6 +146,13 @@
         <?php } ?>
 
     </div>
+<<<<<<< HEAD
+
+
+    </main>
+</div>
+
+=======
     </main>
 
 </div>
@@ -148,6 +162,7 @@
 $returnDates = array_column($data['datas'], 'tgl_pengembalian');
 ?>
 
+>>>>>>> main
 <script>
     const returnDatesFromDatabase = <?php echo json_encode($returnDates); ?>;
 

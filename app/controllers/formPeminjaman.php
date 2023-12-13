@@ -1,11 +1,12 @@
 <?php
-class Peminjaman extends Controller
+class FormPeminjaman extends Controller
 {
     public function index()
     {
-        $this->view("templates/header");
-        $this->view("templates/sidebar-admin");
-        $this->view("user/ajukan-peminjaman/index");
-        $this->view("templates/footer");
+        $receivedData = json_decode(file_get_contents("php://input"), true);
+
+        $jsonData = json_encode($receivedData);
+        setcookie("myCookie", $jsonData, time() + 3600);
+
     }
 }

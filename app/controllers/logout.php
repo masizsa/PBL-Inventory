@@ -15,9 +15,10 @@ class Logout extends Controller
     }
     public function processLogout()
     {
-        
+        setcookie("myCookie", "", time() - 3600, "/PBL-Inventory/public");
+        var_dump($_COOKIE['myCookie']);
         session_destroy();
-        header("Location: ../login");
+        header("Location: ../");
     }
 }
 

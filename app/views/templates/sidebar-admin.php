@@ -146,7 +146,7 @@
                     case 'riwayatAdmin':
                         sidebarMenu[2].classList.add('active-menu');
                         break;
-                    case 'ubahSandi':
+                    case 'ubahSandiAdmin':
                         sidebarMenu[3].classList.add('active-menu');
                         break;
                     case 'keluar':

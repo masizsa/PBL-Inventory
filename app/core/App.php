@@ -1,5 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 
 class App
@@ -10,33 +11,41 @@ class App
 
     public function __construct()
     {
-        session_start();
-
         $url = $this->parseUrl();
 
-        if (empty($url[0])) {
-            // Default to the login controller
-            require_once '../app/controllers/login.php';
-            $this->controller = new login();
-            $this->controller->index();
-            return;
-        }
-
-        // Cek apakah pengguna sudah login
         if (isset($_SESSION['isLogin'])) {
-            // Pengguna sudah login, izinkan akses ke semua controller
+            // Check if the user is an admin
+            $isAdmin = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'];
+
+            if ($url[0] === 'login') {
+                $this->redirectLoggedInUser($isAdmin);
+                return;
+            }
+
+            // If the user is not an admin and tries to access DataBarang or other admin-only pages,
+            // redirect to home
+            if (!$isAdmin && in_array($url[0], ['databarang', /* other admin controllers */])) {
+                header("Location: http://localhost/PBL-Inventory/public/home");
+                exit();
+            }
+
+            // Allow access to all controllers if the user is logged in
             if (!empty($url)) {
-                if (file_exists('../app/controllers/' . $url[0] . '.php')) {
-                    $this->controller = $url[0];
+                $controllerName = ucfirst($url[0]); // Assuming controllers follow camel case naming convention
+                $controllerPath = '../app/controllers/' . $controllerName . '.php';
+
+                if (file_exists($controllerPath)) {
+                    $this->controller = $controllerName;
                     unset($url[0]);
                 }
 
-                require_once '../app/controllers/' . $this->controller . '.php';
+                require_once $controllerPath;
                 $this->controller = new $this->controller;
 
                 if (isset($url[1])) {
-                    if (method_exists($this->controller, $url[1])) {
-                        $this->method = $url[1];
+                    $methodName = $url[1];
+                    if (method_exists($this->controller, $methodName)) {
+                        $this->method = $methodName;
                         unset($url[1]);
                     }
                 }
@@ -45,16 +54,16 @@ class App
                 call_user_func_array([$this->controller, $this->method], $this->params);
             }
         } else {
-            // Pengguna belum login, batasi akses hanya ke controller login
+            // Limit access to only the login controller if the user is not logged in
             require_once '../app/controllers/login.php';
-            $this->controller = new $this->controller;
+            $this->controller = new Login();
 
             if (isset($url[1]) && $url[0] === 'login' && method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
             }
 
-            $this->params = array_values($url);  
+            $this->params = array_values($url);
             call_user_func_array([$this->controller, $this->method], $this->params);
         }
     }
@@ -69,5 +78,16 @@ class App
             return [];
         }
     }
-    
+
+    protected function redirectLoggedInUser($isAdmin)
+    {
+        // Redirect based on whether the user is an admin or not
+        if ($isAdmin) {
+            header("Location: http://localhost/PBL-Inventory/public/databarang");
+        } else {
+            header("Location: http://localhost/PBL-Inventory/public/ajukanPeminjaman");
+        }
+
+        exit();
+    }
 }
