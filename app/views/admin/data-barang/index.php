@@ -6,7 +6,7 @@
     <div class="custom--body-data-barang">
         <div class="custom--overview">
             <div class="custom--wrapper">
-                <a href="">
+                <a href="./peminjaman">
                     <div class="custom--overview-header">
                         <div class="custom-icon-right">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="custom--overview-body">
-                        <span id="quantity">20</span>
+                        <span id="jumlah_dipinjam"><?php echo $data['summaryData']['total_dipinjam']; ?></span>
                         <label for="">Barang</label>
                     </div>
                 </a>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="custom--overview-body">
-                    <span id="quantity">20</span>
+                    <span id="quantity"><?php echo $data['summaryData']['total_tersedia']; ?></span>
                     <label for="">Barang</label>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="custom--overview-body">
-                    <span id="quantity">20</span>
+                    <span id="quantity"><?php echo $data['summaryData']['total_pemeliharaan']; ?></span>
                     <label for="">Barang</label>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div class="custom--overview-body">
-                    <span id="quantity">20</span>
+                    <span id="quantity"><?php echo $data['summaryData']['grand_total']; ?></span>
                     <label for="">Barang</label>
                 </div>
             </div>
@@ -86,12 +86,14 @@
         <div class="custom--data-barang-table-wrapper">
             <div class="custom--data-barang-table-wrapper--header">
                 <h3>Data Barang</h3>
-                <button><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.99984 18.9583C5.05817 18.9583 1.0415 14.9417 1.0415 9.99999C1.0415 5.05832 5.05817 1.04166 9.99984 1.04166C14.9415 1.04166 18.9582 5.05832 18.9582 9.99999C18.9582 14.9417 14.9415 18.9583 9.99984 18.9583ZM9.99984 2.29166C5.74984 2.29166 2.2915 5.74999 2.2915 9.99999C2.2915 14.25 5.74984 17.7083 9.99984 17.7083C14.2498 17.7083 17.7082 14.25 17.7082 9.99999C17.7082 5.74999 14.2498 2.29166 9.99984 2.29166Z" fill="#121212" />
                         <path d="M13.3332 10.625H6.6665C6.32484 10.625 6.0415 10.3417 6.0415 10C6.0415 9.65833 6.32484 9.375 6.6665 9.375H13.3332C13.6748 9.375 13.9582 9.65833 13.9582 10C13.9582 10.3417 13.6748 10.625 13.3332 10.625Z" fill="#121212" />
                         <path d="M10 13.9583C9.65833 13.9583 9.375 13.675 9.375 13.3333V6.66666C9.375 6.32499 9.65833 6.04166 10 6.04166C10.3417 6.04166 10.625 6.32499 10.625 6.66666V13.3333C10.625 13.675 10.3417 13.9583 10 13.9583Z" fill="#121212" />
                     </svg>
-                    Tambah Barang</button>
+                    Tambah Barang
+                </button>
             </div>
             <table class="custom--table-data-barang">
                 <tr>
@@ -113,21 +115,21 @@
                         <td id="pemeliharaan<?= $index ?>"><?= $item['jml_pemeliharaan']; ?></td>
                         <td id="icon<?= $index ?>">
                             <div class="custom--icon-aksi">
-                                <div class="editIcon">
+                                <div class="editIcon" onclick="editItem('<?= $item['id_barang']; ?>')">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.1665 1.66666H7.49984C3.33317 1.66666 1.6665 3.33332 1.6665 7.49999V12.5C1.6665 16.6667 3.33317 18.3333 7.49984 18.3333H12.4998C16.6665 18.3333 18.3332 16.6667 18.3332 12.5V10.8333" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M13.3666 2.51666L6.7999 9.08333C6.5499 9.33333 6.2999 9.825 6.2499 10.1833L5.89157 12.6917C5.75823 13.6 6.3999 14.2333 7.30823 14.1083L9.81657 13.75C10.1666 13.7 10.6582 13.45 10.9166 13.2L17.4832 6.63333C18.6166 5.5 19.1499 4.18333 17.4832 2.51666C15.8166 0.849997 14.4999 1.38333 13.3666 2.51666Z" stroke="#121212" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M12.4248 3.45834C12.9831 5.45001 14.5415 7.00834 16.5415 7.57501" stroke="#121212" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </div>
-                                <div class="detailsIcon">
+                                <div class="detailsIcon" onclick="showDetails('<?= $item['id_barang']; ?>')">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.99984 18.9583C5.05817 18.9583 1.0415 14.9417 1.0415 9.99999C1.0415 5.05832 5.05817 1.04166 9.99984 1.04166C14.9415 1.04166 18.9582 5.05832 18.9582 9.99999C18.9582 14.9417 14.9415 18.9583 9.99984 18.9583ZM9.99984 2.29166C5.74984 2.29166 2.2915 5.74999 2.2915 9.99999C2.2915 14.25 5.74984 17.7083 9.99984 17.7083C14.2498 17.7083 17.7082 14.25 17.7082 9.99999C17.7082 5.74999 14.2498 2.29166 9.99984 2.29166Z" fill="#121212" />
                                         <path d="M10 11.4584C9.65833 11.4584 9.375 11.175 9.375 10.8334V6.66669C9.375 6.32502 9.65833 6.04169 10 6.04169C10.3417 6.04169 10.625 6.32502 10.625 6.66669V10.8334C10.625 11.175 10.3417 11.4584 10 11.4584Z" fill="#121212" />
                                         <path d="M9.99984 14.1667C9.8915 14.1667 9.78317 14.1417 9.68317 14.1C9.58317 14.0583 9.4915 14 9.40817 13.925C9.33317 13.8416 9.27484 13.7583 9.23317 13.65C9.1915 13.55 9.1665 13.4417 9.1665 13.3333C9.1665 13.225 9.1915 13.1167 9.23317 13.0167C9.27484 12.9167 9.33317 12.825 9.40817 12.7417C9.4915 12.6667 9.58317 12.6083 9.68317 12.5667C9.88317 12.4833 10.1165 12.4833 10.3165 12.5667C10.4165 12.6083 10.5082 12.6667 10.5915 12.7417C10.6665 12.825 10.7248 12.9167 10.7665 13.0167C10.8082 13.1167 10.8332 13.225 10.8332 13.3333C10.8332 13.4417 10.8082 13.55 10.7665 13.65C10.7248 13.7583 10.6665 13.8416 10.5915 13.925C10.5082 14 10.4165 14.0583 10.3165 14.1C10.2165 14.1417 10.1082 14.1667 9.99984 14.1667Z" fill="#121212" />
                                     </svg>
                                 </div>
-                                <div class="deleteIcon">
+                                <div class="deleteIcon" onclick="deleteItem('<?= $item['id_barang']; ?>')">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="3" y="3.40002" width="10" height="12" rx="1" stroke="#121212" stroke-width="1.2" />
                                         <rect x="1.5" y="1.40002" width="13" height="2" rx="0.5" stroke="#121212" stroke-width="1.2" stroke-linejoin="round" />
@@ -140,7 +142,7 @@
                             </div>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach; ?>    
             </table>
         </div>
     </div>
@@ -188,42 +190,41 @@
             <header>
                 <h3>Edit Barang</h3>
             </header>
-            <form action="dataBarang/editBarang" method="POST">
+            <form action="dataBarang/editItem" method="POST">
                 <div class="custom--input-add-item">
                     <div class="custom--input-add-item-wrapper">
-                        <label for="kode_barang">Kode Barang</label>
-                        <input type="text" name="kode_barang">
+                        <label for="kode_barang_edit">Kode Barang</label>
+                        <input type="text" name="kode_barang_edit" id="kode_barang_edit" disabled>
 
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="nama_barang">Nama Barang</label>
-                        <input type="text" name="nama_barang">
+                        <label for="nama_barang_edit">Nama Barang</label>
+                        <input type="text" name="nama_barang_edit" id="nama_barang_edit">
 
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="asal">Asal</label>
-                        <input type="text" name="asal">
+                        <label for="asal_edit">Asal</label>
+                        <input type="text" name="asal_edit" id="asal_edit">
 
                     </div>
 
                     <div class="custom--input-add-item-wrapper">
-                        <label for="jumlah">Jumlah Total</label>
-                        <input type="text" name="jumlah">
+                        <label for="jumlah_edit">Jumlah Tersedia</label>
+                        <input type="text" name="jumlah_edit" id="jumlah_edit">
                     </div>
 
                     <div class="custom--input-add-item-wrapper">
-                        <label for="jumlah_pemeliharaan">Jumlah Pemeliharaan</label>
-                        <input type="text" name="jumlah_pemeliharaan">
-
+                        <label for="jumlah_pemeliharaan_edit">Jumlah Pemeliharaan</label>
+                        <input type="text" name="jumlah_pemeliharaan_edit" id="jumlah_pemeliharaan_edit">
                     </div>
                 </div>
                 <div class="custom--input-add-item-area">
-                    <label for="keterangan">Keterangan</label>
-                    <textarea name="keterangan" id="" cols="30" rows="10"></textarea>
+                    <label for="keterangan_edit">Keterangan</label>
+                    <textarea name="keterangan" id="keterangan_edit" cols="30" rows="10"></textarea>
                 </div>
                 <div class="custom--button-add-items">
                     <button class="custom--close-button">Batal</button>
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Submit" id="submit-edit">
                 </div>
             </form>
         </div>
@@ -244,31 +245,30 @@
                         <input type="text" id="nama_barang" name="nama_barang" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="asal">Asal</label>
-                        <input type="text" id="asal" name="asal" disabled>
-                    </div>
-                    <div class="custom--input-add-item-wrapper">
                         <label for="jumlah">Jumlah</label>
                         <input type="text" id="jumlah" name="jumlah" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="jumlah_tersedia">Jumlah Tersedia</label>
-                        <input type="text" id="jumlah_tersedia" name="jumlah_tersedia" disabled>
+                        <label for="tersedia">Jumlah Tersedia</label>
+                        <input type="text" id="tersedia" name="tersedia" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="jml_pemeliharaan">Jumlah Pemeliharaan</label>
-                        <input type="text" id="jml_pemeliharaan" name="jml_pemeliharaan" disabled>
+                        <label for="dipinjam">Jumlah Dipinjam</label>
+                        <input type="text" id="dipinjam" name="dipinjam" disabled>
+                    </div>
+                    <div class="custom--input-add-item-wrapper">
+                        <label for="pemeliharaan">Jumlah Pemeliharaan</label>
+                        <input type="text" id="pemeliharaan" name="pemeliharaan" disabled>
                     </div>
                 </div>
                 <div class="custom--input-add-item-area">
-                    <label for="keterangan">Keterangan</label>
-                    <textarea id="keterangan" name="keterangan" rows="10" disabled></textarea>
+                    <label for="keterangan-detail">Keterangan</label>
+                    <textarea id="keterangan-detail" name="keterangan-detail" rows="10" disabled></textarea>
                 </div>
             </form>
         </div>
         <button class="custom--add-items-close" id="custom--close-details"></button>
     </div>
-
     <div class="custom--delete-item" id="delete-item">
         <div class="custom--content-delete">
             <header>
@@ -282,7 +282,7 @@
             </header>
             <div class="custom--button-add-items">
                 <button class="custom--close-button">Batal</button>
-                <a href="">Hapus</a>
+                <button class="custom--delete-btn">Hapus</button>
             </div>
         </div>
     </div>
@@ -332,30 +332,146 @@
     popupController(detailsButton, detailsPopup);
     popupController(deleteButton, deletePopup);
 
-    document.addEventListener("DOMContentLoaded", function () {
-    // Fetch data from the server
-    fetch('dataBarang/detailsBarang')
+    function deleteItem(id_barang) {
+        console.log("Delete Item ID: " + id_barang);
+
+        const modal = document.getElementById('delete-item');
+        const closeButton = modal.querySelector('.custom--close-button');
+        const deleteButton = modal.querySelector('.custom--delete-btn');
+
+        sectionPopUp.classList.add('show');
+        modal.classList.add('show');
+        closeButton.onclick = function () {
+            modal.classList.remove('show');
+        };
+
+        deleteButton.onclick = function () {
+            fetch(`../public/dataBarang/deleteBarang/${id_barang}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Item deleted successfully");
+                    window.location.href = '../public/dataBarang';
+                } else {
+                    console.error("Failed to delete item");
+                }
+            })
+            .catch(error => {
+                console.error("Error during deletion:", error);
+            });
+
+            modal.classList.remove('show');
+        };
+    }
+
+    function editItem(id_barang) {
+        console.log("Edit Item ID: " + id_barang);
+        sectionPopUp.classList.add('show');
+        editPopup.classList.add('show');
+
+        fetch(`../public/dataBarang/getBarangDetails/${id_barang}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Data received:", data);
+                document.getElementById('kode_barang_edit').value = data.id_barang;
+                document.getElementById('nama_barang_edit').value = data.nama_barang;
+                document.getElementById('asal_edit').value = data.asal;
+                document.getElementById('jumlah_edit').value = data.jumlah_tersedia + data.jumlah_dipinjam + data.jml_pemeliharaan;
+                document.getElementById('jumlah_pemeliharaan_edit').value = data.jml_pemeliharaan;
+                document.getElementById('keterangan_edit').innerText = data.kondisi_barang;
+            })
+            .catch(error => {
+                console.error("Error fetching details:", error);
+            });
+    }
+
+    function handleEditSubmit() {
+        const id_barang = document.getElementById('kode_barang_edit').value;
+        const nama_barang = document.getElementById('nama_barang_edit').value;
+        const asal = document.getElementById('asal_edit').value;
+        const jumlah = document.getElementById('jumlah_edit').value;
+        const jumlah_pemeliharaan = document.getElementById('jumlah_pemeliharaan_edit').value;
+        const keterangan = document.getElementById('keterangan_edit').value;
+
+        fetch(`../public/dataBarang/updateItem`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `kode_barang=${id_barang}&nama_barang=${nama_barang}&asal=${asal}&jumlah=${jumlah}&jumlah_pemeliharaan=${jumlah_pemeliharaan}&keterangan=${keterangan}`,
+        })
         .then(response => response.json())
-        .then(data => {
-            // Update form fields with fetched data
-            if (data.length > 0) {
-                const item = data[0]; // Assuming you want to populate with the first item
-                document.getElementById('kode_barang').value = item.id_barang;
-                document.getElementById('nama_barang').value = item.nama_barang;
-                document.getElementById('asal').value = item.asal;
-                const jumlahTersedia = parseInt(item.jumlah_tersedia);
-                const jumlahDipinjam = parseInt(item.jumlah_dipinjam);
-                const jmlPemeliharaan = parseInt(item.jml_pemeliharaan);
-                const totalJumlah = jumlahTersedia + jumlahDipinjam + jmlPemeliharaan;
-                document.getElementById('jumlah').value = totalJumlah;
-                document.getElementById('jumlah_tersedia').value = item.jumlah_tersedia;
-                document.getElementById('jml_pemeliharaan').value = item.jml_pemeliharaan;
-                const keteranganTextarea = document.getElementById('keterangan');
-                keteranganTextarea.value = item.keterangan;
+        .then(response => {
+            console.log(response);
+            if (response.success) {
+                window.location.href = './dataBarang';
+            } else {
+                console.error("Failed to update item");
             }
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => {
+            console.error("Error updating item:", error);
+        });
+        sectionPopUp.classList.remove('show');
+        editPopup.classList.remove('show');
+    }
+
+    // Add an event listener to the "Submit" button in the edit form
+    const submitEditButton = document.getElementById('submit-edit');
+    submitEditButton.addEventListener('click', handleEditSubmit);
+
+
+    function showDetails(id_barang) {
+        console.log("Show Details for Item ID: " + id_barang);
+
+        sectionPopUp.classList.add('show');
+        detailsPopup.classList.add('show');
+
+        fetch(`../public/dataBarang/getBarangDetails/${id_barang}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('kode_barang').value = data.id_barang;
+                document.getElementById('nama_barang').value = data.nama_barang;
+                const tersedia = parseInt(document.getElementById('tersedia').value);
+                const dipinjam = parseInt(document.getElementById('dipinjam').value);
+                const pemeliharaan = parseInt(document.getElementById('pemeliharaan').value);
+                const jumlah = tersedia + dipinjam + pemeliharaan;
+                document.getElementById('jumlah').value = jumlah;
+                document.getElementById('tersedia').value = data.jumlah_tersedia;
+                document.getElementById('dipinjam').value = data.jumlah_dipinjam;
+                document.getElementById('pemeliharaan').value = data.jml_pemeliharaan;
+                document.getElementById('keterangan-detail').innerText = data.kondisi_barang;
+                console.log(data.kondisi_barang);
+            })
+            .catch(error => {
+                console.error("Error fetching details:", error);
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var editIcons = document.querySelectorAll(".editIcon");
+        editIcons.forEach(function (editIcon) {
+            editIcon.addEventListener("click", function () {
+                var id_barang = editIcon.closest("tr").querySelector("[id^='kode']").innerText;
+                editItem(id_barang);
+            });
+        });
+
+        var detailsIcons = document.querySelectorAll(".detailsIcon");
+        detailsIcons.forEach(function (detailsIcon) {
+            detailsIcon.addEventListener("click", function () {
+                var id_barang = detailsIcon.closest("tr").querySelector("[id^='kode']").innerText;
+                showDetails(id_barang);
+            });
+        });
+
+        var deleteIcons = document.querySelectorAll(".deleteIcon");
+        deleteIcons.forEach(function (deleteIcon) {
+            deleteIcon.addEventListener("click", function () {
+                var id_barang = deleteIcon.closest("tr").querySelector("[id^='kode']").innerText;
+                deleteItem(id_barang);
+            });
+        });
     });
-
 </script>
-

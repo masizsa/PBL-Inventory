@@ -156,6 +156,10 @@ hr {
   justify-content: space-between;
   align-items: center;
 }
+.custom--delete-btn {
+  background-color: #fcd106 !important;
+}
+
 .custom--close-button + a,
 .custom--data-barang-table-wrapper--header button {
   height: 100%;
@@ -314,6 +318,13 @@ html {
   font-weight: 600;
 }
 
+#kode_barang_edit {
+  background-color: #fbf4cf;
+  color: #000;
+  border: 1px solid #fcd106;
+  font-weight: 500;
+}
+
 .custom--input-add-item-wrapper input[type="text"] {
   height: 5rem;
   border-radius: 1.4rem;
@@ -351,7 +362,6 @@ html {
 .custom--button-add-items button {
   width: 24rem;
   border-radius: 100rem;
-  /* border: none; */
   outline: none;
   color: #000;
   cursor: pointer;
@@ -360,6 +370,14 @@ html {
   font-family: "poppins", sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
+}
+
+.custom--content-delete .custom--button-add-items .custom--delete-btn {
+  background-color: #ffffff !important;
+}
+
+.custom--content-delete .custom--button-add-items .custom--close-button {
+  background-color: #fcd106 !important;
 }
 
 .custom--button-add-items input[type="submit"] {
@@ -397,24 +415,26 @@ html {
   width: 100%;
 }
 
-.custom--delete-item .custom--content-delete {
+.custom--delete-item .custom--content-delete h3{
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
   text-align: center;
 }
 
 .custom--delete-item .custom--content-delete header {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 2.4rem;
 }
+
 .custom--close-button + a {
   width: 24rem;
   font-size: 14px;
   text-decoration: none;
   color: #000;
 }
+
 .show {
   display: flex;
 }
