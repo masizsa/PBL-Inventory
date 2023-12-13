@@ -84,7 +84,7 @@
                                         <p><?php echo $item['status'] ?></p>
                                     </div>
                                 <?php } elseif ($status === 'Terlambat') { ?>
-                                    <div class="custom--status-value-terlambat" id="status-terlambat">
+                                    <div class="custom--status-value-dipinjam" id="status-terlambat">
                                         <p><?php echo $status ?></p>
                                     </div>
                                 <?php } else { ?>
@@ -185,12 +185,15 @@ $returnDates = array_column($data['datas'], 'tgl_pengembalian');
         });
 
         // Tampilkan hasil countdown pada elemen HTML
-        
-        document.getElementById('days').innerHTML = days;
-        document.getElementById('hours').innerHTML = hours;
-        document.getElementById('minutes').innerHTML = minutes;
-        document.getElementById('month-label').innerHTML = monthLabel;
-        document.getElementById('month').innerHTML = closestReturnDate.getDate();
+        if (timeDifference >= 0) {
+            document.getElementById('days').innerHTML = days;
+            document.getElementById('hours').innerHTML = hours;
+            document.getElementById('minutes').innerHTML = minutes;
+            document.getElementById('month-label').innerHTML = monthLabel;
+            document.getElementById('month').innerHTML = closestReturnDate.getDate();
+        }
+
+
     }
 
     // Jalankan perhitungan countdown

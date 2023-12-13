@@ -87,7 +87,7 @@ class Peminjaman extends Controller
 
     public function updateToTerlambat(){
             $conn = $this->db->getConnection();
-            $sql = "UPDATE peminjaman SET status = 'Terlambat' WHERE tgl_pengembalian < CURDATE() AND status != 'Selesai';";
+            $sql = "UPDATE peminjaman SET status = 'Terlambat' WHERE tgl_pengembalian < CURDATE() AND status = 'Dipinjam';";
             $stmt = $conn->prepare($sql);
             // $stmt->bind_param("i", $idPeminjaman);
             $stmt->execute();
