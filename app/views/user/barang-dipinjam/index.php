@@ -111,7 +111,6 @@
 
                                     <div class="custom--card">
                                         <table>
-                                            <!-- <h4><?= $items[0]['tgl_peminjaman'] ?></h4> -->
                                             <?php foreach ($items as $item) { ?>
                                                 <tr>
                                                     <td><?= $item['id_barang'] ?></td>

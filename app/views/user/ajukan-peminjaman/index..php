@@ -1,9 +1,57 @@
+<<<<<<< HEAD:app/views/user/ajukan-peminjaman/formPeminjaman.php
 <section class="container" id="custom--form-container">
     <div class="header">
         <h2 class="title">Detail Peminjaman</h2>
         <p class="desc">Pastikan data dan barang yang Anda pinjam sudah benar!</p>
     </div>
     <section class="custom--form-peminjaman-body">
+=======
+<?php
+// require_once '../../../models/Peminjaman.php';
+// include('../../../controlers/auth/checkFormPeminjaman.php');
+
+// $crud = new Crud();
+// if (isset($_POST['btn-pinjam'])) {
+//     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//         $tanggal = $_POST['startDate'];
+//         $crud->addPeminjaman( $tanggal);
+//     }
+// }
+
+
+
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Detail Peminjaman</title>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <?php
+    //include('../../../controlers/auth/checkFormPeminjaman.php');
+    // include('../../../controlers/auth/checkLogin.php');
+
+    ?>
+    <div class="container">
+        <div class="header">
+            <h2 class="title">Detail Peminjaman</h2>
+            <p class="desc">Pastikan data dan barang yang Anda pinjam sudah benar!</p>
+        </div>
+>>>>>>> main:app/views/user/ajukan-peminjaman/index..php
         <h4 class="sub-title">Data Anda</h4>
         <section class="form-pinjam">
             <div class="form-wrapper">

@@ -7,5 +7,6 @@ class FormPeminjaman extends Controller
 
         $jsonData = json_encode($receivedData);
         setcookie("myCookie", $jsonData, time() + 3600);
+
     }
 }

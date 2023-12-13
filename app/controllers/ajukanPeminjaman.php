@@ -3,14 +3,17 @@ class AjukanPeminjaman extends Controller
 {
     public $db;
     public $listDataBarang;
+
     public function __construct()
     {
         $this->db = Database::getInstance();
     }
     public function index()
     {
+
         $data['cookies'] = isset($_COOKIE['myCookie']) ? $_COOKIE['myCookie'] : null;
         $data['datas'] = $this->getDataBarang();
+
         $data['css'] = 'pilih-barang';
 
         $this->view("templates/header", $data);
@@ -18,6 +21,7 @@ class AjukanPeminjaman extends Controller
         $this->view("user/pilih-barang/index", $data);
         $this->view("templates/footer");
     }
+
     public function getDataBarang()
     {
         $conn = $this->db->getConnection();

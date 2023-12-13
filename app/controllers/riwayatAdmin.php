@@ -10,9 +10,13 @@ class RiwayatAdmin extends Controller
 
     public function index()
     {
+
+        $data['desc'] = $this->showRecent();
+        $data['asc'] = $this->showOldest();
         $data['datas'] = $this->showRecent();
         $data['css'] = 'riwayat-admin';
         // $data['riwayat_past'] = this->showOldest();
+      
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/riwayat/riwayat-admin", $data);
@@ -22,7 +26,7 @@ class RiwayatAdmin extends Controller
     public function showRecent()
     {
         $conn = $this->db->getConnection();
-        // $data = [];
+        $data = [];
 
         $query = "SELECT * FROM riwayat ORDER BY tgl_peminjaman DESC";
         $result = $conn->query($query);
@@ -38,10 +42,19 @@ class RiwayatAdmin extends Controller
 
     public function showOldest()
     {
-        // if(isset($POST['past'])){
-        // $select = "SELECT * FROM riwayat ORDER BY tgl_peminjaman ASC";
-        // $result = $db->query($select);
-        // }
+        $conn = $this->db->getConnection();
+        $dataAsc = [];
+
+        $query = "SELECT * FROM riwayat ORDER BY tgl_peminjaman ASC";
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $dataAsc[] = $row; // Tambahkan data ke array riwayatData
+                // var_dump($data);
+            }
+        }
+        return $dataAsc;
     }
     public function searchData()
     {

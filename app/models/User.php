@@ -1,7 +1,5 @@
 <?php
-include '../Database.php';
-
-class Barang
+class User
 {
     private $id_barang;
     private $nama_barang;
@@ -108,7 +106,7 @@ class Barang
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            return new Barang($row['id_barang'], $row['nama_barang'], $row['jumlah_tersedia'], $row['kondisi_barang'], $row['asal']);
+            return new User($row['id_barang'], $row['nama_barang'], $row['jumlah_tersedia'], $row['kondisi_barang'], $row['asal']);
         } else {
             return null;
         }
