@@ -57,7 +57,7 @@ class Peminjaman extends Controller
         $this->updateToTerlambat();
         $conn = $this->db->getConnection();
         $data = [];
-        $sql = "SELECT * FROM data_peminjaman where status != 'Menunggu' AND status != 'Selesai'";
+        $sql = "SELECT * FROM data_pengembalian where status != 'Menunggu' AND status != 'Selesai'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {

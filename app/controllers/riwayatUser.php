@@ -19,8 +19,6 @@ class RiwayatUser extends Controller
         $this->view("templates/sidebar-user");
         $this->view("user/riwayat/index", $data);
         $this->view("templates/footer");
-
-        
     }
 
     public function getData()
@@ -29,7 +27,7 @@ class RiwayatUser extends Controller
         $data = [];
         if (isset($_SESSION["nomor_identitas"])) {
             $nomor_identitas = $_SESSION["nomor_identitas"];
-            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas'";
+            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas' AND status ='Selesai'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -48,30 +46,13 @@ class RiwayatUser extends Controller
         return $data;
     }
 
-    public function showRecent(){
+    public function showRecent()
+    {
         $conn = $this->db->getConnection();
         $data = [];
         if (isset($_SESSION["nomor_identitas"])) {
             $nomor_identitas = $_SESSION["nomor_identitas"];
-            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas' ORDER BY tgl_peminjaman DESC";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $data[] = $row; // Tambahkan data ke array riwayatData
-                    // var_dump($data);
-                }
-            } 
-        return $data;
-    }
-}
-
-    public function showOldest(){
-        $conn = $this->db->getConnection();
-        $data = [];
-        if (isset($_SESSION["nomor_identitas"])) {
-            $nomor_identitas = $_SESSION["nomor_identitas"];
-            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas' ORDER BY tgl_peminjaman ASC";
+            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas'AND status ='Selesai' ORDER BY tgl_peminjaman DESC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -84,4 +65,22 @@ class RiwayatUser extends Controller
         }
     }
 
+    public function showOldest()
+    {
+        $conn = $this->db->getConnection();
+        $data = [];
+        if (isset($_SESSION["nomor_identitas"])) {
+            $nomor_identitas = $_SESSION["nomor_identitas"];
+            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas' AND status ='Selesai' ORDER BY tgl_peminjaman ASC";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row; // Tambahkan data ke array riwayatData
+                    // var_dump($data);
+                }
+            }
+            return $data;
+        }
+    }
 }

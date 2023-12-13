@@ -24,7 +24,7 @@ class BarangDipinjam extends Controller
         $data = [];
         if (isset($_SESSION["nomor_identitas"])) {
             $nomor_identitas = $_SESSION["nomor_identitas"];
-            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas'";
+            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas' AND status != 'Selesai'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {

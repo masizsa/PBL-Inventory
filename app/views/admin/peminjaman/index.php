@@ -31,7 +31,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Tanggal pinjam</th>
+                                    <th>Tanggal Pinjam</th>
                                     <th>Kode</th>
                                     <th>Nama Barang</th>
                                     <th>Nama Peminjam</th>
@@ -60,9 +60,7 @@
                                             echo '<td rowspan="' . count($group) . '" class="custom--confirm">';
                                             echo '<div class="custom--aksi">'; ?>
                                             <form method="POST" action="">
-
                                                 <input type="hidden" name="update" value="<?php echo $item['id_peminjaman']; ?>">
-                                                <!-- Tambahkan tombol submit atau aksi lain yang Anda perlukan -->
                                                 <button type="submit" name="confirmBtn" class="button-confirm">Konfirmasi</button>
                                             </form>
 
@@ -90,7 +88,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Tanggal pinjam</th>
+                                    <th>Tanggal Kembali</th>
                                     <th>Kode</th>
                                     <th>Nama Barang</th>
                                     <th>Nama Peminjam</th>
@@ -114,24 +112,24 @@
 
                                     foreach ($groupedData as $id_peminjaman => $group) {
                                         foreach ($group as $index => $item) {
-                                            echo '<td>' . $item['tanggal_pinjam'] . '</td>';
+                                            echo '<td>' . $item['tanggal_pengembalian'] . '</td>';
                                             echo '<td>' . $item['kode'] . '</td>';
                                             echo '<td>' . $item['nama_barang'] . '</td>';
                                             echo '<td class="custom--first-child">' . $item['nama_peminjam'] . '</td>';
                                             if ($index === 0) {
                                                 echo '<td rowspan="' . count($group) . '" class="custom--confirm">';
                                     ?>
-                                                <!-- <form method="POST" action="">
+                                                <form method="POST" action="">
                                                     <input type="hidden" name="checkStatus" value="<?php echo $item['id_peminjaman']; ?>">
-                                                </form> -->
+                                                </form>
                                                 <div class="custom--status">
                                                     <?php if ($item['status'] === 'Dipinjam') { ?>
                                                         <div class="custom--status-value" id="status-dipinjam">
                                                             <p>Dipinjam</p>
                                                         </div>
-                                                    <?php } elseif ($item['status'] === 'Validasi') { ?>
+                                                    <?php } elseif ($item['status'] === 'Selesai') { ?>
                                                         <div class="custom--status-value" id="status-validasi">
-                                                            <p>Validasi</p>
+                                                            <p>Selesai</p>
                                                         </div>
                                                     <?php } elseif ($item['status'] === 'Terlambat') { ?>
                                                         <div class="custom--status-value" id="status-terlambat">
@@ -158,7 +156,6 @@
                                                 // echo '<button class="button-confirm" type="submit" name="confirmBtnPengembalian" >Konfirmasi</button>';
                                                 echo '<button class="button-info">';
                                                 echo '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg">';
-                                                // ... (SVG code)
                                                 echo '</svg>';
                                                 echo '</button>';
                                                 echo '</div>';
