@@ -7,6 +7,7 @@ class Peminjaman extends Controller
         $this->db = Database::getInstance();
     }
 
+
     public function index()
     {
         // Periksa apakah terjadi request POST
@@ -30,17 +31,18 @@ class Peminjaman extends Controller
         $data['css'] = 'adminPeminjaman';
 
         // Tampilkan tampilan template setelah pemrosesan request POST
+
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/peminjaman/index", $data);
         $this->view("templates/footer");
     }
 
-
     public function konfirmasiPeminjaman()
     {
         $conn = $this->db->getConnection();
         $data = [];
+
         $sql = "SELECT * FROM data_peminjaman where status = 'Menunggu' ";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -59,6 +61,7 @@ class Peminjaman extends Controller
         $data = [];
         $sql = "SELECT * FROM data_pengembalian where status != 'Menunggu' AND status != 'Selesai'";
         $result = $conn->query($sql);
+
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $data[] = $row; // Tambahkan data ke array riwayatData
@@ -92,8 +95,5 @@ class Peminjaman extends Controller
             // $stmt->bind_param("i", $idPeminjaman);
             $stmt->execute();
     }
-
     
-
-
 }

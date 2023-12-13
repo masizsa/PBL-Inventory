@@ -39,27 +39,19 @@
         </div>
         <div class="custom--table-wrapper">
             <?php
-            $groupedDataDesc = [];
-            foreach ($data['desc'] as $item) {
+            $groupedData = [];
+            foreach ($data['items'] as $item) {
                 $idPeminjaman = $item['id_peminjaman'];
-                if (!array_key_exists($idPeminjaman, $groupedDataDesc)) {
-                    $groupedDataDesc[$idPeminjaman] = [];
+                if (!array_key_exists($idPeminjaman, $groupedData)) {
+                    $groupedData[$idPeminjaman] = [];
                 }
-                $groupedDataDesc[$idPeminjaman][] = $item;
-            }
-
-            $groupedDataAsc = [];
-            foreach ($data['asc'] as $itemasc) {
-                $idPeminjaman = $itemasc['id_peminjaman'];
-                if (!array_key_exists($idPeminjaman, $groupedDataAsc)) {
-                    $groupedDataAsc[$idPeminjaman] = [];
-                }
-                $groupedDataAsc[$idPeminjaman][] = $itemasc;
+                $groupedData[$idPeminjaman][] = $item;
             }
             ?>
-            <?php foreach ($groupedDataDesc as $idPeminjaman => $items) { ?>
+
+            <?php foreach ($groupedData as $idPeminjaman => $items) { ?>
                 <div class="custom--card">
-                    <table id="table-descending">
+                    <table>
                         <h4 id="date-desc"><?= $items[0]['tgl_peminjaman'] ?></h4>
                         <tr>
                             <th>Kode</th>
@@ -78,27 +70,6 @@
                     </table>
                 </div>
             <?php } ?>
-            <?php foreach ($groupedDataAsc as $idPeminjaman => $itemasc) { ?>
-                <div class="custom--card" style="display: none;" >
-                    <table style="display: none;" id="table-ascending">
-                        <h4 id="date-asc"><?= $itemasc[0]['tgl_peminjaman'] ?></h4>
-                        <tr>
-                            <th>Kode</th>
-                            <th>Nama Barang</th>
-                            <th>Nama Pengelola</th>
-                            <th>Jumlah</th>
-                        </tr>
-                        <?php foreach ($itemasc as $asc) { ?>
-                            <tr>
-                                <td><?= $asc['id_barang'] ?></td>
-                                <td><?= $asc['nama_barang'] ?></td>
-                                <td><?= $asc['nama_admin'] ?></td>
-                                <td><?= $asc['jumlah'] ?></td>
-                            </tr>
-                        <?php } ?>
-                    </table>
-                </div>
-            <?php } ?>
         </div>
 
     </div>
@@ -108,36 +79,16 @@
     document.addEventListener("DOMContentLoaded", function() {
         const sortButtonLatest = document.getElementById("latest"); // Corrected selector
         const sortButtonOldest = document.getElementById("oldest"); // Corrected selector
-        const descendingTable = document.getElementById("table-descending");
-        const ascendingTable = document.getElementById("table-ascending");
 
         sortButtonLatest.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-
-            const selectedOption = event.currentTarget.textContent.trim();
-
-            console.log(sortButtonLatest);
-
-            // Check the selected option and sort accordingly
-            if (selectedOption === "Tanggal Terkini") {
-                // Sort in descending order
-                descendingTable.style.display = "table";
-                ascendingTable.style.display = "none";
-            }
+            const pathname = window.location.pathname.replace(/&sort=(asc|desc)/g, '');
+            window.location = pathname + "&sort=desc";
         });
         sortButtonOldest.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-
-            const selectedOption = event.currentTarget.textContent.trim();
-
-            console.log(sortButtonOldest);
-
-            // Check the selected option and sort accordingly
-            if (selectedOption === "Tanggal Terlama") {
-                console.log(ascendingTable);
-                ascendingTable.style.display = "table";
-                descendingTable.style.display = "none";
-            }
+            const pathname = window.location.pathname.replace(/&sort=(asc|desc)/g, '');
+            window.location = pathname + "&sort=asc";
         });
     });
 </script>

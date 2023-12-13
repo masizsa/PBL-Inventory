@@ -8,12 +8,12 @@ class AjukanPeminjaman extends Controller
     }
     public function index()
     {
-        $datas = array();
-        $datas = $this->getData();
+        $data = array();
+        $data['items'] = $this->getData();
         $data['css'] = 'pilih-barang';
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
-        $this->view("user/pilih-barang/index", $datas);
+        $this->view("user/pilih-barang/index", $data);
         $this->view("templates/footer");
     }
 

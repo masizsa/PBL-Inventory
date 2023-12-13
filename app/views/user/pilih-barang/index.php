@@ -51,23 +51,22 @@
                     <th>Tersedia</th>
                     <th>Pilih</th>
                 </tr>
-                <?php foreach ($data as $item) { ?>
+                <?php foreach ($data['items'] as $index => $item) { ?>
                     <tr>
-                        <td id="kode1"><?= $item['id_barang'] ?></td>
-                        <td id="nama1"><?= $item['nama_barang'] ?></td>
-                        <td id="pengelola1"><?= $item['nama_admin'] ?></td>
-                        <td id="tersedia1"><?= $item['jumlah_tersedia'] ?></td>
+                        <td id="kode<?= $index ?>"><?= $item['id_barang'] ?></td>
+                        <td id="nama<?= $index ?>"><?= $item['nama_barang'] ?></td>
+                        <td id="pengelola<?= $index ?>"><?= $item['nama_admin'] ?></td>
+                        <td id="tersedia<?= $index ?>"><?= $item['jumlah_tersedia'] ?></td>
                         <td>
                             <div class="custom--container-tambah-barang" id="barang1">
-                                <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1');renderCard()">Tambah</button>
-                                <div class="custom--indecrement" id="indecrement1">
-                                    <button onclick="decrement(this,'incButton1', 'totalPilihBarang1', 'tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); minToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1');renderCard()" class="items" id="decButton1">-</button>
-                                    <input id="totalPilihBarang1" class="items" type="text" value="0">
-                                    <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1'); renderCard()" class="items" id="incButton1">+</button>
+                                <button onclick="increment(this,'decButton<?= $index ?>','totalPilihBarang<?= $index ?>','tersedia<?= $index ?>'); scroollTo('totalPilihBarang<?= $index ?>', 'barang<?= $index ?>', 'indecrement<?= $index ?>'); addToCheckout('kode<?= $index ?>', 'nama<?= $index ?>', 'pengelola<?= $index ?>', 'tersedia<?= $index ?>', 'totalPilihBarang<?= $index ?>', 'tersedia<?= $index ?>', 'totalPilihBarang<?= $index ?>', 'barang<?= $index ?>', 'indecrement<?= $index ?>', 'decButton<?= $index ?>', 'incButton<?= $index ?>');renderCard()">Tambah</button>
+                                <div class="custom--indecrement" id="indecrement<?= $index ?>">
+                                    <button onclick="decrement(this,'incButton<?= $index ?>', 'totalPilihBarang<?= $index ?>', 'tersedia<?= $index ?>'); scroollTo('totalPilihBarang<?= $index ?>', 'barang<?= $index ?>', 'indecrement<?= $index ?>'); minToCheckout('kode<?= $index ?>', 'nama<?= $index ?>', 'pengelola<?= $index ?>', 'tersedia<?= $index ?>', 'totalPilihBarang<?= $index ?>');renderCard()" class="items" id="decButton<?= $index ?>">-</button>
+                                    <input id="totalPilihBarang<?= $index ?>" class="items" type="text" value="0">
+                                    <button onclick="increment(this,'decButton<?= $index ?>','totalPilihBarang<?= $index ?>','tersedia<?= $index ?>'); addToCheckout('kode<?= $index ?>', 'nama<?= $index ?>', 'pengelola<?= $index ?>', 'tersedia<?= $index ?>', 'totalPilihBarang<?= $index ?>', 'tersedia<?= $index ?>', 'totalPilihBarang<?= $index ?>', 'barang<?= $index ?>', 'indecrement<?= $index ?>', 'decButton<?= $index ?>', 'incButton<?= $index ?>'); renderCard()" class="items" id="incButton<?= $index ?>">+</button>
                                 </div>
                             </div>
                         </td>
-
                     </tr>
                 <?php } ?>
             </table>

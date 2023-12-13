@@ -9,9 +9,11 @@
                 <div class="custom--filter">
                     <div class="custom--day-wrapper">
                         <button class="active">Peminjaman</button>
+
                         <!-- <form action="" method="post"> -->
                             <button name="cekTerlambat">Pengembalian</button>
                         <!-- </form> -->
+
                     </div>
                     <div class="custom--search">
                         <input type="text" name="search" id="search" placeholder="Cari Nama Barang">
@@ -31,7 +33,9 @@
                         <table>
                             <thead>
                                 <tr>
+
                                     <th>Tanggal Pinjam</th>
+
                                     <th>Kode</th>
                                     <th>Nama Barang</th>
                                     <th>Nama Peminjam</th>
