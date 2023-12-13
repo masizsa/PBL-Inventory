@@ -2,14 +2,17 @@
 class AjukanPeminjaman extends Controller
 {
     public $db;
+    public $listDataBarang;
     public function __construct()
     {
         $this->db = Database::getInstance();
     }
     public function index()
     {
+        $data['cookies'] = isset($_COOKIE['myCookie']) ? $_COOKIE['myCookie'] : null;
         $data['datas'] = $this->getDataBarang();
         $data['css'] = 'pilih-barang';
+
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
         $this->view("user/pilih-barang/index", $data);
@@ -47,17 +50,22 @@ class AjukanPeminjaman extends Controller
     }
     public function formPeminjaman()
     {
-        if (isset($_POST['data'])) {
-            // Read the JSON data from the POST request
-            $data = json_decode($_POST['data'], true);
+        $nomor_identitas = $_SESSION['nomor_identitas'];
+        $nama = $_SESSION['nama'];
 
-            // Access the array of objects
-            $arrayOfObjects = $data;
-            $response = ['status' => 'success', 'redirect' => "../ajukanPeminjaman/formPeminjaman"];
-            echo json_encode($response);
-        } else {
-            // Handle the case where 'data' key is not present
-            echo json_encode(['error' => 'Data key is not set']);
-        }
+        $data['personal'] = [
+            'nomor_identitas' => $nomor_identitas,
+            'nama' => $nama,
+        ];
+
+        $data['dataListBarang'] = isset($_COOKIE['myCookie']) ? $_COOKIE['myCookie'] : null;
+        $data['css'] = 'form';
+
+        $this->view("templates/header", $data);
+        $this->view("templates/sidebar-user");
+        $this->view("user/ajukan-peminjaman/formPeminjaman", $data);
+        $this->view("templates/footer");
     }
+
+
 }
