@@ -66,6 +66,56 @@ class AjukanPeminjaman extends Controller
         $this->view("user/ajukan-peminjaman/formPeminjaman", $data);
         $this->view("templates/footer");
     }
+    public function processPinjam()
+    {
+        $conn = $this->db->getConnection();
 
+        $data_diri = $_POST['formValue'];
+        $list_barang = $_POST['dataListBarang'];
 
+        $nama = $data_diri['nama'];
+        $nomor_identitas = $data_diri['nomor_identitas'];
+        $tgl_peminjaman = $data_diri['startDate'];
+        $tgl_pengembalian = $data_diri['endDate'];
+
+        $sql = "INSERT INTO peminjaman (nomor_identitas, tgl_peminjaman, tgl_pengembalian) 
+                VALUES (?, STR_TO_DATE(?, '%Y-%m-%d'), STR_TO_DATE(?, '%Y-%m-%d'))";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sss", $nomor_identitas, $tgl_peminjaman, $tgl_pengembalian);
+
+        if ($stmt->execute()) {
+            $response = ["status" => "success", "message" => "Data berhasil dimasukkan ke dalam tabel peminjaman."];
+
+            $sql = "SELECT id_peminjaman FROM peminjaman WHERE nomor_identitas = ? AND tgl_peminjaman = STR_TO_DATE(?, '%Y-%m-%d') AND tgl_pengembalian = STR_TO_DATE(?, '%Y-%m-%d')";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sss", $nomor_identitas, $tgl_peminjaman, $tgl_pengembalian);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $id_peminjaman_user = $row['id_peminjaman'];
+
+                $sql = "INSERT INTO detail_peminjaman (id_peminjaman, id_barang, jumlah) VALUES (?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+
+                foreach ($list_barang as $barang) {
+                    $id_peminjaman = $id_peminjaman_user;
+                    $id_barang = $barang['Kode'];
+                    $jumlah = $barang['Jumlah Dipinjam'];
+
+                    $stmt->bind_param("sss", $id_peminjaman, $id_barang, $jumlah);
+                    $stmt->execute();
+                }
+
+                $response['detailStatus'] = "Data barang berhasil dimasukkan ke dalam tabel detail_peminjaman.";
+                echo json_encode($response);
+            } else {
+                echo json_encode(["status" => "error", "message" => "Data tidak ditemukan"]);
+            }
+        } else {
+            echo json_encode(["status" => "error", "message" => "Error: " . $stmt->error]);
+        }
+    }
 }
