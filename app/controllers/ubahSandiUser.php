@@ -10,7 +10,7 @@ class UbahSandiUser extends Controller
     {
         $data['css'] = 'ubahSandi';
         $this->view("templates/header", $data);
-        $this->view("templates/sidebar-admin");
+        $this->view("templates/sidebar-user");
         $this->view("admin/ubah-sandi/index");
         $this->view("templates/footer");
     }
