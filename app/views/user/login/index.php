@@ -1,6 +1,5 @@
-
 <section class="custom--container-login">
-    <form class="custom--login-form" action="login/processLogin" method="post">
+    <form class="custom--login-form" action="./login/processLogin" method="post">
         <div class="logo ">
             <div class="custom--logo">
                 <svg width="451" height="451" viewBox="0 0 451 451" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +29,6 @@
                 <div id="passIcon">
                 </div>
             </div>
-            <label for="">Lupa Password?</label>
         </div>
         <button type="submit">Masuk</button>
     </form>
