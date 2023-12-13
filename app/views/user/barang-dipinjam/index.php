@@ -84,7 +84,7 @@
                                         <p><?php echo $item['status'] ?></p>
                                     </div>
                                 <?php } elseif ($status === 'Terlambat') { ?>
-                                    <div class="custom--status-value-terlambat" id="status-terlambat">
+                                    <div class="custom--status-value-dipinjam" id="status-terlambat">
                                         <p><?php echo $status ?></p>
                                     </div>
                                 <?php } else { ?>
@@ -125,57 +125,87 @@
                             </table>
             </section>
         <?php } ?>
-        </main>
+        <?php
+        // Jika tidak ada data peminjaman, tampilkan bagian custom--borrowed-two
+        if (empty($data['datas'])) {
+        ?>
+
+            <section class="custom--borrowed-two">
+                <p class="custom--subheader-borrowed">Peminjaman</p>
+                <div class="custom--container-borrowed-items-empty">
+                    <p>Tidak ada peminjaman</p>
+                </div>
+            </section>
+        <?php } ?>
+
     </div>
-
-
-
-
-
-    <section class="custom--borrowed-two">
-        <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
-        <div class="custom--container-borrowed-items-empty">
-            <p>Tidak ada peminjaman</p>
-        </div>
-    </section>
-
     </main>
-</div>
+
 </div>
 
-<script src="../../layouts/sidebar.js"></script>
+<?php
+// Ambil data tanggal pengembalian dari PHP
+$returnDates = array_column($data['datas'], 'tgl_pengembalian');
+?>
+
 <script>
-    function updateCountdown(endDate) {
+    const returnDatesFromDatabase = <?php echo json_encode($returnDates); ?>;
+
+    function updateCountdown(returnDates) {
+        // Mendapatkan tanggal sekarang
         const now = new Date();
-        const endDateTime = new Date(endDate);
-        const timeDifference = endDateTime - now;
+
+        // Menginisialisasi variabel untuk menyimpan tanggal pengembalian terdekat
+        let closestReturnDate = new Date(returnDates[0]);
+
+        // Mencari tanggal pengembalian terdekat
+        returnDates.forEach(date => {
+            const returnDate = new Date(date);
+            if (returnDate > now && (returnDate < closestReturnDate || closestReturnDate <= now)) {
+                closestReturnDate = returnDate;
+            }
+        });
+
+        // Menghitung selisih waktu antara tanggal sekarang dengan tanggal pengembalian terdekat
+        const timeDifference = closestReturnDate - now;
 
         if (timeDifference <= 0) {
-            // If expired
-            document.getElementById('return-date').innerHTML = 'Expired';
-        } else {
-            // Calculate days, hours, minutes
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const monthLabel = endDateTime.toLocaleString('id-ID', {
-                month: 'short'
-            });
+            // Jika waktu sudah lewat
+            document.getElementById('days').innerHTML = 'Expired';
+            // Hentikan perhitungan countdown
+            return;
+        }
 
+        // Hitung hari, jam, menit, bulan
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const monthLabel = closestReturnDate.toLocaleString('id-ID', {
+            month: 'short'
+        });
+
+        // Tampilkan hasil countdown pada elemen HTML
+        if (timeDifference >= 0) {
             document.getElementById('days').innerHTML = days;
             document.getElementById('hours').innerHTML = hours;
             document.getElementById('minutes').innerHTML = minutes;
             document.getElementById('month-label').innerHTML = monthLabel;
-            document.getElementById('month').innerHTML = endDateTime.getDate();
+            document.getElementById('month').innerHTML = closestReturnDate.getDate();
         }
-    }
-    // BACKEND BRO
-    // Retrieve the date from the db 
-    // const returnDateFromDatabase = "<?php echo $formattedReturnDate; ?>";
 
-    // Call the updateCountdown w/ the retrieved return date
-    updateCountdown(returnDateFromDatabase);
+
+    }
+
+    // Jalankan perhitungan countdown
+    updateCountdown(returnDatesFromDatabase);
+
+    // Set interval untuk memperbarui countdown setiap detik
     setInterval(() => {
-        updateCountdown(returnDateFromDatabase);
+        updateCountdown(returnDatesFromDatabase);
     }, 1000);
 </script>
+
+
+
+
+<script src="../../layouts/sidebar.js"></script>
