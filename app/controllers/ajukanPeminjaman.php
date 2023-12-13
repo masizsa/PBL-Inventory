@@ -13,7 +13,6 @@ class AjukanPeminjaman extends Controller
 
         $data['cookies'] = isset($_COOKIE['myCookie']) ? $_COOKIE['myCookie'] : null;
         $data['datas'] = $this->getDataBarang();
-
         $data['css'] = 'pilih-barang';
 
         $this->view("templates/header", $data);

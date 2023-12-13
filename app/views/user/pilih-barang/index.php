@@ -50,7 +50,6 @@
                     <th>Tersedia</th>
                     <th>Pilih</th>
                 </tr>
-<<<<<<< HEAD
                 <!-- <tr>
                     <td id="kode2">RMT03</td>
                     <td id="nama2">Remote AC</td>
@@ -87,27 +86,6 @@
                     </tr>
                 <?php $index++;
                 endforeach; ?>
-=======
-                <?php foreach ($data as $item) { ?>
-                    <tr>
-                        <td id="kode1"><?= $item['id_barang'] ?></td>
-                        <td id="nama1"><?= $item['nama_barang'] ?></td>
-                        <td id="pengelola1"><?= $item['nama_admin'] ?></td>
-                        <td id="tersedia1"><?= $item['jumlah_tersedia'] ?></td>
-                        <td>
-                            <div class="custom--container-tambah-barang" id="barang1">
-                                <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1');renderCard()">Tambah</button>
-                                <div class="custom--indecrement" id="indecrement1">
-                                    <button onclick="decrement(this,'incButton1', 'totalPilihBarang1', 'tersedia1'); scroollTo('totalPilihBarang1', 'barang1', 'indecrement1'); minToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1');renderCard()" class="items" id="decButton1">-</button>
-                                    <input id="totalPilihBarang1" class="items" type="text" value="0">
-                                    <button onclick="increment(this,'decButton1','totalPilihBarang1','tersedia1'); addToCheckout('kode1', 'nama1', 'pengelola1', 'tersedia1', 'totalPilihBarang1', 'tersedia1', 'totalPilihBarang1', 'barang1', 'indecrement1', 'decButton1', 'incButton1'); renderCard()" class="items" id="incButton1">+</button>
-                                </div>
-                            </div>
-                        </td>
-
-                    </tr>
-                <?php } ?>
->>>>>>> main
             </table>
 
         </div>

@@ -52,30 +52,7 @@
                         <th>Jumlah</th>
                     </tr>
                     <?php
-
-                    foreach ($data['desc'] as $row) { ?>
-                        <tr>
-                            <td><?= $row['tgl_peminjaman'] ?></td>
-                            <td><?= $row['tgl_pengembalian'] ?></td>
-                            <td><?= $row['id_barang'] ?></td>
-                            <td><?= $row['nama_barang'] ?></td>
-                            <td><?= $row['nama_peminjam'] ?></td>
-                            <td><?= $row['jumlah'] ?></td>
-                        </tr>
-                    <?php    }
-                    ?>
-                </table>
-                <table id="table-ascending" style="display: none">
-                    <tr>
-                        <th>Tanggal Pinjam</th>
-                        <th>Tanggal Kembali</th>
-                        <th>Kode</th>
-                        <th>Nama Barang</th>
-                        <th>Nama Peminjam</th>
-                        <th>Jumlah</th>
-                    </tr>
-                    <?php
-                    foreach ($data['asc'] as $row) { ?>
+                    foreach ($data['items'] as $row) { ?>
                         <tr>
                             <td><?= $row['tgl_peminjaman'] ?></td>
                             <td><?= $row['tgl_pengembalian'] ?></td>
@@ -98,42 +75,15 @@
         const sortButtonOldest = document.getElementById("oldest"); // Corrected selector
         const descendingTable = document.getElementById("table-descending");
         const ascendingTable = document.getElementById("table-ascending");
-
         sortButtonLatest.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-
-            const selectedOption = event.currentTarget.textContent.trim();
-
-            // console.log(sortButtonLatest);
-
-            // Check the selected option and sort accordingly
-            if (selectedOption === "Tanggal Terkini") {
-                // Sort in descending order
-                descendingTable.style.display = "table";
-                ascendingTable.style.display = "none";
-            } else{
-                // Sort in ascending order
-                ascendingTable.style.display = "table";
-                descendingTable.style.display = "none";
-            }
+            const pathname = window.location.pathname.replace(/&sort=(asc|desc)/g, '');
+            window.location = pathname + "&sort=desc";
         });
         sortButtonOldest.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-
-            const selectedOption = event.currentTarget.textContent.trim();
-
-            // console.log(sortButtonOldest);
-
-            // Check the selected option and sort accordingly
-            if (selectedOption === "Tanggal Terkini") {
-                // Sort in descending order
-                descendingTable.style.display = "table";
-                ascendingTable.style.display = "none";
-            } else{
-                // Sort in ascending order
-                ascendingTable.style.display = "table";
-                descendingTable.style.display = "none";
-            }
+            const pathname = window.location.pathname.replace(/&sort=(asc|desc)/g, '');
+            window.location = pathname + "&sort=asc";
         });
     });
 </script>
