@@ -41,19 +41,24 @@
 
             $.ajax({
                 type: 'POST',
-                url: './ubahSandi/ubahSandiProccess',
+                url: './ubahSandiUser/ubahSandiProccess',
                 data: {
                     sandi_sekarang: $('#currentPass').val(),
                     sandi_baru: $('#newPass').val(),
                     konfirmasi_sandi: $('#confirmPass').val()
                 },
                 dataType: 'json',
-                error: function(response) {
-                    if (response.status == 200) {
+                success: function(response) {
+                    if (response.status === 'success') {
                         alert('Kata sandi berhasil diubah!');
+                    } else if (response.status === 'password_mismatch') {
+                        alert('Kata sandi baru dan konfirmasi tidak cocok.');
                     } else {
                         alert('Terjadi kesalahan.');
                     }
+                },
+                error: function() {
+                    alert('Terjadi kesalahan.');
                 }
             });
             location.reload();

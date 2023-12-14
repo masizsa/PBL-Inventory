@@ -1,4 +1,4 @@
-<div class="custom--container-barang-dipinjam">
+<section class="custom--container-barang-dipinjam">
     <div class="custom--content-barang-dipinjam">
         <header>
             <section class="custom--text-header">
@@ -43,58 +43,59 @@
             <?php
             $number = 1;
             $groupedData = [];
+
             foreach ($data['datas'] as $item) {
                 $idPeminjaman = $item['id_peminjaman'];
                 if (!array_key_exists($idPeminjaman, $groupedData)) {
                     $groupedData[$idPeminjaman] = [];
                 }
                 $groupedData[$idPeminjaman][] = $item;
-            } ?>
+            }
+            ?>
 
-            <section class="custom--borrowed-one">
-                <?php
-
-                foreach ($groupedData as $idPeminjaman => $items) {
-                ?>
+            <?php foreach ($groupedData as $idPeminjaman => $items) { ?>
+                <section class="custom--borrowed-one">
                     <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
-                    <?php $number++ ?>
+                    <?php $number++; ?>
                     <div class="custom--container-borrowed-items">
                         <div class="custom--borrowed-info">
-                            <div class="custom--start-date">
-                                <p class="info-label">Mulai pinjam</p>
-                                <input type="text" name="start_date" class="borrow-date" id="start-date" value="<?php echo $item['tgl_peminjaman']; ?>" size="35" disabled>
+                            <div class="custom--borrowed-info">
+                                <div class="custom--start-date">
+                                    <p class="info-label">Mulai pinjam</p>
+                                    <input type="text" name="start_date" class="borrow-date" id="start-date" value="<?php echo $item['tgl_peminjaman']; ?>" size="35" disabled>
+                                </div>
+                                <div class="custom--end-date">
+                                    <p class="info-label">Selesai pinjam</p>
+                                    <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $item['tgl_pengembalian']; ?>" size="35" disabled>
+                                </div>
+
+                                <div class="custom--status">
+                                    <p class="info-label">Status</p>
+
+                                    <?php
+                                    $status = $item['status']; // Ambil nilai status dari variabel $item['status']
+
+                                    if ($status === 'Dipinjam') { ?>
+                                        <div class="custom--status-value-dipinjam" id="status-dipinjam">
+                                            <p><?php echo $status ?></p>
+                                        </div>
+                                    <?php } elseif ($status === 'Menunggu') { ?>
+                                        <div class="custom--status-value-dipinjam" id="status-menunggu">
+                                            <p><?php echo $item['status'] ?></p>
+                                        </div>
+                                    <?php } elseif ($status === 'Terlambat') { ?>
+                                        <div class="custom--status-value-dipinjam" id="status-terlambat">
+                                            <p><?php echo $status ?></p>
+                                        </div>
+                                    <?php } else { ?>
+                                        <!-- Tambahkan logika untuk status lain jika diperlukan -->
+                                        <div class="custom--status-value-default" id="status-default">
+                                            <p><?php echo $status ?></p>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+
                             </div>
-                            <div class="custom--end-date">
-                                <p class="info-label">Selesai pinjam</p>
-                                <input type="text" name="end_date" class="borrow-date" id="end-date" value="<?php echo $item['tgl_pengembalian']; ?>" size="35" disabled>
-                            </div>
-
-                            <div class="custom--status">
-                                <p class="info-label">Status</p>
-
-                                <?php
-                                $status = $item['status']; // Ambil nilai status dari variabel $item['status']
-
-                                if ($status === 'Dipinjam') { ?>
-                                    <div class="custom--status-value-dipinjam" id="status-dipinjam">
-                                        <p><?php echo $status ?></p>
-                                    </div>
-                                <?php } elseif ($status === 'Menunggu') { ?>
-                                    <div class="custom--status-value-dipinjam" id="status-menunggu">
-                                        <p><?php echo $item['status'] ?></p>
-                                    </div>
-                                <?php } elseif ($status === 'Terlambat') { ?>
-                                    <div class="custom--status-value-dipinjam" id="status-terlambat">
-                                        <p><?php echo $status ?></p>
-                                    </div>
-                                <?php } else { ?>
-                                    <!-- Tambahkan logika untuk status lain jika diperlukan -->
-                                    <div class="custom--status-value-default" id="status-default">
-                                        <p><?php echo $status ?></p>
-                                    </div>
-                                <?php } ?>
-                            </div>
-
                         </div>
 
                         <div class="custom--item-info-dipinjam">
@@ -108,119 +109,89 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <div class="custom--card">
-                                        <table>
-                                            <?php foreach ($items as $item) { ?>
-                                                <tr>
-                                                    <td><?= $item['id_barang'] ?></td>
-                                                    <td><?= $item['nama_barang'] ?></td>
-                                                    <td><?= $item['nama_admin'] ?></td>
-                                                    <td><?= $item['jumlah'] ?></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
-                                    </div>
+                                    <?php foreach ($items as $item) { ?>
+                                        <tr>
+                                            <td><?= $item['id_barang'] ?></td>
+                                            <td><?= $item['nama_barang'] ?></td>
+                                            <td><?= $item['nama_admin'] ?></td>
+                                            <td><?= $item['jumlah'] ?></td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
-            </section>
+                        </div>
+                    </div>
+                </section>
+            <?php } ?>
 
-            <section class="custom--borrowed-two">
-                <p class="custom--subheader-borrowed">Peminjaman - <?php echo $number ?></p>
-                <div class="custom--container-borrowed-items-empty">
-                    <p>Tidak ada peminjaman</p>
-                </div>
-            </section>
-        <?php } ?>
-        <?php
-        // Jika tidak ada data peminjaman, tampilkan bagian custom--borrowed-two
-        if (empty($data['datas'])) {
-        ?>
-
-            <section class="custom--borrowed-two">
-                <p class="custom--subheader-borrowed">Peminjaman</p>
-                <div class="custom--container-borrowed-items-empty">
-                    <p>Tidak ada peminjaman</p>
-                </div>
-            </section>
-        <?php } ?>
-
+            <?php if (empty($data['datas'])) { ?>
+                <section class="custom--borrowed-two">
+                    <p class="custom--subheader-borrowed">Peminjaman</p>
+                    <div class="custom--container-borrowed-items-empty">
+                        <p>Tidak ada peminjaman</p>
+                    </div>
+                </section>
+            <?php } ?>
+        </main>
     </div>
-<<<<<<< HEAD
+    <?php
+    // Ambil data tanggal pengembalian dari PHP
+    $returnDates = array_column($data['datas'], 'tgl_pengembalian');
+    ?>
 
+    <script>
+        const returnDatesFromDatabase = <?php echo json_encode($returnDates); ?>;
 
-    </main>
-</div>
+        function updateCountdown(returnDates) {
+            // Mendapatkan tanggal sekarang
+            const now = new Date();
 
-=======
-    </main>
+            // Menginisialisasi variabel untuk menyimpan tanggal pengembalian terdekat
+            let closestReturnDate = new Date(returnDates[0]);
 
-</div>
+            // Mencari tanggal pengembalian terdekat
+            returnDates.forEach(date => {
+                const returnDate = new Date(date);
+                if (returnDate > now && (returnDate < closestReturnDate || closestReturnDate <= now)) {
+                    closestReturnDate = returnDate;
+                }
+            });
 
-<?php
-// Ambil data tanggal pengembalian dari PHP
-$returnDates = array_column($data['datas'], 'tgl_pengembalian');
-?>
+            // Menghitung selisih waktu antara tanggal sekarang dengan tanggal pengembalian terdekat
+            const timeDifference = closestReturnDate - now;
 
->>>>>>> main
-<script>
-    const returnDatesFromDatabase = <?php echo json_encode($returnDates); ?>;
-
-    function updateCountdown(returnDates) {
-        // Mendapatkan tanggal sekarang
-        const now = new Date();
-
-        // Menginisialisasi variabel untuk menyimpan tanggal pengembalian terdekat
-        let closestReturnDate = new Date(returnDates[0]);
-
-        // Mencari tanggal pengembalian terdekat
-        returnDates.forEach(date => {
-            const returnDate = new Date(date);
-            if (returnDate > now && (returnDate < closestReturnDate || closestReturnDate <= now)) {
-                closestReturnDate = returnDate;
+            if (timeDifference <= 0) {
+                // Jika waktu sudah lewat
+                document.getElementById('days').innerHTML = 'Expired';
+                // Hentikan perhitungan countdown
+                return;
             }
-        });
 
-        // Menghitung selisih waktu antara tanggal sekarang dengan tanggal pengembalian terdekat
-        const timeDifference = closestReturnDate - now;
+            // Hitung hari, jam, menit, bulan
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const monthLabel = closestReturnDate.toLocaleString('id-ID', {
+                month: 'short'
+            });
 
-        if (timeDifference <= 0) {
-            // Jika waktu sudah lewat
-            document.getElementById('days').innerHTML = 'Expired';
-            // Hentikan perhitungan countdown
-            return;
+            // Tampilkan hasil countdown pada elemen HTML
+            if (timeDifference >= 0) {
+                document.getElementById('days').innerHTML = days;
+                document.getElementById('hours').innerHTML = hours;
+                document.getElementById('minutes').innerHTML = minutes;
+                document.getElementById('month-label').innerHTML = monthLabel;
+                document.getElementById('month').innerHTML = closestReturnDate.getDate();
+            }
+
+
         }
 
-        // Hitung hari, jam, menit, bulan
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const monthLabel = closestReturnDate.toLocaleString('id-ID', {
-            month: 'short'
-        });
-
-        // Tampilkan hasil countdown pada elemen HTML
-        if (timeDifference >= 0) {
-            document.getElementById('days').innerHTML = days;
-            document.getElementById('hours').innerHTML = hours;
-            document.getElementById('minutes').innerHTML = minutes;
-            document.getElementById('month-label').innerHTML = monthLabel;
-            document.getElementById('month').innerHTML = closestReturnDate.getDate();
-        }
-
-
-    }
-
-    // Jalankan perhitungan countdown
-    updateCountdown(returnDatesFromDatabase);
-
-    // Set interval untuk memperbarui countdown setiap detik
-    setInterval(() => {
+        // Jalankan perhitungan countdown
         updateCountdown(returnDatesFromDatabase);
-    }, 1000);
-</script>
 
-
-
-
-<script src="../../layouts/sidebar.js"></script>
+        // Set interval untuk memperbarui countdown setiap detik
+        setInterval(() => {
+            updateCountdown(returnDatesFromDatabase);
+        }, 1000);
+    </script>
