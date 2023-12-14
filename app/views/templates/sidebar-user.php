@@ -136,6 +136,13 @@
                 var desiredPart = partsAfterSlash[0];
                 console.log(desiredPart);
 
+                desiredPart.includes('ajukanPeminjaman') ? sidebarMenu[0].classList.add('active-menu') : false;
+                desiredPart.includes('pilihBarang') ? sidebarMenu[0].classList.add('active-menu') : false;
+                desiredPart.includes('barangDipinjam') ? sidebarMenu[1].classList.add('active-menu') : false;
+                desiredPart.includes('riwayatUser') ? sidebarMenu[2].classList.add('active-menu') : false;
+                desiredPart.includes('ubahSandiUser') ? sidebarMenu[3].classList.add('active-menu') : false;
+                desiredPart.includes('keluar') ? sidebarMenu[4].classList.add('active-menu') : false;
+
                 switch (desiredPart) {
                     case 'ajukanPeminjaman':
                         sidebarMenu[0].classList.add('active-menu');
@@ -163,7 +170,7 @@
             selectMenu();
 
             const sidebarControl = () => {
-                const sidebar = document.querySelector('.sidebar')
+                const sidebar = document.querySelector('.custom--sidebar')
                 const closeIcon = document.querySelector('.close-icon');
 
                 closeIcon.addEventListener('click', () => {
