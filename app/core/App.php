@@ -24,8 +24,8 @@ class App
 
             // If the user is not an admin and tries to access DataBarang or other admin-only pages,
             // redirect to home
-            if (!$isAdmin && in_array($url[0], ['databarang', /* other admin controllers */])) {
-                header("Location: http://localhost/PBL-Inventory/public/home");
+            if (!$isAdmin && in_array($url[0], ['dataBarang', 'peminjaman', 'riwayatAdmin', 'ubahSandiAdmin'])) {
+                header("Location: http://localhost/PBL-Inventory/public/ajukanPeminjaman");
                 exit();
             }
 
