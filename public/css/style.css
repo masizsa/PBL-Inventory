@@ -14,9 +14,10 @@ html {
   display: flex;
   /* flex-direction: column; */
 }
-
+.custom--app-parent > section:first-child {
+  /* position: realtive; */
+}
 .custom--app-parent > section + section {
-  min-height: 100vh;
-  /* background-color: red; */
+  height: 100vh;
   overflow-y: scroll;
 }

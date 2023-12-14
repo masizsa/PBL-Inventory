@@ -54,6 +54,7 @@ html {
   justify-content: space-between;
   font-weight: 600;
   border-bottom: 1px solid var(---text-color);
+  overflow: hidden;
 }
 
 .header-sidebar .logo {

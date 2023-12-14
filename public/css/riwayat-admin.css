@@ -80,6 +80,12 @@ html {
   background-color: #ffffff;
   border-radius: 1rem;
   margin-left: 1.2rem;
+  cursor: pointer;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper button,
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li {
+  cursor: pointer;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper .icon-sort {
@@ -121,6 +127,9 @@ html {
   font-size: 14px;
 }
 
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
+  background-color: #fff;
+}
 .custom--body
   .custom--filter
   .custom--left
