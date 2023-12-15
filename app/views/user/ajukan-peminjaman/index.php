@@ -85,7 +85,7 @@
                         </table>
                 <?php
                     } else {
-                        var_dump($decodedData);
+                        // var_dump($decodedData);
                         echo "Data tidak valid atau kosong.";
                     }
                 }

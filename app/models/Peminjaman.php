@@ -14,7 +14,7 @@ class Crud
     //Add peminjaman 
     public function addPeminjaman($tanggal)
     {
-        var_dump($tanggal);
+        // var_dump($tanggal);
         $query = "INSERT INTO peminjaman (nomor_identitas, tgl_peminjaman) VALUES ('2241720036','$tanggal')"; // sementa
         $result = $this->db->conn->query($query);
         return $result;

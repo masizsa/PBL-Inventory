@@ -76,8 +76,9 @@
 
         const setVisibility = (icon, input) => {
             icon?.addEventListener('click', () => {
-                icon.src = icon.src == 'http://localhost/dasarWeb/PBL-Inventory/public/assets/hiddenPass.svg' ? 'http://localhost/dasarWeb/PBL-Inventory/public/assets/showPass.svg' : 'http://localhost/dasarWeb/PBL-Inventory/public/assets/hiddenPass.svg';
+                icon.src = icon.src == 'http://localhost/PBL-Inventory/public/assets/hiddenPass.svg' ? 'http://localhost/PBL-Inventory/public/assets/showPass.svg' : 'http://localhost/PBL-Inventory/public/assets/hiddenPass.svg';
                 input.type = (input.type == "password") ? "text" : "password";
+                console.log(icon.src);
             })
         }
 

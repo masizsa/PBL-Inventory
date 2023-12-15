@@ -266,7 +266,11 @@ ul li button {
 .custom--body .custom--table-wrapper .custom--card table th {
   text-align: start;
   border: none;
+  font-size: 12px;
   background-color: var(---header-table-color);
+}
+.custom--body .custom--table-wrapper .custom--card table td {
+  font-size: 16px;
 }
 
 .custom--body .custom--table-wrapper .custom--card table th,

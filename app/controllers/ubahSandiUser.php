@@ -9,8 +9,6 @@ class UbahSandiUser extends Controller
     public function index()
     {
         $data['css'] = 'ubahSandi';
-        var_dump($_SESSION['nomor_identitas']);
-        var_dump($_SESSION['password']);
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
         $this->view("user/ubah-sandi/index");
