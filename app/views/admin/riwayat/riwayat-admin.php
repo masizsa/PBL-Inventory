@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="custom--search">
-                <input type="text" name="search" id="search" placeholder="Cari Nama Barang" autocomplete="off">
+                <input type="text" name="search" id="search" placeholder="Cari Nama Barang" autocomplete="off" oninput="searchItem(event)">
                 <div class="custom--search-icon">
                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.5 22.25C5.85 22.25 1.25 17.65 1.25 12C1.25 6.35 5.85 1.75 11.5 1.75C17.15 1.75 21.75 6.35 21.75 12C21.75 17.65 17.15 22.25 11.5 22.25ZM11.5 3.25C6.67 3.25 2.75 7.18 2.75 12C2.75 16.82 6.67 20.75 11.5 20.75C16.33 20.75 20.25 16.82 20.25 12C20.25 7.18 16.33 3.25 11.5 3.25Z" fill="#121212" />
@@ -75,6 +75,7 @@
 </div>
 
 <script>
+    let checkoutItems = [];
     document.addEventListener("DOMContentLoaded", function() {
         const sortButtonLatest = document.getElementById("latest"); // Corrected selector
         const sortButtonOldest = document.getElementById("oldest"); // Corrected selector
@@ -91,6 +92,54 @@
             window.location = pathname + "&sort=asc";
         });
     });
+
+    const searchItem = ({
+        target
+    }) => {
+        let result = []
+        let dataArray = <?php echo json_encode($data['items']); ?>;
+        dataArray.some((objek) => {
+            let isMatch = objek.nama_barang.toLowerCase().includes(target.value.toLowerCase())
+            isMatch ? result.push(objek) : "";
+        })
+        displaySearchResult(result)
+        // console.log(result)
+    }
+
+
+
+    const displaySearchResult = (searchItems) => {
+        const table = document.querySelector('#table-descending');
+        let index = 1;
+
+        table.innerHTML = '';
+        table.innerHTML += `
+            <tr>
+                <th>Tanggal Pinjam</th>
+                <th>Tanggal Kembali</th>
+                <th>Kode</th>
+                <th>Nama Barang</th>
+                <th>Nama Peminjam</th>
+                <th>Jumlah</th>
+            </tr>
+        `;
+        // Tambahkan baris untuk setiap objek yang sesuai
+        searchItems.forEach((objek) => {
+                const alreadyCheckout = checkoutItems.filter((item) => item.kodeBarang == objek.id_barang)
+                console.log(alreadyCheckout);
+                table.innerHTML += `
+                <tr>
+                    <td>${objek.tgl_peminjaman}</td>
+                    <td>${objek.tgl_pengembalian}</td>
+                    <td>${objek.id_barang}</td>
+                    <td>${objek.nama_barang}</td>
+                    <td>${objek.nama_peminjam}</td>
+                    <td>${objek.jumlah}</td>
+                </tr>
+            `;
+            index++;
+        });
+    }
 </script>
 
 </html>
