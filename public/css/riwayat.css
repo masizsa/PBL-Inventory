@@ -267,19 +267,28 @@ ul li button {
 }
 
 .custom--body .custom--table-wrapper .custom--card table {
-  border-radius: 1rem;
+  border-radius: 10px;
   border-collapse: collapse;
+  border-bottom: 1px solid #12121210;
   overflow: hidden;
 }
 
-.custom--body .custom--table-wrapper .custom--card table th {
-  text-align: start;
-  border: none;
+.custom--body .custom--table-wrapper .custom--card table thead {
+  font-size: 1.2rem;
+  border-collapse: collapse;
   background-color: var(---header-table-color);
 }
-
+.custom--body .custom--table-wrapper .custom--card table thead tr th {
+  padding-left: 2.4rem;
+  text-align: start;
+}
 .custom--body .custom--table-wrapper .custom--card table th,
 td {
   height: 5rem;
-  padding: 0 1.2rem;
+  padding: 0 0;
+}
+.custom--body .custom--table-wrapper .custom--card table tbody tr td {
+  font-size: 1.6rem;
+  padding-left: 2.4rem;
+  border: 1px solid #12121210;
 }
