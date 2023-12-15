@@ -22,7 +22,7 @@ class App
             }
 
             if (!$isAdmin && in_array($url[0], ['dataBarang', 'peminjaman', 'riwayatAdmin', 'ubahSandiAdmin'])) {
-                header("Location: http://localhost/PBL-Inventory/public/ajukanPeminjaman");
+                header("Location: ajukanPeminjaman");
                 exit();
             }
 
@@ -79,9 +79,9 @@ class App
     {
         // Redirect based on whether the user is an admin or not
         if ($isAdmin) {
-            header("Location: http://localhost/PBL-Inventory/public/dataBarang");
+            header("Location: dataBarang");
         } else {
-            header("Location: http://localhost/PBL-Inventory/public/ajukanPeminjaman");
+            header("Location: ajukanPeminjaman");
         }
 
         exit();
