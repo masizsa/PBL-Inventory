@@ -438,41 +438,70 @@ html {
 }
 
 /* WARNING */
-.custom--container-warning {
+.custom--container-warning,
+.custom--warning,
+.custom--success {
+  display: none;
+}
+
+.custom--container-warning.show {
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 1rem;
+  top: -8.8rem;
   align-items: center;
-  width: calc(100%);
+  width: 100%;
   z-index: 1000;
+  transition: top 0.3s ease;
 }
 
-.custom--warning {
+.custom--warning.show,
+.custom--success.show {
   display: flex;
-  width: 27.1rem;
-  height: 8.8rem;
+  gap: 2rem;
   border-radius: 10px;
-  background: #FCCECE;
   padding: 1.2rem 2.4rem;
   justify-content: space-between;
   align-items: center;
 }
 
-.custom--warning .custom--warning-content-text {
+.custom--warning.show {
+  background: #FCCECE;
+} 
+
+.custom--success.show {
+  background: #CCF1E5;
+} 
+.custom--container-warning .logo{
+  display: flex;
+  align-items: center;
+}
+.custom--warning .custom--warning-content-text,
+.custom--warning .custom--berhasil-content-text {
   display: flex;
   flex-direction: column;
+}
+
+.custom--warning .custom--warning-content-text {
   color: #EE0B0B;
 }
 
-.custom--warning .custom--warning-content-text h3 {
+.custom--success .custom--success-content-text {
+  color: #00BA7C;
+}
+
+.custom--warning h3,
+.custom--warning p,
+.custom--success h3,
+.custom--success p {
+  white-space: nowrap;
   text-align: center;
   font-size: 20px;
   font-weight: 600;
 }
 
-.custom--warning .custom--warning-content-text p {
-  text-align: center;
-  font-size: 20px;
+.custom--warning p,
+.custom--success p {
+  font-size: 16px;
   font-weight: 400;
 }

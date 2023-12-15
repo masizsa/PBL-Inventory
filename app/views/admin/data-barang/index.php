@@ -154,23 +154,23 @@
             <header>
                 <h3>Tambah Barang</h3>
             </header>
-            <form action="dataBarang/addBarang" method="post">
+            <form action="dataBarang/addBarang" method="post" onsubmit="handleAddSubmit(event);" id="addBarangForm">
                 <div class="custom--input-add-item">
                     <div class="custom--input-add-item-wrapper">
                         <label for="kode_barang">Kode Barang</label>
-                        <input type="text" name="kode_barang">
+                        <input type="text" name="kode_barang" id="kode_barang">
                     </div>
                     <div class="custom--input-add-item-wrapper">
                         <label for="nama_barang">Nama Barang</label>
-                        <input type="text" name="nama_barang">
+                        <input type="text" name="nama_barang" id="nama_barang">
                     </div>
                     <div class="custom--input-add-item-wrapper">
                         <label for="asal">Asal</label>
-                        <input type="text" name="asal">
+                        <input type="text" name="asal" id="asal">
                     </div>
                     <div class="custom--input-add-item-wrapper">
                         <label for="jumlah">Jumlah</label>
-                        <input type="text" name="jumlah">
+                        <input type="text" name="jumlah" id="jumlah">
                     </div>
                 </div>
                 <div class="custom--input-add-item-area">
@@ -189,7 +189,7 @@
             <header>
                 <h3>Edit Barang</h3>
             </header>
-            <form action="dataBarang/editItem" method="POST">
+            <form action="dataBarang/editItem" method="POST" id="editBarangForm">
                 <div class="custom--input-add-item">
                     <div class="custom--input-add-item-wrapper">
                         <label for="kode_barang_edit">Kode Barang</label>
@@ -232,28 +232,28 @@
             <form id="detailsForm">
                 <div class="custom--input-add-item">
                     <div class="custom--input-add-item-wrapper">
-                        <label for="kode_barang">Kode Barang</label>
-                        <input type="text" id="kode_barang" name="kode_barang" disabled>
+                        <label for="kode_barang_detail">Kode Barang</label>
+                        <input type="text" id="kode_barang_detail" name="kode_barang" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="nama_barang">Nama Barang</label>
-                        <input type="text" id="nama_barang" name="nama_barang" disabled>
+                        <label for="nama_barang_detail">Nama Barang</label>
+                        <input type="text" id="nama_barang_detail" name="nama_barang_detail" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="jumlah">Jumlah</label>
-                        <input type="text" id="jumlah" name="jumlah" disabled>
+                        <label for="jumlah_detail">Jumlah</label>
+                        <input type="text" id="jumlah_detail" name="jumlah_detail" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="tersedia">Jumlah Tersedia</label>
-                        <input type="text" id="tersedia" name="tersedia" disabled>
+                        <label for="tersedia_detail">Jumlah Tersedia</label>
+                        <input type="text" id="tersedia_detail" name="tersedia_detail" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="dipinjam">Jumlah Dipinjam</label>
-                        <input type="text" id="dipinjam" name="dipinjam" disabled>
+                        <label for="dipinjam_detail">Jumlah Dipinjam</label>
+                        <input type="text" id="dipinjam_detail" name="dipinjam_detail" disabled>
                     </div>
                     <div class="custom--input-add-item-wrapper">
-                        <label for="pemeliharaan">Jumlah Pemeliharaan</label>
-                        <input type="text" id="pemeliharaan" name="pemeliharaan" disabled>
+                        <label for="pemeliharaan_detail">Jumlah Pemeliharaan</label>
+                        <input type="text" id="pemeliharaan_detail" name="pemeliharaan_detail" disabled>
                     </div>
                 </div>
                 <div class="custom--input-add-item-area">
@@ -287,8 +287,8 @@
     </div>
 </section>
 
-<!-- <section class="custom--container-warning">
-    <div class="custom--warning" id="warning-message">
+<section class="custom--container-warning">
+    <div class="custom--warning" id="empty">
         <div class="logo">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 22.9167C19.3167 22.9167 18.75 22.3501 18.75 21.6667V12.9167C18.75 12.2334 19.3167 11.6667 20 11.6667C20.6833 11.6667 21.25 12.2334 21.25 12.9167V21.6667C21.25 22.3501 20.6833 22.9167 20 22.9167Z" fill="#EE0B0B"/>
@@ -298,13 +298,92 @@
         </div>
         <div class="custom--warning-content-text">
             <h3>Peringatan</h3>
-            <p>Data tidak valid!</p>
+            <p>Form masih kosong!</p>
         </div>
     </div>
-</section> -->
+    <div class="custom--warning" id="exist">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 22.9167C19.3167 22.9167 18.75 22.3501 18.75 21.6667V12.9167C18.75 12.2334 19.3167 11.6667 20 11.6667C20.6833 11.6667 21.25 12.2334 21.25 12.9167V21.6667C21.25 22.3501 20.6833 22.9167 20 22.9167Z" fill="#EE0B0B"/>
+                <path d="M20 28.75C19.55 28.75 19.1333 28.5834 18.8166 28.2667C18.6666 28.1001 18.55 27.9167 18.45 27.7167C18.3667 27.5167 18.3333 27.3 18.3333 27.0834C18.3333 26.65 18.5166 26.2167 18.8166 25.9C19.4333 25.2833 20.5667 25.2833 21.1834 25.9C21.4834 26.2167 21.6667 26.65 21.6667 27.0834C21.6667 27.3 21.6166 27.5167 21.5333 27.7167C21.45 27.9167 21.3334 28.1001 21.1834 28.2667C20.8667 28.5834 20.45 28.75 20 28.75Z" fill="#EE0B0B"/>
+                <path d="M20.0003 37.9166C18.8836 37.9166 17.7503 37.6332 16.7503 37.0499L6.85027 31.3332C4.85027 30.1666 3.60025 28.0166 3.60025 25.6999V14.2999C3.60025 11.9833 4.85027 9.83327 6.85027 8.66661L16.7503 2.94995C18.7503 1.78328 21.2336 1.78328 23.2503 2.94995L33.1503 8.66661C35.1503 9.83327 36.4003 11.9833 36.4003 14.2999V25.6999C36.4003 28.0166 35.1503 30.1666 33.1503 31.3332L23.2503 37.0499C22.2503 37.6332 21.117 37.9166 20.0003 37.9166ZM20.0003 4.58325C19.317 4.58325 18.6169 4.7666 18.0003 5.1166L8.10027 10.8333C6.86694 11.5499 6.10025 12.8666 6.10025 14.2999V25.6999C6.10025 27.1166 6.86694 28.4499 8.10027 29.1666L18.0003 34.8832C19.2336 35.5999 20.767 35.5999 21.9836 34.8832L31.8836 29.1666C33.117 28.4499 33.8837 27.1332 33.8837 25.6999V14.2999C33.8837 12.8833 33.117 11.5499 31.8836 10.8333L21.9836 5.1166C21.3836 4.7666 20.6836 4.58325 20.0003 4.58325Z" fill="#EE0B0B"/>
+            </svg>
+        </div>
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p>Kode telah dipakai!</p>
+        </div>
+    </div>
+    <div class="custom--warning" id="borrowed">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 22.9167C19.3167 22.9167 18.75 22.3501 18.75 21.6667V12.9167C18.75 12.2334 19.3167 11.6667 20 11.6667C20.6833 11.6667 21.25 12.2334 21.25 12.9167V21.6667C21.25 22.3501 20.6833 22.9167 20 22.9167Z" fill="#EE0B0B"/>
+                <path d="M20 28.75C19.55 28.75 19.1333 28.5834 18.8166 28.2667C18.6666 28.1001 18.55 27.9167 18.45 27.7167C18.3667 27.5167 18.3333 27.3 18.3333 27.0834C18.3333 26.65 18.5166 26.2167 18.8166 25.9C19.4333 25.2833 20.5667 25.2833 21.1834 25.9C21.4834 26.2167 21.6667 26.65 21.6667 27.0834C21.6667 27.3 21.6166 27.5167 21.5333 27.7167C21.45 27.9167 21.3334 28.1001 21.1834 28.2667C20.8667 28.5834 20.45 28.75 20 28.75Z" fill="#EE0B0B"/>
+                <path d="M20.0003 37.9166C18.8836 37.9166 17.7503 37.6332 16.7503 37.0499L6.85027 31.3332C4.85027 30.1666 3.60025 28.0166 3.60025 25.6999V14.2999C3.60025 11.9833 4.85027 9.83327 6.85027 8.66661L16.7503 2.94995C18.7503 1.78328 21.2336 1.78328 23.2503 2.94995L33.1503 8.66661C35.1503 9.83327 36.4003 11.9833 36.4003 14.2999V25.6999C36.4003 28.0166 35.1503 30.1666 33.1503 31.3332L23.2503 37.0499C22.2503 37.6332 21.117 37.9166 20.0003 37.9166ZM20.0003 4.58325C19.317 4.58325 18.6169 4.7666 18.0003 5.1166L8.10027 10.8333C6.86694 11.5499 6.10025 12.8666 6.10025 14.2999V25.6999C6.10025 27.1166 6.86694 28.4499 8.10027 29.1666L18.0003 34.8832C19.2336 35.5999 20.767 35.5999 21.9836 34.8832L31.8836 29.1666C33.117 28.4499 33.8837 27.1332 33.8837 25.6999V14.2999C33.8837 12.8833 33.117 11.5499 31.8836 10.8333L21.9836 5.1166C21.3836 4.7666 20.6836 4.58325 20.0003 4.58325Z" fill="#EE0B0B"/>
+            </svg>
+        </div>
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p>Barang sedang dipinjam!</p>
+        </div>
+    </div>
+    <div class="custom--warning" id="exceed">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 22.9167C19.3167 22.9167 18.75 22.3501 18.75 21.6667V12.9167C18.75 12.2334 19.3167 11.6667 20 11.6667C20.6833 11.6667 21.25 12.2334 21.25 12.9167V21.6667C21.25 22.3501 20.6833 22.9167 20 22.9167Z" fill="#EE0B0B"/>
+                <path d="M20 28.75C19.55 28.75 19.1333 28.5834 18.8166 28.2667C18.6666 28.1001 18.55 27.9167 18.45 27.7167C18.3667 27.5167 18.3333 27.3 18.3333 27.0834C18.3333 26.65 18.5166 26.2167 18.8166 25.9C19.4333 25.2833 20.5667 25.2833 21.1834 25.9C21.4834 26.2167 21.6667 26.65 21.6667 27.0834C21.6667 27.3 21.6166 27.5167 21.5333 27.7167C21.45 27.9167 21.3334 28.1001 21.1834 28.2667C20.8667 28.5834 20.45 28.75 20 28.75Z" fill="#EE0B0B"/>
+                <path d="M20.0003 37.9166C18.8836 37.9166 17.7503 37.6332 16.7503 37.0499L6.85027 31.3332C4.85027 30.1666 3.60025 28.0166 3.60025 25.6999V14.2999C3.60025 11.9833 4.85027 9.83327 6.85027 8.66661L16.7503 2.94995C18.7503 1.78328 21.2336 1.78328 23.2503 2.94995L33.1503 8.66661C35.1503 9.83327 36.4003 11.9833 36.4003 14.2999V25.6999C36.4003 28.0166 35.1503 30.1666 33.1503 31.3332L23.2503 37.0499C22.2503 37.6332 21.117 37.9166 20.0003 37.9166ZM20.0003 4.58325C19.317 4.58325 18.6169 4.7666 18.0003 5.1166L8.10027 10.8333C6.86694 11.5499 6.10025 12.8666 6.10025 14.2999V25.6999C6.10025 27.1166 6.86694 28.4499 8.10027 29.1666L18.0003 34.8832C19.2336 35.5999 20.767 35.5999 21.9836 34.8832L31.8836 29.1666C33.117 28.4499 33.8837 27.1332 33.8837 25.6999V14.2999C33.8837 12.8833 33.117 11.5499 31.8836 10.8333L21.9836 5.1166C21.3836 4.7666 20.6836 4.58325 20.0003 4.58325Z" fill="#EE0B0B"/>
+            </svg>
+        </div>
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p>Pemeliharaan melebihi barang tersedia!</p>
+        </div>
+    </div>
+    <div class="custom--success" id="added">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="heroicons-outline/check-circle">
+                <path id="Vector" d="M15 21.25L18.75 25L25 16.25M35 20C35 28.2843 28.2843 35 20 35C11.7157 35 5 28.2843 5 20C5 11.7157 11.7157 5 20 5C28.2843 5 35 11.7157 35 20Z" stroke="#00BA7C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>
+        </div>
+        <div class="custom--success-content-text">
+            <h3>Berhasil</h3>
+            <p>Tambah barang!</p>
+        </div>
+    </div>
+    <div class="custom--success" id="deleted">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="heroicons-outline/check-circle">
+                <path id="Vector" d="M15 21.25L18.75 25L25 16.25M35 20C35 28.2843 28.2843 35 20 35C11.7157 35 5 28.2843 5 20C5 11.7157 11.7157 5 20 5C28.2843 5 35 11.7157 35 20Z" stroke="#00BA7C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>
+        </div>
+        <div class="custom--success-content-text">
+            <h3>Berhasil</h3>
+            <p>Hapus barang!</p>
+        </div>
+    </div>
+    <div class="custom--success" id="edited">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="heroicons-outline/check-circle">
+                <path id="Vector" d="M15 21.25L18.75 25L25 16.25M35 20C35 28.2843 28.2843 35 20 35C11.7157 35 5 28.2843 5 20C5 11.7157 11.7157 5 20 5C28.2843 5 35 11.7157 35 20Z" stroke="#00BA7C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>
+        </div>
+        <div class="custom--success-content-text">
+            <h3>Berhasil</h3>
+            <p>Edit barang!</p>
+        </div>
+    </div>
+</section>
 
 <script>
     const sectionPopUp = document.querySelector('.custom--container-add-item')
+    const sectionPopUp2 = document.querySelector('.custom--container-warning')
 
     const addButton = document.querySelector(".custom--data-barang-table-wrapper--header button");
     const editButton = document.querySelector(".custom--container-data-barang .editIcon");
@@ -315,6 +394,14 @@
     const editPopup = document.querySelector('#edit-item')
     const detailsPopup = document.querySelector('#details-item')
     const deletePopup = document.querySelector('#delete-item')
+    const warningBorrowed = document.querySelector('#borrowed')
+    const warningExist = document.querySelector('#exist')
+    const warningEmpty = document.querySelector('#empty')
+    const warningExceed = document.querySelector('#exceed')
+    const successAdd = document.querySelector('#added')
+    const successDelete = document.querySelector('#deleted')
+    const successEdit = document.querySelector('#edited')
+
 
     const closePopupButtons = document.querySelectorAll('.custom--close-button')
     const closePopupDetails = document.querySelector('#custom--close-details')
@@ -347,6 +434,27 @@
     popupController(detailsButton, detailsPopup);
     popupController(deleteButton, deletePopup);
 
+    function showPopupWarning(warningElement) {
+        sectionPopUp2.classList.add('show');
+        setTimeout(() => {
+            sectionPopUp2.style.top = '1rem';
+            warningElement.classList.add('show');
+
+            // Hide the warning pop-up after 1 second with a slide-up animation
+            setTimeout(() => {
+                sectionPopUp2.style.transition = 'top 0.3s ease';
+                sectionPopUp2.style.top = '-8.8rem';
+            }, 1100);
+
+            // Remove the 'show' class after the slide-up animation is complete
+            setTimeout(() => {
+                warningElement.classList.remove('show');
+                sectionPopUp2.classList.remove('show');
+                sectionPopUp2.style.transition = ''; // Reset transition property
+            }, 1600);
+        }, 100);
+    }
+
     function deleteItem(id_barang) {
         console.log("Delete Item ID: " + id_barang);
 
@@ -362,20 +470,27 @@
 
         deleteButton.onclick = function () {
             fetch(`../public/dataBarang/deleteBarang/${id_barang}`, {
-                method: 'DELETE',
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Item deleted successfully");
-                    window.location.href = '../public/dataBarang';
-                } else {
-                    console.error("Failed to delete item");
-                }
-            })
-            .catch(error => {
-                console.error("Error during deletion:", error);
-            });
-
+                    method: 'DELETE',
+                })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.status === 'success') {
+                        console.log("Item deleted successfully");
+                        showPopupWarning(successDelete);
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1400);
+                    } else if (response.status === 'warning') {
+                        showPopupWarning(warningBorrowed);
+                    } else {
+                        console.error("Failed to delete item");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error during deletion:", error);
+                });
+                
+            sectionPopUp.classList.remove('show');
             modal.classList.remove('show');
         };
     }
@@ -392,7 +507,7 @@
                 document.getElementById('kode_barang_edit').value = data.id_barang;
                 document.getElementById('nama_barang_edit').value = data.nama_barang;
                 document.getElementById('asal_edit').value = data.asal;
-                document.getElementById('jumlah_edit').value = data.jumlah_tersedia + data.jumlah_dipinjam + data.jml_pemeliharaan;
+                document.getElementById('jumlah_edit').value = data.jumlah_tersedia;
                 document.getElementById('jumlah_pemeliharaan_edit').value = data.jml_pemeliharaan;
                 document.getElementById('keterangan_edit').innerText = data.kondisi_barang;
             })
@@ -401,7 +516,8 @@
             });
     }
 
-    function handleEditSubmit() {
+    function handleEditSubmit(event) {
+        event.preventDefault();
         const id_barang = document.getElementById('kode_barang_edit').value;
         const nama_barang = document.getElementById('nama_barang_edit').value;
         const asal = document.getElementById('asal_edit').value;
@@ -419,54 +535,71 @@
         .then(response => response.json())
         .then(response => {
             console.log(response);
-            if (response.success) {
-                window.location.href = './dataBarang';
-            } else {
-                console.error("Failed to update item");
+            if (response.status === 'warning') {
+                showPopupWarning(warningExceed);
+                console.error("Failed to update item. Error message:", response.message);
+                // window.location.href = './dataBarang';
+            } else if (response.status === 'success') {
+                showPopupWarning(successEdit);
+                console.log("Item updated successfully");
+                setTimeout(() => {
+                    location.reload();
+                }, 1400);
             }
         })
         .catch(error => {
             console.error("Error updating item:", error);
-        });
-        sectionPopUp.classList.remove('show');
-        editPopup.classList.remove('show');
+        })
     }
+    $('#editBarangForm').submit(handleAddSubmit);
 
     const submitEditButton = document.getElementById('submit-edit');
     submitEditButton.addEventListener('click', handleEditSubmit);
 
-    function handleAddSubmit() {
-        const kode_barang = document.getElementById('kode_barang').value;
-        const nama_barang = document.getElementById('nama_barang').value;
-        const asal = document.getElementById('asal').value;
-        const jumlah = document.getElementById('jumlah').value;
-        const keterangan = document.getElementById('keterangan').value;
+    function handleAddSubmit(event) {
+        event.preventDefault(); // Prevent the form from submitting
 
-        fetch('../public/dataBarang/addBarang', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+        const kode_barang = $('#kode_barang').val();
+        const nama_barang = $('#nama_barang').val();
+        const asal = $('#asal').val();
+        const jumlah = $('#jumlah').val();
+        const keterangan = $('#keterangan').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '../public/dataBarang/addBarang',
+            data: {
+                kode_barang: kode_barang,
+                nama_barang: nama_barang,
+                asal: asal,
+                jumlah: jumlah,
+                keterangan: keterangan
             },
-            body: `kode_barang=${kode_barang}&nama_barang=${nama_barang}&asal=${asal}&jumlah=${jumlah}&keterangan=${keterangan}`,
-        })
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-            if (response.success) {
-                window.location.href = '../public/dataBarang';
-            } else {
-                console.error("Failed to add item");
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                if (response.status === 'empty') {
+                    showPopupWarning(warningEmpty);
+                } else if (response.status === 'duplicate') {
+                    showPopupWarning(warningExist);
+                } else if (response.status === 'success') {
+                    $('#addBarangForm')[0].reset();
+                    showPopupWarning(successAdd);
+                    sectionPopUp.classList.remove('show');
+                    addPopup.classList.remove('show');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1400);
+                } else {
+                    console.error('Failed to add item');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('Error adding item. Please try again.');
             }
-        })
-        .catch(error => {
-            console.error("Error adding item:", error);
-        });
-
-        const showPopup = document.querySelectorAll('.show');
-        showPopup.forEach((popup) => {
-            popup.classList.remove('show');
         });
     }
+    $('#addBarangForm').submit(handleAddSubmit);
 
     const submitAddButton = document.getElementById('submit-add');
     submitAddButton.addEventListener('click', handleAddSubmit);
@@ -480,16 +613,16 @@
         fetch(`../public/dataBarang/getBarangDetails/${id_barang}`)
             .then(response => response.json())
             .then(data => {
-                document.getElementById('kode_barang').value = data.id_barang;
-                document.getElementById('nama_barang').value = data.nama_barang;
-                const tersedia = parseInt(document.getElementById('tersedia').value);
-                const dipinjam = parseInt(document.getElementById('dipinjam').value);
-                const pemeliharaan = parseInt(document.getElementById('pemeliharaan').value);
+                document.getElementById('kode_barang_detail').value = data.id_barang;
+                document.getElementById('nama_barang_detail').value = data.nama_barang;
+                const tersedia = parseInt(document.getElementById('tersedia_detail').value);
+                const dipinjam = parseInt(document.getElementById('dipinjam_detail').value);
+                const pemeliharaan = parseInt(document.getElementById('pemeliharaan_detail').value);
                 const jumlah = tersedia + dipinjam + pemeliharaan;
-                document.getElementById('jumlah').value = jumlah;
-                document.getElementById('tersedia').value = data.jumlah_tersedia;
-                document.getElementById('dipinjam').value = data.jumlah_dipinjam;
-                document.getElementById('pemeliharaan').value = data.jml_pemeliharaan;
+                document.getElementById('jumlah_detail').value = jumlah;
+                document.getElementById('tersedia_detail').value = data.jumlah_tersedia;
+                document.getElementById('dipinjam_detail').value = data.jumlah_dipinjam;
+                document.getElementById('pemeliharaan_detail').value = data.jml_pemeliharaan;
                 document.getElementById('keterangan-detail').innerText = data.kondisi_barang;
                 console.log(data.kondisi_barang);
             })

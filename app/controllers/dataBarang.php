@@ -61,6 +61,24 @@ class DataBarang extends Controller
             $jumlah = $_POST['jumlah'];
             $keterangan = $_POST['keterangan'];
     
+            if (empty($kode_barang) || empty($nama_barang) || empty($asal) || empty($jumlah) || empty($keterangan)) {
+                echo json_encode(['status' => 'empty']);
+                exit();
+            }
+    
+            // Check if id_barang already exists
+            $checkIdExistQuery = "SELECT id_barang FROM barang WHERE id_barang = ?";
+            $stmtCheckIdExist = $conn->prepare($checkIdExistQuery);
+            $stmtCheckIdExist->bind_param("s", $kode_barang);
+            $stmtCheckIdExist->execute();
+            $stmtCheckIdExist->store_result();
+    
+            if ($stmtCheckIdExist->num_rows > 0) {
+                echo json_encode(['status' => 'duplicate']);
+                exit();
+            }
+    
+            // Rest of your code for successful submission
             $getIdAdminQuery = "SELECT id_admin FROM admin WHERE username_admin = ?";
             $stmtAdmin = $conn->prepare($getIdAdminQuery);
             $stmtAdmin->bind_param("s", $username);
@@ -79,28 +97,55 @@ class DataBarang extends Controller
                 $stmtInsert->execute();
     
                 if ($stmtInsert->affected_rows > 0) {
-                    header("Location: ../../public/dataBarang");
+                    echo json_encode(['status' => 'success']);
                     exit();
                 } else {
-                    echo "Error: Failed to insert item.";
+                    echo json_encode(['status' => 'error']);
+                    exit();
                 }
             } else {
-                echo "Error: Unable to retrieve id_admin.";
+                echo json_encode(['status' => 'error']);
+                exit();
             }
         } else {
             echo "Metode tidak diizinkan.";
         }
-    }    
+    }
+
     public function deleteBarang($id_barang)
     {
         $conn = $this->db->getConnection();
+        
+        $referenceCount = 0;
+        
+        $checkReferenceQuery = "SELECT COUNT(*) FROM detail_peminjaman WHERE id_barang = ?";
+        $stmtCheckReference = $conn->prepare($checkReferenceQuery);
+        $stmtCheckReference->bind_param("s", $id_barang);
+        $stmtCheckReference->execute();
+        $stmtCheckReference->bind_result($referenceCount);
+        $stmtCheckReference->fetch();
+        $stmtCheckReference->close();
+        
+        if ($referenceCount > 0) {
+            // INI KALO ADA YANG MINJEM
+            $response = ["status" => "warning", "message" => "Barang dipinjam!"];
+            echo json_encode($response);
+            exit();
+        }
+    
+        // GAADA YANG DIPINJAM
         $deleteQuery = "DELETE FROM barang WHERE id_barang = ?";
         $stmt = $conn->prepare($deleteQuery);
         $stmt->bind_param("s", $id_barang);
         $stmt->execute();
-        header("Location: ../../dataBarang");
+        $stmt->close();
+    
+        // SUKSES WES
+        $response = ["status" => "success"];
+        echo json_encode($response);
         exit();
     }
+    
     private function sendJsonResponse($data)
     {
         header('Content-Type: application/json');
@@ -125,6 +170,7 @@ class DataBarang extends Controller
             $this->sendJsonResponse(["error" => "Item not found"]);
         }
     }
+
     public function updateItem()
     {
         $conn = $this->db->getConnection();
@@ -137,6 +183,27 @@ class DataBarang extends Controller
             $jumlah_pemeliharaan = $_POST['jumlah_pemeliharaan'];
             $keterangan = $_POST['keterangan'];
     
+            // Check if jml_pemeliharaan is lower than or equal to the maximum allowed value
+            $checkAvailabilityQuery = "SELECT jumlah_tersedia, jml_pemeliharaan FROM barang WHERE id_barang = ?";
+            $stmtAvailability = $conn->prepare($checkAvailabilityQuery);
+            $stmtAvailability->bind_param("s", $kode_barang);
+            $stmtAvailability->execute();
+            $existingQuantity = 0;
+            $existingPemeliharaan = 0;
+            $stmtAvailability->bind_result($existingQuantity, $existingPemeliharaan);
+            $stmtAvailability->fetch();
+            $stmtAvailability->close();
+    
+            $maxAllowedPemeliharaan = $existingQuantity + $existingPemeliharaan;
+    
+            if ($jumlah_pemeliharaan > $maxAllowedPemeliharaan) {
+                $this->sendJsonResponse(['status' => 'warning', 'message' => 'Maintenance quantity exceeds the maximum allowed value']);
+                exit();
+            }
+    
+            $newJumlahTersedia = $existingQuantity - $jumlah_pemeliharaan;
+    
+            // Update the item if the check passes
             $updateQuery = "UPDATE barang SET 
                 nama_barang = ?, 
                 asal = ?, 
@@ -146,18 +213,20 @@ class DataBarang extends Controller
                 WHERE id_barang = ?";
     
             $stmt = $conn->prepare($updateQuery);
-            $stmt->bind_param("ssisss", $nama_barang, $asal, $jumlah, $jumlah_pemeliharaan, $keterangan, $kode_barang);
+            $stmt->bind_param("ssisss", $nama_barang, $asal, $newJumlahTersedia, $jumlah_pemeliharaan, $keterangan, $kode_barang);
             $stmt->execute();
     
             if ($stmt->affected_rows > 0) {
-                $this->sendJsonResponse(['success' => 'Item updated successfully']);
+                $this->sendJsonResponse(['status' => 'success', 'message' => 'Item updated successfully']);
             } else {
-                $this->sendJsonResponse(['error' => 'Failed to update item']);
+                $this->sendJsonResponse(['status' => 'error', 'message' => 'Failed to update item']);
             }
         } else {
-            $this->sendJsonResponse(['error' => 'Invalid request method']);
+            $this->sendJsonResponse(['status' => 'error', 'message' => 'Invalid request method']);
         }
-    }    
+    }
+    
+
     public function getSummaryData()
     {
         $conn = $this->db->getConnection();
