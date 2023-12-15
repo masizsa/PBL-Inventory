@@ -5,23 +5,23 @@
     </div>
     <div class="custom--body">
         <div class="custom--filter">
-            <!-- <div class="custom--day-wrapper">
-                <button class="active">70 Hari</button>
-                <button>30 Hari</button>
-                <button>12 Bulan</button>
-                <button>Semua</button>
-            </div> -->
-            <div class="custom--sort-wrapper">
-                <li style="--delay: 2;" tabindex="0">
-                    <button>
-                        <img class="icon-sort" src="../../../../public/assets/sort.svg" alt="">
-                        <span class="text">Urutkan</span>
-                    </button>
-                    <ul class="dropdown">
-                        <li class="p"><button id="latest">Tanggal Terkini</button></li>
-                        <li class="P"><button id="oldest">Tanggal Terlama</button></li>
-                    </ul>
-                </li>
+            <div class="custom--left">
+                <div class="custom--sort-wrapper">
+                    <li style="--delay: 2;" tabindex="0">
+                        <button>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.5 5.83331H17.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M5 10H15" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M8.3335 14.1667H11.6668" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                            <span class="text">Urutkan</span>
+                        </button>
+                        <ul class="dropdown">
+                            <li class="p"><button id="latest">Tanggal Terkini</button></li>
+                            <li class="P"><button id="oldest">Tanggal Terlama</button></li>
+                        </ul>
+                    </li>
+                </div>
             </div>
             <div class="custom--search">
                 <!-- <form action="" method="post"> -->

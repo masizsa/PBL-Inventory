@@ -50,8 +50,150 @@ html {
   height: 5.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
 }
+
+/* CSS SORTING */
+.custom--body .custom--filter .custom--left {
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+  margin-right: 1.2rem;
+  /* justify-content: space-between; */
+}
+
+.custom--body .custom--filter .custom--left .custom--day-wrapper {
+  height: 100%;
+  width: 36.5rem;
+  padding: 8px 12px;
+  display: flex;
+  gap: 12px;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper {
+  height: 100%;
+  width: 11rem;
+  padding: 4px 4px 4px 4px;
+  display: inline;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  margin-left: 1.2rem;
+  cursor: pointer;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper button,
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li {
+  cursor: pointer;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .icon-sort {
+  width: 2rem;
+  display: flexbox;
+}
+
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  li
+  button
+  span {
+  font-size: 14px;
+  font-weight: 400;
+  float: right;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li {
+  list-style: none;
+  background-color: #ffffff;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li button {
+  border: none;
+  flex-direction: column;
+  background-color: #fff;
+  margin-top: 1.3rem;
+  margin-left: 1.3rem;
+  width: 8rem;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper ul {
+  list-style: none;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper ul li {
+  font-size: 14px;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
+  background-color: #fff;
+}
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  .dropdown
+  li
+  a {
+  display: block;
+  text-decoration: none;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper ul li a,
+ul li button {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  color: inherit;
+}
+
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
+  height: 0;
+  overflow: hidden;
+  transition: height ease 0.2s;
+  /* width: 2rem; */
+}
+
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  .dropdown
+  button {
+  width: 16rem;
+  height: 0.2rem;
+}
+
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  li:focus-within
+  .dropdown {
+  height: 10rem;
+  width: 16rem;
+  border-radius: 1rem;
+}
+
+/* MEDIA QUERIES  */
+@media (min-width: 640px) {
+  .dropdown {
+    position: fixed;
+    justify-content: end;
+    /* position: absolute; */
+    /* width: 17.6rem; */
+    top: 21.8rem;
+    /* left: 120rem; */
+    /* padding-top: 100000rem; */
+    /* z-index: 10; */
+    /* min-width: 10rem; */
+    padding: 0;
+    border-radius: 0.5rem 0.5rem 0.5rem;
+  }
+}
+
+/* CSS SORTING SAMPE SINI*/
 
 .custom--body .custom--filter .custom--day-wrapper {
   height: 100%;
