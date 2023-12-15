@@ -439,16 +439,29 @@ html {
 
 /* WARNING */
 .custom--container-warning {
+  display: none;
+}
+
+.custom--container-warning.show {
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 1rem;
+  top: -8.8rem;
   align-items: center;
   width: calc(100%);
   z-index: 1000;
+  transition: top 0.5s ease;
+}
+
+.custom--warning.custom--warning-borrowed.show {
+  width: 31rem;
 }
 
 .custom--warning {
+  display: none;
+}
+
+.custom--warning.show {
   display: flex;
   width: 27.1rem;
   height: 8.8rem;
@@ -473,6 +486,6 @@ html {
 
 .custom--warning .custom--warning-content-text p {
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
 }
