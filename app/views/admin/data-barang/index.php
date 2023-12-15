@@ -160,7 +160,6 @@
                         <label for="kode_barang">Kode Barang</label>
                         <input type="text" name="kode_barang">
                     </div>
-                    <!-- Sisipkan name pada setiap input -->
                     <div class="custom--input-add-item-wrapper">
                         <label for="nama_barang">Nama Barang</label>
                         <input type="text" name="nama_barang">
@@ -180,7 +179,7 @@
                 </div>
                 <div class="custom--button-add-items">
                     <button class="custom--close-button">Batal</button>
-                    <input type="submit" value="Tambah">
+                    <input type="submit" value="Tambah" id="submit-add">
                 </div>
             </form>
         </div>
@@ -195,19 +194,15 @@
                     <div class="custom--input-add-item-wrapper">
                         <label for="kode_barang_edit">Kode Barang</label>
                         <input type="text" name="kode_barang_edit" id="kode_barang_edit" disabled>
-
                     </div>
                     <div class="custom--input-add-item-wrapper">
                         <label for="nama_barang_edit">Nama Barang</label>
                         <input type="text" name="nama_barang_edit" id="nama_barang_edit">
-
                     </div>
                     <div class="custom--input-add-item-wrapper">
                         <label for="asal_edit">Asal</label>
                         <input type="text" name="asal_edit" id="asal_edit">
-
                     </div>
-
                     <div class="custom--input-add-item-wrapper">
                         <label for="jumlah_edit">Jumlah Tersedia</label>
                         <input type="text" name="jumlah_edit" id="jumlah_edit">
@@ -267,7 +262,11 @@
                 </div>
             </form>
         </div>
-        <button class="custom--add-items-close" id="custom--close-details"></button>
+        <button class="custom--add-items-close" id="custom--close-details">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 0C4.49 0 0 4.49 0 10C0 15.51 4.49 20 10 20C15.51 20 20 15.51 20 10C20 4.49 15.51 0 10 0ZM13.36 12.3C13.65 12.59 13.65 13.07 13.36 13.36C13.21 13.51 13.02 13.58 12.83 13.58C12.64 13.58 12.45 13.51 12.3 13.36L10 11.06L7.7 13.36C7.55 13.51 7.36 13.58 7.17 13.58C6.98 13.58 6.79 13.51 6.64 13.36C6.35 13.07 6.35 12.59 6.64 12.3L8.94 10L6.64 7.7C6.35 7.41 6.35 6.93 6.64 6.64C6.93 6.35 7.41 6.35 7.7 6.64L10 8.94L12.3 6.64C12.59 6.35 13.07 6.35 13.36 6.64C13.65 6.93 13.65 7.41 13.36 7.7L11.06 10L13.36 12.3Z" fill="#FCD106"/>
+            </svg>
+        </button>
     </div>
     <div class="custom--delete-item" id="delete-item">
         <div class="custom--content-delete">
@@ -287,6 +286,22 @@
         </div>
     </div>
 </section>
+
+<!-- <section class="custom--container-warning">
+    <div class="custom--warning" id="warning-message">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 22.9167C19.3167 22.9167 18.75 22.3501 18.75 21.6667V12.9167C18.75 12.2334 19.3167 11.6667 20 11.6667C20.6833 11.6667 21.25 12.2334 21.25 12.9167V21.6667C21.25 22.3501 20.6833 22.9167 20 22.9167Z" fill="#EE0B0B"/>
+                <path d="M20 28.75C19.55 28.75 19.1333 28.5834 18.8166 28.2667C18.6666 28.1001 18.55 27.9167 18.45 27.7167C18.3667 27.5167 18.3333 27.3 18.3333 27.0834C18.3333 26.65 18.5166 26.2167 18.8166 25.9C19.4333 25.2833 20.5667 25.2833 21.1834 25.9C21.4834 26.2167 21.6667 26.65 21.6667 27.0834C21.6667 27.3 21.6166 27.5167 21.5333 27.7167C21.45 27.9167 21.3334 28.1001 21.1834 28.2667C20.8667 28.5834 20.45 28.75 20 28.75Z" fill="#EE0B0B"/>
+                <path d="M20.0003 37.9166C18.8836 37.9166 17.7503 37.6332 16.7503 37.0499L6.85027 31.3332C4.85027 30.1666 3.60025 28.0166 3.60025 25.6999V14.2999C3.60025 11.9833 4.85027 9.83327 6.85027 8.66661L16.7503 2.94995C18.7503 1.78328 21.2336 1.78328 23.2503 2.94995L33.1503 8.66661C35.1503 9.83327 36.4003 11.9833 36.4003 14.2999V25.6999C36.4003 28.0166 35.1503 30.1666 33.1503 31.3332L23.2503 37.0499C22.2503 37.6332 21.117 37.9166 20.0003 37.9166ZM20.0003 4.58325C19.317 4.58325 18.6169 4.7666 18.0003 5.1166L8.10027 10.8333C6.86694 11.5499 6.10025 12.8666 6.10025 14.2999V25.6999C6.10025 27.1166 6.86694 28.4499 8.10027 29.1666L18.0003 34.8832C19.2336 35.5999 20.767 35.5999 21.9836 34.8832L31.8836 29.1666C33.117 28.4499 33.8837 27.1332 33.8837 25.6999V14.2999C33.8837 12.8833 33.117 11.5499 31.8836 10.8333L21.9836 5.1166C21.3836 4.7666 20.6836 4.58325 20.0003 4.58325Z" fill="#EE0B0B"/>
+            </svg>
+        </div>
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p>Data tidak valid!</p>
+        </div>
+    </div>
+</section> -->
 
 <script>
     const sectionPopUp = document.querySelector('.custom--container-add-item')
@@ -417,10 +432,44 @@
         editPopup.classList.remove('show');
     }
 
-    // Add an event listener to the "Submit" button in the edit form
     const submitEditButton = document.getElementById('submit-edit');
     submitEditButton.addEventListener('click', handleEditSubmit);
 
+    function handleAddSubmit() {
+        const kode_barang = document.getElementById('kode_barang').value;
+        const nama_barang = document.getElementById('nama_barang').value;
+        const asal = document.getElementById('asal').value;
+        const jumlah = document.getElementById('jumlah').value;
+        const keterangan = document.getElementById('keterangan').value;
+
+        fetch('../public/dataBarang/addBarang', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `kode_barang=${kode_barang}&nama_barang=${nama_barang}&asal=${asal}&jumlah=${jumlah}&keterangan=${keterangan}`,
+        })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            if (response.success) {
+                window.location.href = '../public/dataBarang';
+            } else {
+                console.error("Failed to add item");
+            }
+        })
+        .catch(error => {
+            console.error("Error adding item:", error);
+        });
+
+        const showPopup = document.querySelectorAll('.show');
+        showPopup.forEach((popup) => {
+            popup.classList.remove('show');
+        });
+    }
+
+    const submitAddButton = document.getElementById('submit-add');
+    submitAddButton.addEventListener('click', handleAddSubmit);
 
     function showDetails(id_barang) {
         console.log("Show Details for Item ID: " + id_barang);
