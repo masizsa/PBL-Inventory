@@ -1,271 +1,276 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 .custom--container-barang-dipinjam {
-    /* padding-left: 37.5rem; */
-    display: flex;
-    width: 100%;
+  /* padding-left: 37.5rem; */
+  display: flex;
+  width: 100%;
 }
 
 .custom--content-barang-dipinjam {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .custom--content-barang-dipinjam header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    height: 11.6rem;
-    width: 100%;
-    padding: 1.6rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 11.6rem;
+  width: 100%;
+  padding: 1.6rem 4rem;
 }
 
 .custom--content-barang-dipinjam .custom--text-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #121212;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #121212;
+  height: 100%;
 }
 
 .custom--content-barang-dipinjam .custom--text-header h1 {
-    font-weight: 600;
-    font-size: 3.2rem;
+  font-weight: 600;
+  font-size: 3.2rem;
 }
 
 .custom--content-barang-dipinjam .custom--text-header p {
-    font-weight: 400;
-    font-size: 1.6rem;
+  font-weight: 400;
+  font-size: 1.6rem;
 }
 
 /* COUNTDOWN */
 .custom--content-barang-dipinjam .custom--countdown {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .custom--content-barang-dipinjam .custom--countdown .countdown-text {
-    color: #121212;
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding-bottom: 0.4rem;
+  color: #121212;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: 0.4rem;
 }
 
-.custom--content-barang-dipinjam .custom--countdown .custom--container-countdown {
-    display: flex;
-    justify-content: space-around;
-    border: 1px solid #FCD106;
-    border-radius: 1rem;
-    width: 20.9rem;
-    height: 6.7rem;
-    padding: 0.4rem 0.8rem;
-    text-align: center;
-    padding: 4px;
+.custom--content-barang-dipinjam
+  .custom--countdown
+  .custom--container-countdown {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #fcd106;
+  border-radius: 1rem;
+  width: 20.9rem;
+  height: 6.7rem;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+  padding: 4px;
 }
 
 .custom--countdown .custom--container-countdown .custom--time {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .custom--countdown .custom--container-countdown .return-date {
-    color: #FCD106;
-    font-size: 2.4rem;
-    font-weight: 600;
-    height: 36px;
-    width: 40px;
+  color: #fcd106;
+  font-size: 2.4rem;
+  font-weight: 600;
+  height: 36px;
+  width: 40px;
 }
 
 .custom--countdown .custom--container-countdown .countdown-label {
-    color: #121212;
-    font-size: 1rem;
-    font-weight: 500;
+  color: #121212;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .custom--countdown .custom--container-countdown .colon {
-    font-size: 2.4rem;
-    font-weight: 600;
-    color: #FCD106;
-
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #fcd106;
 }
 .custom--countdown .custom--container-countdown .vertical-line {
-    border-left: 1px solid #FCD106;
-    height: 3.5rem;
-    margin: auto 0;
+  border-left: 1px solid #fcd106;
+  height: 3.5rem;
+  margin: auto 0;
 }
 
 /* HAS ITEMS */
 .custom--content-barang-dipinjam main {
-    display: flex;
-    flex-direction: column;
-    padding: 4rem 9.6rem;
-    gap: 4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 9.6rem;
+  gap: 4rem;
+  background-color: #f6f6f6;
 }
 
 .custom--content-barang-dipinjam main .custom--subheader-borrowed {
-    color: #000;
-    font-size: 2rem;
-    font-weight: 500;
-    padding-bottom: 1.6rem;
+  color: #000;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-bottom: 1.6rem;
 }
 
 .custom--content-barang-dipinjam main .custom--container-borrowed-items,
 .custom--content-barang-dipinjam main .custom--container-borrowed-items-empty {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: white;
-    width: 100%;
-    min-height: 22rem;
-    border-radius: 1rem;
-    border: 0.1rem solid rgba(18, 18, 18, 0.10);
-    padding: 2.4rem;
-    gap: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  width: 100%;
+  min-height: 22rem;
+  border-radius: 1rem;
+  border: 0.1rem solid rgba(18, 18, 18, 0.1);
+  padding: 2.4rem;
+  gap: 2.4rem;
 }
 
 .custom--container-borrowed-items .custom--borrowed-info {
-    display: flex;
-    color: #121212;
-    font-size: 1.4rem;
-    font-weight: 600;
-    width: 100%;
-    gap: 1.6rem;
+  display: flex;
+  color: #121212;
+  font-size: 1.4rem;
+  font-weight: 600;
+  width: 100%;
+  gap: 1.6rem;
 }
 
 .custom--container-borrowed-items .custom--borrowed-info .borrow-date {
-    display: flex;
-    align-items: center;
-    border-radius: 1.4rem;
-    border: 0.1rem solid #C6C6C6;
-    padding: 1.3rem 1.8rem;
-    color: #121212;
-    min-width: none;
-    width: 100%;
-    font-size: 1.4rem;
-    font-weight: 400;
+  display: flex;
+  align-items: center;
+  border-radius: 1.4rem;
+  border: 0.1rem solid #c6c6c6;
+  padding: 1.3rem 1.8rem;
+  color: #121212;
+  min-width: none;
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
-.custom--container-borrowed-items .custom--borrowed-info .info-label{
-    margin-bottom: 0.8rem;
+.custom--container-borrowed-items .custom--borrowed-info .info-label {
+  margin-bottom: 0.8rem;
 }
 
 .custom--status-value-dipinjam {
-    display: flex;
-    width: 12.4rem;
-    height: 5rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1.4rem;
-    font-size: 1.4rem;
-    font-weight: 500;
+  display: flex;
+  width: 12.4rem;
+  height: 5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
 #status-dipinjam {
-    border: 0.1rem solid #FCD106;
-    background: rgba(252, 209, 6, 0.20);
-    color: #FCD106;
+  border: 0.1rem solid #fcd106;
+  background: rgba(252, 209, 6, 0.2);
+  color: #fcd106;
 }
 
 #status-menunggu {
-    background: #C6C6C6;
-    color: #FFFFFF;
+  background: #c6c6c6;
+  color: #ffffff;
 }
 
 #status-terlambat {
-    border: 0.1rem solid #EE0B0B;
-    background: rgba(238, 11, 11, 0.20);
-    color: #EE0B0B;
+  border: 0.1rem solid #ee0b0b;
+  background: rgba(238, 11, 11, 0.2);
+  color: #ee0b0b;
 }
 
 /* no items info */
-.custom--content-barang-dipinjam main .custom--container-borrowed-items-empty p {
-    color: #C6C6C6;
-    font-size: 2rem;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto; 
-    min-height: 22rem;
+.custom--content-barang-dipinjam
+  main
+  .custom--container-borrowed-items-empty
+  p {
+  color: #c6c6c6;
+  font-size: 2rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  min-height: 22rem;
 }
 
 /* Column Item Info */
 .custom--item-info-dipinjam {
-    width: 100%;
+  width: 100%;
 }
 
 .custom--item-info-dipinjam table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .custom--item-info-dipinjam tr:first-child th:first-child {
-    border-top-left-radius: 1rem;
+  border-top-left-radius: 1rem;
 }
 
 .custom--item-info-dipinjam tr:first-child th:last-child {
-    border-top-right-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .custom--item-info-dipinjam tr:last-child td:first-child {
-    border-bottom-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 .custom--item-info-dipinjam tr:last-child td:last-child {
-    border-bottom-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 .custom--item-info-dipinjam th,
 .custom--item-info-dipinjam td {
-    border: 0.1rem solid #1212121A;
-    text-align: left;
-    padding: 1.2rem;
+  border: 0.1rem solid #1212121a;
+  text-align: left;
+  padding: 1.2rem;
 }
 
 .custom--item-info-dipinjam th:not(:first-child),
 .custom--item-info-dipinjam td:not(:first-child) {
-    border-left: none;
+  border-left: none;
 }
 
 .custom--item-info-dipinjam th:not(:last-child),
 .custom--item-info-dipinjam td:not(:last-child) {
-    border-right: none;
+  border-right: none;
 }
 
 .custom--item-info-dipinjam table th:first-child,
 .custom--item-info-dipinjam table td:first-child {
-    padding-left: 2.4rem; /* Adjust the left padding for the first column */
+  padding-left: 2.4rem; /* Adjust the left padding for the first column */
 }
 
 .custom--item-info-dipinjam table th:last-child,
 .custom--item-info-dipinjam table td:last-child {
-    padding-right: 2.4rem; /* Adjust the right padding for the last column */
+  padding-right: 2.4rem; /* Adjust the right padding for the last column */
 }
 
 .custom--item-info-dipinjam th {
-    background-color: #FCD106;
-    border-color: #FCD106;
-    font-size: 1.2rem;
-    font-weight: 500;
-    height: 5.2rem;
+  background-color: #fcd106;
+  border-color: #fcd106;
+  font-size: 1.2rem;
+  font-weight: 500;
+  height: 5.2rem;
 }
 
 .custom--item-info-dipinjam td {
-    font-size: 1.6rem; 
-    font-weight: 400; 
-    height: 6.2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  height: 6.2rem;
 }
 
 .custom--item-info-dipinjam td {
-    border-top: none;
+  border-top: none;
 }
 
 .custom--item-info-dipinjam tbody tr:hover {
-    background-color: rgba(252, 211, 6, 0.1);
+  background-color: rgba(252, 211, 6, 0.1);
 }

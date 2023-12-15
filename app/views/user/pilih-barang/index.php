@@ -71,7 +71,7 @@
                     <tr>
                         <td id="kode<?= $index ?>"><?php echo $barang['id_barang']; ?></td>
                         <td id="nama<?= $index ?>"><?php echo $barang['nama_barang']; ?></td>
-                        <td id="pengelola<?= $index ?>"><?php echo $barang['id_admin']; ?></td>
+                        <td id="pengelola<?= $index ?>"><?php echo $barang['nama_admin']; ?></td>
                         <td id="tersedia<?= $index ?>"><?php echo $barang['jumlah_tersedia']; ?></td>
                         <td>
                             <div class="custom--container-tambah-barang" id="barang<?= $index ?>">
