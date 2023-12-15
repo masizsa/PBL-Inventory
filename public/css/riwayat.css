@@ -283,3 +283,23 @@ td {
   height: 5rem;
   padding: 0 1.2rem;
 }
+
+.custom--subheader-history {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-bottom: 1.6rem;
+}
+
+
+  .custom--container-history-items-empty
+  p {
+  color: #c6c6c6;
+  font-size: 2rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  min-height: 22rem;
+}

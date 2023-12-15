@@ -17,8 +17,8 @@
                             <span class="text">Urutkan</span>
                         </button>
                         <ul class="dropdown">
-                                <li class="p"><button id="latest">Tanggal Terkini</button></li>
-                                <li class="P"><button id="oldest">Tanggal Terlama</button></li>
+                            <li class="p"><button id="latest">Tanggal Terkini</button></li>
+                            <li class="P"><button id="oldest">Tanggal Terlama</button></li>
                         </ul>
                     </li>
                 </div>
@@ -35,14 +35,14 @@
         </div>
         <div class="custom--table-wrapper">
             <?php
-                $groupedData = [];
-                foreach ($data['items'] as $item) {
-                    $idPeminjaman = $item['id_peminjaman'];
-                    if (!array_key_exists($idPeminjaman, $groupedData)) {
-                        $groupedData[$idPeminjaman] = [];
-                    }
-                    $groupedData[$idPeminjaman][] = $item;
+            $groupedData = [];
+            foreach ($data['items'] as $item) {
+                $idPeminjaman = $item['id_peminjaman'];
+                if (!array_key_exists($idPeminjaman, $groupedData)) {
+                    $groupedData[$idPeminjaman] = [];
                 }
+                $groupedData[$idPeminjaman][] = $item;
+            }
             ?>
             <?php foreach ($groupedData as $idPeminjaman => $items) { ?>
                 <div class="custom--card">
@@ -65,6 +65,14 @@
                     </table>
                 </div>
             <?php } ?>
+            <?php if (empty($data['items'])) { ?>
+                <section class="custom--borrowed-two">
+                    <p class="custom--subheader-history">Riwayat</p>
+                    <div class="custom--container-history-items-empty">
+                        <p>Tidak ada riwayat</p>
+                    </div>
+                </section>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -86,7 +94,9 @@
         });
     });
 
-    const searchItem = ({ target }) => {
+    const searchItem = ({
+        target
+    }) => {
         let result = [];
         let dataArray = <?php echo json_encode($data['items']); ?>;
         dataArray.some((objek) => {
