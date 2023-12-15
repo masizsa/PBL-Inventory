@@ -14,16 +14,13 @@ class App
         $url = $this->parseUrl();
 
         if (isset($_SESSION['isLogin'])) {
-            // Check if the user is an admin
             $isAdmin = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'];
 
-            if ($url[0] === 'login') {
+            if ($url[0] === 'login' || $url[0] == '') {
                 $this->redirectLoggedInUser($isAdmin);
                 return;
             }
 
-            // If the user is not an admin and tries to access DataBarang or other admin-only pages,
-            // redirect to home
             if (!$isAdmin && in_array($url[0], ['dataBarang', 'peminjaman', 'riwayatAdmin', 'ubahSandiAdmin'])) {
                 header("Location: http://localhost/PBL-Inventory/public/ajukanPeminjaman");
                 exit();
@@ -31,15 +28,14 @@ class App
 
             // Allow access to all controllers if the user is logged in
             if (!empty($url)) {
-                $controllerName = ucfirst($url[0]); // Assuming controllers follow camel case naming convention
-                $controllerPath = '../app/controllers/' . $controllerName . '.php';
-
-                if (file_exists($controllerPath)) {
-                    $this->controller = $controllerName;
+                if (file_exists('../app/controllers/' . $url[0] . ".php")) {
+                    $this->controller = $url[0];
                     unset($url[0]);
+                } else {
+                    $this->redirectLoggedInUser($isAdmin);
                 }
+                require_once '../app/controllers/' . $this->controller . '.php';
 
-                require_once $controllerPath;
                 $this->controller = new $this->controller;
 
                 if (isset($url[1])) {
@@ -83,7 +79,7 @@ class App
     {
         // Redirect based on whether the user is an admin or not
         if ($isAdmin) {
-            header("Location: http://localhost/PBL-Inventory/public/databarang");
+            header("Location: http://localhost/PBL-Inventory/public/dataBarang");
         } else {
             header("Location: http://localhost/PBL-Inventory/public/ajukanPeminjaman");
         }
