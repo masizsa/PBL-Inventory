@@ -48,20 +48,24 @@
                 <div class="custom--card">
                     <h4 id="date-desc"><?= $items[0]['tgl_peminjaman'] ?></h4>
                     <table id="table-data-<?= $idPeminjaman ?>">
-                        <tr>
-                            <th>Kode</th>
-                            <th>Nama Barang</th>
-                            <th>Nama Pengelola</th>
-                            <th>Jumlah</th>
-                        </tr>
-                        <?php foreach ($items as $item) { ?>
+                        <thead>
                             <tr>
-                                <td><?= $item['id_barang'] ?></td>
-                                <td><?= $item['nama_barang'] ?></td>
-                                <td><?= $item['nama_admin'] ?></td>
-                                <td><?= $item['jumlah'] ?></td>
+                                <th>Kode</th>
+                                <th>Nama Barang</th>
+                                <th>Nama Pengelola</th>
+                                <th>Jumlah</th>
                             </tr>
-                        <?php } ?>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($items as $item) { ?>
+                                <tr>
+                                    <td><?= $item['id_barang'] ?></td>
+                                    <td><?= $item['nama_barang'] ?></td>
+                                    <td><?= $item['nama_admin'] ?></td>
+                                    <td><?= $item['jumlah'] ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
                     </table>
                 </div>
             <?php } ?>

@@ -102,6 +102,7 @@
 
 /* HAS ITEMS */
 .custom--content-barang-dipinjam main {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 4rem 9.6rem;

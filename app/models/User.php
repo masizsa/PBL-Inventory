@@ -1,131 +1,195 @@
 <?php
+
 class User
 {
-    private $id_barang;
-    private $nama_barang;
-    private $jumlah_tersedia;
-    private $kondisi_barang;
-    private $asal;
+    private $conn;
 
-    // Constructor
-    public function __construct($id_barang, $nama_barang, $jumlah_tersedia, $kondisi_barang, $asal)
+    private $nomor_identitas;
+    private $nama;
+    private $email;
+    private $status;
+    private $password;
+    private $kesempatan;
+
+    // Constructor untuk menginisialisasi koneksi database
+    public function __construct($conn)
     {
-        $this->id_barang = $id_barang;
-        $this->nama_barang = $nama_barang;
-        $this->jumlah_tersedia = $jumlah_tersedia;
-        $this->kondisi_barang = $kondisi_barang;
-        $this->asal = $asal;
+        $this->conn = $conn;
     }
 
-    // Getter dan setter untuk id_barang
-    public function getIdBarang()
+    // Getter dan setter untuk setiap properti
+    public function getNomorIdentitas()
     {
-        return $this->id_barang;
+        return $this->nomor_identitas;
     }
 
-    public function setIdBarang($id_barang)
+    public function setNomorIdentitas($nomor_identitas)
     {
-        $this->id_barang = $id_barang;
-        // Perbarui nilai di database
-        $this->updateDatabase('id_barang', $id_barang);
+        $this->nomor_identitas = $nomor_identitas;
+        // Panggil metode untuk mengupdate nomor_identitas di database
+        $this->updateNomorIdentitasInDB();
     }
 
-    // Getter dan setter untuk nama_barang
-    public function getNamaBarang()
+    public function getNama()
     {
-        return $this->nama_barang;
+        return $this->nama;
     }
 
-    public function setNamaBarang($nama_barang)
+    public function setNama($nama)
     {
-        $this->nama_barang = $nama_barang;
-        // Perbarui nilai di database
-        $this->updateDatabase('nama_barang', $nama_barang);
+        $this->nama = $nama;
+        // Panggil metode untuk mengupdate nama di database
+        $this->updateNamaInDB();
     }
 
-    // Getter dan setter untuk jumlah_tersedia
-    public function getJumlahTersedia()
+    public function getEmail()
     {
-        return $this->jumlah_tersedia;
+        return $this->email;
     }
 
-    public function setJumlahTersedia($jumlah_tersedia)
+    public function setEmail($email)
     {
-        $this->jumlah_tersedia = $jumlah_tersedia;
-        // Perbarui nilai di database
-        $this->updateDatabase('jumlah_tersedia', $jumlah_tersedia);
+        $this->email = $email;
+        // Panggil metode untuk mengupdate email di database
+        $this->updateEmailInDB();
     }
 
-    // Getter dan setter untuk kondisi_barang
-    public function getKondisiBarang()
+    public function getStatus()
     {
-        return $this->kondisi_barang;
+        return $this->status;
     }
 
-    public function setKondisiBarang($kondisi_barang)
+    public function setStatus($status)
     {
-        $this->kondisi_barang = $kondisi_barang;
-        // Perbarui nilai di database
-        $this->updateDatabase('kondisi_barang', $kondisi_barang);
+        $this->status = $status;
+        // Panggil metode untuk mengupdate status di database
+        $this->updateStatusInDB();
     }
 
-    // Getter dan setter untuk asal
-    public function getAsal()
+    public function getPassword()
     {
-        return $this->asal;
+        return $this->password;
     }
 
-    public function setAsal($asal)
+    public function setPassword($password)
     {
-        $this->asal = $asal;
-        // Perbarui nilai di database
-        $this->updateDatabase('asal', $asal);
+        $this->password = $password;
+        // Panggil metode untuk mengupdate password di database
+        $this->updatePasswordInDB();
     }
 
-    // Metode untuk menyimpan data barang ke database
-    public function save()
+    public function getKesempatan()
     {
-        global $conn;
+        return $this->kesempatan;
+    }
 
-        $query = "INSERT INTO barang (id_barang, nama_barang, jumlah_tersedia, kondisi_barang, asal) VALUES ('$this->id_barang', '$this->nama_barang', '$this->jumlah_tersedia', '$this->kondisi_barang', '$this->asal')";
+    public function setKesempatan($kesempatan)
+    {
+        $this->kesempatan = $kesempatan;
+        // Panggil metode untuk mengupdate kesempatan di database
+        $this->updateKesempatanInDB();
+    }
 
-        if ($conn->query($query) === TRUE) {
-            echo "Data barang berhasil disimpan.";
-        } else {
-            echo "Error: " . $query . "<br>" . $conn->error;
+    // Metode untuk mengupdate nomor_identitas di database
+    private function updateNomorIdentitasInDB()
+    {
+        $sql = "UPDATE users SET nomor_identitas = ? WHERE nomor_identitas = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $this->nomor_identitas);
+        $stmt->bindParam(2, $this->nomor_identitas);
+        $stmt->execute();
+    }
+
+    // Metode untuk mengupdate nama di database
+    private function updateNamaInDB()
+    {
+        $sql = "UPDATE users SET nama = ? WHERE nomor_identitas = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $this->nama);
+        $stmt->bindParam(2, $this->nomor_identitas);
+        $stmt->execute();
+    }
+
+    // Metode untuk mengupdate email di database
+    private function updateEmailInDB()
+    {
+        $sql = "UPDATE users SET email = ? WHERE nomor_identitas = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $this->email);
+        $stmt->bindParam(2, $this->nomor_identitas);
+        $stmt->execute();
+    }
+
+    // Metode untuk mengupdate status di database
+    private function updateStatusInDB()
+    {
+        $sql = "UPDATE users SET status = ? WHERE nomor_identitas = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $this->status);
+        $stmt->bindParam(2, $this->nomor_identitas);
+        $stmt->execute();
+    }
+
+    // Metode untuk mengupdate password di database
+    private function updatePasswordInDB()
+    {
+        $sql = "UPDATE users SET password = ? WHERE nomor_identitas = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $this->password);
+        $stmt->bindParam(2, $this->nomor_identitas);
+        $stmt->execute();
+    }
+
+    // Metode untuk mengupdate kesempatan di database
+    private function updateKesempatanInDB()
+    {
+        $sql = "UPDATE users SET kesempatan = ? WHERE nomor_identitas = ?";
+        $stmt = $this->conn->prepare($sql);
+
+        // Binding parameter
+        $stmt->bind_param("is", $this->kesempatan, $this->nomor_identitas);
+
+        // Eksekusi statement
+        $stmt->execute();
+    }
+
+    // Metode untuk menyimpan data pengguna ke database
+    public function saveToDB()
+    {
+        $sql = "INSERT INTO users (nomor_identitas, nama, email, status, password, kesempatan) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $this->nomor_identitas);
+        $stmt->bindParam(2, $this->nama);
+        $stmt->bindParam(3, $this->email);
+        $stmt->bindParam(4, $this->status);
+        $stmt->bindParam(5, $this->password);
+        $stmt->bindParam(6, $this->kesempatan);
+        $stmt->execute();
+    }
+
+    // Metode untuk mengambil data pengguna dari database berdasarkan nomor_identitas
+    public function loadFromDB($nomor_identitas)
+    {
+        $sql = "SELECT * FROM users WHERE nomor_identitas = ?";
+        $stmt = $this->conn->prepare($sql);
+
+        // Binding parameter
+        $stmt->bind_param("s", $nomor_identitas);
+
+        // Eksekusi statement
+        $stmt->execute();
+
+        // Mengambil hasil query
+        $result = $stmt->get_result()->fetch_assoc();
+
+        // Mengisi properti objek dengan data dari database
+        if ($result) {
+            $this->nomor_identitas = $result['nomor_identitas'];
+            $this->nama = $result['nama'];
+            $this->email = $result['email'];
+            $this->status = $result['status'];
+            $this->password = $result['password'];
+            $this->kesempatan = $result['kesempatan'];
         }
-    }
-
-    // Metode untuk mengambil data barang dari database
-    public static function getById($id_barang)
-    {
-        global $conn;
-
-        $query = "SELECT * FROM barang WHERE id_barang = '$id_barang'";
-        $result = $conn->query($query);
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return new User($row['id_barang'], $row['nama_barang'], $row['jumlah_tersedia'], $row['kondisi_barang'], $row['asal']);
-        } else {
-            return null;
-        }
-    }
-
-    // Metode untuk memperbarui nilai atribut di database
-    private function updateDatabase($field, $value)
-    {
-        global $conn;
-
-        $query = "UPDATE barang SET $field = '$value' WHERE id_barang = '$this->id_barang'";
-
-        if ($conn->query($query) === FALSE) {
-            echo "Error updating database: " . $conn->error;
-        }
-    }
-    public function getDatabaseConnection()
-    {
-        $databaseInstance = Database::getInstance();
-        return $databaseInstance->getConnection();
     }
 }

@@ -91,10 +91,22 @@ html {
 .custom--input-sandi-baru .custom--wrapper .custom--close-icon {
   position: absolute;
   right: 5%;
-  bottom: 39%;
+  top: 42%;
   cursor: pointer;
+  height: 2.4rem;
+  width: 2.4rem;
+  background: url("../assets/hiddenPass.svg");
 }
 
+.custom--input-sandi-baru .custom--wrapper .custom--close-icon.show {
+  background: url("../assets/showPass.svg");
+}
+.custom--input-sandi-baru .custom--wrapper .custom--close-icon.show {
+  background: url("../assets/showPass.svg");
+}
+.custom--input-sandi-baru .custom--wrapper .custom--close-icon.show {
+  background: url("../assets/showPass.svg");
+}
 .custom-confirm-button {
   height: 5rem;
   display: flex;
