@@ -170,6 +170,7 @@ class DataBarang extends Controller
             $this->sendJsonResponse(["error" => "Item not found"]);
         }
     }
+
     public function updateItem()
     {
         $conn = $this->db->getConnection();
@@ -182,6 +183,27 @@ class DataBarang extends Controller
             $jumlah_pemeliharaan = $_POST['jumlah_pemeliharaan'];
             $keterangan = $_POST['keterangan'];
     
+            // Check if jml_pemeliharaan is lower than or equal to the maximum allowed value
+            $checkAvailabilityQuery = "SELECT jumlah_tersedia, jml_pemeliharaan FROM barang WHERE id_barang = ?";
+            $stmtAvailability = $conn->prepare($checkAvailabilityQuery);
+            $stmtAvailability->bind_param("s", $kode_barang);
+            $stmtAvailability->execute();
+            $existingQuantity = 0;
+            $existingPemeliharaan = 0;
+            $stmtAvailability->bind_result($existingQuantity, $existingPemeliharaan);
+            $stmtAvailability->fetch();
+            $stmtAvailability->close();
+    
+            $maxAllowedPemeliharaan = $existingQuantity + $existingPemeliharaan;
+    
+            if ($jumlah_pemeliharaan > $maxAllowedPemeliharaan) {
+                $this->sendJsonResponse(['status' => 'warning', 'message' => 'Maintenance quantity exceeds the maximum allowed value']);
+                exit();
+            }
+    
+            $newJumlahTersedia = $existingQuantity - $jumlah_pemeliharaan;
+    
+            // Update the item if the check passes
             $updateQuery = "UPDATE barang SET 
                 nama_barang = ?, 
                 asal = ?, 
@@ -191,18 +213,20 @@ class DataBarang extends Controller
                 WHERE id_barang = ?";
     
             $stmt = $conn->prepare($updateQuery);
-            $stmt->bind_param("ssisss", $nama_barang, $asal, $jumlah, $jumlah_pemeliharaan, $keterangan, $kode_barang);
+            $stmt->bind_param("ssisss", $nama_barang, $asal, $newJumlahTersedia, $jumlah_pemeliharaan, $keterangan, $kode_barang);
             $stmt->execute();
     
             if ($stmt->affected_rows > 0) {
-                $this->sendJsonResponse(['success' => 'Item updated successfully']);
+                $this->sendJsonResponse(['status' => 'success', 'message' => 'Item updated successfully']);
             } else {
-                $this->sendJsonResponse(['error' => 'Failed to update item']);
+                $this->sendJsonResponse(['status' => 'error', 'message' => 'Failed to update item']);
             }
         } else {
-            $this->sendJsonResponse(['error' => 'Invalid request method']);
+            $this->sendJsonResponse(['status' => 'error', 'message' => 'Invalid request method']);
         }
-    }    
+    }
+    
+
     public function getSummaryData()
     {
         $conn = $this->db->getConnection();
