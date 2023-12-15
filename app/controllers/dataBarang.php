@@ -11,62 +11,28 @@ class DataBarang extends Controller
         $data = array();
         $data['nama'] = $this->getNamaAdmin();
         $data['barang'] = $this->getDataBarang();
+        $data['summaryData'] = $this->getSummaryData();
         $data['css'] = 'tambah-barang';
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/data-barang/index", $data);
-        $this->view("templates/footer");
+        $this->view("templates/footer");   
     }
-
-    public function addBarang()
-    {
-        $conn = $this->db->getConnection();
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $kode_barang = $_POST['kode_barang'];
-            $nama_barang = $_POST['nama_barang'];
-            $nomor_identitas = $_SESSION['nomor_identitas'];
-            $asal = $_POST['asal'];
-            $jumlah = $_POST['jumlah'];
-            $keterangan = $_POST['keterangan'];
-
-            $query = "INSERT INTO barang (id_barang, nama_barang, nomor_identitas,jumlah_tersedia, kondisi_barang, asal) 
-          VALUES ('$kode_barang', '$nama_barang','$nomor_identitas', $jumlah, '$keterangan', '$asal')";
-
-            echo "<br>";
-            echo $query;
-            if ($conn->query($query) === TRUE) {
-                echo "Barang berhasil ditambahkan ke dalam database.";
-            } else {
-                echo "Error: " . $query . "<br>" . $conn->error;
-            }
-        } else {
-            echo "Metode tidak diizinkan.";
-        }
-    }
-
-    public function editBarang()
-    {
-        $conn = $this->db->getConnection();
-    }
-
     public function getDataBarang()
     {
         $conn = $this->db->getConnection();
-        $query = "SELECT id_barang, nama_barang, id_admin, jumlah_tersedia, jumlah_dipinjam,jml_pemeliharaan,kondisi_barang, asal FROM barang";
+        $query = "SELECT * FROM barang";
+
         $result_set = $conn->query($query);
 
-        $result = [];
+        $result = array();
         if ($result_set->num_rows > 0) {
-            // Memasukkan hasil query ke dalam array
             while ($row = $result_set->fetch_assoc()) {
-                $result[] = $row;
+                array_push($result, $row);
             }
         }
-
         return $result;
     }
-
     public function getNamaAdmin()
     {
         $conn = $this->db->getConnection();
@@ -77,12 +43,154 @@ class DataBarang extends Controller
 
         $result = "";
         if ($result_set->num_rows > 0) {
-            // Memasukkan hasil query ke dalam array
             while ($row = $result_set->fetch_assoc()) {
                 $result = $row['nama'];
             }
         }
-
         return $result;
+    }
+    public function addBarang()
+    {
+        $conn = $this->db->getConnection();
+    
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_SESSION['nomor_identitas'];
+            $kode_barang = $_POST['kode_barang'];
+            $nama_barang = $_POST['nama_barang'];
+            $asal = $_POST['asal'];
+            $jumlah = $_POST['jumlah'];
+            $keterangan = $_POST['keterangan'];
+    
+            $getIdAdminQuery = "SELECT id_admin FROM admin WHERE username_admin = ?";
+            $stmtAdmin = $conn->prepare($getIdAdminQuery);
+            $stmtAdmin->bind_param("s", $username);
+            $stmtAdmin->execute();
+            $resultAdmin = $stmtAdmin->get_result();
+    
+            if ($resultAdmin->num_rows > 0) {
+                $rowAdmin = $resultAdmin->fetch_assoc();
+                $id_admin = $rowAdmin['id_admin'];
+    
+                $insertQuery = "INSERT INTO barang (id_barang, nama_barang, asal, jumlah_tersedia, kondisi_barang, id_admin, jumlah_dipinjam, jml_pemeliharaan) 
+                    VALUES (?, ?, ?, ?, ?, ?, '0', '0')";
+    
+                $stmtInsert = $conn->prepare($insertQuery);
+                $stmtInsert->bind_param("ssssss", $kode_barang, $nama_barang, $asal, $jumlah, $keterangan, $id_admin);
+                $stmtInsert->execute();
+    
+                if ($stmtInsert->affected_rows > 0) {
+                    header("Location: ../../public/dataBarang");
+                    exit();
+                } else {
+                    echo "Error: Failed to insert item.";
+                }
+            } else {
+                echo "Error: Unable to retrieve id_admin.";
+            }
+        } else {
+            echo "Metode tidak diizinkan.";
+        }
+    }    
+    public function deleteBarang($id_barang)
+    {
+        $conn = $this->db->getConnection();
+        $deleteQuery = "DELETE FROM barang WHERE id_barang = ?";
+        $stmt = $conn->prepare($deleteQuery);
+        $stmt->bind_param("s", $id_barang);
+        $stmt->execute();
+        header("Location: ../../dataBarang");
+        exit();
+    }
+    private function sendJsonResponse($data)
+    {
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit();
+    }
+    public function getBarangDetails($id_barang)
+    {
+        $conn = $this->db->getConnection();
+
+        $query = "SELECT * FROM barang WHERE id_barang = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $id_barang);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $this->sendJsonResponse($row);
+        } else {
+            $this->sendJsonResponse(["error" => "Item not found"]);
+        }
+    }
+    public function updateItem()
+    {
+        $conn = $this->db->getConnection();
+    
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $kode_barang = $_POST['kode_barang'];
+            $nama_barang = $_POST['nama_barang'];
+            $asal = $_POST['asal'];
+            $jumlah = $_POST['jumlah'];
+            $jumlah_pemeliharaan = $_POST['jumlah_pemeliharaan'];
+            $keterangan = $_POST['keterangan'];
+    
+            $updateQuery = "UPDATE barang SET 
+                nama_barang = ?, 
+                asal = ?, 
+                jumlah_tersedia = ?, 
+                jml_pemeliharaan = ?, 
+                kondisi_barang = ? 
+                WHERE id_barang = ?";
+    
+            $stmt = $conn->prepare($updateQuery);
+            $stmt->bind_param("ssisss", $nama_barang, $asal, $jumlah, $jumlah_pemeliharaan, $keterangan, $kode_barang);
+            $stmt->execute();
+    
+            if ($stmt->affected_rows > 0) {
+                $this->sendJsonResponse(['success' => 'Item updated successfully']);
+            } else {
+                $this->sendJsonResponse(['error' => 'Failed to update item']);
+            }
+        } else {
+            $this->sendJsonResponse(['error' => 'Invalid request method']);
+        }
+    }    
+    public function getSummaryData()
+    {
+        $conn = $this->db->getConnection();
+    
+        $query = "SELECT 
+                    SUM(jumlah_dipinjam) AS total_dipinjam,
+                    SUM(jumlah_tersedia) AS total_tersedia,
+                    SUM(jml_pemeliharaan) AS total_pemeliharaan,
+                    SUM(jumlah_dipinjam + jumlah_tersedia + jml_pemeliharaan) AS grand_total
+                FROM barang";
+    
+        $result = $conn->query($query);
+    
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $total_dipinjam = $row['total_dipinjam'] ?? 0;
+            $total_tersedia = $row['total_tersedia'] ?? 0;
+            $total_pemeliharaan = $row['total_pemeliharaan'] ?? 0;
+            $grand_total = $row['grand_total'] ?? 0;
+            return [
+                'total_dipinjam' => $total_dipinjam,
+                'total_tersedia' => $total_tersedia,
+                'total_pemeliharaan' => $total_pemeliharaan,
+                'grand_total' => $grand_total,
+            ];
+        } else {
+            // Handle the case where the query fails
+            return [
+                'total_dipinjam' => 0,
+                'total_tersedia' => 0,
+                'total_pemeliharaan' => 0,
+                'grand_total' => 0,
+            ];
+        }
     }
 }

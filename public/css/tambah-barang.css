@@ -13,9 +13,10 @@ html {
   ---background-color-body: #f6f6f6;
   ---header-table-color: #fcd106;
   ---card--color1: #fbf4cf;
-  ---card--color2: #ccf1e5;
-  ---card--color3: #fccece;
-  ---card--color4: #eeeeee;
+  ---card--color2: #C6C6C6;
+  ---card--color3: #ccf1e5;
+  ---card--color4: #fccece;
+  ---card--color5: #C6C6C6;
 }
 
 .custom--container-data-barang {
@@ -59,10 +60,11 @@ html {
 }
 
 .custom--body-data-barang .custom--overview .custom--wrapper {
-  height: 12rem;
+  height: 11.7rem;
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   padding: 1.6rem;
   border-radius: 1rem;
 }
@@ -70,6 +72,13 @@ html {
 .custom--body-data-barang .custom--overview .custom--wrapper a {
   color: #000;
   text-decoration: none;
+}
+
+.custom--body-data-barang .custom--overview .vertical-line {
+  width: 0.2rem;
+  height: 7.5rem;
+  background-color: #C6C6C6;
+  margin: auto 0;
 }
 
 .custom--wrapper:nth-child(1) {
@@ -86,6 +95,10 @@ html {
 
 .custom--wrapper:nth-child(4) {
   background-color: var(---card--color4);
+}
+
+.custom--wrapper:nth-child(5) {
+  background-color: var(---card--color5);
 }
 
 .custom--wrapper a {
@@ -109,6 +122,7 @@ html {
 
 .custom--overview-body span {
   font-size: 4rem;
+  font-weight: 500;
 }
 
 .custom--overview-body label {
@@ -142,6 +156,10 @@ hr {
   justify-content: space-between;
   align-items: center;
 }
+.custom--delete-btn {
+  background-color: #fcd106 !important;
+}
+
 .custom--close-button + a,
 .custom--data-barang-table-wrapper--header button {
   height: 100%;
@@ -152,10 +170,14 @@ hr {
   justify-content: center;
   border-radius: 100rem;
   border: none;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.5px;
   cursor: pointer;
   background-color: var(---header-table-color);
+}
+
+.custom--data-barang-table-wrapper--header h3 {
+  font-weight: 500;
 }
 
 .custom--table-data-barang {
@@ -172,13 +194,15 @@ hr {
   background-color: var(---header-table-color);
   padding: 1.7rem 2.4rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .custom--table-data-barang td {
   padding: 2rem 2.4rem;
   background-color: #fff;
   border-bottom: 1px solid #e7e7e7;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
 .custom--icon-aksi {
@@ -235,6 +259,8 @@ html {
 }
 
 .custom--add-item .custom--content,
+.custom--edit-item .custom--content,
+.custom--details-item .custom--content,
 .custom--delete-item .custom--content-delete {
   height: 100%;
   width: 100%;
@@ -247,8 +273,11 @@ html {
   gap: 4rem !important;
 }
 
-.custom--add-item .custom--content header {
+.custom--edit-item .custom--content header h3,
+.custom--details-item .custom--content header h3,
+.custom--add-item .custom--content header h3{
   font-size: 24px;
+  font-weight: 500;
 }
 
 .custom--add-item .custom--content form {
@@ -289,6 +318,11 @@ html {
   font-weight: 600;
 }
 
+#kode_barang_edit {
+  color: #7F7F7F;
+  font-weight: 500;
+}
+
 .custom--input-add-item-wrapper input[type="text"] {
   height: 5rem;
   border-radius: 1.4rem;
@@ -311,6 +345,9 @@ html {
   border: 1px solid #c8c8c8;
   font-size: 14px;
   padding: 1.4rem;
+  width: 66rem;
+  height: 10rem;
+  resize: none;
 }
 
 .custom--button-add-items {
@@ -323,7 +360,6 @@ html {
 .custom--button-add-items button {
   width: 24rem;
   border-radius: 100rem;
-  /* border: none; */
   outline: none;
   color: #000;
   cursor: pointer;
@@ -332,6 +368,14 @@ html {
   font-family: "poppins", sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
+}
+
+.custom--content-delete .custom--button-add-items .custom--delete-btn {
+  background-color: #ffffff !important;
+}
+
+.custom--content-delete .custom--button-add-items .custom--close-button {
+  background-color: #fcd106 !important;
 }
 
 .custom--button-add-items input[type="submit"] {
@@ -357,7 +401,7 @@ html {
   width: 2.5rem;
   top: calc(-1 * 2.5rem * 0.4);
   right: calc(-1 * 2.5rem * 0.4);
-  background-color: #fcd106;
+  background-color: #ffffff;
   outline: none;
   border: 1px solid #fff;
   border-radius: 50%;
@@ -369,24 +413,66 @@ html {
   width: 100%;
 }
 
-.custom--delete-item .custom--content-delete {
+.custom--delete-item .custom--content-delete h3{
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
   text-align: center;
 }
 
 .custom--delete-item .custom--content-delete header {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 2.4rem;
 }
+
 .custom--close-button + a {
   width: 24rem;
   font-size: 14px;
   text-decoration: none;
   color: #000;
 }
+
 .show {
   display: flex;
+}
+
+/* WARNING */
+.custom--container-warning {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 1rem;
+  align-items: center;
+  width: calc(100%);
+  z-index: 1000;
+}
+
+.custom--warning {
+  display: flex;
+  width: 27.1rem;
+  height: 8.8rem;
+  border-radius: 10px;
+  background: #FCCECE;
+  padding: 1.2rem 2.4rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom--warning .custom--warning-content-text {
+  display: flex;
+  flex-direction: column;
+  color: #EE0B0B;
+}
+
+.custom--warning .custom--warning-content-text h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.custom--warning .custom--warning-content-text p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
 }
