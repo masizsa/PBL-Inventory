@@ -100,9 +100,7 @@
     buttonLanjut.disabled = true;
 
     $(document).ready(function() {
-        // Event handler untuk tombol
         $("#sendDataPilihBarang").click(function() {
-            // Menggunakan jQuery untuk AJAX
             $.ajax({
                 type: "POST",
                 url: "http://localhost/PBL-Inventory/public/formPeminjaman",
@@ -123,31 +121,26 @@
 
 
     const increment = (button, id) => {
-        let max = parseInt(document.querySelector(`#tersedia${id}`).textContent)
+        const max = parseInt(document.querySelector(`#tersedia${id}`).textContent);
         const minButton = document.querySelector(`#decButton${id}`);
-        const target = document.querySelector(`#totalPilihBarang${id}`)
-        let tmp = parseInt(target.value)
-        console.log("value " + tmp);
-        tmp++
+        const target = document.querySelector(`#totalPilihBarang${id}`);
 
-        if (max <= tmp) {
-            button.disabled = true
-            target.value = tmp;
-        } else {
-            minButton.disabled = false;
-            button.disabled = false
-            target.value = tmp;
-        }
+        let tmp = parseInt(target.value) + 1;
+
+        button.disabled = max <= tmp;
+        minButton.disabled = false;
+        target.value = tmp;
     }
 
     const decrement = (button, id) => {
-        let max = parseInt(document.querySelector(`#tersedia${id}`).textContent)
+        const max = parseInt(document.querySelector(`#tersedia${id}`).textContent);
         const plusButton = document.querySelector(`#incButton${id}`);
-        const target = document.querySelector(`#totalPilihBarang${id}`)
-        let tmp = parseInt(target.value)
-        tmp--
-        button.disabled = false
-        plusButton.disabled = false
+        const target = document.querySelector(`#totalPilihBarang${id}`);
+
+        let tmp = parseInt(target.value) - 1;
+
+        button.disabled = tmp <= 0;
+        plusButton.disabled = false;
         target.value = tmp;
     }
 
@@ -248,7 +241,7 @@
             checkoutItems = checkoutItems.filter(objek => objek.kodeBarang !== kode);
             boxJumlahCheckout[objectIndex].value = 0;
         }
-        console.log("index " + tableIndex);
+        // console.log("index " + tableIndex);
 
         try {
             scroollTo(tableIndex + 1, boxJumlahCheckout[objectIndex].value);
@@ -265,7 +258,7 @@
             buttonLanjut.disabled = true;
             buttonLanjut.classList.remove('active')
         }
-        console.log(checkoutItems);
+        // console.log(checkoutItems);
     }
 
     const renderCard = () => {

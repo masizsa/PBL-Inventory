@@ -12,9 +12,11 @@ class RiwayatAdmin extends Controller
     {
         $data = array();
         $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'desc';
-        $data['items'] = $sort_by == 'asc' 
+        $data['items'] = $sort_by == 'asc'
             ? $this->showOldest()
             : $this->showRecent();
+
+        // var_dump($data['items']);
         $data['css'] = "riwayat-admin";
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");

@@ -24,12 +24,6 @@ class UbahSandiAdmin extends Controller
         $newPassword = md5($_POST['sandi_baru']);
         $confirmPassword = md5($_POST['konfirmasi_sandi']);
 
-        echo $currentPassword;
-
-        var_dump($newPassword === $confirmPassword);
-        echo $confirmCurrentPassword;
-        echo "<br>";
-        echo $currentPassword;
         if ($confirmCurrentPassword === $currentPassword) {
             if ($newPassword === $confirmPassword) {
                 $conn = $this->db->getConnection();
@@ -41,13 +35,11 @@ class UbahSandiAdmin extends Controller
 
                 if ($statement->execute()) {
                     // Berhasil diupdate
-                    echo json_encode(['status' => 'success']);
-                    echo "sukk";
                     $_SESSION['password'] = $confirmPassword;
+                    echo json_encode(['status' => 'success']);
                 } else {
                     // Gagal diupdate
-                    // echo json_encode(['status' => 'error']);
-                    echo json_encode(['status' => 'success']);
+                    echo json_encode(['status' => 'error']);
                 }
             } else {
                 // Tampilkan pesan bahwa kata sandi baru dan konfirmasi tidak cocok

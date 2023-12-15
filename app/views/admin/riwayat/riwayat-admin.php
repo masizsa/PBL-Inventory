@@ -17,14 +17,19 @@
                 <div class="custom--sort-wrapper">
                     <li style="--delay: 2;" tabindex="0">
                         <button>
-                            <img class="icon-sort" src="../../../../public/assets/sort.svg" alt="">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.5 5.83331H17.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M5 10H15" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M8.3335 14.1667H11.6668" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+
                             <span class="text">Urutkan</span>
                         </button>
                         <!-- <form action="../../../controllers/riwayatAdmin.php" method="post"> -->
-                            <ul class="dropdown">
-                                <li class="p"><button id="latest">Tanggal Terkini</button></li>
-                                <li class="P"><button id="oldest">Tanggal Terlama</button></li>
-                            </ul>
+                        <ul class="dropdown">
+                            <li class="p"><button id="latest">Tanggal Terkini</button></li>
+                            <li class="P"><button id="oldest">Tanggal Terlama</button></li>
+                        </ul>
                         <!-- </form> -->
                     </li>
                 </div>

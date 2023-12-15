@@ -134,33 +134,20 @@
                 var partsAfterSlash = afterPublic.split('/');
                 // Mengambil bagian pertama setelah "public/"
                 var desiredPart = partsAfterSlash[0];
-                console.log(desiredPart);
+                console.log(desiredPart.includes('riwayatAdmin'));
+                // desiredPart.
 
-                switch (desiredPart) {
-                    case 'dataBarang':
-                        sidebarMenu[0].classList.add('active-menu');
-                        break;
-                    case 'peminjaman':
-                        sidebarMenu[1].classList.add('active-menu');
-                        break;
-                    case 'riwayatAdmin':
-                        sidebarMenu[2].classList.add('active-menu');
-                        break;
-                    case 'ubahSandiAdmin':
-                        sidebarMenu[3].classList.add('active-menu');
-                        break;
-                    case 'keluar':
-                        sidebarMenu[4].classList.add('active-menu');
-                        break;
-                    default:
-                        break;
-                }
+                desiredPart.includes('dataBarang') ? sidebarMenu[0].classList.add('active-menu') : false;
+                desiredPart.includes('peminjaman') ? sidebarMenu[1].classList.add('active-menu') : false;
+                desiredPart.includes('riwayatAdmin') ? sidebarMenu[2].classList.add('active-menu') : false;
+                desiredPart.includes('ubahSandiAdmin') ? sidebarMenu[3].classList.add('active-menu') : false;
+                desiredPart.includes('keluar') ? sidebarMenu[4].classList.add('active-menu') : false;
 
             }
             selectMenu();
 
             const sidebarControl = () => {
-                const sidebar = document.querySelector('.sidebar')
+                const sidebar = document.querySelector('.custom--sidebar')
                 const closeIcon = document.querySelector('.close-icon');
 
                 closeIcon.addEventListener('click', () => {

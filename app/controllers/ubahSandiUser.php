@@ -9,9 +9,11 @@ class UbahSandiUser extends Controller
     public function index()
     {
         $data['css'] = 'ubahSandi';
+        var_dump($_SESSION['nomor_identitas']);
+        var_dump($_SESSION['password']);
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
-        $this->view("admin/ubah-sandi/index");
+        $this->view("user/ubah-sandi/index");
         $this->view("templates/footer");
     }
 
@@ -24,12 +26,6 @@ class UbahSandiUser extends Controller
         $newPassword = md5($_POST['sandi_baru']);
         $confirmPassword = md5($_POST['konfirmasi_sandi']);
 
-        echo $currentPassword;
-
-        var_dump($newPassword === $confirmPassword);
-        echo $confirmCurrentPassword;
-        echo "<br>";
-        echo $currentPassword;
         if ($confirmCurrentPassword === $currentPassword) {
             if ($newPassword === $confirmPassword) {
                 $conn = $this->db->getConnection();
@@ -41,13 +37,11 @@ class UbahSandiUser extends Controller
 
                 if ($statement->execute()) {
                     // Berhasil diupdate
-                    echo json_encode(['status' => 'success']);
-                    echo "sukk";
                     $_SESSION['password'] = $confirmPassword;
+                    echo json_encode(['status' => 'success']);
                 } else {
                     // Gagal diupdate
-                    // echo json_encode(['status' => 'error']);
-                    echo json_encode(['status' => 'success']);
+                    echo json_encode(['status' => 'error']);
                 }
             } else {
                 // Tampilkan pesan bahwa kata sandi baru dan konfirmasi tidak cocok

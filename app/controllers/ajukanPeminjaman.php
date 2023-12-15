@@ -66,7 +66,7 @@ class AjukanPeminjaman extends Controller
 
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
-        $this->view("user/ajukan-peminjaman/formPeminjaman", $data);
+        $this->view("user/ajukan-peminjaman/index", $data);
         $this->view("templates/footer");
     }
     public function processPinjam()
