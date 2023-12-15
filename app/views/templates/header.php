@@ -14,15 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- local css -->
 
-    <!-- <link rel="stylesheet" href="/css/<?= $data['css'] ?>.css">
-    <link rel="stylesheet" href="../css/<?= $data['css'] ?>.css">
-    <link rel="stylesheet" href="../public/css/sidebar.css">
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="http://localhost/PBL-Inventory/public/css/login.css">
-    <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="../../public/css/sidebar.css">
-    <link rel="stylesheet" href="../../public/css/form.css"> -->
-
     <link rel="stylesheet" href="css/<?= $data['css'] ?>.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/style.css">

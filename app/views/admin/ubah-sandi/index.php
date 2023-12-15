@@ -5,26 +5,23 @@
     </div>
     <form class="custom--body" id="ubahSandiForm" action="" method="post">
         <div class="custom--input-sandi-baru">
-            <div class="custom--wrapper">
+            <div class="custom--wrapper ">
                 <label for="">Sandi Sekarang</label>
                 <input type="password" name="sandi_sekarang" id="currentPass" required>
-                <div class="custom--close-icon">
-                    <img src="../public/assets/hiddenPass.svg" alt="">
+                <div class="custom--close-icon ">
                 </div>
             </div>
-            <div class="custom--wrapper">
+            <div class="custom--wrapper ">
                 <label for="">Sandi baru</label>
                 <input type="password" name="sandi_baru" id="newPass" required>
                 <label for="">Sandi harus 8-12 karakter</label>
-                <div class="custom--close-icon">
-                    <img src="../public/assets/hiddenPass.svg" alt="">
+                <div class="custom--close-icon ">
                 </div>
             </div>
-            <div class="custom--wrapper">
+            <div class="custom--wrapper ">
                 <label for="">Konfirmasi sandi</label>
                 <input type="password" name="konfirmasi_sandi" id="confirmPass" required>
-                <div class="custom--close-icon">
-                    <img src="../public/assets/hiddenPass.svg" alt="">
+                <div class="custom--close-icon ">
                 </div>
             </div>
         </div>
@@ -69,16 +66,15 @@
         const newPass = document.querySelector('#newPass');
         const confirmPass = document.querySelector('#confirmPass');
         const icons = {
-            currentPass: document.querySelector('#currentPass + .custom--close-icon img'),
-            newPass: document.querySelector('#newPass +label + .custom--close-icon img'),
-            confirmPass: document.querySelector('#confirmPass + .custom--close-icon img'),
+            currentPass: document.querySelector('#currentPass + .custom--close-icon'),
+            newPass: document.querySelector('#newPass +label + .custom--close-icon'),
+            confirmPass: document.querySelector('#confirmPass + .custom--close-icon'),
         }
 
         const setVisibility = (icon, input) => {
             icon?.addEventListener('click', () => {
-                icon.src = icon.src == 'http://localhost/PBL-Inventory/public/assets/hiddenPass.svg' ? 'http://localhost/PBL-Inventory/public/assets/showPass.svg' : 'http://localhost/PBL-Inventory/public/assets/hiddenPass.svg';
+                icon.classList.toggle('show')
                 input.type = (input.type == "password") ? "text" : "password";
-                console.log(icon.src);
             })
         }
 

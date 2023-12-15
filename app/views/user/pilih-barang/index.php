@@ -103,14 +103,14 @@
         $("#sendDataPilihBarang").click(function() {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/PBL-Inventory/public/formPeminjaman",
+                url: "./formPeminjaman",
                 contentType: "application/json",
                 data: JSON.stringify({
                     myData: checkoutItems
                 }),
                 success: function(response) {
                     // console.log(response);
-                    window.location.href = 'http://localhost/PBL-Inventory/public/ajukanPeminjaman/formPeminjaman'
+                    window.location.href = 'ajukanPeminjaman/formPeminjaman'
                 },
                 error: function() {
                     alert("Error in AJAX request");
@@ -127,7 +127,7 @@
 
         let tmp = parseInt(target.value) + 1;
 
-        button.disabled = max <= tmp;
+        button.disabled = max < tmp;
         minButton.disabled = false;
         target.value = tmp;
     }
