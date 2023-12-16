@@ -1,7 +1,7 @@
-    <section class="custom--sidebar ">
+    <section class="custom--sidebar">
         <div class="header-sidebar">
-            <div class="logo hidden">
-                <div class="main-icon">
+            <div class="logo">
+                <div class="main-icon ">
 
                 </div>
                 <div class="close-icon">
@@ -88,6 +88,15 @@
         </div>
         <script>
             const sidebarMenu = document.querySelectorAll(".list-menu > li > a ");
+
+            const createSessionStorage = (name, value) => {
+                localStorage.setItem(name, value);
+            }
+
+            const getSessionStorage = (name) => {
+                return localStorage.getItem(name);
+            }
+
             const selectMenu = () => {
                 const sidebarIcon = document.querySelectorAll(".list-menu > li > a > svg");
                 sidebarMenu.forEach((element) => {
@@ -106,13 +115,11 @@
                     })
                 })
 
+
                 var currentUrl = window.location.href;
                 var parts = currentUrl.split('public/');
-                // Mengambil bagian setelah "public/"
                 var afterPublic = parts[1];
-                // Membagi lagi bagian setelah "public/" berdasarkan "/"
                 var partsAfterSlash = afterPublic.split('/');
-                // Mengambil bagian pertama setelah "public/"
                 var desiredPart = partsAfterSlash[0];
                 console.log(desiredPart);
 
@@ -151,15 +158,48 @@
 
             const sidebarControl = () => {
                 const sidebar = document.querySelector('.custom--sidebar')
+                const mainIcon = document.querySelector('.main-icon');
                 const closeIcon = document.querySelector('.close-icon');
 
                 closeIcon.addEventListener('click', () => {
+                    console.log(getSessionStorage('mySidebar'));
+                    if (getSessionStorage('mySidebar') !== 'minimize-sidebar') {
+                        createSessionStorage('mySidebar', 'minimize-sidebar')
+                        createSessionStorage('myIcon', 'hidden')
+                        createSessionStorage('myMenu', 'hide-menu')
+                        createSessionStorage('myCloseIcon', 'hamburger')
+                    } else {
+                        createSessionStorage('mySidebar', 'maxmize-sidebar')
+                        createSessionStorage('myIcon', 'show')
+                        createSessionStorage('myMenu', 'show-menu')
+                        createSessionStorage('myCloseIcon', 'close')
+                    }
+
                     sidebar.classList.toggle('minimize-sidebar')
                     sidebarMenu.forEach((element) => {
                         element.classList.toggle('hide-menu')
                     })
+                    mainIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hamburger');
                 })
             }
+
+            const sidebar = document.querySelector('.custom--sidebar')
+            const mainIcon = document.querySelector('.main-icon');
+            const closeIcon = document.querySelector('.close-icon');
+
+            const minimizeViewSidebar = getSessionStorage('mySidebar');
+            const minimizeViewMainIcon = getSessionStorage('myIcon')
+            const minimizeViewMenu = getSessionStorage('myMenu')
+            const minimizeViewCLoseIcon = getSessionStorage('myCloseIcon')
+
+
+            sidebar.classList.add(minimizeViewSidebar)
+            mainIcon.classList.add(minimizeViewMainIcon);
+            sidebarMenu.forEach((element) => {
+                element.classList.add(minimizeViewMenu)
+            })
+            closeIcon.classList.add(minimizeViewCLoseIcon);
 
             sidebarControl()
         </script>
