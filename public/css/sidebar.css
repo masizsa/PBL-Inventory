@@ -20,25 +20,14 @@ html {
 
 .custom--sidebar {
   min-height: 100vh;
-  width: 37.5rem;
   display: flex;
+  width: 37.5rem;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(---sidebar-color);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in;
   position: relative;
   z-index: 100;
-  /* animation: entranceSidebar .45s ease-out; */
-}
-
-@keyframes entranceSidebar {
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: 37.5rem;
-  }
 }
 
 .minimize-sidebar {
@@ -66,32 +55,43 @@ html {
   color: var(---text-color);
 }
 .header-sidebar .logo {
+  height: 100%;
   flex-grow: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   color: var(---text-color);
 }
 
 .header-sidebar .logo .main-icon {
-  flex-grow: 1;
-  width: 10rem;
-  height: 10rem;
-  background-color: red;
+  height: 100%;
+  width: 20rem;
   background: url("../assets/SidebarLogo.svg");
   background-repeat: no-repeat;
-  object-fit: contain;
+  background-position: left;
+  object-fit: cover;
 }
+.header-sidebar .logo .main-icon.hidden {
+  display: none;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
 .header-sidebar .close-icon {
-  height: 2.4rem;
-  width: 2.4rem;
   background: url("../assets/close-circle.svg");
 }
 .header-sidebar .close-icon.hamburger {
+  background: url("../assets/hamburger.svg");
+}
+.header-sidebar .close-icon,
+.header-sidebar .close-icon.hamburger {
   height: 2.4rem;
   width: 2.4rem;
-  background-color: red;
-  background: url("../assets/hamburger.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all ease-in-out 0.5s;
+  cursor: pointer;
 }
 
 .body-sidebar {
@@ -100,7 +100,6 @@ html {
   padding: 2.4rem 2rem;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .body-sidebar ul {
@@ -129,17 +128,17 @@ html {
   white-space: nowrap;
 }
 
+.body-sidebar ul li a.hide-menu,
+.body-sidebar ul li a.active-menu.hide-menu {
+  color: transparent;
+}
+
 .body-sidebar ul li a .list-icon {
   margin-right: 1rem;
 }
 
 .body-sidebar ul li a .list-icon svg path {
   stroke: #ffffff20;
-}
-
-.body-sidebar ul li a.hide-menu,
-.body-sidebar ul li a.active-menu.hide-menu {
-  color: transparent;
 }
 
 .body-sidebar ul li .hover-menu {
