@@ -56,7 +56,7 @@
                                 foreach ($groupedData as $id_peminjaman => $group) {
 
                                     foreach ($group as $index => $item) {
-                                        echo '<td>' . $item['tanggal_pinjam'] . '</td>';
+                                        echo '<td>' . $item['tgl_peminjaman'] . '</td>';
                                         echo '<td>' . $item['kode'] . '</td>';
                                         echo '<td>' . $item['nama_barang'] . '</td>';
                                         echo '<td class="custom--first-child">' . $item['nama_peminjam'] . '</td>';

@@ -94,7 +94,7 @@ $(document).ready(function () {
         deleteCookie("myCookie");
         if (res.status == "success") modal.style.display = "block";
       },
-      error: function (res) {
+      error: function (response) {
         console.log(response);
       },
     });

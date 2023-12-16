@@ -1,6 +1,4 @@
-<html>
-<!-- <link rel="stylesheet" href="../../../../public/css/riwayat-admin.css"> -->
-<div class="custom--riwayat-container">
+<section class="custom--riwayat-container">
     <div class="custom--header">
         <h1>Riwayat Peminjaman</h1>
         <p>Lihat Riwayat Peminjaman Anda</p>
@@ -8,12 +6,6 @@
     <div class="custom--body">
         <div class="custom--filter">
             <div class="custom--left">
-                <!-- <div class="custom--day-wrapper">
-                    <button class="active">7 Hari</button>
-                    <button>30 Hari</button>
-                    <button>12 Bulan</button>
-                    <button>Semua</button>
-                </div> -->
                 <div class="custom--sort-wrapper">
                     <li style="--delay: 2;" tabindex="0">
                         <button>
@@ -25,12 +17,10 @@
 
                             <span class="text">Urutkan</span>
                         </button>
-                        <!-- <form action="../../../controllers/riwayatAdmin.php" method="post"> -->
                         <ul class="dropdown">
                             <li class="p"><button id="latest">Tanggal Terkini</button></li>
                             <li class="P"><button id="oldest">Tanggal Terlama</button></li>
                         </ul>
-                        <!-- </form> -->
                     </li>
                 </div>
             </div>
@@ -48,31 +38,35 @@
             <div class="custom--card">
                 <h4>Data Riwayat</h4>
                 <table id="table-descending">
-                    <tr>
-                        <th>Tanggal Pinjam</th>
-                        <th>Tanggal Kembali</th>
-                        <th>Kode</th>
-                        <th>Nama Barang</th>
-                        <th>Nama Peminjam</th>
-                        <th>Jumlah</th>
-                    </tr>
-                    <?php
-                    foreach ($data['items'] as $row) { ?>
+                    <thead>
                         <tr>
-                            <td><?= $row['tgl_peminjaman'] ?></td>
-                            <td><?= $row['tgl_pengembalian'] ?></td>
-                            <td><?= $row['id_barang'] ?></td>
-                            <td><?= $row['nama_barang'] ?></td>
-                            <td><?= $row['nama_peminjam'] ?></td>
-                            <td><?= $row['jumlah'] ?></td>
+                            <th>Tanggal Pinjam</th>
+                            <th>Tanggal Kembali</th>
+                            <th>Kode</th>
+                            <th>Nama Barang</th>
+                            <th>Nama Peminjam</th>
+                            <th>Jumlah</th>
                         </tr>
-                    <?php    }
-                    ?>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($data['items'] as $row) { ?>
+                            <tr>
+                                <td><?= $row['tgl_peminjaman'] ?></td>
+                                <td><?= $row['tgl_pengembalian'] ?></td>
+                                <td><?= $row['id_barang'] ?></td>
+                                <td><?= $row['nama_barang'] ?></td>
+                                <td><?= $row['nama_peminjam'] ?></td>
+                                <td><?= $row['jumlah'] ?></td>
+                            </tr>
+                        <?php    }
+                        ?>  
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <script>
     let checkoutItems = [];
@@ -141,5 +135,3 @@
         });
     }
 </script>
-
-</html>
