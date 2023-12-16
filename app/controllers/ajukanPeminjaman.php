@@ -71,7 +71,7 @@ class AjukanPeminjaman extends Controller
     {
 
         $conn = $this->db->getConnection();
-        $user = new User($conn);
+        $user = new UserModel($conn);
 
         $data_diri = $_POST['formValue'];
         $list_barang = $_POST['dataListBarang'];
@@ -84,14 +84,14 @@ class AjukanPeminjaman extends Controller
         $kesempatan = $user->getKesempatan();
 
         if ($kesempatan > 0) {
-            $peminjaman = new Peminjaman($conn);
+            $peminjaman = new PeminjamanModel($conn);
             $peminjaman->setNomorIdentitas($nomor_identitas);
             $peminjaman->setTglPeminjaman($tgl_peminjaman);
             $peminjaman->setTglPengembalian($tgl_pengembalian);
 
             if ($peminjaman->insertPeminjaman()) {
 
-                $detailPeminjaman = new DetailPeminjaman($conn);
+                $detailPeminjaman = new DetailPeminjamanModel($conn);
                 $result = $detailPeminjaman->getCurrentIdPeminjaman($nomor_identitas, $tgl_peminjaman, $tgl_pengembalian);
 
                 if ($result->num_rows > 0) {

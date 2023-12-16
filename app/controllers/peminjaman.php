@@ -31,11 +31,11 @@ class Peminjaman extends Controller
         $data['css'] = 'adminPeminjaman';
 
         // Tampilkan tampilan template setelah pemrosesan request POST
-
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/peminjaman/index", $data);
         $this->view("templates/footer");
+        
     }
 
     public function konfirmasiPeminjaman()

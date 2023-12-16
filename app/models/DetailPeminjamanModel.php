@@ -1,5 +1,5 @@
 <?php
-class DetailPeminjaman
+class DetailPeminjamanModel
 {
     private $conn;
     private $id_peminjaman;
