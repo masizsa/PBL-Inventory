@@ -65,16 +65,33 @@ html {
   font-size: 2.4rem;
   color: var(---text-color);
 }
-
-.header-sidebar .logo .main-icon svg {
-  height: 5rem;
-  width: 5rem;
-  object-fit: contain;
+.header-sidebar .logo {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(---text-color);
 }
 
-.header-sidebar .close-icon svg {
+.header-sidebar .logo .main-icon {
+  flex-grow: 1;
+  width: 10rem;
+  height: 10rem;
+  background-color: red;
+  background: url("../assets/SidebarLogo.svg");
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+.header-sidebar .close-icon {
   height: 2.4rem;
-  cursor: pointer;
+  width: 2.4rem;
+  background: url("../assets/close-circle.svg");
+}
+.header-sidebar .close-icon.hamburger {
+  height: 2.4rem;
+  width: 2.4rem;
+  background-color: red;
+  background: url("../assets/hamburger.svg");
 }
 
 .body-sidebar {
