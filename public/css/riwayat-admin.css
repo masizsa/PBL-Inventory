@@ -1,16 +1,7 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
 
-html {
-  font-size: 10px;
-}
 
 :root {
-  ---background-color-body: #f6f6f6;
+  ---background-color-body: #EEE;
   ---header-table-color: #fcd106;
 }
 
@@ -18,7 +9,6 @@ html {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  /* padding-left: 37.5rem; */
   flex-direction: column;
 }
 
@@ -38,7 +28,7 @@ html {
 }
 
 .custom--body {
-  padding: 4rem 0;
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -52,14 +42,13 @@ html {
   display: flex;
   align-items: center;
   justify-content: end;
+  gap: 1.2rem;
 }
 
 .custom--body .custom--filter .custom--left {
   height: 5.5rem;
   display: flex;
   align-items: center;
-  margin-right: 1.2rem;
-  /* justify-content: space-between; */
 }
 
 .custom--body .custom--filter .custom--left .custom--day-wrapper {
@@ -75,39 +64,25 @@ html {
 .custom--body .custom--filter .custom--left .custom--sort-wrapper {
   height: 100%;
   width: 11rem;
-  padding: 4px 4px 4px 4px;
+  padding: 0.4rem;
   display: inline;
   background-color: #ffffff;
-  border-radius: 1rem;
-  margin-left: 1.2rem;
   cursor: pointer;
+  border-radius: 1rem;
+  border: 1px solid #1212121A;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper button,
 .custom--body .custom--filter .custom--left .custom--sort-wrapper li {
   cursor: pointer;
+  list-style: none;
+  background-color: #ffffff;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper .icon-sort {
-  width: 2rem;
-  display: flexbox;
-}
-
-.custom--body
-  .custom--filter
-  .custom--left
-  .custom--sort-wrapper
-  li
-  button
-  span {
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li button span {
   font-size: 14px;
   font-weight: 400;
   float: right;
-}
-
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li {
-  list-style: none;
-  background-color: #ffffff;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper li button {
@@ -127,50 +102,26 @@ html {
   font-size: 14px;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
-  background-color: #fff;
-}
-.custom--body
-  .custom--filter
-  .custom--left
-  .custom--sort-wrapper
-  .dropdown
-  li
-  a {
-  display: block;
-  text-decoration: none;
-}
-
-.custom--body .custom--filter .custom--left .custom--sort-wrapper ul li a,
-ul li button {
+.custom--body .custom--filter .custom--left .custom--sort-wrapper ul li button {
   padding: 0.7rem 1rem;
   text-align: left;
   color: inherit;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown {
+  background-color: #fff;
   height: 0;
   overflow: hidden;
   transition: height ease 0.2s;
-  /* width: 2rem; */
+  width: 2rem;
 }
 
-.custom--body
-  .custom--filter
-  .custom--left
-  .custom--sort-wrapper
-  .dropdown
-  button {
+.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown button {
   width: 16rem;
   height: 0.2rem;
 }
 
-.custom--body
-  .custom--filter
-  .custom--left
-  .custom--sort-wrapper
-  li:focus-within
-  .dropdown {
+.custom--body .custom--filter .custom--left .custom--sort-wrapper li:focus-within .dropdown {
   height: 10rem;
   width: 16rem;
   border-radius: 1rem;
@@ -181,13 +132,7 @@ ul li button {
   .dropdown {
     position: fixed;
     justify-content: end;
-    /* position: absolute; */
-    /* width: 17.6rem; */
     top: 21.8rem;
-    /* left: 120rem; */
-    /* padding-top: 100000rem; */
-    /* z-index: 10; */
-    /* min-width: 10rem; */
     padding: 0;
     border-radius: 0.5rem 0.5rem 0.5rem;
   }
@@ -213,6 +158,10 @@ ul li button {
   width: 35.5rem;
 }
 
+.custom--search input::placeholder {
+  color: #12121233;
+}
+
 .custom--search input[type="text"] {
   height: 100%;
   width: 100%;
@@ -222,6 +171,7 @@ ul li button {
   border: none;
   outline: none;
   color: #121212;
+  border: 1px solid #1212121A;
 }
 
 .custom--search .custom--search-icon {
@@ -230,25 +180,17 @@ ul li button {
   top: 25%;
 }
 
+/* TABLE SECTION*/
 .custom--body .custom--table-wrapper {
   flex: 1;
-  padding: 0 6rem;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  gap: 1.6rem;
-  /* background-color: red; */
 }
 
 .custom--body .custom--table-wrapper .custom--card {
-  height: 97.5rem;
-  height: 27rem;
-  border-radius: 1rem;
-  padding: 2.4rem;
-  /* background-color: #ffffff; */
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
-  /* background-color: blue; */
+  gap: 1.6rem;
 }
 
 .custom--body .custom--table-wrapper .custom--card h4 {
@@ -256,25 +198,56 @@ ul li button {
   font-weight: 500;
 }
 
+/* THIS IS THE TABLE */
 .custom--body .custom--table-wrapper .custom--card table {
-  border-radius: 1rem;
-  border-collapse: collapse;
-  overflow: hidden;
-  background-color: white;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
-
+.custom--card table tr:first-child th:first-child {
+  border-radius: 1rem 0 0 0;
+}
+.custom--card table tr:first-child th:last-child {
+  border-radius: 0 1rem 0 0;
+}
+.custom--card table tr:last-child td:first-child {
+  border-radius: 0 0 0 1rem;
+}
+.custom--card table tr:last-child td:last-child {
+  border-radius: 0 0 1rem 0;
+}
+.custom--card table th, td {
+  padding: 1.2rem;
+  border: 1px solid #1212121A;
+}
+.custom--card table th:first-child, 
+.custom--card table td:first-child {
+  padding-left: 2.4rem !important;
+}
+.custom--card table th:last-child, 
+.custom--card table td:last-child {
+  padding-right: 2.4rem !important;
+}
+.custom--card table th:not(:first-child),
+.custom--card table td:not(:first-child) {
+  border-left: none;
+}
+.custom--card table th:not(:last-child),
+.custom--card table td:not(:last-child) {
+  border-right: none;
+}
 .custom--body .custom--table-wrapper .custom--card table th {
+  background-color: var(---header-table-color);
   text-align: start;
   border: none;
   font-size: 12px;
-  background-color: var(---header-table-color);
+  font-weight: 500;
+  height: 5.2rem;
 }
 .custom--body .custom--table-wrapper .custom--card table td {
+  background-color: #ffffff;
   font-size: 16px;
-}
-
-.custom--body .custom--table-wrapper .custom--card table th,
-td {
-  height: 5rem;
-  padding: 0 1.2rem;
+  font-weight: 400;
+  height: 6.2rem;
+  border-top: none;
 }

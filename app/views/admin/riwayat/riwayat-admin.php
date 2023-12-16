@@ -1,6 +1,4 @@
-<html>
-<!-- <link rel="stylesheet" href="../../../../public/css/riwayat-admin.css"> -->
-<div class="custom--riwayat-container">
+<section class="custom--riwayat-container">
     <div class="custom--header">
         <h1>Riwayat Peminjaman</h1>
         <p>Lihat Riwayat Peminjaman Anda</p>
@@ -68,7 +66,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <script>
     let checkoutItems = [];
@@ -137,5 +135,3 @@
         });
     }
 </script>
-
-</html>
