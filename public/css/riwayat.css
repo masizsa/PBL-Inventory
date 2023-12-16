@@ -1,16 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-html {
-  font-size: 10px;
-}
-
 :root {
-  ---background-color-body: #f6f6f6;
+  ---background-color-body: #EEE;
   ---header-table-color: #fcd106;
 }
 
@@ -37,11 +26,10 @@ html {
 }
 
 .custom--body {
-  padding: 4rem 0;
-  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 4rem;
+  flex: 1;
   gap: 4rem;
   background-color: var(---background-color-body);
 }
@@ -59,7 +47,6 @@ html {
   display: flex;
   align-items: center;
   margin-right: 1.2rem;
-  /* justify-content: space-between; */
 }
 
 .custom--body .custom--filter .custom--left .custom--day-wrapper {
@@ -81,6 +68,11 @@ html {
   border-radius: 1rem;
   margin-left: 1.2rem;
   cursor: pointer;
+  border: 1px solid #1212121A;
+}
+
+.custom--search input::placeholder {
+  color: #12121233;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper button,
@@ -181,13 +173,7 @@ ul li button {
   .dropdown {
     position: fixed;
     justify-content: end;
-    /* position: absolute; */
-    /* width: 17.6rem; */
     top: 21.8rem;
-    /* left: 120rem; */
-    /* padding-top: 100000rem; */
-    /* z-index: 10; */
-    /* min-width: 10rem; */
     padding: 0;
     border-radius: 0.5rem 0.5rem 0.5rem;
   }
@@ -234,6 +220,7 @@ ul li button {
   border: none;
   outline: none;
   color: #121212;
+  border: 1px solid #1212121A;
 }
 
 .custom--search .custom--search-icon {
@@ -243,22 +230,25 @@ ul li button {
 }
 
 .custom--body .custom--table-wrapper {
-  flex: 1;
-  padding: 0 6rem;
   display: flex;
   flex-direction: column;
+  border-radius: 1rem;
+  padding: 2.4rem 8rem;
+  background-color: #ffffff;
   gap: 1.6rem;
+  border: 1px solid #1212121A;
+}
+
+#date-desc {
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .custom--body .custom--table-wrapper .custom--card {
-  height: 97.5rem;
-  height: 27rem;
-  border-radius: 1rem;
-  padding: 2.4rem;
-  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  background-color: #ffffff;
+  gap: 0.8rem;
 }
 
 .custom--body .custom--table-wrapper .custom--card p {
@@ -266,32 +256,71 @@ ul li button {
   text-align: end;
 }
 
-.custom--body .custom--table-wrapper .custom--card table {
-  border-radius: 10px;
-  border-collapse: collapse;
-  border-bottom: 1px solid #12121210;
-  overflow: hidden;
+/* TABLE */
+.custom--table-wrapper .custom--card table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
-.custom--body .custom--table-wrapper .custom--card table thead {
-  font-size: 1.2rem;
-  border-collapse: collapse;
+.custom--table-wrapper .custom--card table th, 
+.custom--table-wrapper .custom--card table td{
+  text-align: left;
+  padding: 1.2rem;
+}
+
+.custom--table-wrapper .custom--card table th {
   background-color: var(---header-table-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+  height: 5.2rem;
 }
-.custom--body .custom--table-wrapper .custom--card table thead tr th {
-  padding-left: 2.4rem;
-  text-align: start;
-}
-.custom--body .custom--table-wrapper .custom--card table th,
-td {
-  height: 5rem;
-  padding: 0 0;
-}
-.custom--body .custom--table-wrapper .custom--card table tbody tr td {
+
+.custom--table-wrapper .custom--card table td {
+  background-color: #ffffff;
   font-size: 1.6rem;
-  padding-left: 2.4rem;
-  border: 1px solid #12121210;
+  font-weight: 400;
+  height: 6.2rem;
+  border: 1px solid #1212121A;
+  border-top: none;
 }
+
+.custom--table-wrapper .custom--card tr:first-child th:first-child {
+  border-radius: 1rem 0 0 0;
+}
+
+.custom--table-wrapper .custom--card tr:first-child th:last-child {
+  border-radius: 0 1rem 0 0;
+}
+
+.custom--table-wrapper .custom--card tr:last-child td:first-child {
+  border-radius: 0 0 0 1rem;
+}
+
+.custom--table-wrapper .custom--card tr:last-child td:last-child {
+  border-radius: 0 0 1rem 0;
+}
+
+.custom--table-wrapper .custom--card th:not(:first-child),
+.custom--table-wrapper .custom--card td:not(:first-child) {
+  border-left: none;
+}
+
+.custom--table-wrapper .custom--card th:not(:last-child),
+.custom--table-wrapper .custom--card td:not(:last-child) {
+  border-right: none;
+}
+
+.custom--table-wrapper .custom--card th:first-child,
+.custom--table-wrapper .custom--card td:first-child {
+  padding-left: 2.4rem;
+}
+
+.custom--table-wrapper .custom--card th:last-child,
+.custom--table-wrapper .custom--card td:last-child {
+  padding-right: 2.4rem;
+}
+/* TABLE END */
 
 .custom--subheader-history {
   color: #000;
@@ -300,9 +329,7 @@ td {
   padding-bottom: 1.6rem;
 }
 
-
-  .custom--container-history-items-empty
-  p {
+.custom--container-history-items-empty p {
   color: #c6c6c6;
   font-size: 2rem;
   font-weight: 400;

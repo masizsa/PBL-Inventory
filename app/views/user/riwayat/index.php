@@ -1,4 +1,4 @@
-<div class="custom--riwayat-container">
+<section class="custom--riwayat-container">
     <div class="custom--header">
         <h1>Riwayat Peminjaman</h1>
         <p>Lihat Riwayat Peminjaman Anda</p>
@@ -35,18 +35,18 @@
         </div>
         <div class="custom--table-wrapper">
             <?php
-            $groupedData = [];
-            foreach ($data['items'] as $item) {
-                $idPeminjaman = $item['id_peminjaman'];
-                if (!array_key_exists($idPeminjaman, $groupedData)) {
-                    $groupedData[$idPeminjaman] = [];
+                $groupedData = [];
+                foreach ($data['items'] as $item) {
+                    $idPeminjaman = $item['id_peminjaman'];
+                    if (!array_key_exists($idPeminjaman, $groupedData)) {
+                        $groupedData[$idPeminjaman] = [];
+                    }
+                    $groupedData[$idPeminjaman][] = $item;
                 }
-                $groupedData[$idPeminjaman][] = $item;
-            }
-            ?>
+                ?>
             <?php foreach ($groupedData as $idPeminjaman => $items) { ?>
                 <div class="custom--card">
-                    <h4 id="date-desc"><?= $items[0]['tgl_peminjaman'] ?></h4>
+                    <h4 id="date-desc"><?= date('d F Y', strtotime($items[0]['tgl_peminjaman'])) ?> - <?= date('d F Y', strtotime($items[0]['tgl_pengembalian'])) ?></h4>
                     <table id="table-data-<?= $idPeminjaman ?>">
                         <thead>
                             <tr>
@@ -79,7 +79,8 @@
             <?php } ?>
         </div>
     </div>
-</div>
+</section>
+
 <script>
     let checkoutItems = [];
     document.addEventListener("DOMContentLoaded", function() {
