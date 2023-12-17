@@ -185,15 +185,24 @@
             <div class="custom--row">
                 <div class="custom--row-info">
                     <label for="">Nama</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $item['nama_peminjam'] ?>" disabled>
+                </div>
+                <div class=" custom--row-info">
+                    <label for="">NIM/NIP </label>
+                    <input type="text" value="<?= $item['username_peminjam'] ?>" disabled>
                 </div>
                 <div class="custom--row-info">
-                    <label for="">NIM/NIP</label>
-                    <input type="text" disabled>
-                </div>
-                <div class="custom--row-info">
+                    <?php
+                    $tanggal_peminjaman = $item['tgl_peminjaman'];
+                    $tanggal_pengembalian = $item['tgl_pengembalian'];
+
+                    $timestamp_peminjaman = strtotime($tanggal_peminjaman);
+                    $timestamp_pengembalian = strtotime($tanggal_pengembalian);
+                    $selisih_detik = $timestamp_pengembalian - $timestamp_peminjaman;
+                    $selisih_hari = abs($selisih_detik / (60 * 60 * 24)); // 1 hari = 60 detik * 60 menit * 24 jam
+                    ?>
                     <label for="">Jumlah Hari</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $selisih_hari?>"  disabled>
                 </div>
             </div>
 
@@ -205,18 +214,18 @@
             <div class="custom--row">
                 <div class="custom--row-info">
                     <label for="">Mulai Pinjam</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $item['tgl_peminjaman'] ?>" disabled>
                 </div>
                 <div class="custom--row-info">
                     <label for="">Selesai Pinjam</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $item['tgl_pengembalian'] ?>" disabled>
                 </div>
             </div>
 
             <button class="custom--popup-close" id="custom--close-popup">x</button>
         </div>
     </div>
-    <!-- <script>
+    <script>
         const buttons = document.querySelectorAll(".custom--day-wrapper button");
         const tables = document.querySelectorAll(".custom--table-info");
         const detailsButtons = document.querySelectorAll(".button-info");
@@ -268,8 +277,8 @@
             const lastCustomConfirm = customConfirms[customConfirms.length - 1];
             lastCustomConfirm.style.borderBottomRightRadius = '1rem';
         });
-    </script> -->
-    <script>
+    </script>
+    <!-- <script>
         const buttons = document.querySelectorAll(".custom--day-wrapper button");
         const tables = document.querySelectorAll(".custom--table-info");
         const detailsButtons = document.querySelectorAll(".button-info");
@@ -305,11 +314,11 @@
                 const row = button.closest('tr');
                 const rowData = row.querySelectorAll('td');
 
-                const nama = rowData[5].textContent.trim(); 
+                const nama = rowData[5].textContent.trim();
                 const nim_nip = rowData[4].textContent.trim();
-                const jumlahHari = rowData[9].textContent.trim(); 
-                const mulaiPinjam = rowData[6].textContent.trim(); 
-                const selesaiPinjam = rowData[6].textContent.trim(); 
+                const jumlahHari = rowData[9].textContent.trim();
+                const mulaiPinjam = rowData[6].textContent.trim();
+                const selesaiPinjam = rowData[6].textContent.trim();
 
                 const namaInput = document.querySelector('.custom--row-info input[for="nama"]');
                 const nimNipInput = document.querySelector('.custom--row-info input[for="nim-nip"]');
@@ -343,4 +352,4 @@
             const lastCustomConfirm = customConfirms[customConfirms.length - 1];
             lastCustomConfirm.style.borderBottomRightRadius = '1rem';
         });
-    </script>
+    </script> -->
