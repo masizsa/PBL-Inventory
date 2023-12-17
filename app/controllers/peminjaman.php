@@ -86,6 +86,8 @@ class Peminjaman extends Controller
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $idPeminjaman);
         $stmt->execute();
+        $sql = "UPDATE users SET kesempatan = 'Selesai' WHERE id_peminjaman = ?";
+
     }
 
     public function updateToTerlambat(){
