@@ -78,7 +78,7 @@
                                     <p class="info-label">Status</p>
 
                                     <?php
-                                    $status = $item['status']; // Ambil nilai status dari variabel $item['status']
+                                    $status = $item[0]['status']; // Ambil nilai status dari variabel $item['status']
 
                                     if ($status === 'Dipinjam') { ?>
                                         <div class="custom--status-value-dipinjam" id="status-dipinjam">
