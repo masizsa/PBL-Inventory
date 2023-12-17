@@ -46,7 +46,7 @@
             $number = 1;
             $groupedData = [];
 
-            foreach ($data['datas'] as $item) {
+            foreach ($data['data'] as $item) {
                 $idPeminjaman = $item['id_peminjaman'];
                 if (!array_key_exists($idPeminjaman, $groupedData)) {
                     $groupedData[$idPeminjaman] = [];
@@ -75,7 +75,7 @@
                                     <p class="info-label">Status</p>
 
                                     <?php
-                                    $status = $item['status']; // Ambil nilai status dari variabel $item['status']
+                                    $status = $items[0]['status']; // Ambil nilai status dari variabel $item['status']
 
                                     if ($status === 'Dipinjam') { ?>
                                         <div class="custom--status-value-dipinjam" id="status-dipinjam">
@@ -83,7 +83,7 @@
                                         </div>
                                     <?php } elseif ($status === 'Menunggu') { ?>
                                         <div class="custom--status-value-dipinjam" id="status-menunggu">
-                                            <p><?php echo $item['status'] ?></p>
+                                            <p><?php echo $status ?></p>
                                         </div>
                                     <?php } elseif ($status === 'Terlambat') { ?>
                                         <div class="custom--status-value-dipinjam" id="status-terlambat">
@@ -126,7 +126,7 @@
                 </section>
             <?php } ?>
 
-            <?php if (empty($data['datas'])) { ?>
+            <?php if (empty($data['data'])) { ?>
                 <section class="custom--borrowed-two">
                     <p class="custom--subheader-borrowed">Peminjaman</p>
                     <div class="custom--container-borrowed-items-empty">
@@ -139,7 +139,7 @@
 
     <?php
     // Ambil data tanggal pengembalian dari PHP
-    $returnDates = array_column($data['datas'], 'tgl_pengembalian');
+    $returnDates = array_column($data['data'], 'tgl_pengembalian');
     ?>
 
     <script>
