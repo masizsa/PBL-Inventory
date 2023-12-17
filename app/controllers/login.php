@@ -50,11 +50,17 @@ class Login extends Controller
                     $_SESSION["isAdmin"] = true;
                     $_SESSION['nama'] = $row['nama'];
                     header("Location: ../dataBarang");
+                    //tambahanku (trigger bdl)
+                    $sql2 = "update users set last_login = now() where nomor_identitas = '".$nomor_identitas."'";
+                    $conn->query($sql2);
                     exit();
                 } else {
                     // Redirect ke halaman user jika berhasil login
                     $_SESSION['nama'] = $row['nama'];
                     header("Location: ../ajukanPeminjaman");
+                    //tambahanku (trigger bdl)
+                    $sql2 = "update users set last_login = now() where nomor_identitas = '".$nomor_identitas."'";
+                    $conn->query($sql2);
                     exit();
                 }
             } else {
