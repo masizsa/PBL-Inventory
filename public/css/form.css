@@ -9,7 +9,7 @@ html {
 }
 body {
   width: 100%;
-  background: var(--Neutral-20, #f6f6f6);
+  background: var(--Neutral-20, #eee);
 }
 .container {
   width: 100%;

@@ -27,7 +27,7 @@ class AjukanPeminjaman extends Controller
 
         $sql = "SELECT * FROM data_barang_user";
 
-            $result = $conn->query($sql);
+        $result = $conn->query($sql);
 
         if ($result === false) {
             die("Error: " . $conn->error);

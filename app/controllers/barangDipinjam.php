@@ -12,9 +12,10 @@ class BarangDipinjam extends Controller
         // $data = array();
         $data['datas'] = $this->getData();
         $data['css'] = 'barang-dipinjam';
-        $this->view("templates/header",$data);
+
+        $this->view("templates/header", $data);
         $this->view("templates/sidebar-user");
-        $this->view("user/barang-dipinjam/index",$data);
+        $this->view("user/barang-dipinjam/index", $data);
         $this->view("templates/footer");
     }
 
@@ -42,7 +43,4 @@ class BarangDipinjam extends Controller
         // Memastikan untuk mengembalikan nilai $data dari fungsi
         return $data;
     }
-
 }
-
-
