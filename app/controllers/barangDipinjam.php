@@ -30,17 +30,11 @@ class BarangDipinjam extends Controller
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $data[] = $row; // Tambahkan data ke array riwayatData
-                    // var_dump($data);
+                    $data[] = $row;
                 }
-            } else {
-                // Handle jika query tidak mengembalikan hasil atau terjadi kesalahan
             }
-        } else {
-            // Handle jika nilai nomor_identitas tidak tersedia dalam sesi
         }
 
-        // Memastikan untuk mengembalikan nilai $data dari fungsi
         return $data;
     }
 }

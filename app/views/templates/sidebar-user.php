@@ -12,7 +12,7 @@
         <div class="body-sidebar">
             <ul class="list-menu">
                 <li>
-                    <a class="" href="../../../PBL-Inventory/public/ajukanPeminjaman">
+                    <a class="" href="./ajukanPeminjaman">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.8416 7.10463L10.4249 10.8213C10.1666 10.9713 9.8416 10.9713 9.57494 10.8213L3.15827 7.10463C2.69993 6.83796 2.58327 6.21296 2.93327 5.8213C3.17493 5.5463 3.44993 5.3213 3.7416 5.16296L8.25827 2.66296C9.22494 2.1213 10.7916 2.1213 11.7583 2.66296L16.2749 5.16296C16.5666 5.3213 16.8416 5.55463 17.0833 5.8213C17.4166 6.21296 17.2999 6.83796 16.8416 7.10463Z" stroke="white" />
@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="../../../PBL-Inventory/public/barangDipinjam">
+                    <a class="" href="./barangDipinjam">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="1">
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="../../../PBL-Inventory/public/riwayatUser">
+                    <a class="" href="./riwayatUser">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="1">
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="../../../PBL-Inventory/public/ubahSandiUser">
+                    <a class="" href="./ubahSandiUser">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="1">
@@ -67,10 +67,10 @@
                         Ubah Sandi
                     </a>
                 </li>
-            </ul>
+            </ul>   
             <ul class="list-menu">
                 <li>
-                    <a class="" href="../../../PBL-Inventory/public/logout/processLogout">
+                    <a class="" onclick="localStorage.clear();" href="./logout/processLogout">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="1">
