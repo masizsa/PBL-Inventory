@@ -141,57 +141,5 @@
 
     <script>
         const returnDatesFromDatabase = <?php echo json_encode($returnDates); ?>;
-
-        function updateCountdown(returnDates) {
-            // Mendapatkan tanggal sekarang
-            const now = new Date();
-
-            // Menginisialisasi variabel untuk menyimpan tanggal pengembalian terdekat
-            let closestReturnDate = new Date(returnDates[0]);
-
-            // Mencari tanggal pengembalian terdekat
-            returnDates.forEach(date => {
-                const returnDate = new Date(date);
-                if (returnDate > now && (returnDate < closestReturnDate || closestReturnDate <= now)) {
-                    closestReturnDate = returnDate;
-                }
-            });
-
-            // Menghitung selisih waktu antara tanggal sekarang dengan tanggal pengembalian terdekat
-            const timeDifference = closestReturnDate - now;
-
-            if (timeDifference <= 0) {
-                // Jika waktu sudah lewat
-                document.getElementById('days').innerHTML = 'Expired';
-                // Hentikan perhitungan countdown
-                return;
-            }
-
-            // Hitung hari, jam, menit, bulan
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const monthLabel = closestReturnDate.toLocaleString('id-ID', {
-                month: 'short'
-            });
-
-            // Tampilkan hasil countdown pada elemen HTML
-            if (timeDifference >= 0) {
-                document.getElementById('days').innerHTML = days;
-                document.getElementById('hours').innerHTML = hours;
-                document.getElementById('minutes').innerHTML = minutes;
-                document.getElementById('month-label').innerHTML = monthLabel;
-                document.getElementById('month').innerHTML = closestReturnDate.getDate();
-            }
-
-
-        }
-
-        // Jalankan perhitungan countdown
-        updateCountdown(returnDatesFromDatabase);
-
-        // Set interval untuk memperbarui countdown setiap detik
-        setInterval(() => {
-            updateCountdown(returnDatesFromDatabase);
-        }, 1000);
     </script>
+    <script src="../public/js/barang-dipinjam.js"></script>
