@@ -1,4 +1,3 @@
-
     <div class="custom--content-barang-dipinjam">
         <header>
             <section class="custom--text-header">
