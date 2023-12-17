@@ -1,12 +1,11 @@
-<section class="custom--container-barang-dipinjam">
     <div class="custom--content-barang-dipinjam">
         <header>
+            <section class="custom--text-header">
+                <h1>Data Barang Dipinjam</h1>
+                <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
+            </section>
 
             <?php if (!empty($data['datas'])) { ?>
-                <section class="custom--text-header">
-                    <h1>Data Barang Dipinjam</h1>
-                    <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
-                </section>
 
                 <section class="custom--countdown">
                     <p class="countdown-text">Waktu pengembalian</p>
@@ -40,8 +39,6 @@
                     </div>
                 </section>
             <?php } ?>
-
-
         </header>
 
         <main>
@@ -139,6 +136,7 @@
             <?php } ?>
         </main>
     </div>
+
     <?php
     // Ambil data tanggal pengembalian dari PHP
     $returnDates = array_column($data['datas'], 'tgl_pengembalian');

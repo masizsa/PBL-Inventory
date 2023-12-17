@@ -1,15 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-.custom--container-barang-dipinjam {
-  /* padding-left: 37.5rem; */
-  display: flex;
-  width: 100%;
-}
-
 .custom--content-barang-dipinjam {
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: #EEEEEE;
 }
 
 .custom--content-barang-dipinjam header {
@@ -107,7 +102,6 @@
   flex-direction: column;
   padding: 4rem 9.6rem;
   gap: 4rem;
-  background-color: #f6f6f6;
 }
 
 .custom--content-barang-dipinjam main .custom--subheader-borrowed {
