@@ -2,6 +2,40 @@ let modal = document.getElementById("myModal");
 let btn = document.getElementById("modal");
 let span = document.getElementsByClassName("close")[0];
 
+const container = document.getElementById('customContainer');
+const warning = document.getElementById('customWarning');
+const success = document.getElementById('customSuccess');
+
+function showPopup(id, text) {
+    const popupText = document.querySelector(`#${id} .popupText`);
+
+    popupText.textContent = text;
+
+    container.classList.add('show');     
+    setTimeout(() => {
+        container.style.top = '1rem';
+        const popupElement = id === 'customWarning' ? warning : success;
+        popupElement.classList.add('show');
+
+        setTimeout(() => {
+            container.style.transition = 'top 0.3s ease';
+            container.style.top = '-8.8rem';
+            setTimeout(() => {
+                hidePopup();
+                if (id === 'customSuccess') {
+                    window.location.href = "../barangDipinjam";
+                }
+            }, 200);
+        }, 2000);
+    }, 10)
+}
+
+function hidePopup() {
+    container.classList.remove('show');
+    warning.classList.remove('show');
+    success.classList.remove('show');
+}
+
 span.onclick = function () {
   modal.style.display = "none";
 };
@@ -93,7 +127,16 @@ $(document).ready(function () {
       success: function (res) {
         console.log(res);
         deleteCookie("myCookie");
-        if (res.status == "success") modal.style.display = "block";
+        if (res.status == "success") {
+          showPopup('customSuccess', "Berhasil mengajukan peminjaman!");
+        } else if (res.status == "error") {
+          showPopup('customWarning', "Form tidak boleh kosong!");
+        } else if (res.status == "exceed") {
+          showPopup('customWarning', "Kesempatan Peminjaman habis!");
+          setTimeout(function() {
+            window.location.href = "../barangDipinjam";
+          }, 2200);
+        }
       },
       error: function (response) {
         console.log(response);
