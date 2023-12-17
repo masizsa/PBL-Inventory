@@ -86,7 +86,9 @@ class Peminjaman extends Controller
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $idPeminjaman);
         $stmt->execute();
-        $sql = "UPDATE users SET kesempatan = 'Selesai' WHERE id_peminjaman = ?";
+        $sql = "UPDATE users SET kesempatan = kesempatan + 1  WHERE nomor_identitas = (Select nomor_identitas from peminjaman where id_peminjaman = $idPeminjaman)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
 
     }
 
