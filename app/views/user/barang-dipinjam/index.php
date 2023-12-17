@@ -1,4 +1,4 @@
-    <div class="custom--content-barang-dipinjam">
+    <section class="custom--content-barang-dipinjam">
         <header>
             <section class="custom--text-header">
                 <h1>Data Barang Dipinjam</h1>
@@ -6,7 +6,6 @@
             </section>
 
             <?php if (!empty($data['datas'])) { ?>
-
                 <section class="custom--countdown">
                     <p class="countdown-text">Waktu pengembalian</p>
                     <div class="custom--container-countdown">
@@ -45,8 +44,7 @@
             <?php
             $number = 1;
             $groupedData = [];
-
-            foreach ($data['data'] as $item) {
+            foreach ($data['datas'] as $item) {
                 $idPeminjaman = $item['id_peminjaman'];
                 if (!array_key_exists($idPeminjaman, $groupedData)) {
                     $groupedData[$idPeminjaman] = [];
@@ -126,7 +124,7 @@
                 </section>
             <?php } ?>
 
-            <?php if (empty($data['data'])) { ?>
+            <?php if (empty($data['datas'])) { ?>
                 <section class="custom--borrowed-two">
                     <p class="custom--subheader-borrowed">Peminjaman</p>
                     <div class="custom--container-borrowed-items-empty">
@@ -135,11 +133,11 @@
                 </section>
             <?php } ?>
         </main>
-    </div>
+    </section>
 
     <?php
     // Ambil data tanggal pengembalian dari PHP
-    $returnDates = array_column($data['data'], 'tgl_pengembalian');
+    $returnDates = array_column($data['datas'], 'tgl_pengembalian');
     ?>
 
     <script>
