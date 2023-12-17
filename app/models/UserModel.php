@@ -26,8 +26,7 @@ class UserModel
     public function setNomorIdentitas($nomor_identitas)
     {
         $this->nomor_identitas = $nomor_identitas;
-        // Panggil metode untuk mengupdate nomor_identitas di database
-        $this->updateNomorIdentitasInDB();
+        $this->updateFieldInDB("nomor_identitas", $nomor_identitas);
     }
 
     public function getNama()
@@ -38,8 +37,7 @@ class UserModel
     public function setNama($nama)
     {
         $this->nama = $nama;
-        // Panggil metode untuk mengupdate nama di database
-        $this->updateNamaInDB();
+        $this->updateFieldInDB("nama", $nama);
     }
 
     public function getEmail()
@@ -50,8 +48,7 @@ class UserModel
     public function setEmail($email)
     {
         $this->email = $email;
-        // Panggil metode untuk mengupdate email di database
-        $this->updateEmailInDB();
+        $this->updateFieldInDB("email", $email);
     }
 
     public function getStatus()
@@ -62,8 +59,7 @@ class UserModel
     public function setStatus($status)
     {
         $this->status = $status;
-        // Panggil metode untuk mengupdate status di database
-        $this->updateStatusInDB();
+        $this->updateFieldInDB("status", $status);
     }
 
     public function getPassword()
@@ -74,8 +70,7 @@ class UserModel
     public function setPassword($password)
     {
         $this->password = $password;
-        // Panggil metode untuk mengupdate password di database
-        $this->updatePasswordInDB();
+        return $this->updateFieldInDB("password", $password);
     }
 
     public function getKesempatan()
@@ -86,71 +81,16 @@ class UserModel
     public function setKesempatan($kesempatan)
     {
         $this->kesempatan = $kesempatan;
-        // Panggil metode untuk mengupdate kesempatan di database
-        $this->updateKesempatanInDB();
+        $this->updateFieldInDB("kesempatan", $kesempatan);
     }
 
-    // Metode untuk mengupdate nomor_identitas di database
-    private function updateNomorIdentitasInDB()
+    // Metode umum untuk mengupdate kolom tertentu di database
+    private function updateFieldInDB($field, $value)
     {
-        $sql = "UPDATE users SET nomor_identitas = ? WHERE nomor_identitas = ?";
+        $sql = "UPDATE users SET $field = ? WHERE nomor_identitas = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $this->nomor_identitas);
-        $stmt->bindParam(2, $this->nomor_identitas);
-        $stmt->execute();
-    }
-
-    // Metode untuk mengupdate nama di database
-    private function updateNamaInDB()
-    {
-        $sql = "UPDATE users SET nama = ? WHERE nomor_identitas = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $this->nama);
-        $stmt->bindParam(2, $this->nomor_identitas);
-        $stmt->execute();
-    }
-
-    // Metode untuk mengupdate email di database
-    private function updateEmailInDB()
-    {
-        $sql = "UPDATE users SET email = ? WHERE nomor_identitas = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $this->email);
-        $stmt->bindParam(2, $this->nomor_identitas);
-        $stmt->execute();
-    }
-
-    // Metode untuk mengupdate status di database
-    private function updateStatusInDB()
-    {
-        $sql = "UPDATE users SET status = ? WHERE nomor_identitas = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $this->status);
-        $stmt->bindParam(2, $this->nomor_identitas);
-        $stmt->execute();
-    }
-
-    // Metode untuk mengupdate password di database
-    private function updatePasswordInDB()
-    {
-        $sql = "UPDATE users SET password = ? WHERE nomor_identitas = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $this->password);
-        $stmt->bindParam(2, $this->nomor_identitas);
-        $stmt->execute();
-    }
-
-    // Metode untuk mengupdate kesempatan di database
-    private function updateKesempatanInDB()
-    {
-        $sql = "UPDATE users SET kesempatan = ? WHERE nomor_identitas = ?";
-        $stmt = $this->conn->prepare($sql);
-
-        // Binding parameter
-        $stmt->bind_param("is", $this->kesempatan, $this->nomor_identitas);
-
-        // Eksekusi statement
-        $stmt->execute();
+        $stmt->bind_param("ss", $value, $this->nomor_identitas);
+        return $stmt->execute();
     }
 
     // Metode untuk menyimpan data pengguna ke database
@@ -158,12 +98,7 @@ class UserModel
     {
         $sql = "INSERT INTO users (nomor_identitas, nama, email, status, password, kesempatan) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $this->nomor_identitas);
-        $stmt->bindParam(2, $this->nama);
-        $stmt->bindParam(3, $this->email);
-        $stmt->bindParam(4, $this->status);
-        $stmt->bindParam(5, $this->password);
-        $stmt->bindParam(6, $this->kesempatan);
+        $stmt->bind_param("sssssi", $this->nomor_identitas, $this->nama, $this->email, $this->status, $this->password, $this->kesempatan);
         $stmt->execute();
     }
 
@@ -172,17 +107,10 @@ class UserModel
     {
         $sql = "SELECT * FROM users WHERE nomor_identitas = ?";
         $stmt = $this->conn->prepare($sql);
-
-        // Binding parameter
         $stmt->bind_param("s", $nomor_identitas);
-
-        // Eksekusi statement
         $stmt->execute();
-
-        // Mengambil hasil query
         $result = $stmt->get_result()->fetch_assoc();
 
-        // Mengisi properti objek dengan data dari database
         if ($result) {
             $this->nomor_identitas = $result['nomor_identitas'];
             $this->nama = $result['nama'];
