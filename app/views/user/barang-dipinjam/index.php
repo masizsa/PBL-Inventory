@@ -1,42 +1,47 @@
 <section class="custom--container-barang-dipinjam">
     <div class="custom--content-barang-dipinjam">
         <header>
-            <section class="custom--text-header">
-                <h1>Data Barang Dipinjam</h1>
-                <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
-            </section>
 
-            <section class="custom--countdown">
-                <p class="countdown-text">Waktu pengembalian</p>
-                <div class="custom--container-countdown">
-                    <div class="custom--time">
-                        <p class="return-date" id="days"></p>
-                        <p class="countdown-label">Hari</p>
+            <?php if (!empty($data['datas'])) { ?>
+                <section class="custom--text-header">
+                    <h1>Data Barang Dipinjam</h1>
+                    <p>Jaga baik-baik barang tersebut dan jangan terlambat mengembalikan!</p>
+                </section>
+
+                <section class="custom--countdown">
+                    <p class="countdown-text">Waktu pengembalian</p>
+                    <div class="custom--container-countdown">
+                        <div class="custom--time">
+                            <p class="return-date" id="days"></p>
+                            <p class="countdown-label">Hari</p>
+                        </div>
+
+                        <div class="colon">:</div>
+
+                        <div class="custom--time">
+                            <p class="return-date" id="hours"></p>
+                            <p class="countdown-label">Jam</p>
+                        </div>
+
+                        <div class="colon">:</div>
+
+                        <div class="custom--time">
+                            <p class="return-date" id="minutes"></p>
+                            <p class="countdown-label">Menit</p>
+                        </div>
+
+                        <div class="vertical-line">
+
+                        </div>
+                        <div class="custom--time">
+                            <p class="return-date" id="month"></p>
+                            <p class="countdown-label" id="month-label"></p>
+                        </div>
                     </div>
+                </section>
+            <?php } ?>
 
-                    <div class="colon">:</div>
 
-                    <div class="custom--time">
-                        <p class="return-date" id="hours"></p>
-                        <p class="countdown-label">Jam</p>
-                    </div>
-
-                    <div class="colon">:</div>
-
-                    <div class="custom--time">
-                        <p class="return-date" id="minutes"></p>
-                        <p class="countdown-label">Menit</p>
-                    </div>
-
-                    <div class="vertical-line">
-
-                    </div>
-                    <div class="custom--time">
-                        <p class="return-date" id="month"></p>
-                        <p class="countdown-label" id="month-label"></p>
-                    </div>
-                </div>
-            </section>
         </header>
 
         <main>
