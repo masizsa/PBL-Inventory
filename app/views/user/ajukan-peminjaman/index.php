@@ -103,9 +103,10 @@
                 <img src="../assets/box.svg">
                 <h3>Peminjaman Diproses</h3>
                 <p>Silakan cek status peminjaman</p>
-                <button type="button" class="close" id="successModalButton" >Baik</button><br>
+                <button type="button" class="close" id="successModalButton">Baik</button><br>
             </div>
         </div>
 
     </section>
-    <script src="../js/ajukan-peminjaman.js"></script>
+</section>
+<script src="../js/ajukan-peminjaman.js"></script>

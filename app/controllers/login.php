@@ -42,7 +42,7 @@ class Login extends Controller
             if ($result->num_rows > 0) {
                 $_SESSION["isLogin"] = true;
                 $_SESSION["nomor_identitas"] = $nomor_identitas;
-                $_SESSION["password"] = "$password";
+                // $_SESSION["password"] = "$password";
 
                 $row = $result->fetch_assoc();
                 if ($row["status"] == "Admin") {

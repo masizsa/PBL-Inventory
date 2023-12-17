@@ -18,35 +18,38 @@ class UbahSandiAdmin extends Controller
     public function ubahSandiProccess()
     {
         $nomor_identitas = $_SESSION['nomor_identitas'];
-        $confirmCurrentPassword = $_SESSION['password'];
+
+        $conn = $this->db->getConnection();
+        $user = new UserModel($conn);
+        $user->loadFromDB($nomor_identitas);
+        // $confirmCurrentPassword = $_SESSION['password'];
+        $confirmCurrentPassword = $user->getPassword();
 
         $currentPassword = md5($_POST['sandi_sekarang']);
-        $newPassword = md5($_POST['sandi_baru']);
-        $confirmPassword = md5($_POST['konfirmasi_sandi']);
+
+        $newPassword = $_POST['sandi_baru'];
+        $confirmPassword = $_POST['konfirmasi_sandi'];
 
         if ($confirmCurrentPassword === $currentPassword) {
-            if ($newPassword === $confirmPassword) {
-                $conn = $this->db->getConnection();
+            if (strlen($newPassword) >= 8 && strlen($newPassword) <= 12) {
+                if ($newPassword === $confirmPassword) {
+                    $newPassword = md5($_POST['sandi_baru']);
+                    $confirmPassword = md5($_POST['konfirmasi_sandi']);
+                    $result = $user->setPassword($confirmPassword);
 
-                $query = "UPDATE users SET password = ? WHERE nomor_identitas = ?";
-
-                $statement = $conn->prepare($query);
-                $statement->bind_param('ss', $newPassword, $nomor_identitas);
-
-                if ($statement->execute()) {
-                    // Berhasil diupdate
-                    $_SESSION['password'] = $confirmPassword;
-                    echo json_encode(['status' => 'success']);
+                    if ($result) {
+                        echo json_encode(['status' => 'success']);
+                    } else {
+                        echo json_encode(['status' => 'error']);
+                    }
                 } else {
-                    // Gagal diupdate
-                    echo json_encode(['status' => 'error']);
+                    echo json_encode(['status' => 'password_mismatch']);
                 }
             } else {
-                // Tampilkan pesan bahwa kata sandi baru dan konfirmasi tidak cocok
-                echo json_encode(['status' => 'password_mismatch']);
+                echo json_encode(['status' => 'password_invalid']);
             }
         } else {
-            echo json_encode(['status' => 'error']);
+            echo json_encode(['status' => 'error', 'data' => "$confirmCurrentPassword , $currentPassword"]);
         }
     }
 }

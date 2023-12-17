@@ -120,7 +120,8 @@
             if (!tableWrapper.querySelector(`#table-data-${objek.id_peminjaman}`)) {
                 tableWrapper.innerHTML += `
                     <div class="custom--card">
-                        <h4 id="date-desc">${objek.tgl_peminjaman}</h4>
+                        
+                        <h4 id="date-desc">${objek.tgl_peminjaman} - ${objek.tgl_pengembalian}</h4>
                         <table id="table-data-${objek.id_peminjaman}">
                             <tr>
                                 <th>Kode</th>
