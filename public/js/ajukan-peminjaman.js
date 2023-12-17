@@ -132,7 +132,7 @@ $(document).ready(function () {
         } else if (res.status == "error") {
           showPopup('customWarning', "Form tidak boleh kosong!");
         } else if (res.status == "exceed") {
-          showPopup('customWarning', "Kesempatan Peminjaman habis!");
+          showPopup('customWarning', "Kesempatan peminjaman habis!");
           setTimeout(function() {
             window.location.href = "../barangDipinjam";
           }, 2200);
