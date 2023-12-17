@@ -287,7 +287,7 @@
     </div>
 </section>
 
-<section class="custom--container-warning">
+<!-- <section class="custom--container-warning">
     <div class="custom--warning" id="empty">
         <div class="logo">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -379,6 +379,23 @@
             <p>Edit barang!</p>
         </div>
     </div>
+</section> -->
+<section class="custom--container-warning" id="customContainer">
+    <div class="custom--warning" id="customWarning">
+        <img src="assets/warning.svg" alt="">
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
+
+    <div class="custom--success" id="customSuccess">
+        <img src="assets/check.svg" alt="">
+        <div class="custom--success-content-text">
+            <h3>Berhasil</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
 </section>
 
 <script>
@@ -394,13 +411,6 @@
     const editPopup = document.querySelector('#edit-item')
     const detailsPopup = document.querySelector('#details-item')
     const deletePopup = document.querySelector('#delete-item')
-    const warningBorrowed = document.querySelector('#borrowed')
-    const warningExist = document.querySelector('#exist')
-    const warningEmpty = document.querySelector('#empty')
-    const warningExceed = document.querySelector('#exceed')
-    const successAdd = document.querySelector('#added')
-    const successDelete = document.querySelector('#deleted')
-    const successEdit = document.querySelector('#edited')
 
 
     const closePopupButtons = document.querySelectorAll('.custom--close-button')
