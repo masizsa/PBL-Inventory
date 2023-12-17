@@ -11,7 +11,7 @@
                         <button class="active">Peminjaman</button>
 
                         <!-- <form action="" method="post"> -->
-                            <button name="cekTerlambat">Pengembalian</button>
+                        <button name="cekTerlambat">Pengembalian</button>
                         <!-- </form> -->
 
                     </div>
@@ -185,15 +185,24 @@
             <div class="custom--row">
                 <div class="custom--row-info">
                     <label for="">Nama</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $item['nama_peminjam'] ?>" disabled>
+                </div>
+                <div class=" custom--row-info">
+                    <label for="">NIM/NIP </label>
+                    <input type="text" value="<?= $item['username_peminjam'] ?>" disabled>
                 </div>
                 <div class="custom--row-info">
-                    <label for="">NIM/NIP</label>
-                    <input type="text" disabled>
-                </div>
-                <div class="custom--row-info">
+                    <?php
+                    $tanggal_peminjaman = $item['tgl_peminjaman'];
+                    $tanggal_pengembalian = $item['tgl_pengembalian'];
+
+                    $timestamp_peminjaman = strtotime($tanggal_peminjaman);
+                    $timestamp_pengembalian = strtotime($tanggal_pengembalian);
+                    $selisih_detik = $timestamp_pengembalian - $timestamp_peminjaman;
+                    $selisih_hari = abs($selisih_detik / (60 * 60 * 24)); // 1 hari = 60 detik * 60 menit * 24 jam
+                    ?>
                     <label for="">Jumlah Hari</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $selisih_hari?>"  disabled>
                 </div>
             </div>
 
@@ -205,11 +214,11 @@
             <div class="custom--row">
                 <div class="custom--row-info">
                     <label for="">Mulai Pinjam</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $item['tgl_peminjaman'] ?>" disabled>
                 </div>
                 <div class="custom--row-info">
                     <label for="">Selesai Pinjam</label>
-                    <input type="text" disabled>
+                    <input type="text" value="<?= $item['tgl_pengembalian'] ?>" disabled>
                 </div>
             </div>
 
@@ -269,3 +278,78 @@
             lastCustomConfirm.style.borderBottomRightRadius = '1rem';
         });
     </script>
+    <!-- <script>
+        const buttons = document.querySelectorAll(".custom--day-wrapper button");
+        const tables = document.querySelectorAll(".custom--table-info");
+        const detailsButtons = document.querySelectorAll(".button-info");
+        const popupContainer = document.querySelector(".popup-container");
+        const closePopupButton = document.getElementById("custom--close-popup");
+        const headerTitle = document.querySelector("header h1");
+        const subheader = document.querySelector("header p");
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                buttons.forEach((btn) => {
+                    btn.classList.remove('active');
+                });
+
+                tables.forEach((table) => {
+                    table.style.display = 'none';
+                });
+
+                button.classList.add('active');
+                tables[index].style.display = 'flex';
+
+                headerTitle.textContent =
+                    index === 0 ? "Data Peminjaman" : "Data Pengembalian";
+
+                subheader.textContent = index === 0 ? "Silahkan konfirmasi peminjaman jika sudah siap!" : "Silahkan konfirmasi pengembalian jika sudah benar!";
+            });
+        });
+
+
+        detailsButtons.forEach((detailsButton) => {
+            detailsButton.addEventListener('click', (event) => {
+                const button = event.currentTarget;
+                const row = button.closest('tr');
+                const rowData = row.querySelectorAll('td');
+
+                const nama = rowData[5].textContent.trim();
+                const nim_nip = rowData[4].textContent.trim();
+                const jumlahHari = rowData[9].textContent.trim();
+                const mulaiPinjam = rowData[6].textContent.trim();
+                const selesaiPinjam = rowData[6].textContent.trim();
+
+                const namaInput = document.querySelector('.custom--row-info input[for="nama"]');
+                const nimNipInput = document.querySelector('.custom--row-info input[for="nim-nip"]');
+                const jumlahHariInput = document.querySelector('.custom--row-info input[for="jumlah-hari"]');
+                const mulaiPinjamInput = document.querySelector('.custom--row-info input[for="mulai-pinjam"]');
+                const selesaiPinjamInput = document.querySelector('.custom--row-info input[for="selesai-pinjam"]');
+
+                namaInput.value = nama;
+                nimNipInput.value = nim_nip;
+                jumlahHariInput.value = jumlahHari;
+                mulaiPinjamInput.value = mulaiPinjam;
+                selesaiPinjamInput.value = selesaiPinjam;
+
+                popupContainer.style.display = 'flex';
+            });
+        });
+
+        closePopupButton.addEventListener('click', () => {
+            popupContainer.style.display = 'none';
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                popupContainer.style.display = 'none';
+            }
+        });
+
+        const tbodies = document.querySelectorAll('tbody');
+        tbodies.forEach(tbody => {
+            const customConfirms = tbody.querySelectorAll('.custom--confirm');
+            const lastCustomConfirm = customConfirms[customConfirms.length - 1];
+            lastCustomConfirm.style.borderBottomRightRadius = '1rem';
+        });
+    </script> -->

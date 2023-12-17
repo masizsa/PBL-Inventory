@@ -91,6 +91,7 @@ $(document).ready(function () {
       contentType: "application/x-www-form-urlencoded",
       dataType: "json",
       success: function (res) {
+        console.log(res);
         deleteCookie("myCookie");
         if (res.status == "success") modal.style.display = "block";
       },

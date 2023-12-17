@@ -74,18 +74,54 @@ class Peminjaman extends Controller
     public function updateStatusToDipinjam($idPeminjaman)
     {
         $conn = $this->db->getConnection();
-        $sql = "UPDATE peminjaman SET status = 'Dipinjam' WHERE id_peminjaman = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $idPeminjaman);
-        $stmt->execute();
+        $sqlPeminjaman = "UPDATE peminjaman SET status = 'Dipinjam' WHERE id_peminjaman = ?";
+        $stmtPeminjaman = $conn->prepare($sqlPeminjaman);
+        $stmtPeminjaman->bind_param("i", $idPeminjaman);
+        $stmtPeminjaman->execute();
+
+        $sqlBarang = "SELECT id_barang, jumlah FROM detail_peminjaman WHERE id_peminjaman = ?";
+        $stmtBarang = $conn->prepare($sqlBarang);
+        $stmtBarang->bind_param("i", $idPeminjaman);
+        $stmtBarang->execute();
+        $result = $stmtBarang->get_result();
+
+        $items = [];
+        while ($item = $result->fetch_assoc()) {
+            $items[] = $item;
+        }
+
+        foreach ($items as $item) {
+            $sqlUpdateBarang = "UPDATE barang SET jumlah_tersedia = jumlah_tersedia - ?, jumlah_dipinjam = jumlah_dipinjam + ? WHERE id_barang = ?";
+            $stmtUpdateBarang = $conn->prepare($sqlUpdateBarang);
+            $stmtUpdateBarang->bind_param("iis", $item['jumlah'], $item['jumlah'], $item['id_barang']);
+            $stmtUpdateBarang->execute();
+        }
     }
 
     public function updateStatusToSelesai($idPeminjaman){
         $conn = $this->db->getConnection();
-        $sql = "UPDATE peminjaman SET status = 'Selesai' WHERE id_peminjaman = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $idPeminjaman);
-        $stmt->execute();
+
+        $sqlPeminjaman = "UPDATE peminjaman SET status = 'Selesai' WHERE id_peminjaman = ?";
+        $stmtPeminjaman = $conn->prepare($sqlPeminjaman);
+        $stmtPeminjaman->bind_param("i", $idPeminjaman);
+        $stmtPeminjaman->execute();
+        $sqlBarang = "SELECT id_barang, jumlah FROM detail_peminjaman WHERE id_peminjaman = ?";
+        $stmtBarang = $conn->prepare($sqlBarang);
+        $stmtBarang->bind_param("i", $idPeminjaman);
+        $stmtBarang->execute();
+        $result = $stmtBarang->get_result();
+
+        $items = [];
+        while ($item = $result->fetch_assoc()) {
+            $items[] = $item;
+        }
+
+        foreach ($items as $item) {
+            $sqlUpdateBarang = "UPDATE barang SET jumlah_tersedia = jumlah_tersedia + ?, jumlah_dipinjam = jumlah_dipinjam - ? WHERE id_barang = ?";
+            $stmtUpdateBarang = $conn->prepare($sqlUpdateBarang);
+            $stmtUpdateBarang->bind_param("iis", $item['jumlah'], $item['jumlah'], $item['id_barang']);
+            $stmtUpdateBarang->execute();
+        }
     }
 
     public function updateToTerlambat(){
