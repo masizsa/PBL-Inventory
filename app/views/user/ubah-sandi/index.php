@@ -26,12 +26,66 @@
             </div>
         </div>
         <div class="custom-confirm-button">
-            <input type="submit" value="Kembali">
             <input class="active" type="submit" value="Simpan">
         </div>
     </form>
 </section>
+
+<section class="custom--container-warning" id="customContainer">
+    <div class="custom--warning" id="customWarning">
+        <img src="assets/warning.svg" alt="">
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
+
+    <div class="custom--success" id="customSuccess">
+        <img src="assets/check.svg" alt="">
+        <div class="custom--success-content-text">
+            <h3>Berhasil</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
+</section>
+
 <script>
+    const container = document.getElementById('customContainer');
+    const warning = document.getElementById('customWarning');
+    const success = document.getElementById('customSuccess');
+
+    function showPopup(id, text) {
+        const popupText = document.querySelector(`#${id} .popupText`);
+
+        // Set the text for the pop-up
+        popupText.textContent = text;
+
+        container.classList.add('show');     
+        setTimeout(() => {
+            container.style.top = '1rem';
+            const popupElement = id === 'customWarning' ? warning : success;
+            popupElement.classList.add('show');
+
+            setTimeout(() => {
+                container.style.transition = 'top 0.3s ease';
+                container.style.top = '-8.8rem';
+                setTimeout(() => {
+                    hidePopup();
+                    container.style.transition = 'none';
+                    if (id === 'customSuccess') {
+                        location.reload();
+                    }
+                }, 200);
+            }, 2000);
+        }, 10)
+    }
+
+    function hidePopup() {
+        container.classList.remove('show');
+        warning.classList.remove('show');
+        success.classList.remove('show');
+    }
+
     $(document).ready(function() {
         $('#ubahSandiForm').submit(function(e) {
             e.preventDefault();
@@ -47,18 +101,20 @@
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === 'success') {
-                        alert('Kata sandi berhasil diubah!');
+                        console.log("success");
+                        showPopup('customSuccess', 'Kata sandi berhasil diubah!');
                     } else if (response.status === 'password_mismatch') {
-                        alert('Kata sandi baru dan konfirmasi tidak cocok.');
+                        console.log("password_mismatch");
+                        showPopup('customWarning', 'Kata sandi salah');
                     } else {
-                        alert('Terjadi kesalahan.');
+                        console.log("Terjadi kesalahan.");
+                        showPopup('customWarning', 'Kata sandi lama salah!');
                     }
                 },
                 error: function() {
                     alert('Terjadi kesalahan.');
                 }
             });
-            location.reload();
         });
     });
     const setVisibilityPass = () => {
