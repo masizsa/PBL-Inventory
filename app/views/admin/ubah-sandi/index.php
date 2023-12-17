@@ -26,11 +26,30 @@
             </div>
         </div>
         <div class="custom-confirm-button">
-            <input type="submit" value="Kembali">
             <input class="active" type="submit" value="Simpan">
         </div>
     </form>
 </section>
+
+<section class="custom--container-warning" id="customContainer">
+    <div class="custom--warning" id="customWarning">
+        <img src="assets/warning.svg" alt="">
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
+
+    <div class="custom--success" id="customSuccess">
+        <img src="assets/check.svg" alt="">
+        <div class="custom--success-content-text">
+            <h3>Berhasil</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
+</section>
+
+<script src="js/ubah-sandi.js"></script>
 <script>
     $(document).ready(function() {
         $('#ubahSandiForm').submit(function(e) {
@@ -47,40 +66,26 @@
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === 'success') {
-                        alert('Kata sandi berhasil diubah!');
+                        console.log("success");
+                        showPopup('customSuccess', 'Kata sandi berhasil diubah!');
                     } else if (response.status === 'password_mismatch') {
-                        alert('Kata sandi baru dan konfirmasi tidak cocok.');
+                        console.log("password_mismatch");
+                        showPopup('customWarning', 'Kata sandi baru dan konfirmasi tidak cocok.');
+                    } else if (response.status === 'error'){
+                        console.log("Terjadi kesalahan.");
+                        showPopup('customWarning', 'Kata sandi lama salah!');
+                    } else if (response.status === 'password_invalid') {
+                        console.log("invalid_length ");
+                        showPopup('customWarning', 'Kata sandi minimal 8 karakter.');
                     } else {
-                        alert('Terjadi kesalahan.');
+                        console.log("Terjadi kesalahan.");
+                        showPopup('customWarning', 'Terjadi kesalahan.');
                     }
                 },
                 error: function() {
                     alert('Terjadi kesalahan.');
                 }
             });
-            location.reload();
         });
     });
-    const setVisibilityPass = () => {
-        const currentPass = document.querySelector('#currentPass');
-        const newPass = document.querySelector('#newPass');
-        const confirmPass = document.querySelector('#confirmPass');
-        const icons = {
-            currentPass: document.querySelector('#currentPass + .custom--close-icon'),
-            newPass: document.querySelector('#newPass +label + .custom--close-icon'),
-            confirmPass: document.querySelector('#confirmPass + .custom--close-icon'),
-        }
-
-        const setVisibility = (icon, input) => {
-            icon?.addEventListener('click', () => {
-                icon.classList.toggle('show')
-                input.type = (input.type == "password") ? "text" : "password";
-            })
-        }
-
-        setVisibility(icons.currentPass, currentPass);
-        setVisibility(icons.newPass, newPass);
-        setVisibility(icons.confirmPass, confirmPass);
-    }
-    setVisibilityPass();
 </script>

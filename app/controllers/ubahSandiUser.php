@@ -25,28 +25,33 @@ class UbahSandiUser extends Controller
         $confirmPassword = md5($_POST['konfirmasi_sandi']);
 
         if ($confirmCurrentPassword === $currentPassword) {
-            if ($newPassword === $confirmPassword) {
-                $conn = $this->db->getConnection();
-
-                $query = "UPDATE users SET password = ? WHERE nomor_identitas = ?";
-
-                $statement = $conn->prepare($query);
-                $statement->bind_param('ss', $newPassword, $nomor_identitas);
-
-                if ($statement->execute()) {
-                    // Berhasil diupdate
-                    $_SESSION['password'] = $confirmPassword;
-                    echo json_encode(['status' => 'success']);
+            if (strlen($newPassword) <= 12 || strlen($newPassword) >= 8) {
+                echo json_encode(['status' => 'password_length']);
+                if ($newPassword === $confirmPassword) {
+                    $conn = $this->db->getConnection();
+    
+                    $query = "UPDATE users SET password = ? WHERE nomor_identitas = ?";
+    
+                    $statement = $conn->prepare($query);
+                    $statement->bind_param('ss', $newPassword, $nomor_identitas);
+    
+                    if ($statement->execute()) {
+                        // Berhasil diupdate
+                        $_SESSION['password'] = $confirmPassword;
+                        echo json_encode(['status' => 'success']);
+                    } else {
+                        // Gagal diupdate
+                        echo json_encode(['status' => 'error']);
+                    }
                 } else {
-                    // Gagal diupdate
-                    echo json_encode(['status' => 'error']);
+                    // Tampilkan pesan bahwa kata sandi baru dan konfirmasi tidak cocok
+                    echo json_encode(['status' => 'password_mismatch']);
                 }
             } else {
-                // Tampilkan pesan bahwa kata sandi baru dan konfirmasi tidak cocok
-                echo json_encode(['status' => 'password_mismatch']);
+                echo json_encode(['status' => 'invalid_length']);
             }
         } else {
-            echo json_encode(['status' => 'error']);
+            echo json_encode(['status' => 'old_password_mismatch']);
         }
     }
 }
