@@ -208,7 +208,8 @@ function handleAddSubmit(event) {
             }
         },
         error: function(xhr, status, error) {
-            alert('Error adding item. Please try again.');
+            console.log(xhr.responseText);
+            // alert('Error adding item. Please try again.');
         }
     }
     );

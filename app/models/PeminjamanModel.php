@@ -107,5 +107,12 @@ class PeminjamanModel
         }
     }
 
+    public function updateStatusPeminjaman($idPeminjaman) {
+        $sqlPeminjaman = "UPDATE peminjaman SET status = 'Dipinjam' WHERE id_peminjaman = ?";
+        $stmtPeminjaman = $this->conn->prepare($sqlPeminjaman);
+        $stmtPeminjaman->bind_param("i", $idPeminjaman);
+        $stmtPeminjaman->execute();
+    } 
+
     // Metode lain yang mungkin diperlukan
 }

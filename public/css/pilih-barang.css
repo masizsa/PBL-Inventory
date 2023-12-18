@@ -104,6 +104,13 @@ html {
   gap: 2.4rem;
 }
 
+.custom--list-barang-dipilih-body .no-barang {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .custom--card-checkout {
   flex: 0 0 auto;
   position: relative;

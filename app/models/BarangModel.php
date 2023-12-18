@@ -100,7 +100,7 @@ class BarangModel
         $this->asal = $asal;
     }
 
-    public function getAllBarang()
+    public function getAllDataBarang()
     {
         $sql = "SELECT * FROM barang";
         $result = $this->conn->query($sql);
@@ -116,7 +116,7 @@ class BarangModel
         }
     }
 
-    public function getBarangById($id)
+    public function getDataBarangById($id)
     {
         $sql = "SELECT * FROM barang WHERE id_barang = $id";
         $result = $this->conn->query($sql);
@@ -128,6 +128,25 @@ class BarangModel
         }
     }
 
+    public function getIdBarangById($kode_barang)
+    {
+        $checkIdExistQuery = "SELECT id_barang FROM barang WHERE id_barang = ?";
+        $stmtCheckIdExist = $this->conn->prepare($checkIdExistQuery);
+        $stmtCheckIdExist->bind_param("s", $kode_barang);
+        $stmtCheckIdExist->execute();
+        $stmtCheckIdExist->store_result();
+        $numRows = $stmtCheckIdExist->num_rows; 
+        return $numRows;
+    }
+
+    public function getIdAdminByUsername($id_admin)
+    {
+        $getIdAdminQuery = "SELECT id_admin FROM admin WHERE username_admin = ?";
+        $stmtAdmin = $this->conn->prepare($getIdAdminQuery);
+        $stmtAdmin->bind_param("s", $id_admin);
+        $stmtAdmin->execute();
+        return $stmtAdmin->get_result();
+    }
     public function addBarang($nama_barang, $id_admin, $jumlah_tersedia, $jumlah_dipinjam, $jml_pemeliharaan, $kondisi_barang, $asal)
     {
         $this->nama_barang = $nama_barang;

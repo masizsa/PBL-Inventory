@@ -13,6 +13,7 @@ class DataBarang extends Controller
         $data['barang'] = $this->getDataBarang();
         $data['summaryData'] = $this->getSummaryData();
         $data['css'] = 'tambah-barang';
+        
         $this->view("templates/header", $data);
         $this->view("templates/sidebar-admin");
         $this->view("admin/data-barang/index", $data);
@@ -21,33 +22,19 @@ class DataBarang extends Controller
     public function getDataBarang()
     {
         $conn = $this->db->getConnection();
-        $query = "SELECT * FROM barang";
+        $barang = new BarangModel($conn);
 
-        $result_set = $conn->query($query);
-
-        $result = array();
-        if ($result_set->num_rows > 0) {
-            while ($row = $result_set->fetch_assoc()) {
-                array_push($result, $row);
-            }
-        }
-        return $result;
+        return $barang->getAllDataBarang();
     }
     public function getNamaAdmin()
     {
         $conn = $this->db->getConnection();
+        $user = new UserModel($conn);
+
         $nomor_identitas = $_SESSION['nomor_identitas'];
-        $query = "SELECT nama FROM users WHERE nomor_identitas = $nomor_identitas";
+        $user->loadFromDB($nomor_identitas);
+        return $user->getNama();
 
-        $result_set = $conn->query($query);
-
-        $result = "";
-        if ($result_set->num_rows > 0) {
-            while ($row = $result_set->fetch_assoc()) {
-                $result = $row['nama'];
-            }
-        }
-        return $result;
     }
     public function addBarang()
     {
@@ -65,25 +52,16 @@ class DataBarang extends Controller
                 echo json_encode(['status' => 'empty']);
                 exit();
             }
-    
-            // Check if id_barang already exists
-            $checkIdExistQuery = "SELECT id_barang FROM barang WHERE id_barang = ?";
-            $stmtCheckIdExist = $conn->prepare($checkIdExistQuery);
-            $stmtCheckIdExist->bind_param("s", $kode_barang);
-            $stmtCheckIdExist->execute();
-            $stmtCheckIdExist->store_result();
-    
-            if ($stmtCheckIdExist->num_rows > 0) {
+
+            $barang = new BarangModel($conn);
+            $stmtCheckIdExist = $barang->getIdBarangById($kode_barang);
+            if ($stmtCheckIdExist > 0) {
                 echo json_encode(['status' => 'duplicate']);
                 exit();
             }
     
-            // Rest of your code for successful submission
-            $getIdAdminQuery = "SELECT id_admin FROM admin WHERE username_admin = ?";
-            $stmtAdmin = $conn->prepare($getIdAdminQuery);
-            $stmtAdmin->bind_param("s", $username);
-            $stmtAdmin->execute();
-            $resultAdmin = $stmtAdmin->get_result();
+            $barang = new BarangModel($conn);
+            $resultAdmin = $barang->getIdAdminByUsername($username);
     
             if ($resultAdmin->num_rows > 0) {
                 $rowAdmin = $resultAdmin->fetch_assoc();

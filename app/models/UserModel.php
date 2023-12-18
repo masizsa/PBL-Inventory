@@ -3,7 +3,6 @@
 class UserModel
 {
     private $conn;
-
     private $nomor_identitas;
     private $nama;
     private $email;

@@ -134,9 +134,10 @@ const minToCheckout = (id) => {
     if (checkoutItems[objectIndex].jumlahCheckout <= 0) {
       checkoutItems = checkoutItems.filter(
         (objek) => objek.jumlahCheckout !== 0
-      );
+        );
+        checkCard();
+      }
     }
-  }
 
   if (lanjut()) {
     buttonLanjut.disabled = false;
@@ -192,7 +193,6 @@ const deleteCheckoutItem = (idCard, kode, id) => {
 
 const renderCard = () => {
   const container = document.querySelector(".custom--list-barang-dipilih-body");
-
   container.innerHTML = "";
   let index = 1;
   checkoutItems.forEach((itemCard) => {
@@ -222,3 +222,17 @@ const renderCard = () => {
     }
   });
 };
+
+function checkCard() {
+    let noBarangElement = document.getElementsByClassName('.no-barang');
+    if (noBarangElement) {
+      if (checkoutItems.length === 0) {
+        noBarangElement.style.display = 'block'; // Tampilkan teks jika checkoutItems kosong
+      } else {
+        noBarangElement.style.color = 'white'; // Sembunyikan jika ada barang yang di-checkout
+      }
+    }
+    console.log(noBarangElement);
+    console.log(checkoutItems.length);
+    console.log('pp');
+}

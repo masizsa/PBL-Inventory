@@ -9,7 +9,6 @@ class BarangDipinjam extends Controller
     }
     public function index()
     {
-        // $data = array();
         $data['datas'] = $this->getData();
         $data['css'] = 'barang-dipinjam';
 
@@ -21,20 +20,12 @@ class BarangDipinjam extends Controller
 
     public function getData()
     {
-        $conn = $this->db->getConnection();
-        $data = [];
         if (isset($_SESSION["nomor_identitas"])) {
+            $conn = $this->db->getConnection();
             $nomor_identitas = $_SESSION["nomor_identitas"];
-            $sql = "SELECT * FROM riwayat WHERE username_peminjam = '$nomor_identitas' AND status != 'Selesai'";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $data[] = $row;
-                }
-            }
+            $dataRiwayat = new ViewRiwayat($conn);
+            return $dataRiwayat->getDataRiwayatBasedOnId($nomor_identitas);
         }
 
-        return $data;
     }
 }
