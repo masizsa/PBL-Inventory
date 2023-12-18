@@ -70,7 +70,7 @@
             </ul>
             <ul class="list-menu">
                 <li>
-                    <a class="" href="./logout/processLogout">
+                    <a class="" onclick="localStorage.clear();" href="./logout/processLogout">
                         <div class="list-icon">
                             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="1">

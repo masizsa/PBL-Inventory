@@ -1,7 +1,5 @@
-
-
 :root {
-  ---background-color-body: #EEE;
+  ---background-color-body: #eee;
   ---header-table-color: #fcd106;
 }
 
@@ -69,7 +67,7 @@
   background-color: #ffffff;
   cursor: pointer;
   border-radius: 1rem;
-  border: 1px solid #1212121A;
+  border: 1px solid #1212121a;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper button,
@@ -79,7 +77,13 @@
   background-color: #ffffff;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li button span {
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  li
+  button
+  span {
   font-size: 14px;
   font-weight: 400;
   float: right;
@@ -116,12 +120,22 @@
   width: 2rem;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown button {
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  .dropdown
+  button {
   width: 16rem;
   height: 0.2rem;
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper li:focus-within .dropdown {
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  li:focus-within
+  .dropdown {
   height: 10rem;
   width: 16rem;
   border-radius: 1rem;
@@ -171,7 +185,7 @@
   border: none;
   outline: none;
   color: #121212;
-  border: 1px solid #1212121A;
+  border: 1px solid #1212121a;
 }
 
 .custom--search .custom--search-icon {
@@ -216,15 +230,16 @@
 .custom--card table tr:last-child td:last-child {
   border-radius: 0 0 1rem 0;
 }
-.custom--card table th, td {
+.custom--card table th,
+td {
   padding: 1.2rem;
-  border: 1px solid #1212121A;
+  border: 1px solid #1212121a;
 }
-.custom--card table th:first-child, 
+.custom--card table th:first-child,
 .custom--card table td:first-child {
   padding-left: 2.4rem !important;
 }
-.custom--card table th:last-child, 
+.custom--card table th:last-child,
 .custom--card table td:last-child {
   padding-right: 2.4rem !important;
 }
