@@ -72,8 +72,9 @@ class DetailPeminjamanModel
         }
     }
 
-    public function getCurrentIdPeminjaman($nomor_identitas, $tgl_peminjaman, $tgl_pengembalian){
-        $sql = "SELECT id_peminjaman FROM peminjaman WHERE nomor_identitas = ? AND tgl_peminjaman = STR_TO_DATE(?, '%Y-%m-%d') AND tgl_pengembalian = STR_TO_DATE(?, '%Y-%m-%d')";
+    public function getCurrentIdPeminjaman($nomor_identitas, $tgl_peminjaman, $tgl_pengembalian)
+    {
+        $sql = "SELECT id_peminjaman FROM peminjaman WHERE nomor_identitas = ? AND tgl_peminjaman = STR_TO_DATE(?, '%Y-%m-%d') AND tgl_pengembalian = STR_TO_DATE(?, '%Y-%m-%d') ORDER BY id_peminjaman DESC LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sss", $nomor_identitas, $tgl_peminjaman, $tgl_pengembalian);
         $stmt->execute();

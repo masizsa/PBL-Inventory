@@ -62,7 +62,7 @@ class RiwayatAdmin extends Controller
         $key = $_POST['key'];
         $query = "SELECT * FROM  riwayat WHERE nama_barang LIKE :key";
         $this->db->query($query);
-        $this->db->bind('key', "$key");
-        return $this->db->resultSet();
+        // $this->db->bind('key', "$key");
+        // return $this->db->resultSet();
     }
 }

@@ -35,15 +35,15 @@
         </div>
         <div class="custom--table-wrapper">
             <?php
-                $groupedData = [];
-                foreach ($data['items'] as $item) {
-                    $idPeminjaman = $item['id_peminjaman'];
-                    if (!array_key_exists($idPeminjaman, $groupedData)) {
-                        $groupedData[$idPeminjaman] = [];
-                    }
-                    $groupedData[$idPeminjaman][] = $item;
+            $groupedData = [];
+            foreach ($data['items'] as $item) {
+                $idPeminjaman = $item['id_peminjaman'];
+                if (!array_key_exists($idPeminjaman, $groupedData)) {
+                    $groupedData[$idPeminjaman] = [];
                 }
-                ?>
+                $groupedData[$idPeminjaman][] = $item;
+            }
+            ?>
             <?php foreach ($groupedData as $idPeminjaman => $items) { ?>
                 <div class="custom--card">
                     <h4 id="date-desc"><?= date('d F Y', strtotime($items[0]['tgl_peminjaman'])) ?> - <?= date('d F Y', strtotime($items[0]['tgl_pengembalian'])) ?></h4>
@@ -108,7 +108,14 @@
             let isMatch = objek.nama_barang.toLowerCase().includes(target.value.toLowerCase());
             isMatch ? result.push(objek) : "";
         });
-        displaySearchResult(result);
+        if (result.length) {
+            displaySearchResult(result);
+        } else {
+            const tableWrapper = document.querySelector('.custom--table-wrapper');
+            console.log('asuu');
+            tableWrapper.innerHTML = `<h1 class="search-not-found">Items Not Found</h1>`;
+
+        }
     };
 
     const displaySearchResult = (searchItems) => {

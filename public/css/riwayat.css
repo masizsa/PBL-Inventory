@@ -1,5 +1,5 @@
 :root {
-  ---background-color-body: #EEE;
+  ---background-color-body: #eee;
   ---header-table-color: #fcd106;
 }
 
@@ -67,7 +67,7 @@
   border-radius: 1rem;
   margin-left: 1.2rem;
   cursor: pointer;
-  border: 1px solid #1212121A;
+  border: 1px solid #1212121a;
 }
 
 .custom--search input::placeholder {
@@ -98,7 +98,7 @@
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper li {
   list-style: none;
-  background-color: transparent
+  background-color: transparent;
 }
 
 .custom--body .custom--filter .custom--left .custom--sort-wrapper li button {
@@ -150,8 +150,14 @@ ul li button {
   /* width: 2rem; */
 }
 
-.custom--body .custom--filter .custom--left .custom--sort-wrapper .dropdown li button:hover {
-  color:#fcd106;
+.custom--body
+  .custom--filter
+  .custom--left
+  .custom--sort-wrapper
+  .dropdown
+  li
+  button:hover {
+  color: #fcd106;
   /* transition: height ease 0.2s; */
 }
 
@@ -233,7 +239,7 @@ ul li button {
   border: none;
   outline: none;
   color: #121212;
-  border: 1px solid #1212121A;
+  border: 1px solid #1212121a;
 }
 
 .custom--search .custom--search-icon {
@@ -243,13 +249,14 @@ ul li button {
 }
 
 .custom--body .custom--table-wrapper {
+  min-height: 32.5rem;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
   padding: 2.4rem 8rem;
   background-color: #ffffff;
   gap: 1.6rem;
-  border: 1px solid #1212121A;
+  border: 1px solid #1212121a;
 }
 
 #date-desc {
@@ -276,8 +283,8 @@ ul li button {
   border-spacing: 0;
 }
 
-.custom--table-wrapper .custom--card table th, 
-.custom--table-wrapper .custom--card table td{
+.custom--table-wrapper .custom--card table th,
+.custom--table-wrapper .custom--card table td {
   text-align: left;
   padding: 1.2rem;
 }
@@ -294,7 +301,7 @@ ul li button {
   font-size: 1.6rem;
   font-weight: 400;
   height: 6.2rem;
-  border: 1px solid #1212121A;
+  border: 1px solid #1212121a;
   border-top: none;
 }
 
@@ -351,4 +358,12 @@ ul li button {
   justify-content: center;
   margin: auto;
   min-height: 22rem;
+}
+.search-not-found {
+  margin: auto;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #c6c6c6;
 }
