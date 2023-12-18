@@ -109,4 +109,24 @@
 
     </section>
 </section>
+
+<section class="custom--container-warning" id="customContainer">
+    <div class="custom--warning" id="customWarning">
+        <img src="../assets/warning.svg" alt="">
+
+        <div class="custom--warning-content-text">
+            <h3>Peringatan</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
+
+    <div class="custom--success" id="customSuccess">
+        <img src="../assets/check.svg" alt="">
+        <div class="custom--success-content-text">
+            <h3>Berhasil</h3>
+            <p class="popupText"></p>
+        </div>
+    </div>
+</section>
+
 <script src="../js/ajukan-peminjaman.js"></script>

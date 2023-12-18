@@ -129,7 +129,7 @@ class AjukanPeminjaman extends Controller
         } else {
             ob_clean();
             header('Content-Type: application/json');
-            echo json_encode(["status" => "error", "message" => "Error: Kesempatan habis"]);
+            echo json_encode(["status" => "exceed", "message" => "Error: Kesempatan habis"]);
         }
     }
 }
