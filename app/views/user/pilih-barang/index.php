@@ -96,7 +96,7 @@
 <script src="../public/js/pilih-barang.js"></script>
 <script>
     window.addEventListener('load', () => {
-        const totalBarang = <?php echo count($data['datas']); ?>;
+        const totalBarang = <?php echo count($data['datas'][0]); ?>;
         const indentifier = document.querySelectorAll(".custom--table-pilih-barang tr td:first-child");
         const boxJumlahCheckout = document.querySelectorAll(".custom--table-pilih-barang tr td input");
 
@@ -131,7 +131,7 @@
         target
     }) => {
         let result = []
-        let dataArray = <?php echo json_encode($data['datas']); ?>;
+        let dataArray = <?php echo json_encode($data['datas'][0]); ?>;
         dataArray.some((objek) => {
             let isMatch = objek.nama_barang.toLowerCase().includes(target.value.toLowerCase())
             isMatch ? result.push(objek) : "";

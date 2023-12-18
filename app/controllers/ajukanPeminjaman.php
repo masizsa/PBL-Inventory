@@ -2,7 +2,6 @@
 class AjukanPeminjaman extends Controller
 {
     public $db;
-    public $listDataBarang;
 
     public function __construct()
     {
@@ -24,30 +23,9 @@ class AjukanPeminjaman extends Controller
     public function getDataBarang()
     {
         $conn = $this->db->getConnection();
+        $barang = new ViewDataBarangUser($conn);
 
-        $sql = "SELECT * FROM data_barang_user";
-
-        $result = $conn->query($sql);
-
-        if ($result === false) {
-            die("Error: " . $conn->error);
-        }
-
-        $dataBarangUser = array();
-
-        if ($result->num_rows > 0) {
-            // Output data dari setiap baris
-            while ($row = $result->fetch_assoc()) {
-                $dataBarangUser[] = array(
-                    'id_barang' => $row["id_barang"],
-                    'nama_barang' => $row["nama_barang"],
-                    'id_admin' => $row["id_admin"],
-                    'nama_admin' => $row["nama_admin"],
-                    'jumlah_tersedia' => $row["jumlah_tersedia"]
-                );
-            }
-        }
-        return $dataBarangUser;
+        return $barang->getAllDataBarang();
     }
     public function formPeminjaman()
     {

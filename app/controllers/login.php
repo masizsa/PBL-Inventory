@@ -29,14 +29,8 @@ class Login extends Controller
             $nomor_identitas = $_POST["nomor_identitas"];
             $password = md5($_POST["password"]);
 
-
-
-            // Menggunakan prepared statement untuk mencegah SQL injection
-            $sql = "SELECT * FROM users WHERE nomor_identitas = ? AND password = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $nomor_identitas, $password);
-            $stmt->execute();
-            $result = $stmt->get_result();
+            $process = new LoginModel($conn);
+            $result = $process->loginProcess($nomor_identitas, $password);
 
             // Memeriksa hasil kueri
             if ($result->num_rows > 0) {

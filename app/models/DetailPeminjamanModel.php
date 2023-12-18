@@ -81,5 +81,21 @@ class DetailPeminjamanModel
         return $stmt->get_result();
     }
 
-    // Metode lain yang mungkin diperlukan
+    public function getDetailPeminjamanByPeminjamanId($id_peminjaman)
+    {
+        $sql = "SELECT * FROM detail_peminjaman WHERE id_peminjaman = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $id_peminjaman);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
+    public function getIdBarangAndJumlahByIdPeminjaman($id_peminjaman)
+    {
+        $sqlBarang = "SELECT id_barang, jumlah FROM detail_peminjaman WHERE id_peminjaman = ?";
+        $stmtBarang = $this->conn->prepare($sqlBarang);
+        $stmtBarang->bind_param("i", $id_peminjaman);
+        $stmtBarang->execute();
+        return $stmtBarang->get_result();
+    }
 }

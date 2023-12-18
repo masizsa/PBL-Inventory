@@ -71,31 +71,19 @@ class Peminjaman extends Controller
         return $data;
     }
 
-       public function updateStatusToDipinjam($idPeminjaman)
+    public function updateStatusToDipinjam($idPeminjaman)
     {
-        // $conn = $this->db->getConnection();
-        // $sql = "UPDATE peminjaman SET status = 'Dipinjam' WHERE id_peminjaman = ?";
-        // $stmt = $conn->prepare($sql);
-        // $stmt->bind_param("i", $idPeminjaman);
-        // $stmt->execute();
         $conn = $this->db->getConnection();
 
-        // Update status peminjaman
-        $sqlPeminjaman = "UPDATE peminjaman SET status = 'Dipinjam' WHERE id_peminjaman = ?";
-        $stmtPeminjaman = $conn->prepare($sqlPeminjaman);
-        $stmtPeminjaman->bind_param("i", $idPeminjaman);
-        $stmtPeminjaman->execute();
+        $updateStatus = new PeminjamanModel($conn);
+        $updateStatus->updateStatusPeminjaman($idPeminjaman);
 
-        $sqlBarang = "SELECT id_barang, jumlah FROM detail_peminjaman WHERE id_peminjaman = ?";
-        $stmtBarang = $conn->prepare($sqlBarang);
-        $stmtBarang->bind_param("i", $idPeminjaman);
-        $stmtBarang->execute();
-        $result = $stmtBarang->get_result();
+        $detailPeminjaman = new DetailPeminjamanModel($conn);
+        $result = $detailPeminjaman->getIdBarangAndJumlahByIdPeminjaman($idPeminjaman);
 
-        $items = [];
-        while ($item = $result->fetch_assoc()) {
-            $items[] = $item;
-        }
+        $items[] = $result->fetch_assoc();
+
+        var_dump($items);
 
         // Lakukan UPDATE untuk setiap id_barang yang ditemukan
         foreach ($items as $item) {
