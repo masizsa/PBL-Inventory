@@ -10,6 +10,7 @@
                 <button id="sendDataPilihBarang">Lanjut</button>
             </header>
             <div class="custom--list-barang-dipilih-body">
+                <p class="no-barang">Tidak ada barang yang dipilih</p>
                 <!-- Tidak ada barang yang dipilih -->
                 <!-- <div class="custom--card-checkout">
                     <div class="custom--card-checkout-left">
