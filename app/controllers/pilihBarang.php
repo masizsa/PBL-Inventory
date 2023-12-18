@@ -15,7 +15,7 @@ class pilihBarang extends Controller
         if ($conn->connect_error) {
             die('Koneksi database gagal: ' . $conn->connect_error);
         }
-        $sql = "SELECT a.id_barang, a.nama_barang, a.id_admin, a.jumlah_tersedia, b.nama_admin FROM barang a INNER JOIN admin b ON a.id_admin = b.id_admin";
+        $sql = "SELECT b.id_barang, b.nama_barang, b.id_admin, b.jumlah_tersedia, a.nama_admin FROM barang b INNER JOIN admin a ON b.id_admin = a.id_admin";
         $result = $conn->query($sql);
         $data = [];
         if ($result->num_rows > 0) {
