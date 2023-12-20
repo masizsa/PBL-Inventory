@@ -195,3 +195,13 @@ html {
   font-size: 16px;
   font-weight: 400;
 }
+
+.shrink {
+  transform: scale(0.94); 
+}
+
+#simpan:hover {
+  background-color: #e9c90e;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+}

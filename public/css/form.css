@@ -193,6 +193,7 @@ input[type="date"].form-control {
   float: right;
   margin-top: 4rem;
   margin-right: 5.5rem;
+  padding-bottom: 2rem;
   /* gap: 1.6rem; */
   font-size: 1.4rem;
   font-weight: 500;
@@ -202,7 +203,6 @@ input[type="date"].form-control {
   height: 5rem;
   text-align: center;
   border-radius: 10rem;
-  background-color: #f6f6f6;
   color: #1e1e1e;
   font-weight: 500;
   border: 0.1rem solid var(--Main-Yellow, #fcd106);
@@ -337,4 +337,18 @@ input[type="date"].form-control {
 .custom--success p {
   font-size: 16px;
   font-weight: 400;
+}
+
+#pinjam:hover {
+  background-color: #e9c90e;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.shrink {
+  transform: scale(0.94); 
+}
+
+.btn-kembali:active {
+  background-color: #CBCBCB;
 }

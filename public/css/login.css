@@ -26,6 +26,7 @@ html {
   height: 46rem;
   width: 37rem;
   padding: 4.8rem 2.4rem;
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +44,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .custom--container-login form.custom--login-form .logo > .custom--logo svg {
@@ -53,7 +55,7 @@ html {
 .custom--container-login form.custom--login-form .wrapper {
   width: 100%;
   display: flex;
-  gap: 1.2rem;
+  gap: 1.4rem;
   flex-direction: column;
   font-size: 1rem;
 }
@@ -67,12 +69,38 @@ html {
   border-radius: 15px;
   border: none;
   outline: 2px solid #c6c6c6;
-  color: var(--text-color-input);
+  /* color: var(--text-color-input); */
   letter-spacing: 0.2px;
 }
 
 .custom--container-login form.custom--login-form .password-wrapper {
   position: relative;
+}
+ 
+.wrapper .username-wrapper #username {
+  transition: box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0 0 transparent;
+}
+
+.wrapper .username-wrapper #username:focus {
+  box-shadow: 0 0 10px #e9c90e;
+}
+
+.wrapper .username-wrapper #username:not(:focus) {
+  box-shadow: none;
+}
+
+.wrapper .password-wrapper #password {
+  transition: box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0 0 transparent;
+}
+
+.wrapper .password-wrapper #password:focus {
+  box-shadow: 0 0 10px #e9c90e;
+}
+
+.wrapper .password-wrapper #password:not(:focus) {
+  box-shadow: none;
 }
 
 .password-wrapper > #passIcon {
@@ -97,7 +125,7 @@ html {
   background: url(../assets/showPass.svg) no-repeat;
 }
 
-button {
+#submit {
   height: 5rem;
   width: 24rem;
   margin-top: 3.2rem;
@@ -105,5 +133,16 @@ button {
   border: none;
   border-radius: 10rem;
   font-size: 1.4rem;
+  font-weight: 600;
   color: #000;
+}
+
+#submit:hover {
+  background-color: #e9c90e;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.shrink {
+  transform: scale(0.94); 
 }

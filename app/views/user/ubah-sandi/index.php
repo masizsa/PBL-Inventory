@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="custom-confirm-button">
-            <input class="active" type="submit" value="Simpan">
+            <input class="active" id="simpan" type="submit" value="Simpan">
         </div>
     </form>
 </section>
@@ -88,4 +88,14 @@
             });
         });
     });
+
+    const shrinkButton = document.getElementById('simpan');
+
+    shrinkButton.addEventListener('click', function() {
+    shrinkButton.classList.add('shrink'); // Tambahkan class untuk efek perkecilan
+    setTimeout(function() {
+        shrinkButton.classList.remove('shrink'); // Hapus class setelah sejumlah waktu tertentu
+    }, 200); // Ubah angka sesuai dengan durasi yang diinginkan (dalam milidetik)
+    });
+    
 </script>

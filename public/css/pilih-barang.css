@@ -48,6 +48,11 @@ html {
   font-size: 1.6rem;
 }
 
+.custom--body-pilih-barang-container .custom--list-items-pilih-barang 
+.custom--list-barang-dipilih-header #sendDataPilihBarang {
+  font-weight: 600;
+}
+
 .custom--body-pilih-barang-container {
   position: relative;
   flex: 1;
@@ -68,7 +73,8 @@ html {
   font-size: 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;font-weight: 500;
+  
 }
 
 .custom--list-barang-dipilih-header button {
@@ -121,7 +127,8 @@ html {
   display: flex;
   gap: 2.5rem;
   color: #000;
-  padding: 12px;
+  background-color: #F6F6F6;
+  padding: 12px; /* Objek akan dimulai dengan keadaan tidak terlihat */
 }
 
 .custom--card-checkout .custom--card-checkout-left {
@@ -168,7 +175,7 @@ html {
   justify-content: space-between;
   align-items: center;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .custom--search-list-items-pilih-barang

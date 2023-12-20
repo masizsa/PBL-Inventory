@@ -158,3 +158,12 @@ function deleteCookie(name) {
     name +
     "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/PBL-Inventory/public;";
 }
+
+const shrinkButton = document.getElementById('pinjam');
+
+    shrinkButton.addEventListener('click', function() {
+    shrinkButton.classList.add('shrink'); // Tambahkan class untuk efek perkecilan
+    setTimeout(function() {
+        shrinkButton.classList.remove('shrink'); // Hapus class setelah sejumlah waktu tertentu
+    }, 200); // Ubah angka sesuai dengan durasi yang diinginkan (dalam milidetik)
+    });

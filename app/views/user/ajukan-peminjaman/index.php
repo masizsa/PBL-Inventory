@@ -95,7 +95,7 @@
         </section>
         <section class="confirm-button">
             <button type="button" class="btn-kembali" onclick="backPage()">Kembali</button>
-            <button type="submit" class="btn-pinjam" name="btn-pinjam" id="modal">Pinjam</button>
+            <button type="submit" id="pinjam" class="btn-pinjam" name="btn-pinjam" id="modal">Pinjam</button>
         </section>
 
         <div id="myModal" class="modal" style="z-index: 100;" id="modalSuccess">

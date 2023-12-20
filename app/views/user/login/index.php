@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit">Masuk</button>
+        <button id="submit" type="submit">Masuk</button>
     </form>
 </section>
 
@@ -68,4 +68,13 @@
     }
 
     setVisibilityPass();
+
+    const shrinkButton = document.getElementById('submit');
+
+    shrinkButton.addEventListener('click', function() {
+    shrinkButton.classList.add('shrink'); // Tambahkan class untuk efek perkecilan
+    setTimeout(function() {
+        shrinkButton.classList.remove('shrink'); // Hapus class setelah sejumlah waktu tertentu
+    }, 200); // Ubah angka sesuai dengan durasi yang diinginkan (dalam milidetik)
+    });
 </script>
